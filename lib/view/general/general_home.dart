@@ -31,6 +31,7 @@ class _General_HomePageState extends State<General_HomePage> {
       appBar: AppBar(title: const Text('ホーム')),
       body: _pages[_selectedIndex], // 選択中のタブに応じて画面を切り替える
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.map), label: 'マップ'),
           BottomNavigationBarItem(icon: Icon(Icons.upload), label: '投稿'),
