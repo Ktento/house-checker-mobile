@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const Jeneral_HomePage()),
+                        builder: (context) => const General_HomePage()),
                   );
                 },
               ),
