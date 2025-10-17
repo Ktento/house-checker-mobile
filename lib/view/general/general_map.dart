@@ -3,7 +3,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import '../../controllers/map_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:geolocator/geolocator.dart';
 import '../../controllers/loacation_controller.dart';
 import 'package:flutter_map_animations/flutter_map_animations.dart';
 
@@ -35,6 +34,10 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
         _controller.currentPostionMarkers(latlng);
       });
     });
+    // 🧭 向きセンサーの購読を追加
+    _locationController.listenHeading(() {
+      if (mounted) setState(() {});
+    });
   }
 
   @override
@@ -50,7 +53,13 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
     if (currentLocation == null) {
       return const Scaffold(
         body: Center(
-          child: CircularProgressIndicator(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('読み込み中...'),
+              CircularProgressIndicator(),
+            ],
+          ),
         ),
       );
     }
