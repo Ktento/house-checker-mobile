@@ -1,6 +1,7 @@
 import '../models/location_model.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:flutter_compass/flutter_compass.dart';
 
 final LocationSettings locationSettings = LocationSettings(
   accuracy: LocationAccuracy.high,
@@ -50,14 +51,24 @@ class LocationControllerMVC {
     return await Geolocator.getCurrentPosition();
   }
 
-  /// LatLng で返すラッパー
-  Future<LatLng> getCurrentLatLng() async {
+  /// 現在位置を取得し、モデルに保存して返す
+  Future<LatLng> setCurrentPostion() async {
     try {
       Position pos = await determinePosition();
-      return LatLng(pos.latitude, pos.longitude);
-    } catch (_) {
-      // 権限拒否などの場合はデフォルト位置を返す
-      return LatLng(35.6586, 139.7454);
+      _model.now = LatLng(pos.latitude, pos.longitude);
+    } catch (e) {
+      print('位置情報取得エラー: $e');
+      // 権限拒否などの場合はデフォルト位置を設定
+      _model.now = LatLng(35.6586, 139.7454);
     }
+    return _model.now;
+  }
+
+  // 向きセンサーの購読
+  void listenHeading(void Function() onUpdate) {
+    FlutterCompass.events!.listen((event) {
+      _model.heading = event.heading;
+      onUpdate(); // MVCのビュー側に更新通知
+    });
   }
 }

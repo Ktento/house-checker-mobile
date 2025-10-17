@@ -29,14 +29,11 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
     );
     _controller = MapControllerMVC(_animatedMapController);
     //現在位置を取得し初期位置に設定
-    _locationController.getCurrentLatLng().then((latlng) {
+    _locationController.setCurrentPostion().then((latlng) {
       setState(() {
         currentLocation = latlng;
-        _controller.moveCenter(latlng);
-        _controller.addMarker(latlng);
+        _controller.currentPostionMarkers(latlng);
       });
-    }).catchError((e) {
-      print('位置情報取得失敗: $e');
     });
   }
 
@@ -76,8 +73,11 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
                 point: latlng,
                 width: 40,
                 height: 40,
-                child:
-                    const Icon(Icons.location_pin, color: Colors.red, size: 35),
+                child: Transform.rotate(
+                  angle: (_locationController.model.heading ?? 0) *
+                      (3.14159265 / 180),
+                  child: Icon(Icons.navigation, color: Colors.blue, size: 40),
+                ),
               );
             }).toList(),
           ),
