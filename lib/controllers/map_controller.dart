@@ -10,9 +10,9 @@ class MapControllerMVC {
   MapControllerMVC(this.animatedMapController);
   MapModel get model => _model;
 
-  // 中心位置を変更
-  void moveCenter(LatLng newCenter) {
-    _model.center = newCenter;
+  //現在位置マーカーの更新
+  void currentPostionMarkers(LatLng currentpostion) {
+    _model.markers[0] = currentpostion;
   }
 
   // マーカーを追加
