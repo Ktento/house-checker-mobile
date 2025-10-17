@@ -57,7 +57,6 @@ class LocationControllerMVC {
       Position pos = await determinePosition();
       _model.now = LatLng(pos.latitude, pos.longitude);
     } catch (e) {
-      print('位置情報取得エラー: $e');
       // 権限拒否などの場合はデフォルト位置を設定
       _model.now = LatLng(35.6586, 139.7454);
     }
@@ -66,9 +65,15 @@ class LocationControllerMVC {
 
   // 向きセンサーの購読
   void listenHeading(void Function() onUpdate) {
-    FlutterCompass.events!.listen((event) {
+    final compassStream = FlutterCompass.events;
+    if (compassStream == null) {
+      return;
+    }
+
+    compassStream.listen((event) {
       _model.heading = event.heading;
-      onUpdate(); // MVCのビュー側に更新通知
+
+      onUpdate(); // View側へ通知
     });
   }
 }
