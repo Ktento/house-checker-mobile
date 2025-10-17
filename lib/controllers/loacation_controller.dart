@@ -1,6 +1,6 @@
-import 'package:latlong2/latlong.dart';
 import '../models/location_model.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:latlong2/latlong.dart';
 
 final LocationSettings locationSettings = LocationSettings(
   accuracy: LocationAccuracy.high,
@@ -48,5 +48,16 @@ class LocationControllerMVC {
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
+  }
+
+  /// LatLng で返すラッパー
+  Future<LatLng> getCurrentLatLng() async {
+    try {
+      Position pos = await determinePosition();
+      return LatLng(pos.latitude, pos.longitude);
+    } catch (_) {
+      // 権限拒否などの場合はデフォルト位置を返す
+      return LatLng(35.6586, 139.7454);
+    }
   }
 }

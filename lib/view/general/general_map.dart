@@ -5,6 +5,7 @@ import '../../controllers/map_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../controllers/loacation_controller.dart';
+import 'package:flutter_map_animations/flutter_map_animations.dart';
 
 class GeneralMap extends StatefulWidget {
   const GeneralMap({super.key});
@@ -13,35 +14,36 @@ class GeneralMap extends StatefulWidget {
   State<GeneralMap> createState() => _GeneralMapState();
 }
 
-class _GeneralMapState extends State<GeneralMap> {
-  final MapControllerMVC _controller = MapControllerMVC();
+class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
   final LocationControllerMVC _locationController = LocationControllerMVC();
+  late final MapControllerMVC _controller;
+  late final AnimatedMapController _animatedMapController;
+
   LatLng? currentLocation; // 現在位置（まだ取得できていない場合は null）
 
   @override
   void initState() {
     super.initState();
-    _setInitialLocation();
-  }
-
-  Future<void> _setInitialLocation() async {
-    try {
-      Position pos = await _locationController.determinePosition();
-      LatLng latlng = LatLng(pos.latitude, pos.longitude);
+    _animatedMapController = AnimatedMapController(
+      vsync: this,
+    );
+    _controller = MapControllerMVC(_animatedMapController);
+    //現在位置を取得し初期位置に設定
+    _locationController.getCurrentLatLng().then((latlng) {
       setState(() {
         currentLocation = latlng;
         _controller.moveCenter(latlng);
         _controller.addMarker(latlng);
       });
-    } catch (e) {
+    }).catchError((e) {
       print('位置情報取得失敗: $e');
-      // 権限拒否時はデフォルト位置を使用
-      LatLng defaultPos = LatLng(35.6586, 139.7454);
-      setState(() {
-        currentLocation = defaultPos;
-        _controller.moveCenter(defaultPos);
-      });
-    }
+    });
+  }
+
+  @override
+  void dispose() {
+    _animatedMapController.dispose();
+    super.dispose();
   }
 
   @override
@@ -57,6 +59,7 @@ class _GeneralMapState extends State<GeneralMap> {
     }
     return Scaffold(
       body: FlutterMap(
+        mapController: _animatedMapController.mapController,
         options: MapOptions(
           initialCenter: currentLocation!,
           initialZoom: 19,
@@ -93,10 +96,10 @@ class _GeneralMapState extends State<GeneralMap> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (currentLocation != null) {
-            _controller.moveCenter(currentLocation!);
-            setState(() {}); // 画面を更新して中心位置を反映
+            _controller.moveToLocation(currentLocation!);
           }
         },
+        child: const Icon(Icons.my_location),
       ),
     );
   }
