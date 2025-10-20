@@ -38,6 +38,11 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
     _locationController.listenHeading(() {
       if (mounted) setState(() {});
     });
+
+    // 📍 位置情報の購読を追加
+    _locationController.listenPosition(() {
+      if (mounted) setState(() {}); // 位置が変わるたびに再描画
+    });
   }
 
   @override

@@ -63,6 +63,18 @@ class LocationControllerMVC {
     return _model.now;
   }
 
+  void listenPosition(void Function() onUpdate) {
+    Geolocator.getPositionStream(locationSettings: locationSettings)
+        .listen((Position? position) {
+      if (position == null) {
+        return;
+      }
+      _model.now = LatLng(position.latitude, position.longitude);
+
+      onUpdate(); // View側へ通知
+    });
+  }
+
   // 向きセンサーの購読
   void listenHeading(void Function() onUpdate) {
     final compassStream = FlutterCompass.events;
