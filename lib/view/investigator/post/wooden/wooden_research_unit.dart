@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
+import 'package:intl/intl.dart';
 
 class WoodenResearchUnit extends StatefulWidget {
   const WoodenResearchUnit({super.key});
@@ -14,13 +15,13 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
 
   // --- コントローラ ---
   final controller = InvestigatorPostController();
-  DateTime? selectedDate;
+  DateTime selectedDate = DateTime.now();
 
   // --- 日付選択 ---
   Future<void> _pickDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: selectedDate,
       firstDate: DateTime(2020),
       lastDate: DateTime(2030),
     );
@@ -47,9 +48,7 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      selectedDate == null
-                          ? '調査日: 未選択'
-                          : '調査日: ${selectedDate!.toLocal()}'.split(' ')[0],
+                      '調査日: ${DateFormat('yyyy-MM-dd').format(selectedDate)}',
                     ),
                     ElevatedButton(
                       onPressed: () => _pickDate(context),
@@ -100,20 +99,10 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
                 // --- 送信ボタン ---
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate() &&
-                        selectedDate != null) {
+                    if (_formKey.currentState!.validate()) {
                       // ✅ InvestigationUnit のインスタンスを作成
-                      final unit = InvestigationUnit(
-                        date: selectedDate!,
-                        investigator: [controller.nameController.text],
-                        number: controller.numberController.text,
-                        prefecture: [controller.prefectureController.text],
-                        surveyCount: int.parse(controller.countController.text),
-                        investigatorNumber: [
-                          controller.investigatorNumberController.text
-                        ],
-                      );
-
+                      InvestigationUnit unit =
+                          controller.createInvestigationUnit(selectedDate);
                       // 確認用に出力
                       print('調査単位データ: ${unit.toString()}');
 
@@ -123,10 +112,6 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
                         MaterialPageRoute(
                           builder: (context) => const WoodenResearchUnit(),
                         ),
-                      );
-                    } else if (selectedDate == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('日付を選択してください')),
                       );
                     }
                   },
