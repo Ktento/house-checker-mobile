@@ -5,6 +5,7 @@ import '../../controllers/map_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../controllers/loacation_controller.dart';
 import 'package:flutter_map_animations/flutter_map_animations.dart';
+import 'package:flutter/cupertino.dart';
 
 class InvestigatorMap extends StatefulWidget {
   const InvestigatorMap({super.key});
@@ -23,6 +24,7 @@ class _InvestigatorMapState extends State<InvestigatorMap>
 
   @override
   void initState() {
+    if (!mounted) return;
     super.initState();
     _animatedMapController = AnimatedMapController(
       vsync: this,
@@ -69,53 +71,61 @@ class _InvestigatorMapState extends State<InvestigatorMap>
         ),
       );
     }
-    return Scaffold(
-      body: FlutterMap(
-        mapController: _animatedMapController.mapController,
-        options: MapOptions(
-          initialCenter: currentLocation!,
-          initialZoom: 19,
+    return CupertinoPageScaffold(
+        child: SafeArea(
+            child: Stack(
+      children: [
+        FlutterMap(
+          mapController: _animatedMapController.mapController,
+          options: MapOptions(
+            initialCenter: currentLocation!,
+            initialZoom: 19,
+          ),
+          children: [
+            TileLayer(
+              urlTemplate: 'https://{s}.tile.openstreetmap.jp/{z}/{x}/{y}.png',
+              subdomains: ['a', 'b', 'c'],
+              userAgentPackageName: 'com.example.app',
+            ),
+            MarkerLayer(
+              markers: model.markers.map((latlng) {
+                return Marker(
+                  point: latlng,
+                  width: 40,
+                  height: 40,
+                  child: Transform.rotate(
+                    angle: (_locationController.model.heading ?? 0) *
+                        (3.14159265 / 180),
+                    child: Icon(Icons.navigation, color: Colors.blue, size: 40),
+                  ),
+                );
+              }).toList(),
+            ),
+            RichAttributionWidget(
+              attributions: [
+                TextSourceAttribution(
+                  'OpenStreetMap contributors',
+                  onTap: () => launchUrl(
+                    Uri.parse('https://openstreetmap.org/copyright'),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        children: [
-          TileLayer(
-            urlTemplate: 'https://{s}.tile.openstreetmap.jp/{z}/{x}/{y}.png',
-            subdomains: ['a', 'b', 'c'],
-            userAgentPackageName: 'com.example.app',
+        Positioned(
+          bottom: 20,
+          left: 20,
+          child: FloatingActionButton(
+            onPressed: () {
+              if (currentLocation != null) {
+                _controller.moveToLocation(currentLocation!);
+              }
+            },
+            child: Icon(Icons.my_location),
           ),
-          MarkerLayer(
-            markers: model.markers.map((latlng) {
-              return Marker(
-                point: latlng,
-                width: 40,
-                height: 40,
-                child: Transform.rotate(
-                  angle: (_locationController.model.heading ?? 0) *
-                      (3.14159265 / 180),
-                  child: Icon(Icons.navigation, color: Colors.blue, size: 40),
-                ),
-              );
-            }).toList(),
-          ),
-          RichAttributionWidget(
-            attributions: [
-              TextSourceAttribution(
-                'OpenStreetMap contributors',
-                onTap: () => launchUrl(
-                  Uri.parse('https://openstreetmap.org/copyright'),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (currentLocation != null) {
-            _controller.moveToLocation(currentLocation!);
-          }
-        },
-        child: const Icon(Icons.my_location),
-      ),
-    );
+        ),
+      ],
+    )));
   }
 }
