@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
-import 'package:intl/intl.dart';
 
 class WoodenResearchUnit extends StatefulWidget {
   const WoodenResearchUnit({super.key});
@@ -12,112 +13,147 @@ class WoodenResearchUnit extends StatefulWidget {
 
 class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
   final _formKey = GlobalKey<FormState>();
-
-  // --- コントローラ ---
   final controller = InvestigatorPostController();
   DateTime selectedDate = DateTime.now();
 
-  // --- 日付選択 ---
   Future<void> _pickDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
+    await showCupertinoModalPopup(
       context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2030),
+      builder: (_) => Container(
+        height: 260,
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 200,
+              child: CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: selectedDate,
+                minimumDate: DateTime(2020),
+                maximumDate: DateTime(2030),
+                onDateTimeChanged: (DateTime newDate) {
+                  setState(() => selectedDate = newDate);
+                },
+              ),
+            ),
+            CupertinoButton(
+              child: const Text('完了',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        ),
+      ),
     );
-    if (picked != null) {
-      setState(() {
-        selectedDate = picked;
-      });
+  }
+
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      InvestigationUnit unit = controller.createInvestigationUnit(selectedDate);
+      print('調査単位データ: ${unit.toString()}');
+
+      Navigator.push(
+        context,
+        CupertinoPageRoute(builder: (context) => const WoodenResearchUnit()),
+      );
     }
+  }
+
+  Widget _buildCupertinoTextField({
+    required String label,
+    required TextEditingController controller,
+    bool numeric = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label,
+            style: const TextStyle(
+                fontSize: 14,
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontWeight: FontWeight.w500)),
+        const SizedBox(height: 4),
+        CupertinoTextField(
+          controller: controller,
+          keyboardType: numeric ? TextInputType.number : TextInputType.text,
+          placeholder: '$label を入力',
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+          decoration: BoxDecoration(
+            color: CupertinoColors.systemGrey6,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        const SizedBox(height: 16),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('調査単位入力')),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('調査単位入力'),
+      ),
+      child: SafeArea(
         child: Form(
           key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                // --- 調査日 ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '調査日: ${DateFormat('yyyy-MM-dd').format(selectedDate)}',
-                    ),
-                    ElevatedButton(
-                      onPressed: () => _pickDate(context),
-                      child: const Text('日付を選択'),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-
-                // --- 調査人氏名 ---
-                TextFormField(
-                  controller: controller.nameController,
-                  decoration: const InputDecoration(labelText: '調査人氏名'),
-                  validator: (value) => value!.isEmpty ? '調査人氏名は必須です' : null,
-                ),
-
-                // --- 調査人番号 ---
-                TextFormField(
-                  controller: controller.investigatorNumberController,
-                  decoration: const InputDecoration(labelText: '調査人番号'),
-                  validator: (value) => value!.isEmpty ? '調査人番号は必須です' : null,
-                ),
-
-                // --- 都道府県 ---
-                TextFormField(
-                  controller: controller.prefectureController,
-                  decoration: const InputDecoration(labelText: '都道府県名'),
-                  validator: (value) => value!.isEmpty ? '都道府県名は必須です' : null,
-                ),
-
-                // --- 整理番号 ---
-                TextFormField(
-                  controller: controller.numberController,
-                  decoration: const InputDecoration(labelText: '整理番号'),
-                  validator: (value) => value!.isEmpty ? '整理番号は必須です' : null,
-                ),
-
-                // --- 調査回数 ---
-                TextFormField(
-                  controller: controller.countController,
-                  decoration: const InputDecoration(labelText: '調査回数'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) => value!.isEmpty ? '調査回数は必須です' : null,
-                ),
-
-                const SizedBox(height: 20),
-
-                // --- 送信ボタン ---
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // ✅ InvestigationUnit のインスタンスを作成
-                      InvestigationUnit unit =
-                          controller.createInvestigationUnit(selectedDate);
-                      // 確認用に出力
-                      print('調査単位データ: ${unit.toString()}');
-
-                      // ページ遷移の例（次の画面に渡す）
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const WoodenResearchUnit(),
+          child: CupertinoScrollbar(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // --- 調査日 ---
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '調査日: ${DateFormat('yyyy-MM-dd').format(selectedDate)}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: CupertinoColors.label,
                         ),
-                      );
-                    }
-                  },
-                  child: const Text('送信'),
-                ),
-              ],
+                      ),
+                      CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () => _pickDate(context),
+                        child: const Text('変更',
+                            style:
+                                TextStyle(color: CupertinoColors.activeBlue)),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+
+                  // --- 各入力項目 ---
+                  _buildCupertinoTextField(
+                      label: '調査人氏名', controller: controller.nameController),
+                  _buildCupertinoTextField(
+                      label: '調査人番号',
+                      controller: controller.investigatorNumberController),
+                  _buildCupertinoTextField(
+                      label: '都道府県名',
+                      controller: controller.prefectureController),
+                  _buildCupertinoTextField(
+                      label: '整理番号', controller: controller.numberController),
+                  _buildCupertinoTextField(
+                    label: '調査回数',
+                    controller: controller.countController,
+                    numeric: true,
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  // --- 次の画面に行く ---
+                  Center(
+                    child: CupertinoButton.filled(
+                      onPressed: _submitForm,
+                      borderRadius: BorderRadius.circular(12),
+                      child: const Text('次へ'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
