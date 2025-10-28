@@ -18,6 +18,12 @@ class CupertinoDropdown extends StatefulWidget {
 
 class _CupertinoDropdownState extends State<CupertinoDropdown> {
   late String selectedValue;
+  Color _getColor(String value) {
+    if (value.startsWith('A')) return CupertinoColors.activeGreen;
+    if (value.startsWith('B')) return CupertinoColors.activeOrange;
+    if (value.startsWith('C')) return CupertinoColors.systemRed;
+    return CupertinoColors.black;
+  }
 
   @override
   void initState() {
@@ -36,7 +42,10 @@ class _CupertinoDropdownState extends State<CupertinoDropdown> {
               widget.onChanged(option); // 外部に通知
               Navigator.pop(context);
             },
-            child: Text(option),
+            child: Text(
+              option,
+              style: TextStyle(color: _getColor(option)),
+            ),
           );
         }).toList(),
         cancelButton: CupertinoActionSheetAction(
@@ -53,7 +62,12 @@ class _CupertinoDropdownState extends State<CupertinoDropdown> {
     return CupertinoButton(
       color: CupertinoColors.systemGrey5,
       onPressed: () => _showPicker(context),
-      child: Text(selectedValue),
+      child: Text(
+        selectedValue,
+        style: TextStyle(
+          color: _getColor(selectedValue),
+        ),
+      ),
     );
   }
 }
