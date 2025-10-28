@@ -59,8 +59,6 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
         DialogHelper.showErrorDialog(context, '「建築物規模」が未入力です。');
         return;
       }
-      //建築物のタイプは「木造」
-      controller.buildingtypeController.text = "W";
       BuildingOverview buildingOverview = controller.createBuildingOverview();
       print('建築物名: ${buildingOverview.buildingName}');
       Navigator.push(

@@ -88,7 +88,7 @@ class InvestigatorPostController {
   InvestigationContent createInvestigationContent() {
     return InvestigationContent(
       exteriorInspectionScore:
-          int.tryParse(exteriorInspectionScoreController.text) ?? 0,
+          int.tryParse(exteriorInspectionScoreController.text[0]) ?? 0,
       exteriorInspectionRemarks: exteriorInspectionRemarksController.text,
       adjacentBuildingRisk:
           _parseDamageLevel(adjacentBuildingRiskController.text),
@@ -124,7 +124,7 @@ class InvestigatorPostController {
 
   // DamageLevel列挙型への変換ヘルパー
   DamageLevel _parseDamageLevel(String value) {
-    switch (value.toUpperCase()) {
+    switch (value[0].toUpperCase()) {
       case 'A':
         return DamageLevel.A;
       case 'B':
@@ -190,7 +190,7 @@ class InvestigatorPostController {
   //家屋危険度を算出する関数
   OverallScore overallScore(InvestigationContent content) {
     //１の外観調査の点数がついている場合は赤
-    if (content.exteriorInspectionScore != 0) {
+    if (content.exteriorInspectionScore != 5) {
       return OverallScore.red;
 
       //２と３の調査項目のレベルが高い方を危険度として採用
