@@ -4,7 +4,7 @@ import 'package:house_check_mobile/view/investigator/post/wooden/wooden_building
 import 'package:intl/intl.dart';
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
-import 'package:house_check_mobile/utils/dialog_helper.dart';
+import 'package:house_check_mobile/utils/widgets/dialog.dart';
 
 class WoodenResearchUnit extends StatefulWidget {
   const WoodenResearchUnit({super.key});
