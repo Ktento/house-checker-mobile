@@ -4,6 +4,7 @@ import 'package:house_check_mobile/view/investigator/post/wooden/wooden_building
 import 'package:intl/intl.dart';
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
+import 'package:house_check_mobile/utils/dialog_helper.dart';
 
 class WoodenResearchUnit extends StatefulWidget {
   const WoodenResearchUnit({super.key});
@@ -48,11 +49,44 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
     );
   }
 
-  void _submitForm() {
+  void _submit() {
     if (_formKey.currentState!.validate()) {
-      InvestigationUnit unit = controller.createInvestigationUnit(selectedDate);
-      print('調査単位データ: ${unit.prefecture}');
+      // 入力内容を取得
+      final name = controller.nameController.text.trim();
+      final investigatorNumber =
+          controller.investigatorNumberController.text.trim();
+      final prefecture = controller.prefectureController.text.trim();
+      final number = controller.numberController.text.trim();
+      final countText = controller.countController.text.trim();
+      // --- 入力値チェック ---
+      if (name.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「調査人氏名」が未入力です。');
+        return;
+      }
+      if (investigatorNumber.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「調査人番号」が未入力です。');
+        return;
+      }
+      if (prefecture.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「都道府県名」が未入力です。');
+        return;
+      }
+      if (number.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「整理番号」が未入力です。');
+        return;
+      }
+      if (countText.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「調査回数」が未入力です。');
+        return;
+      }
 
+      final count = int.tryParse(countText);
+      if (count == null) {
+        DialogHelper.showErrorDialog(context, '「調査回数」は数値で入力してください。');
+        return;
+      }
+
+      InvestigationUnit unit = controller.createInvestigationUnit(selectedDate);
       Navigator.push(
         context,
         CupertinoPageRoute(
@@ -246,7 +280,7 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
                   // --- 次の画面に行く ---
                   Center(
                     child: CupertinoButton.filled(
-                      onPressed: _submitForm,
+                      onPressed: _submit,
                       borderRadius: BorderRadius.circular(12),
                       child: const Text('次へ'),
                     ),

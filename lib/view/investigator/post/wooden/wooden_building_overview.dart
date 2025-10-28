@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:house_check_mobile/view/investigator/post/wooden/wooden_survery.dart';
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
+import 'package:house_check_mobile/utils/dialog_helper.dart';
 
 class WoodenBuildigOverview extends StatefulWidget {
   const WoodenBuildigOverview({super.key, required this.unit});
@@ -13,6 +14,60 @@ class WoodenBuildigOverview extends StatefulWidget {
 class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
   final _formKey = GlobalKey<FormState>();
   final controller = InvestigatorPostController();
+
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
+      final buildingname = controller.buildingNameController.text.trim();
+      final buildingnumber = controller.buildingNumberController.text.trim();
+      final address = controller.addressController.text.trim();
+      final mapnumber = controller.mapNumberController.text.trim();
+      final buildinguse = controller.buildingUseController.text.trim();
+      final structure = controller.structureController.text.trim();
+      final floors = controller.floorsController.text.trim();
+      final scale = controller.scaleController.text.trim();
+
+      if (buildingname.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「建築物名称」が未入力です。');
+        return;
+      }
+      if (buildingnumber.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「建築物番号」が未入力です。');
+        return;
+      }
+      if (address.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「建築物所在地」が未入力です。');
+        return;
+      }
+      if (mapnumber.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「住宅地図整理番号」が未入力です。');
+        return;
+      }
+      if (buildinguse.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「建築用途」が未入力です。');
+        return;
+      }
+      if (structure.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「構造形式」が未入力です。');
+        return;
+      }
+      if (floors.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「階数」が未入力です。');
+        return;
+      }
+      if (scale.isEmpty) {
+        DialogHelper.showErrorDialog(context, '「建築物規模」が未入力です。');
+        return;
+      }
+      BuildingOverview buildingOverview = controller.createBuildingOverview();
+      print('建築物名: ${buildingOverview.buildingName}');
+      Navigator.push(
+        context,
+        CupertinoPageRoute(
+            builder: (context) => WoodenSurvey(
+                unit: widget.unit, buildingOverview: buildingOverview)),
+      );
+    }
+  }
 
   Widget _buildCupertinoTextField({
     required String label,
@@ -100,18 +155,7 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                           const SizedBox(width: 40),
                           CupertinoButton.filled(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                BuildingOverview buildingOverview =
-                                    controller.createBuildingOverview();
-                                print('建築物名: ${buildingOverview.buildingName}');
-                                Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (context) => WoodenSurvey(
-                                          unit: widget.unit,
-                                          buildingOverview: buildingOverview)),
-                                );
-                              }
+                              _submit();
                             },
                             borderRadius: BorderRadius.circular(12),
                             child: const Text('次へ'),
