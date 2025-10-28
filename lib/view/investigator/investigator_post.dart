@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'post/wooden/wooden_research_unit.dart';
+import 'package:flutter/cupertino.dart';
 
 class InvestigatorPost extends StatelessWidget {
   const InvestigatorPost({super.key});
@@ -15,7 +16,7 @@ class InvestigatorPost extends StatelessWidget {
               //一般モードに遷移
               Navigator.push(
                 context,
-                MaterialPageRoute(
+                CupertinoPageRoute(
                     builder: (context) => const WoodenResearchUnit()),
               );
             },
