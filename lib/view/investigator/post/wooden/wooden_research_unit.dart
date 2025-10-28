@@ -85,7 +85,8 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
         DialogHelper.showErrorDialog(context, '「調査回数」は数値で入力してください。');
         return;
       }
-
+      //建築物のタイプは「木造」
+      controller.buildingtypeController.text = "W";
       InvestigationUnit unit = controller.createInvestigationUnit(selectedDate);
       Navigator.push(
         context,
