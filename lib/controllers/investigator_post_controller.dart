@@ -3,6 +3,7 @@ import '../models/investigator_post_model.dart';
 
 class InvestigatorPostController {
   //調査単位用のコントローラー
+  final TextEditingController buildingtypeController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
   final TextEditingController prefectureController = TextEditingController();
@@ -59,6 +60,7 @@ class InvestigatorPostController {
   /// 入力内容から InvestigationUnit モデルを生成
   InvestigationUnit createInvestigationUnit(DateTime now) {
     return InvestigationUnit(
+      buildingtype: buildingtypeController.text,
       date: now, // 現在日時を設定（手動入力でも可）
       investigator: [nameController.text],
       number: numberController.text,

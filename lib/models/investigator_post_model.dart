@@ -2,6 +2,7 @@
 // 調査単位
 // ----------------------
 class InvestigationUnit {
+  final String buildingtype;
   final String number; // 整理番号
   final DateTime date; // 調査日
   final int surveyCount; // 調査回数
@@ -10,6 +11,7 @@ class InvestigationUnit {
   final List<String> investigatorNumber; //調査人番号
 
   InvestigationUnit({
+    required this.buildingtype,
     required this.date,
     required this.investigator,
     required this.number,
@@ -20,6 +22,7 @@ class InvestigationUnit {
 
   Map<String, dynamic> toJson() {
     return {
+      'buildingtype': buildingtype,
       'number': number,
       'date': date.toIso8601String(), // DateTime → String
       'surveyCount': surveyCount,
@@ -75,7 +78,7 @@ enum DamageLevel { A, B, C } // 三段階評価
 class InvestigationContent {
   // --- １.一見して危険と判断される(外観調査) ---
   final int exteriorInspectionScore; // 外観調査点数
-  final String exteriorInspectionRemarks; // 外観調査備考
+  final String? exteriorInspectionRemarks; // 外観調査備考
 
   // --- ２.隣接建築物・周辺地盤等及び構造躯体に関する危険度 ---
   final DamageLevel adjacentBuildingRisk; // 隣接建築物・周辺地盤の破壊による危険
@@ -93,7 +96,7 @@ class InvestigationContent {
   final DamageLevel signageAndEquipment; // 看板・機器類
   final DamageLevel outdoorStairs; // 屋外階段
   final DamageLevel others; // その他（ABC評価）
-  final String otherRemarks; // その他の内容（文字列）
+  final String? otherRemarks; // その他の内容（文字列）
 
   // --- 総合評価 ---
   final String overallExteriorScore; // 外観調査の総合スコア
@@ -114,9 +117,9 @@ class InvestigationContent {
     required this.signageAndEquipment,
     required this.outdoorStairs,
     required this.others,
-    required this.otherRemarks,
+    this.otherRemarks,
     required this.exteriorInspectionScore,
-    required this.exteriorInspectionRemarks,
+    this.exteriorInspectionRemarks,
     required this.overallExteriorScore,
     required this.overallStructuralScore,
     required this.overallFallingObjectScore,
