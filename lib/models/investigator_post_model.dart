@@ -101,9 +101,9 @@ class InvestigationContent {
 }
 
 // ----------------------
-// 総合判定（赤・黄・青）
+// 総合判定（赤・黄・緑）
 // ----------------------
-enum OverallScore { red, yellow, blue }
+enum OverallScore { red, yellow, green }
 
 // ----------------------
 // 調査レコード全体
