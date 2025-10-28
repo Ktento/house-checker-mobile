@@ -3,6 +3,7 @@ import 'package:house_check_mobile/view/investigator/post/wooden/wooden_survery.
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
 import 'package:house_check_mobile/utils/widgets/dialog.dart';
+import '../../../../utils/components/choose_picker.dart';
 
 class WoodenBuildigOverview extends StatefulWidget {
   const WoodenBuildigOverview({super.key, required this.unit});
@@ -58,6 +59,8 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
         DialogHelper.showErrorDialog(context, '「建築物規模」が未入力です。');
         return;
       }
+      //建築物のタイプは「木造」
+      controller.buildingtypeController.text = "W";
       BuildingOverview buildingOverview = controller.createBuildingOverview();
       print('建築物名: ${buildingOverview.buildingName}');
       Navigator.push(
@@ -102,7 +105,7 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-        middle: Text('建築物概要入力'),
+        middle: Text('木造建築物概要入力'),
         automaticallyImplyLeading: false,
       ),
       child: SafeArea(
@@ -127,12 +130,57 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                   _buildCupertinoTextField(
                       label: '住宅地図整理番号',
                       controller: controller.mapNumberController),
-                  _buildCupertinoTextField(
-                    label: '建築物用途',
-                    controller: controller.buildingUseController,
+                  const Text(
+                    '建築物用途',
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500),
                   ),
-                  _buildCupertinoTextField(
-                      label: '構造', controller: controller.structureController),
+                  const SizedBox(height: 4),
+                  CupertinoDropdown(
+                    options: [
+                      '戸建て専用住宅',
+                      '長屋住宅',
+                      '共同住宅',
+                      '併用住宅',
+                      '店舗',
+                      '事務所',
+                      '旅館・ホテル',
+                      '庁舎等公共施設',
+                      '病院・診療所',
+                      '保育所',
+                      '工場',
+                      '倉庫',
+                      '学校',
+                      '劇場、遊戯場等',
+                      'その他',
+                    ],
+                    initialValue: '戸建て専用住宅',
+                    onChanged: (value) {
+                      controller.buildingUseController.text = value;
+                    },
+                  ),
+                  const Text(
+                    '構造形式',
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(height: 4),
+                  CupertinoDropdown(
+                    options: [
+                      '在来軸組法',
+                      '枠組(壁)工法(ツーバイフォー)',
+                      'プレファブ'
+                          'その他',
+                    ],
+                    initialValue: '在来軸組法',
+                    onChanged: (value) {
+                      controller.structureController.text = value;
+                    },
+                  ),
                   _buildCupertinoTextField(
                       label: '階層', controller: controller.floorsController),
                   _buildCupertinoTextField(
