@@ -23,7 +23,6 @@ class _WoodenSurveyState extends State<WoodenSurvey> {
     if (_formKey.currentState!.validate()) {
       final Map<String, TextEditingController> fields = {
         '外観調査点数': controller.exteriorInspectionScoreController,
-        '外観調査備考': controller.exteriorInspectionRemarksController,
         '隣接建築物・周辺地盤の危険': controller.adjacentBuildingRiskController,
         '構造躯体の不同沈下': controller.unevenSettlementController,
         '基礎の被害': controller.foundationDamageController,
@@ -37,7 +36,6 @@ class _WoodenSurveyState extends State<WoodenSurvey> {
         '看板・機器類': controller.signageAndEquipmentController,
         '屋外階段': controller.outdoorStairsController,
         'その他': controller.othersController,
-        'その他の内容': controller.otherRemarksController,
       };
 
       for (final entry in fields.entries) {
