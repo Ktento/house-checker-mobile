@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart';
+import 'package:house_check_mobile/view/investigator/post/wooden/wooden_survery.dart';
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
 
 class WoodenBuildigOverview extends StatefulWidget {
-  const WoodenBuildigOverview({super.key});
-
+  const WoodenBuildigOverview({super.key, required this.unit});
+  final InvestigationUnit unit;
   @override
   State<WoodenBuildigOverview> createState() => _WoodenBuildigOverviewState();
 }
@@ -13,19 +13,6 @@ class WoodenBuildigOverview extends StatefulWidget {
 class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
   final _formKey = GlobalKey<FormState>();
   final controller = InvestigatorPostController();
-  DateTime selectedDate = DateTime.now();
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      InvestigationUnit unit = controller.createInvestigationUnit(selectedDate);
-      print('調査単位データ: ${unit.toString()}');
-
-      Navigator.push(
-        context,
-        CupertinoPageRoute(builder: (context) => const WoodenBuildigOverview()),
-      );
-    }
-  }
 
   Widget _buildCupertinoTextField({
     required String label,
@@ -61,6 +48,7 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text('建築物概要入力'),
+        automaticallyImplyLeading: false,
       ),
       child: SafeArea(
         child: Form(
@@ -99,11 +87,36 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
 
                   // --- 次の画面に行く ---
                   Center(
-                    child: CupertinoButton.filled(
-                      onPressed: _submitForm,
-                      borderRadius: BorderRadius.circular(12),
-                      child: const Text('次へ'),
-                    ),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CupertinoButton.filled(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            borderRadius: BorderRadius.circular(12),
+                            child: const Text('戻る'),
+                          ),
+                          const SizedBox(width: 40),
+                          CupertinoButton.filled(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                BuildingOverview buildingOverview =
+                                    controller.createBuildingOverview();
+                                print('建築物名: ${buildingOverview.buildingName}');
+                                Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) => WoodenSurvey(
+                                          unit: widget.unit,
+                                          buildingOverview: buildingOverview)),
+                                );
+                              }
+                            },
+                            borderRadius: BorderRadius.circular(12),
+                            child: const Text('次へ'),
+                          ),
+                        ]),
                   ),
                 ],
               ),
