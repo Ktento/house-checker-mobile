@@ -110,6 +110,16 @@ class InvestigatorPostController {
     );
   }
 
+  //総合評価を作成し、送信するレコードを作成
+  InvestigationRecord createInvestigationRecord(InvestigationUnit unit,
+      BuildingOverview overview, InvestigationContent content) {
+    return InvestigationRecord(
+        unit: unit,
+        overview: overview,
+        content: content,
+        overallScore: overallScore(content));
+  }
+
   // DamageLevel列挙型への変換ヘルパー
   DamageLevel _parseDamageLevel(String value) {
     switch (value.toUpperCase()) {
@@ -172,6 +182,26 @@ class InvestigatorPostController {
       return DamageLevel.B;
     } else {
       return DamageLevel.A;
+    }
+  }
+
+  //家屋危険度を算出する関数
+  OverallScore overallScore(InvestigationContent content) {
+    //１の外観調査の点数がついている場合は赤
+    if (content.exteriorInspectionScore != 0) {
+      return OverallScore.red;
+
+      //２と３の調査項目のレベルが高い方を危険度として採用
+      //２と３のどちらかがレベルCだった場合危険度は赤
+    } else if (content.overallStructuralScore == DamageLevel.C ||
+        content.overallFallingObjectScore == DamageLevel.C) {
+      return OverallScore.red;
+      //２と３のどちらかがレベルBだった場合、危険度は黄色
+    } else if (content.overallStructuralScore == DamageLevel.B ||
+        content.overallFallingObjectScore == DamageLevel.B) {
+      return OverallScore.yellow;
+    } else {
+      return OverallScore.green;
     }
   }
 }
