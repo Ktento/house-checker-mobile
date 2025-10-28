@@ -55,7 +55,8 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
 
       Navigator.push(
         context,
-        CupertinoPageRoute(builder: (context) => const WoodenBuildigOverview()),
+        CupertinoPageRoute(
+            builder: (context) => WoodenBuildigOverview(unit: unit)),
       );
     }
   }
