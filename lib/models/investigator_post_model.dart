@@ -17,6 +17,17 @@ class InvestigationUnit {
     required this.surveyCount,
     required this.investigatorNumber,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'number': number,
+      'date': date.toIso8601String(), // DateTime → String
+      'surveyCount': surveyCount,
+      'investigator': investigator,
+      'prefecture': prefecture,
+      'investigatorNumber': investigatorNumber,
+    };
+  }
 }
 
 // ----------------------
@@ -42,6 +53,18 @@ class BuildingOverview {
     required this.floors,
     required this.scale,
   });
+  Map<String, dynamic> toJson() {
+    return {
+      'buildingName': buildingName,
+      'buildingNumber': buildingNumber,
+      'address': address,
+      'mapNumber': mapNumber,
+      'buildingUse': buildingUse,
+      'structure': structure,
+      'floors': floors,
+      'scale': scale,
+    };
+  }
 }
 
 // ----------------------
@@ -98,6 +121,30 @@ class InvestigationContent {
     required this.overallStructuralScore,
     required this.overallFallingObjectScore,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'exteriorInspectionScore': exteriorInspectionScore,
+      'exteriorInspectionRemarks': exteriorInspectionRemarks,
+      'adjacentBuildingRisk': adjacentBuildingRisk.name,
+      'unevenSettlement': unevenSettlement.name,
+      'foundationDamage': foundationDamage.name,
+      'firstFloorTilt': firstFloorTilt.name,
+      'wallDamage': wallDamage.name,
+      'corrosionOrTermite': corrosionOrTermite.name,
+      'roofTile': roofTile.name,
+      'windowFrame': windowFrame.name,
+      'exteriorWet': exteriorWet.name,
+      'exteriorDry': exteriorDry.name,
+      'signageAndEquipment': signageAndEquipment.name,
+      'outdoorStairs': outdoorStairs.name,
+      'others': others.name,
+      'otherRemarks': otherRemarks,
+      'overallExteriorScore': overallExteriorScore,
+      'overallStructuralScore': overallStructuralScore.name,
+      'overallFallingObjectScore': overallFallingObjectScore.name,
+    };
+  }
 }
 
 // ----------------------
@@ -120,4 +167,13 @@ class InvestigationRecord {
     required this.content,
     required this.overallScore,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'unit': unit.toJson(),
+      'buildingOverview': overview.toJson(),
+      'content': content.toJson(),
+      'overallscore': overallScore.name,
+    };
+  }
 }
