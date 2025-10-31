@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:house_check_mobile/view/investigator/post/wooden/wooden_building_overview.dart';
 import 'package:intl/intl.dart';
 import '../../../../models/investigator_post_model.dart';

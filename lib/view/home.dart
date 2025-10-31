@@ -10,33 +10,31 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
         child: SafeArea(
-          child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                CupertinoButton.filled(
-                  child: Text('一般'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const General_HomePage(),
-                      ),
-                    );
-                  },
-                ),
-                CupertinoButton.filled(
-                  child: Text('応急危険度判定'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Investigator_HomePage(),
-                      ),
-                    );
-                  },
-                )
-              ])),
-        ));
+      child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        CupertinoButton.filled(
+          child: Text('一般'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const General_HomePage(),
+              ),
+            );
+          },
+        ),
+        CupertinoButton.filled(
+          child: Text('応急危険度判定'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const InvestigatorHomePage(),
+              ),
+            );
+          },
+        )
+      ])),
+    ));
   }
 }
