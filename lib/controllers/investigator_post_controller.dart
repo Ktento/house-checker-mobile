@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/investigator_post_model.dart';
+import 'package:latlong2/latlong.dart';
 
 class InvestigatorPostController {
   //調査単位用のコントローラー
@@ -59,7 +60,7 @@ class InvestigatorPostController {
   // --- 総合評価 ---
 
   /// 入力内容から InvestigationUnit モデルを生成
-  InvestigationUnit createInvestigationUnit(DateTime now) {
+  InvestigationUnit createInvestigationUnit(DateTime now, LatLng postion) {
     return InvestigationUnit(
       buildingtype: buildingtypeController.text,
       date: now, // 現在日時を設定（手動入力でも可）
@@ -68,6 +69,7 @@ class InvestigatorPostController {
       investigatorPrefecture: [investigatorPrefectureController.text],
       surveyCount: int.tryParse(countController.text) ?? 1, // 数字で変換
       investigatorNumber: [investigatorNumberController.text],
+      currentPostion: postion,
     );
   }
 
