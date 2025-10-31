@@ -3,7 +3,7 @@ import 'package:house_check_mobile/view/investigator/post/wooden/wooden_check.da
 import '../../../../models/investigator_post_model.dart';
 import '../../../../controllers/investigator_post_controller.dart';
 import 'package:house_check_mobile/utils/widgets/dialog.dart';
-import '../../../../utils/db_service.dart';
+
 import '../../../../utils/components/choose_picker.dart';
 
 class WoodenSurvey extends StatefulWidget {
@@ -50,10 +50,11 @@ class _WoodenSurveyState extends State<WoodenSurvey> {
       //すべてをまとめたモデルを作成
       InvestigationRecord record = controller.createInvestigationRecord(
           widget.unit, widget.buildingOverview, investigationContent);
-      sendRecord(record);
+      //結果の画面に全てをまとめたモデルを受け渡し、画面遷移
       Navigator.push(
         context,
-        CupertinoPageRoute(builder: (context) => DangerSurveyFormPage()),
+        CupertinoPageRoute(
+            builder: (context) => DangerSurveyFormPage(record: record)),
       );
     }
   }

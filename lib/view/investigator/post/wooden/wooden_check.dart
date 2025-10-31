@@ -1,25 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../../models/investigator_post_model.dart';
+import '../../../../utils/db_service.dart';
 
 class DangerSurveyFormPage extends StatefulWidget {
+  const DangerSurveyFormPage({super.key, required this.record});
+  final InvestigationRecord record;
   @override
   _DangerSurveyFormPageState createState() => _DangerSurveyFormPageState();
 }
 
 class _DangerSurveyFormPageState extends State<DangerSurveyFormPage> {
-  // 任意の表示用データ
-  final String investigator = '田中 太郎';
-  final DateTime surveyDate = DateTime(2025, 10, 31, 14, 30);
-  final String buildingName = '静岡県防災センター';
-  final String address = '静岡県静岡市葵区追手町1-1';
-  final String usageType = '戸建て専用住宅';
-  final Map<String, String> dangerRank = {
-    '隣接建築物・地盤': 'A',
-    '構造躯体': 'B',
-    '落下危険物': 'A',
-  };
-  final String totalJudgment = '要注意';
-  final String comment = '外壁に一部ひび割れを確認。';
+  late InvestigationRecord record;
+  @override
+  void initState() {
+    super.initState();
+    record = widget.record;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,28 +31,120 @@ class _DangerSurveyFormPageState extends State<DangerSurveyFormPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSection('調査情報', [
-                _buildRow('調査者氏名', investigator),
+                _buildRow('整理番号', record.unit.number),
+                _buildRow('調査回数 ', '${record.unit.surveyCount.toString()}回'),
                 _buildRow(
-                  '調査日時',
-                  '${surveyDate.year}/${surveyDate.month}/${surveyDate.day} '
-                      '${surveyDate.hour}:${surveyDate.minute.toString().padLeft(2, '0')}',
-                ),
+                    //調査人の一人目の氏名を表示
+                    '調査者氏名',
+                    record.unit.investigator[0]),
+                _buildRow('都道府県', record.unit.prefecture[0].toString()),
+                _buildRow(
+                    '調査人番号', record.unit.investigatorNumber[0].toString()),
+                _buildRow('調査日時',
+                    '${record.unit.date.year}/${record.unit.date.month}/${record.unit.date.day} '),
               ]),
-              _buildSection('建築物情報', [
-                _buildRow('建築物名', buildingName),
-                _buildRow('所在地', address),
-                _buildRow('用途', usageType),
+              _buildSection('建築物概要', [
+                _buildRow('名称', record.overview.buildingName),
+                _buildRow('所在地', record.overview.address),
+                _buildRow('用途', record.overview.buildingUse),
+                _buildRow('構造形式', record.overview.structure),
+                _buildRow('階数', record.overview.floors.toString()),
+                _buildRow('建築物規模', record.overview.scale),
+              ]),
+              _buildSection('調査', [
+                Text('１.一見して危険と判断される',
+                    style: TextStyle(
+                        inherit: false,
+                        fontSize: 17,
+                        color: const Color.fromARGB(255, 140, 140, 246))),
+                _buildRow(
+                  '内容',
+                  record.content.exteriorInspectionScore.toString(),
+                  labelWidth: 180,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('２.隣接建築物・周辺の地盤等及び構造躯体に関する危険度',
+                    style: TextStyle(
+                        inherit: false,
+                        fontSize: 17,
+                        color: const Color.fromARGB(255, 140, 140, 246))),
+                _buildRow(
+                  '隣接建築物・周辺の地盤の破壊による危険度',
+                  record.content.adjacentBuildingRisk.name,
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  '構造躯体の不同沈下',
+                  record.content.unevenSettlement.name,
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  '基礎の被害',
+                  record.content.foundationDamage.name,
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  '建築物の1階の傾斜',
+                  record.content.firstFloorTilt.name,
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  '壁の被害',
+                  record.content.wallDamage.name,
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  '腐食・蟻害の有無',
+                  record.content.corrosionOrTermite.name,
+                  labelWidth: 180,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('３.落下危険物・転倒危険物に関する危険度',
+                    style: TextStyle(
+                        inherit: false,
+                        fontSize: 17,
+                        color: const Color.fromARGB(255, 140, 140, 246))),
+                _buildRow('瓦', record.content.roofTile.name),
+                _buildRow('窓枠・窓ガラス', record.content.windowFrame.name),
+                _buildRow('外装材（湿式）', record.content.exteriorWet.name),
+                _buildRow('外装材（乾式）', record.content.exteriorDry.name),
+                _buildRow('看板・機器類', record.content.signageAndEquipment.name),
+                _buildRow('屋外階段', record.content.outdoorStairs.name),
+                _buildRow('その他', record.content.others.name),
               ]),
               _buildSection('危険度評価', [
-                for (var entry in dangerRank.entries)
-                  _buildRow(entry.key, entry.value),
+                _buildRow('一見して危険と判断される', record.content.overallExteriorScore,
+                    labelWidth: 180),
+                _buildRow('隣接建築物・周辺の地盤等及び構造躯体',
+                    record.content.overallStructuralScore.name,
+                    labelWidth: 180),
+                _buildRow('落下危険物・転倒危険物に関する危険度',
+                    record.content.overallFallingObjectScore.name,
+                    labelWidth: 180),
               ]),
               _buildSection('総合判定', [
-                _buildRow('判定', totalJudgment),
+                _buildRow('判定', record.overallScore.name),
               ]),
-              _buildSection('コメント', [
-                _buildRow('備考', comment),
-              ]),
+              // _buildSection('コメント', [
+              //   _buildRow('備考', comment),
+              // ]),
+              SizedBox(height: 20),
+              Center(
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  CupertinoButton.filled(
+                    onPressed: () {
+                      sendRecord(record);
+                    },
+                    borderRadius: BorderRadius.circular(12),
+                    child: const Text('送信'),
+                  ),
+                ]),
+              )
             ],
           ),
         ),
@@ -65,6 +154,8 @@ class _DangerSurveyFormPageState extends State<DangerSurveyFormPage> {
 
   /// 表示用のセクション
   Widget _buildSection(String title, List<Widget> children) {
+    final separatorColor = CupertinoColors.separator.resolveFrom(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -78,26 +169,34 @@ class _DangerSurveyFormPageState extends State<DangerSurveyFormPage> {
         ),
         SizedBox(height: 8),
         ...children,
-        Divider(),
+        Container(height: 2, color: separatorColor),
       ],
     );
   }
 
   /// 1行表示
-  Widget _buildRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Row(
-        children: [
-          SizedBox(
-              width: 140,
-              child:
-                  Text(label, style: TextStyle(fontWeight: FontWeight.w500))),
-          Expanded(
-            child: Text(value, style: TextStyle(color: CupertinoColors.label)),
+  Widget _buildRow(String label, String value, {double labelWidth = 140}) {
+    final separatorColor =
+        CupertinoColors.separator.resolveFrom(context).withOpacity(0.3);
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Row(
+            children: [
+              SizedBox(
+                  width: labelWidth,
+                  child: Text(label,
+                      style: TextStyle(fontWeight: FontWeight.w500))),
+              Expanded(
+                child:
+                    Text(value, style: TextStyle(color: CupertinoColors.label)),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        Container(height: 1, color: separatorColor),
+      ],
     );
   }
 }
