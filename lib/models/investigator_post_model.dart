@@ -1,3 +1,5 @@
+import 'package:latlong2/latlong.dart';
+
 // ----------------------
 // 調査単位
 // ----------------------
@@ -10,15 +12,17 @@ class InvestigationUnit {
   final List<String> investigatorPrefecture; // 調査人都道府県
   final List<String> investigatorNumber; //調査人番号
 
-  InvestigationUnit({
-    required this.buildingtype,
-    required this.date,
-    required this.investigator,
-    required this.number,
-    required this.investigatorPrefecture,
-    required this.surveyCount,
-    required this.investigatorNumber,
-  });
+  final LatLng currentPostion; //現在位置の緯度経度
+
+  InvestigationUnit(
+      {required this.buildingtype,
+      required this.date,
+      required this.investigator,
+      required this.number,
+      required this.investigatorPrefecture,
+      required this.surveyCount,
+      required this.investigatorNumber,
+      required this.currentPostion});
 
   Map<String, dynamic> toJson() {
     return {
@@ -29,6 +33,10 @@ class InvestigationUnit {
       'investigator': investigator,
       'prefecture': investigatorPrefecture,
       'investigatorNumber': investigatorNumber,
+      'currentPostion': {
+        'latitude': currentPostion.latitude,
+        'longitude': currentPostion.longitude,
+      },
     };
   }
 }

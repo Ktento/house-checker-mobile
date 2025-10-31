@@ -3,6 +3,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 
+import 'package:geocoding/geocoding.dart';
+
 final LocationSettings locationSettings = LocationSettings(
   accuracy: LocationAccuracy.high,
   distanceFilter: 100,
@@ -87,5 +89,22 @@ class LocationControllerMVC {
 
       onUpdate(); // View側へ通知
     });
+  }
+
+  Future<Placemark?> getAddressFromLatLng(LatLng latLng) async {
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(latLng.latitude, latLng.longitude);
+
+      if (placemarks.isNotEmpty) {
+        final placemark = placemarks.first;
+        // 住所を組み立てる
+        return placemark;
+      }
+      return null;
+    } catch (e) {
+      print("住所取得エラー：${e}");
+      return null;
+    }
   }
 }
