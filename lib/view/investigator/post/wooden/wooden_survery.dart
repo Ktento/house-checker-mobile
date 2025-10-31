@@ -53,7 +53,7 @@ class _WoodenSurveyState extends State<WoodenSurvey> {
       sendRecord(record);
       Navigator.push(
         context,
-        CupertinoPageRoute(builder: (context) => const WoodenCheck()),
+        CupertinoPageRoute(builder: (context) => DangerSurveyFormPage()),
       );
     }
   }
