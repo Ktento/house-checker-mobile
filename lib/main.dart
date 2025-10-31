@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 import 'view/home.dart';
 
 void main() {
@@ -13,13 +13,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => MyAppState(),
-      child: MaterialApp(
+      child: CupertinoApp(
         title: '応急危険度判定アプリ',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        theme: CupertinoThemeData(
+          brightness: Brightness.light,
+          primaryColor: CupertinoColors.activeBlue,
+          scaffoldBackgroundColor: CupertinoColors.systemGroupedBackground,
+          textTheme: CupertinoTextThemeData(
+            textStyle: TextStyle(
+              fontSize: 14,
+              color: CupertinoColors.label,
+            ),
+          ),
         ),
-        home: const HomePage(), // 最初に表示する画面
+        home: const HomePage(),
       ),
     );
   }
