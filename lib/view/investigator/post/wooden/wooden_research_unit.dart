@@ -54,7 +54,8 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
       final name = controller.nameController.text.trim();
       final investigatorNumber =
           controller.investigatorNumberController.text.trim();
-      final prefecture = controller.prefectureController.text.trim();
+      final investigatorPrefecture =
+          controller.investigatorPrefectureController.text.trim();
       final number = controller.numberController.text.trim();
       final countText = controller.countController.text.trim();
       // --- 入力値チェック ---
@@ -66,7 +67,7 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
         DialogHelper.showErrorDialog(context, '「調査人番号」が未入力です。');
         return;
       }
-      if (prefecture.isEmpty) {
+      if (investigatorPrefecture.isEmpty) {
         DialogHelper.showErrorDialog(context, '「都道府県名」が未入力です。');
         return;
       }
@@ -255,15 +256,15 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
                           (newIndex) {
                         setState(() {
                           _selectedValue = newIndex;
-                          controller.prefectureController.text =
+                          controller.investigatorPrefectureController.text =
                               _prefectures[newIndex];
                         });
                       });
                     },
                     child: AbsorbPointer(
                       child: _buildCupertinoTextField(
-                        label: '都道府県名',
-                        controller: controller.prefectureController,
+                        label: '調査人都道府県名',
+                        controller: controller.investigatorPrefectureController,
                       ),
                     ),
                   ),
