@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view/investigator/post/wooden/wooden_survery.dart';
-import '../../../../models/investigator_post_model.dart';
-import '../../../../controllers/investigator_post_controller.dart';
-import 'package:house_check_mobile/utils/widgets/dialog.dart';
-import '../../../../utils/components/choose_picker.dart';
-import '../../../../controllers/loacation_controller.dart';
+import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_survery.dart';
+import '../../../../../models/investigator_post_model.dart';
+import '../../../../../controllers/investigator_post_controller.dart';
+import 'package:house_check_mobile/utils/helpers/dialog.dart';
+import '../../../../wigets/choose_picker.dart';
+import '../../../../../controllers/loacation_controller.dart';
 import 'package:geocoding/geocoding.dart';
 
 class WoodenBuildigOverview extends StatefulWidget {

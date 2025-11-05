@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import '../../../../models/investigator_post_model.dart';
-import '../../../../utils/db_service.dart';
+import '../../../../../models/investigator_post_model.dart';
+import '../../../../../utils/services/db_service.dart';
 
 class DangerSurveyFormPage extends StatefulWidget {
   const DangerSurveyFormPage({super.key, required this.record});
