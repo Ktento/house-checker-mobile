@@ -12,10 +12,9 @@ class BuildingCt extends StatelessWidget {
         color: const Color.fromARGB(255, 112, 112, 219), // 背景色
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          // 黒い枠線を追加
           color: CupertinoColors.black,
           width: 1,
-        ), // 角を丸く
+        ),
         boxShadow: [
           BoxShadow(
             color: CupertinoColors.systemGrey3.withOpacity(0.5),
@@ -27,7 +26,6 @@ class BuildingCt extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // 上段：アイコン＋文字
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -43,7 +41,7 @@ class BuildingCt extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '総建物数', // ← ここに数字
+                  '総建物数',
                   style: TextStyle(
                     color: CupertinoColors.white,
                     fontSize: 12,
@@ -54,7 +52,6 @@ class BuildingCt extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          // 下段：数字（例）
         ],
       ),
     );
@@ -73,10 +70,9 @@ class EndBuildingCt extends StatelessWidget {
         color: const Color.fromARGB(255, 112, 112, 219), // 背景色
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          // 黒い枠線を追加
           color: CupertinoColors.black,
           width: 1,
-        ), // 角を丸く
+        ),
         boxShadow: [
           BoxShadow(
             color: CupertinoColors.systemGrey3.withOpacity(0.5),
@@ -88,11 +84,11 @@ class EndBuildingCt extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // 上段：アイコン＋文字
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.house_fill, color: CupertinoColors.white),
+              Icon(CupertinoIcons.checkmark_square_fill,
+                  color: CupertinoColors.white),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -104,7 +100,7 @@ class EndBuildingCt extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '総建物数', // ← ここに数字
+                  '判定完了',
                   style: TextStyle(
                     color: CupertinoColors.white,
                     fontSize: 12,
@@ -131,13 +127,12 @@ class RiskBuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219), // 背景色
+        color: const Color.fromARGB(255, 112, 112, 219),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          // 黒い枠線を追加
           color: CupertinoColors.black,
           width: 1,
-        ), // 角を丸く
+        ),
         boxShadow: [
           BoxShadow(
             color: CupertinoColors.systemGrey3.withOpacity(0.5),
@@ -149,11 +144,10 @@ class RiskBuildingCt extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // 上段：アイコン＋文字
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.house_fill, color: CupertinoColors.white),
+              Icon(CupertinoIcons.exclamationmark_triangle_fill, color: CupertinoColors.white),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -165,7 +159,7 @@ class RiskBuildingCt extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '総建物数', // ← ここに数字
+                  '危険建物',
                   style: TextStyle(
                     color: CupertinoColors.white,
                     fontSize: 12,
@@ -176,7 +170,6 @@ class RiskBuildingCt extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          // 下段：数字（例）
         ],
       ),
     );
@@ -195,10 +188,9 @@ class WaitingBuildingCt extends StatelessWidget {
         color: const Color.fromARGB(255, 112, 112, 219), // 背景色
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          // 黒い枠線を追加
           color: CupertinoColors.black,
           width: 1,
-        ), // 角を丸く
+        ),
         boxShadow: [
           BoxShadow(
             color: CupertinoColors.systemGrey3.withOpacity(0.5),
@@ -210,11 +202,10 @@ class WaitingBuildingCt extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // 上段：アイコン＋文字
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.house_fill, color: CupertinoColors.white),
+              Icon(CupertinoIcons.time_solid, color: CupertinoColors.white),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -226,7 +217,7 @@ class WaitingBuildingCt extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '総建物数', // ← ここに数字
+                  '判定待ち',
                   style: TextStyle(
                     color: CupertinoColors.white,
                     fontSize: 12,
@@ -237,7 +228,6 @@ class WaitingBuildingCt extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          // 下段：数字（例）
         ],
       ),
     );
