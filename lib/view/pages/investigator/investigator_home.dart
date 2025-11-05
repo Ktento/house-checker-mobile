@@ -63,7 +63,7 @@ class _InvestigatorHomePageState extends State<InvestigatorHomePage> {
               navigationBar: CupertinoNavigationBar(
                 middle: Text('集計情報'),
               ),
-              child: SafeArea(child: Investigator_Total()),
+              child: SafeArea(child: InvestigatorTotal()),
             );
           default:
             return const SizedBox.shrink();
