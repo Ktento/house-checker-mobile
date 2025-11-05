@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import '../../../controllers/map_controller.dart';
@@ -59,13 +58,13 @@ class _InvestigatorMapState extends State<InvestigatorMap>
     final model = _controller.model;
     // 位置情報がまだ取得できていない場合はロード中表示
     if (currentLocation == null) {
-      return const Scaffold(
-        body: Center(
+      return const CupertinoPageScaffold(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('読み込み中...'),
-              CircularProgressIndicator(),
+              CupertinoActivityIndicator(),
             ],
           ),
         ),
@@ -96,7 +95,11 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                   child: Transform.rotate(
                     angle: (_locationController.model.heading ?? 0) *
                         (3.14159265 / 180),
-                    child: Icon(Icons.navigation, color: Colors.blue, size: 40),
+                    child: Icon(
+                      CupertinoIcons.location_north,
+                      color: CupertinoColors.activeBlue,
+                      size: 40,
+                    ),
                   ),
                 );
               }).toList(),
@@ -116,13 +119,20 @@ class _InvestigatorMapState extends State<InvestigatorMap>
         Positioned(
           bottom: 20,
           left: 20,
-          child: FloatingActionButton(
+          child: CupertinoButton(
+            padding: EdgeInsets.zero,
+            borderRadius: BorderRadius.circular(28),
+            color: CupertinoColors.systemBlue,
+            child: const Icon(
+              CupertinoIcons.location_solid,
+              color: CupertinoColors.white,
+              size: 26,
+            ),
             onPressed: () {
               if (currentLocation != null) {
                 _controller.moveToLocation(currentLocation!);
               }
             },
-            child: Icon(Icons.my_location),
           ),
         ),
       ],
