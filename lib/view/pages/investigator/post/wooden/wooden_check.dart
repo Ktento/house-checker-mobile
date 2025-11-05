@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import '../../../../models/investigator_post_model.dart';
-import '../../../../utils/db_service.dart';
+import '../../../../../models/investigator_post_model.dart';
+import '../../../../../utils/services/db_service.dart';
 
 class DangerSurveyFormPage extends StatefulWidget {
   const DangerSurveyFormPage({super.key, required this.record});
@@ -37,7 +36,8 @@ class _DangerSurveyFormPageState extends State<DangerSurveyFormPage> {
                     //調査人の一人目の氏名を表示
                     '調査者氏名',
                     record.unit.investigator[0]),
-                _buildRow('都道府県', record.unit.prefecture[0].toString()),
+                _buildRow(
+                    '都道府県', record.unit.investigatorPrefecture[0].toString()),
                 _buildRow(
                     '調査人番号', record.unit.investigatorNumber[0].toString()),
                 _buildRow('調査日時',

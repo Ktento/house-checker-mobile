@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'general/general_home.dart';
-import 'investigator/investigator_home.dart';
+import 'pages/general/general_home.dart';
+import 'pages/investigator/investigator_home.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomePage extends StatelessWidget {
