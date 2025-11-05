@@ -1,12 +1,52 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import '../../wigets/card/total_card.dart';
+import '../../wigets/card/progress_rate.dart';
 
-class Investigator_Total extends StatelessWidget {
-  const Investigator_Total({super.key});
+class InvestigatorTotal extends StatelessWidget {
+  const InvestigatorTotal({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: const Center(
-      child: Text("集計情報"),
-    ));
+    return CupertinoPageScaffold(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // 画面の横幅
+          final screenWidth = constraints.maxWidth;
+          // Row全体の幅（BuildingCt4つ＋隙間3つ）
+          const totalWidth = (120 * 4) + (12 * 3);
+          // 左端の位置を計算
+          final leftPadding = (screenWidth - totalWidth) / 2;
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+
+              // 中央に配置された4つのカード
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BuildingCt(),
+                  SizedBox(width: 12),
+                  EndBuildingCt(),
+                  SizedBox(width: 12),
+                  RiskBuildingCt(),
+                  SizedBox(width: 12),
+                  WaitingBuildingCt(),
+                ],
+              ),
+
+              const SizedBox(height: 16),
+
+              // ProgressRateをBuildingCtと同じ左位置に配置
+              Padding(
+                padding: EdgeInsets.only(left: leftPadding),
+                child: const ProgressRate(),
+              ),
+            ],
+          );
+        },
+      ),
+    );
   }
 }
