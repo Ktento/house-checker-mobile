@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view/investigator/post/wooden/wooden_building_overview.dart';
+import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_building_overview.dart';
 import 'package:intl/intl.dart';
-import '../../../../models/investigator_post_model.dart';
-import '../../../../controllers/investigator_post_controller.dart';
-import 'package:house_check_mobile/utils/widgets/dialog.dart';
-import '../../../../controllers/loacation_controller.dart';
+import '../../../../../models/investigator_post_model.dart';
+import '../../../../../controllers/investigator_post_controller.dart';
+import 'package:house_check_mobile/utils/helpers/dialog.dart';
+import '../../../../../controllers/loacation_controller.dart';
 import 'package:latlong2/latlong.dart';
 
 class WoodenResearchUnit extends StatefulWidget {
