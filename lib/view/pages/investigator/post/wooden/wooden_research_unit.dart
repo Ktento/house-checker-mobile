@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view/investigator/post/wooden/wooden_building_overview.dart';
+import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_building_overview.dart';
 import 'package:intl/intl.dart';
-import '../../../../models/investigator_post_model.dart';
-import '../../../../controllers/investigator_post_controller.dart';
-import 'package:house_check_mobile/utils/widgets/dialog.dart';
+import '../../../../../models/investigator_post_model.dart';
+import '../../../../../controllers/investigator_post_controller.dart';
+import 'package:house_check_mobile/utils/helpers/dialog.dart';
+import '../../../../../controllers/loacation_controller.dart';
+import 'package:latlong2/latlong.dart';
 
 class WoodenResearchUnit extends StatefulWidget {
   const WoodenResearchUnit({super.key});
@@ -15,7 +17,9 @@ class WoodenResearchUnit extends StatefulWidget {
 class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
   final _formKey = GlobalKey<FormState>();
   final controller = InvestigatorPostController();
+  final _locationController = LocationControllerMVC();
   DateTime selectedDate = DateTime.now();
+  LatLng? currentLocation; // 現在位置（まだ取得できていない場合は null）
 
   Future<void> _pickDate(BuildContext context) async {
     await showCupertinoModalPopup(
@@ -54,7 +58,8 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
       final name = controller.nameController.text.trim();
       final investigatorNumber =
           controller.investigatorNumberController.text.trim();
-      final prefecture = controller.prefectureController.text.trim();
+      final investigatorPrefecture =
+          controller.investigatorPrefectureController.text.trim();
       final number = controller.numberController.text.trim();
       final countText = controller.countController.text.trim();
       // --- 入力値チェック ---
@@ -66,7 +71,7 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
         DialogHelper.showErrorDialog(context, '「調査人番号」が未入力です。');
         return;
       }
-      if (prefecture.isEmpty) {
+      if (investigatorPrefecture.isEmpty) {
         DialogHelper.showErrorDialog(context, '「都道府県名」が未入力です。');
         return;
       }
@@ -86,7 +91,10 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
       }
       //建築物のタイプは「木造」
       controller.buildingtypeController.text = "W";
-      InvestigationUnit unit = controller.createInvestigationUnit(selectedDate);
+      InvestigationUnit unit = controller.createInvestigationUnit(
+          selectedDate, currentLocation ?? LatLng(0, 0));
+
+      print(unit.currentPostion);
       Navigator.push(
         context,
         CupertinoPageRoute(
@@ -203,6 +211,17 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
     );
   }
 
+  //最初に現在位置を取得する
+  @override
+  void initState() {
+    super.initState();
+    _locationController.setCurrentPostion().then((latlng) {
+      setState(() {
+        currentLocation = latlng;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -255,15 +274,15 @@ class _WoodenResearchUnitState extends State<WoodenResearchUnit> {
                           (newIndex) {
                         setState(() {
                           _selectedValue = newIndex;
-                          controller.prefectureController.text =
+                          controller.investigatorPrefectureController.text =
                               _prefectures[newIndex];
                         });
                       });
                     },
                     child: AbsorbPointer(
                       child: _buildCupertinoTextField(
-                        label: '都道府県名',
-                        controller: controller.prefectureController,
+                        label: '調査人都道府県名',
+                        controller: controller.investigatorPrefectureController,
                       ),
                     ),
                   ),

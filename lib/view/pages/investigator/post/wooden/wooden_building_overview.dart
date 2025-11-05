@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view/investigator/post/wooden/wooden_survery.dart';
-import '../../../../models/investigator_post_model.dart';
-import '../../../../controllers/investigator_post_controller.dart';
-import 'package:house_check_mobile/utils/widgets/dialog.dart';
-import '../../../../utils/components/choose_picker.dart';
+import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_survery.dart';
+import '../../../../../models/investigator_post_model.dart';
+import '../../../../../controllers/investigator_post_controller.dart';
+import 'package:house_check_mobile/utils/helpers/dialog.dart';
+import '../../../../wigets/choose_picker.dart';
+import '../../../../../controllers/loacation_controller.dart';
+import 'package:geocoding/geocoding.dart';
 
 class WoodenBuildigOverview extends StatefulWidget {
   const WoodenBuildigOverview({super.key, required this.unit});
@@ -15,7 +17,7 @@ class WoodenBuildigOverview extends StatefulWidget {
 class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
   final _formKey = GlobalKey<FormState>();
   final controller = InvestigatorPostController();
-
+  final _locationController = LocationControllerMVC();
   void _submit() {
     if (_formKey.currentState!.validate()) {
       final buildingname = controller.buildingNameController.text.trim();
@@ -68,6 +70,21 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                 unit: widget.unit, buildingOverview: buildingOverview)),
       );
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _locationController
+        .getAddressFromLatLng(widget.unit.currentPostion)
+        .then((placemark) {
+      setState(() {
+        if (placemark != null) {
+          controller.addressController.text =
+              "${placemark.street}".replaceAll("日本、", "");
+        }
+      });
+    });
   }
 
   Widget _buildCupertinoTextField({
