@@ -18,43 +18,47 @@ class InvestigatorTotal extends StatelessWidget {
           const totalWidth = (120 * 4) + (12 * 3);
           // 左端の位置を計算
           final sidePadding = (screenWidth - totalWidth) / 2;
+          return SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-
-              // 中央に配置された4つのカード
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  BuildingCt(),
-                  SizedBox(width: 12),
-                  EndBuildingCt(),
-                  SizedBox(width: 12),
-                  RiskBuildingCt(),
-                  SizedBox(width: 12),
-                  WaitingBuildingCt(),
-                ],
-              ),
-
-              const SizedBox(height: 16),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: sidePadding),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                // 中央に配置された4つのカード
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(children: [
-                      ProgressRate(),
-                      const SizedBox(height: 16,),
-                      PieChartStatus(),
-                    ]),
-                    WorkStatus(),
+                    BuildingCt(),
+                    SizedBox(width: 12),
+                    EndBuildingCt(),
+                    SizedBox(width: 12),
+                    RiskBuildingCt(),
+                    SizedBox(width: 12),
+                    WaitingBuildingCt(),
                   ],
                 ),
-              ),
-            ],
+
+                const SizedBox(height: 16),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: sidePadding),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(children: [
+                        ProgressRate(),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        PieChartStatus(),
+                      ]),
+                      WorkStatus(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
