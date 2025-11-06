@@ -9,17 +9,13 @@ class BuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219), // 背景色
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: CupertinoColors.black,
-          width: 1,
-        ),
+        color: const Color.fromARGB(255, 112, 112, 219),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: CupertinoColors.systemGrey3.withOpacity(0.5),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
+            color: Color.fromARGB(255, 48, 48, 48),
+            blurRadius: 10,
+            offset: Offset(0, 5),
           ),
         ],
       ),
@@ -67,17 +63,13 @@ class EndBuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219), // 背景色
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: CupertinoColors.black,
-          width: 1,
-        ),
+        color: const Color.fromARGB(255, 112, 112, 219),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: CupertinoColors.systemGrey3.withOpacity(0.5),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
+            color: Color.fromARGB(255, 48, 48, 48),
+            blurRadius: 10,
+            offset: Offset(0, 5),
           ),
         ],
       ),
@@ -128,16 +120,12 @@ class RiskBuildingCt extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 112, 112, 219),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: CupertinoColors.black,
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: CupertinoColors.systemGrey3.withOpacity(0.5),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
+            color: Color.fromARGB(255, 48, 48, 48),
+            blurRadius: 10,
+            offset: Offset(0, 5),
           ),
         ],
       ),
@@ -147,7 +135,8 @@ class RiskBuildingCt extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.exclamationmark_triangle_fill, color: CupertinoColors.white),
+              Icon(CupertinoIcons.exclamationmark_triangle_fill,
+                  color: CupertinoColors.white),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -185,17 +174,13 @@ class WaitingBuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219), // 背景色
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: CupertinoColors.black,
-          width: 1,
-        ),
+        color: const Color.fromARGB(255, 112, 112, 219),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: CupertinoColors.systemGrey3.withOpacity(0.5),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
+            color: Color.fromARGB(255, 48, 48, 48),
+            blurRadius: 10,
+            offset: Offset(0, 5),
           ),
         ],
       ),
