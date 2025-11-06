@@ -1,7 +1,40 @@
 import 'package:flutter/cupertino.dart';
+import '../../../controllers/percent_controller.dart';
 
-class ProgressRate extends StatelessWidget {
+class ProgressRate extends StatefulWidget {
   const ProgressRate({super.key});
+
+  @override
+  State<ProgressRate> createState() => _ProgressRateState();
+}
+
+class _ProgressRateState extends State<ProgressRate>
+    with TickerProviderStateMixin {
+  //全体の進捗率、危険建物率
+  double allprogress = 80;
+  double riskprogress = 11.9;
+  late List<PercentController> _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = [
+      PercentController(this),
+      PercentController(this),
+    ];
+
+    // アニメーション開始
+    _controller[0].start(to: allprogress);
+    _controller[1].start(to: riskprogress);
+    
+    // 各アニメーションの変化を監視
+    for (var c in _controller) {
+      c.animationController.addListener(() {
+        if (mounted) setState(() {});
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +92,7 @@ class ProgressRate extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(right: 8),
                       child: Text(
-                        '80％',
+                        '${_controller[0].model.percent.toInt()}％',
                         style: TextStyle(
                           color: CupertinoColors.white,
                           fontSize: 15,
@@ -86,9 +119,9 @@ class ProgressRate extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
-                      padding: EdgeInsets.only(right: 8), 
+                      padding: EdgeInsets.only(right: 8),
                       child: Text(
-                        '11.9％',
+                        '${_controller[1].model.percent.toInt()}％',
                         style: TextStyle(
                           color: CupertinoColors.white,
                           fontSize: 15,
