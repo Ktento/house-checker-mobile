@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../../wigets/card/total_card.dart';
 import '../../wigets/card/progress_rate.dart';
 import '../../wigets/card/work_status.dart';
+import '../../wigets/card/judgment_status_pie_chart.dart';
 
 class InvestigatorTotal extends StatelessWidget {
   const InvestigatorTotal({super.key});
@@ -42,8 +43,13 @@ class InvestigatorTotal extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: sidePadding),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProgressRate(),
+                    Column(children: [
+                      ProgressRate(),
+                      const SizedBox(height: 16,),
+                      PieChartStatus(),
+                    ]),
                     WorkStatus(),
                   ],
                 ),
