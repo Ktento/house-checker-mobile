@@ -58,7 +58,6 @@ class _WorkStatusState extends State<WorkStatus> {
                 thicknessWhileDragging: 10.0,
                 radius: const Radius.circular(34.0),
                 radiusWhileDragging: Radius.zero,
-                thumbVisibility: true,
                 child: ListView.builder(
                     itemCount: inspectors.length,
                     itemBuilder: (context, index) {
