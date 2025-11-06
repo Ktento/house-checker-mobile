@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import '../../wigets/card/total_card.dart';
 import '../../wigets/card/progress_rate.dart';
+import '../../wigets/card/work_status.dart';
 
 class InvestigatorTotal extends StatelessWidget {
   const InvestigatorTotal({super.key});
@@ -15,7 +16,7 @@ class InvestigatorTotal extends StatelessWidget {
           // Row全体の幅（BuildingCt4つ＋隙間3つ）
           const totalWidth = (120 * 4) + (12 * 3);
           // 左端の位置を計算
-          final leftPadding = (screenWidth - totalWidth) / 2;
+          final sidePadding = (screenWidth - totalWidth) / 2;
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,11 +38,15 @@ class InvestigatorTotal extends StatelessWidget {
               ),
 
               const SizedBox(height: 16),
-
-              // ProgressRateをBuildingCtと同じ左位置に配置
               Padding(
-                padding: EdgeInsets.only(left: leftPadding),
-                child: const ProgressRate(),
+                padding: EdgeInsets.symmetric(horizontal: sidePadding),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ProgressRate(),
+                    WorkStatus(),
+                  ],
+                ),
               ),
             ],
           );
