@@ -21,20 +21,15 @@ class _WorkStatusState extends State<WorkStatus> {
 
     return Container(
       width: 252,
-      height: 100,
+      height: 316,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219), // 背景色
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          // 黒い枠線を追加
-          color: CupertinoColors.black,
-          width: 1,
-        ), // 角を丸く
+        color: const Color.fromARGB(255, 112, 112, 219),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: CupertinoColors.systemGrey3.withOpacity(0.5),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
+            color: Color.fromARGB(255, 48, 48, 48),
+            blurRadius: 10,
+            offset: Offset(0, 5),
           ),
         ],
       ),
