@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../wigets/card/total_card.dart';
+import '../../wigets/card/total.dart';
 import '../../wigets/card/progress_rate.dart';
 
 class InvestigatorInfo extends StatelessWidget {
