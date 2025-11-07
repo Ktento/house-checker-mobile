@@ -12,7 +12,7 @@ class MapControllerMVC {
 
   //現在位置マーカーの更新
   void currentPostionMarkers(LatLng currentpostion) {
-    _model.markers[0] = currentpostion;
+    _model.currentLocation = currentpostion;
   }
 
   // マーカーを追加
