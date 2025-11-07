@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import '../../wigets/card/total_card.dart';
+import '../../wigets/card/total.dart';
 import '../../wigets/card/progress_rate.dart';
 import '../../wigets/card/work_status.dart';
 import '../../wigets/card/judgment_status_pie_chart.dart';
 import '../../wigets/card/days_bargraph.dart';
+import '../../wigets/card/regional_statistics.dart';
 
 class InvestigatorTotal extends StatelessWidget {
   const InvestigatorTotal({super.key});
@@ -63,6 +64,8 @@ class InvestigatorTotal extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: sidePadding),
                   child: Column(children: [
                     DaysBarGraph(),
+                    const SizedBox(height: 16),
+                    RegionalStatistics(),
                   ]),
                 )
               ],
