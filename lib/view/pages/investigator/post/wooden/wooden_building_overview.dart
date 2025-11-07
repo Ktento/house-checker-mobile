@@ -5,7 +5,6 @@ import '../../../../../controllers/investigator_post_controller.dart';
 import 'package:house_check_mobile/utils/helpers/dialog.dart';
 import '../../../../wigets/choose_picker.dart';
 import '../../../../../controllers/loacation_controller.dart';
-import 'package:geocoding/geocoding.dart';
 
 class WoodenBuildigOverview extends StatefulWidget {
   const WoodenBuildigOverview({super.key, required this.unit});
