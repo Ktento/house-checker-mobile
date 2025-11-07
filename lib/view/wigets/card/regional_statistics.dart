@@ -113,7 +113,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 Text(
                                   '総建物数: ${currentRegion['BuildingCt']}',
                                   style: const TextStyle(
-                                    color: CupertinoColors.black,
+                                    color: CupertinoColors.activeBlue,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -122,7 +122,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 Text(
                                   '判定完了:${currentRegion['EndBuildingCt'].toString()}',
                                   style: const TextStyle(
-                                    color: CupertinoColors.black,
+                                    color: CupertinoColors.activeGreen,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -131,7 +131,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 Text(
                                   '危険:${currentRegion['RiskBuildingCt'].toString()}',
                                   style: const TextStyle(
-                                    color: CupertinoColors.black,
+                                    color: CupertinoColors.systemRed,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -140,7 +140,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 Text(
                                   '判定待ち:${currentRegion['WaitingBuildingCt'].toString()}',
                                   style: const TextStyle(
-                                    color: CupertinoColors.black,
+                                    color: CupertinoColors.systemYellow,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),

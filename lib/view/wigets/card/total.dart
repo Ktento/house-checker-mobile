@@ -22,7 +22,7 @@ class BuildingCt extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.house_fill, color: CupertinoColors.black),
+              Icon(CupertinoIcons.house_fill, color: CupertinoColors.activeBlue),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -74,7 +74,7 @@ class EndBuildingCt extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Icon(CupertinoIcons.checkmark_square_fill,
-                  color: CupertinoColors.black),
+                  color: CupertinoColors.activeGreen),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -127,7 +127,7 @@ class RiskBuildingCt extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Icon(CupertinoIcons.exclamationmark_triangle_fill,
-                  color: CupertinoColors.black),
+                  color: CupertinoColors.systemRed),
               SizedBox(width: 6),
               Column(children: [
                 Text(
@@ -178,7 +178,7 @@ class WaitingBuildingCt extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.time_solid, color: CupertinoColors.black),
+              Icon(CupertinoIcons.time_solid, color: CupertinoColors.systemYellow),
               SizedBox(width: 6),
               Column(children: [
                 Text(
