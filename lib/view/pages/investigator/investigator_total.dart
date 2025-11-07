@@ -3,6 +3,7 @@ import '../../wigets/card/total_card.dart';
 import '../../wigets/card/progress_rate.dart';
 import '../../wigets/card/work_status.dart';
 import '../../wigets/card/judgment_status_pie_chart.dart';
+import '../../wigets/card/days_bargraph.dart';
 
 class InvestigatorTotal extends StatelessWidget {
   const InvestigatorTotal({super.key});
@@ -57,6 +58,13 @@ class InvestigatorTotal extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: sidePadding),
+                  child: Column(children: [
+                    DaysBarGraph(),
+                  ]),
+                )
               ],
             ),
           );
