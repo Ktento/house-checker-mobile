@@ -89,7 +89,7 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
                             toY: entry.value[0].toDouble(),
                             width: 15,
                             borderRadius: BorderRadius.zero,
-                            color: CupertinoColors.activeGreen,
+                            color: CupertinoColors.activeBlue,
                           ),
                           BarChartRodData(
                             fromY: 0,
