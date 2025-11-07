@@ -34,15 +34,12 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
         width: 516,
         height: 200,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 112, 112, 219),
+          color: CupertinoColors.systemBackground,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromARGB(255, 48, 48, 48),
-              blurRadius: 10,
-              offset: Offset(0, 5),
-            ),
-          ],
+          border: Border.all(
+            color: CupertinoColors.black,
+            width: 1,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +49,7 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
               child: Text(
                 '日別実績推移', // タイトル
                 style: TextStyle(
-                  color: CupertinoColors.white,
+                  color: CupertinoColors.black,
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
@@ -120,7 +117,7 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
                             return Text(
                               '${value.toInt()}',
                               style: TextStyle(
-                                color: CupertinoColors.white,
+                                color: CupertinoColors.black,
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -137,7 +134,7 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
                               String label = buildingSum.keys.elementAt(index);
                               return Text(label,
                                   style: TextStyle(
-                                      color: CupertinoColors.white,
+                                      color: CupertinoColors.black,
                                       fontSize: 10));
                             }
                             return Text('');

@@ -27,7 +27,7 @@ class _ProgressRateState extends State<ProgressRate>
     // アニメーション開始
     _controller[0].start(to: allprogress);
     _controller[1].start(to: riskprogress);
-    
+
     // 各アニメーションの変化を監視
     for (var c in _controller) {
       c.animationController.addListener(() {
@@ -42,15 +42,12 @@ class _ProgressRateState extends State<ProgressRate>
       width: 252,
       height: 100,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219),
+        color: CupertinoColors.systemBackground,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(255, 48, 48, 48),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        border: Border.all(
+          color: CupertinoColors.black,
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 12, top: 3),
@@ -62,13 +59,13 @@ class _ProgressRateState extends State<ProgressRate>
               Text(
                 '判定進捗率',
                 style: TextStyle(
-                  color: CupertinoColors.white,
+                  color: CupertinoColors.black,
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Icon(CupertinoIcons.graph_square,
-                  color: CupertinoColors.white, size: 20),
+                  color: CupertinoColors.black, size: 20),
             ]),
             SizedBox(height: 10),
             Row(
@@ -76,7 +73,7 @@ class _ProgressRateState extends State<ProgressRate>
                 Text(
                   '全体進捗',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
@@ -89,7 +86,7 @@ class _ProgressRateState extends State<ProgressRate>
                       child: Text(
                         '${_controller[0].model.percent.toInt()}％',
                         style: TextStyle(
-                          color: CupertinoColors.white,
+                          color: CupertinoColors.black,
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
@@ -105,7 +102,7 @@ class _ProgressRateState extends State<ProgressRate>
                 Text(
                   '危険建物率',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
@@ -118,7 +115,7 @@ class _ProgressRateState extends State<ProgressRate>
                       child: Text(
                         '${_controller[1].model.percent.toInt()}％',
                         style: TextStyle(
-                          color: CupertinoColors.white,
+                          color: CupertinoColors.black,
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
