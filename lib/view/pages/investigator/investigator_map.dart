@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../controllers/loacation_controller.dart';
 import 'package:flutter_map_animations/flutter_map_animations.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../utils/services/nearbuilding.dart';
 
 class InvestigatorMap extends StatefulWidget {
   const InvestigatorMap({super.key});
@@ -36,12 +37,12 @@ class _InvestigatorMapState extends State<InvestigatorMap>
         _controller.currentPostionMarkers(latlng);
       });
     });
-    // 🧭 向きセンサーの購読を追加
+    // 向きセンサーの購読を追加
     _locationController.listenHeading(() {
       if (mounted) setState(() {});
     });
 
-    // 📍 位置情報の購読を追加
+    // 位置情報の購読を追加
     _locationController.listenPosition(() {
       if (mounted) setState(() {}); // 位置が変わるたびに再描画
     });
@@ -87,19 +88,35 @@ class _InvestigatorMapState extends State<InvestigatorMap>
               userAgentPackageName: 'com.example.app',
             ),
             MarkerLayer(
-              markers: model.markers.map((latlng) {
-                return Marker(
-                  point: latlng,
+              markers: [
+                Marker(
+                  point: model.currentLocation,
                   width: 40,
                   height: 40,
                   child: Transform.rotate(
                     angle: (_locationController.model.heading ?? 0) *
                         (3.14159265 / 180),
-                    child: Icon(
-                      CupertinoIcons.location_north,
+                    child: const Icon(
+                      CupertinoIcons.location_north, // 矢印アイコン
                       color: CupertinoColors.activeBlue,
                       size: 40,
                     ),
+                  ),
+                ),
+              ],
+            ),
+
+            // 📍 その他マーカー（赤いピン）
+            MarkerLayer(
+              markers: model.markers.map((latlng) {
+                return Marker(
+                  point: latlng,
+                  width: 36,
+                  height: 36,
+                  child: const Icon(
+                    CupertinoIcons.map_pin_ellipse, // 赤ピン
+                    color: CupertinoColors.systemRed,
+                    size: 36,
                   ),
                 );
               }).toList(),
@@ -117,24 +134,46 @@ class _InvestigatorMapState extends State<InvestigatorMap>
           ],
         ),
         Positioned(
-          bottom: 20,
-          left: 20,
-          child: CupertinoButton(
-            padding: EdgeInsets.zero,
-            borderRadius: BorderRadius.circular(28),
-            color: CupertinoColors.systemBlue,
-            child: const Icon(
-              CupertinoIcons.location_solid,
-              color: CupertinoColors.white,
-              size: 26,
-            ),
-            onPressed: () {
-              if (currentLocation != null) {
-                _controller.moveToLocation(currentLocation!);
-              }
-            },
-          ),
-        ),
+            bottom: 20,
+            left: 20,
+            child: Column(
+              children: [
+                CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    borderRadius: BorderRadius.circular(28),
+                    color: CupertinoColors.systemBlue,
+                    child: const Icon(
+                      CupertinoIcons.flag_circle,
+                      color: CupertinoColors.white,
+                      size: 26,
+                    ),
+                    onPressed: () async {
+                      if (currentLocation == null) return;
+                      final points = await sendRecord(currentLocation!);
+                      _controller.model.markers.clear();
+                      for (final point in points) {
+                        _controller.addMarker(point);
+                      }
+                      setState(() {}); //画面更新
+                    }),
+                SizedBox(height: 20),
+                CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  borderRadius: BorderRadius.circular(28),
+                  color: CupertinoColors.systemBlue,
+                  child: const Icon(
+                    CupertinoIcons.location_solid,
+                    color: CupertinoColors.white,
+                    size: 26,
+                  ),
+                  onPressed: () {
+                    if (currentLocation != null) {
+                      _controller.moveToLocation(currentLocation!);
+                    }
+                  },
+                ),
+              ],
+            )),
       ],
     )));
   }
