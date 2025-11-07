@@ -106,7 +106,7 @@ class _InvestigatorMapState extends State<InvestigatorMap>
               ],
             ),
 
-            // 📍 その他マーカー（赤いピン）
+            // 赤いピン
             MarkerLayer(
               markers: model.markers.map((latlng) {
                 return Marker(
