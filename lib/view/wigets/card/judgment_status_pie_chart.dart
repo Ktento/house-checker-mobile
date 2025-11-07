@@ -24,16 +24,13 @@ class _PieChartStatusState extends State<PieChartStatus> {
     return Container(
       width: 252,
       height: 200,
-            decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219),
+      decoration: BoxDecoration(
+        color: CupertinoColors.systemBackground,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(255, 48, 48, 48),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        border: Border.all(
+          color: CupertinoColors.black,
+          width: 1,
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -42,7 +39,7 @@ class _PieChartStatusState extends State<PieChartStatus> {
           Text(
             '判定状況進捗',
             style: TextStyle(
-              color: CupertinoColors.white,
+              color: CupertinoColors.black,
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
@@ -68,7 +65,7 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   Text(
                     '青: 40%',
                     style: TextStyle(
-                      color: CupertinoColors.white,
+                      color: CupertinoColors.black,
                       fontSize: 14,
                     ),
                   ),
@@ -76,7 +73,7 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   Text(
                     '赤: 25%',
                     style: TextStyle(
-                      color: CupertinoColors.white,
+                      color: CupertinoColors.black,
                       fontSize: 14,
                     ),
                   ),
@@ -84,7 +81,7 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   Text(
                     '黄: 20%',
                     style: TextStyle(
-                      color: CupertinoColors.white,
+                      color: CupertinoColors.black,
                       fontSize: 14,
                     ),
                   ),
@@ -92,7 +89,7 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   Text(
                     '緑: 15%',
                     style: TextStyle(
-                      color: CupertinoColors.white,
+                      color: CupertinoColors.black,
                       fontSize: 14,
                     ),
                   ),

@@ -9,15 +9,12 @@ class BuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219),
+        color: CupertinoColors.systemBackground,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(255, 48, 48, 48),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        border: Border.all(
+          color: CupertinoColors.black,
+          width: 1,
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -25,13 +22,13 @@ class BuildingCt extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.house_fill, color: CupertinoColors.white),
+              Icon(CupertinoIcons.house_fill, color: CupertinoColors.black),
               SizedBox(width: 6),
               Column(children: [
                 Text(
                   '123',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -39,7 +36,7 @@ class BuildingCt extends StatelessWidget {
                 Text(
                   '総建物数',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
@@ -63,15 +60,12 @@ class EndBuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219),
+        color: CupertinoColors.systemBackground,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(255, 48, 48, 48),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        border: Border.all(
+          color: CupertinoColors.black,
+          width: 1,
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -80,13 +74,13 @@ class EndBuildingCt extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Icon(CupertinoIcons.checkmark_square_fill,
-                  color: CupertinoColors.white),
+                  color: CupertinoColors.black),
               SizedBox(width: 6),
               Column(children: [
                 Text(
                   '123',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -94,7 +88,7 @@ class EndBuildingCt extends StatelessWidget {
                 Text(
                   '判定完了',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
@@ -119,15 +113,12 @@ class RiskBuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219),
+        color: CupertinoColors.systemBackground,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(255, 48, 48, 48),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        border: Border.all(
+          color: CupertinoColors.black,
+          width: 1,
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -136,13 +127,13 @@ class RiskBuildingCt extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Icon(CupertinoIcons.exclamationmark_triangle_fill,
-                  color: CupertinoColors.white),
+                  color: CupertinoColors.black),
               SizedBox(width: 6),
               Column(children: [
                 Text(
                   '123',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -150,7 +141,7 @@ class RiskBuildingCt extends StatelessWidget {
                 Text(
                   '危険建物',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
@@ -174,15 +165,12 @@ class WaitingBuildingCt extends StatelessWidget {
       width: 120,
       height: 50,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 112, 112, 219),
+        color: CupertinoColors.systemBackground,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(255, 48, 48, 48),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        border: Border.all(
+          color: CupertinoColors.black,
+          width: 1,
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -190,13 +178,13 @@ class WaitingBuildingCt extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(CupertinoIcons.time_solid, color: CupertinoColors.white),
+              Icon(CupertinoIcons.time_solid, color: CupertinoColors.black),
               SizedBox(width: 6),
               Column(children: [
                 Text(
                   '123',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -204,7 +192,7 @@ class WaitingBuildingCt extends StatelessWidget {
                 Text(
                   '判定待ち',
                   style: TextStyle(
-                    color: CupertinoColors.white,
+                    color: CupertinoColors.black,
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
