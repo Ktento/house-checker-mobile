@@ -62,37 +62,55 @@ class _PieChartStatusState extends State<PieChartStatus> {
               ),
               Column(
                 children: [
-                  Text(
-                    '青: 40%',
-                    style: TextStyle(
-                      color: CupertinoColors.black,
-                      fontSize: 14,
-                    ),
+                  Row(
+                    children: [
+                      Icon(CupertinoIcons.circle_filled,
+                          color: CupertinoColors.activeBlue, size: 14),
+                      Text(
+                        '総建物数',
+                        style: TextStyle(
+                          color: CupertinoColors.activeBlue,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 3),
-                  Text(
-                    '赤: 25%',
-                    style: TextStyle(
-                      color: CupertinoColors.black,
-                      fontSize: 14,
+                  Row(children: [
+                    Icon(CupertinoIcons.circle_filled,
+                        color: CupertinoColors.activeGreen, size: 14),
+                    Text(
+                      '判定完了',
+                      style: TextStyle(
+                        color: CupertinoColors.activeGreen,
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
+                  ]),
                   SizedBox(height: 3),
-                  Text(
-                    '黄: 20%',
-                    style: TextStyle(
-                      color: CupertinoColors.black,
-                      fontSize: 14,
+                  Row(children: [
+                    Icon(CupertinoIcons.circle_filled,
+                        color: CupertinoColors.systemRed, size: 14),
+                    Text(
+                      '危険建物',
+                      style: TextStyle(
+                        color: CupertinoColors.systemRed,
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
+                  ]),
                   SizedBox(height: 3),
-                  Text(
-                    '緑: 15%',
-                    style: TextStyle(
-                      color: CupertinoColors.black,
-                      fontSize: 14,
+                  Row(children: [
+                    Icon(CupertinoIcons.circle_filled,
+                        color: CupertinoColors.systemYellow, size: 14),
+                    Text(
+                      '判定待ち',
+                      style: TextStyle(
+                        color: CupertinoColors.systemYellow,
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
+                  ]),
                 ],
               )
             ],
