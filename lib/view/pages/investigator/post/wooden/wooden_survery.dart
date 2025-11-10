@@ -3,8 +3,11 @@ import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_ch
 import '../../../../../models/investigator_post_model.dart';
 import '../../../../../controllers/investigator_post_controller.dart';
 import 'package:house_check_mobile/utils/helpers/dialog.dart';
-
 import '../../../../wigets/choose_picker.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../../../wigets/TextField.dart';
+import 'dart:io';
+import '../../../../wigets/image_pickere.dart';
 
 class WoodenSurvey extends StatefulWidget {
   const WoodenSurvey(
@@ -16,8 +19,19 @@ class WoodenSurvey extends StatefulWidget {
 }
 
 class _WoodenSurveyState extends State<WoodenSurvey> {
+  //フォーム全体の状態を管理するキー
   final _formKey = GlobalKey<FormState>();
   final controller = InvestigatorPostController();
+
+  XFile? _image;
+  final ImagePicker _picker = ImagePicker();
+
+  // 画像選択関数
+  Future<void> pickImage() async {
+    final picked = await _picker.pickImage(source: ImageSource.gallery);
+    if (picked == null) return;
+    setState(() => _image = picked);
+  }
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
@@ -59,37 +73,75 @@ class _WoodenSurveyState extends State<WoodenSurvey> {
     }
   }
 
-  Widget _buildCupertinoTextField({
-    required String label,
-    required TextEditingController controller,
-    bool numeric = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label,
-            style: const TextStyle(
-                fontSize: 14,
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.w500)),
-        const SizedBox(height: 4),
-        CupertinoTextField(
-          controller: controller,
-          keyboardType: numeric ? TextInputType.number : TextInputType.text,
-          placeholder: '$label を入力',
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-          decoration: BoxDecoration(
-            color: CupertinoColors.systemGrey6,
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        const SizedBox(height: 16),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final surveyItems = [
+      {
+        'label': '隣接建築物・周辺地盤の危険',
+        'options': ['A.危険無し', 'B.不明確', 'C.危険あり'],
+        'controller': controller.adjacentBuildingRiskController
+      },
+      {
+        'label': '構造躯体の不同沈下',
+        'options': ['A.無し又は軽微', 'B.著しい床、屋根の落ち込み、浮き上がり', 'C.小屋組みの破壊、床全体の沈下'],
+        'controller': controller.unevenSettlementController
+      },
+      {
+        'label': '基礎の被害',
+        'options': ['A.無被害', 'B.部分的', 'C.著しい(被害あり)'],
+        'controller': controller.foundationDamageController
+      },
+      {
+        'label': '建築物の1階の傾斜',
+        'options': ['A.1/60以下', 'B.1/60～1/20', 'C.1/20超'],
+        'controller': controller.firstFloorTiltController
+      },
+      {
+        'label': '壁の被害',
+        'options': ['A.軽微なひび割れ', 'B.大きな亀裂、剥離', 'C.落下の危険有り'],
+        'controller': controller.wallDamageController
+      },
+      {
+        'label': '腐食・蟻害の有無',
+        'options': ['A.ほとんど無し', 'B.一部の断面欠損', 'C.著しい断面欠損'],
+        'controller': controller.corrosionOrTermiteController
+      },
+      {
+        'label': '瓦',
+        'options': ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
+        'controller': controller.roofOrSignboardRiskController
+      },
+      {
+        'label': '窓枠・窓ガラス',
+        'options': ['A.ほとんど無被害', 'B.歪み、ひび割れ', 'C.落下の危険有'],
+        'controller': controller.windowFrameController
+      },
+      {
+        'label': '外装材（湿式）',
+        'options': ['A.ほとんど無被害', 'B.部分的なひび割れ、隙間', 'C.顕著なひび割れ、剥離'],
+        'controller': controller.exteriorWetController
+      },
+      {
+        'label': '外装材（乾式）',
+        'options': ['A.目地の亀裂程度', 'B.板に隙間がみられる', 'C.顕著な目地ずれ、板破損'],
+        'controller': controller.exteriorDryController
+      },
+      {
+        'label': '看板・機器類',
+        'options': ['A.傾斜無し', 'B.わずかな傾斜', 'C.落下の危険有り'],
+        'controller': controller.signageAndEquipmentController
+      },
+      {
+        'label': '屋外階段',
+        'options': ['A.傾斜なし', 'B.わずかな傾斜', 'C.明瞭な傾斜'],
+        'controller': controller.outdoorStairsController
+      },
+      {
+        'label': 'その他',
+        'options': ['A.安全', 'B.要注意', 'C.危険'],
+        'controller': controller.othersController
+      },
+    ];
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text('調査内容入力'),
@@ -125,258 +177,59 @@ class _WoodenSurveyState extends State<WoodenSurvey> {
                       controller.exteriorInspectionScoreController.text = value;
                     },
                   ),
-                  _buildCupertinoTextField(
-                      label: '外観調査備考',
-                      controller:
-                          controller.exteriorInspectionRemarksController),
-                  const Text(
-                    '隣接建築物・周辺地盤の危険',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.危険無し',
-                      'B.不明確',
-                      'C.危険あり',
+                  Row(
+                    children: [
+                      Expanded(
+                        child: buildCupertinoTextField(
+                          label: '外観調査備考',
+                          controller:
+                              controller.exteriorInspectionRemarksController,
+                        ),
+                      ),
+                      ImagePickerButton(
+                        width: 40,
+                        height: 40,
+                        onImagePicked: (picked) {},
+                      ),
                     ],
-                    initialValue: 'A.危険無し',
-                    onChanged: (value) {
-                      controller.adjacentBuildingRiskController.text = value;
-                    },
                   ),
-                  const Text(
-                    '構造躯体の不同沈下',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.無し又は軽微',
-                      'B.著しい床、屋根の落ち込み、浮き上がり',
-                      'C.小屋組みの破壊、床全体の沈下',
-                    ],
-                    initialValue: 'A.無し又は軽微',
-                    onChanged: (value) {
-                      controller.unevenSettlementController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '基礎の被害',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.無被害',
-                      'B.部分的',
-                      'C.著しい(被害あり)',
-                    ],
-                    initialValue: 'A.無被害',
-                    onChanged: (value) {
-                      controller.foundationDamageController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '建築物の1階の傾斜',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.1/60以下',
-                      'B.1/60～1/20',
-                      'C.1/20超',
-                    ],
-                    initialValue: 'A.1/60以下',
-                    onChanged: (value) {
-                      controller.firstFloorTiltController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '壁の被害',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.軽微なひび割れ',
-                      'B.大きな亀裂、剥離',
-                      'C.落下の危険有り',
-                    ],
-                    initialValue: 'A.軽微なひび割れ',
-                    onChanged: (value) {
-                      controller.wallDamageController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '腐食・蟻害の有無',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.ほとんど無し',
-                      'B.一部の断面欠損',
-                      'C.著しい断面欠損',
-                    ],
-                    initialValue: 'A.ほとんど無し',
-                    onChanged: (value) {
-                      controller.corrosionOrTermiteController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '瓦',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.ほとんど無被害',
-                      'B.著しいずれ',
-                      'C.全面的にずれ、破損',
-                    ],
-                    initialValue: 'A.ほとんど無被害',
-                    onChanged: (value) {
-                      controller.roofOrSignboardRiskController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '窓枠・窓ガラス',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.ほとんど無被害',
-                      'B.歪み、ひび割れ',
-                      'C.落下の危険有',
-                    ],
-                    initialValue: 'A.ほとんど無被害',
-                    onChanged: (value) {
-                      controller.windowFrameController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '外装材　湿式の場合',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.ほとんど無被害',
-                      'B.部分的なひび割れ、隙間',
-                      'C.顕著なひび割れ、剥離',
-                    ],
-                    initialValue: 'A.ほとんど無被害',
-                    onChanged: (value) {
-                      controller.exteriorWetController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '外装材　乾式の場合',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.目地の亀裂程度',
-                      'B.板に隙間がみられる',
-                      'C.顕著な目地ずれ、板破損',
-                    ],
-                    initialValue: 'A.目地の亀裂程度',
-                    onChanged: (value) {
-                      controller.exteriorDryController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '看板・機器類',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.傾斜無し',
-                      'B.わずかな傾斜',
-                      'C.落下の危険有り',
-                    ],
-                    initialValue: 'A.傾斜無し',
-                    onChanged: (value) {
-                      controller.signageAndEquipmentController.text = value;
-                    },
-                  ),
-                  const Text(
-                    '屋外階段',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.傾斜なし',
-                      'B.わずかな傾斜',
-                      'C.明瞭な傾斜',
-                    ],
-                    initialValue: 'A.傾斜なし',
-                    onChanged: (value) {
-                      controller.outdoorStairsController.text = value;
-                    },
-                  ),
-                  const Text(
-                    'その他',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 4),
-                  CupertinoDropdown(
-                    options: [
-                      'A.安全',
-                      'B.要注意',
-                      'C.危険',
-                    ],
-                    initialValue: 'A.安全',
-                    onChanged: (value) {
-                      controller.othersController.text = value;
-                    },
-                  ),
-                  _buildCupertinoTextField(
+                  ...surveyItems.map((item) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item['label'] as String,
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.w500),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CupertinoDropdown(
+                                options: (item['options'] as List<String>),
+                                initialValue:
+                                    (item['options'] as List<String>).first,
+                                onChanged: (value) {
+                                  (item['controller'] as TextEditingController)
+                                      .text = value;
+                                },
+                              ),
+                            ),
+                            ImagePickerButton(
+                              width: 40,
+                              height: 40,
+                              onImagePicked: (picked) {},
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                      ],
+                    );
+                  }).toList(),
+                  buildCupertinoTextField(
                       label: 'その他の内容',
                       controller: controller.otherRemarksController),
 
