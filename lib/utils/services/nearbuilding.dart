@@ -1,8 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:latlong2/latlong.dart';
+import '../../models/map_model.dart';
 
-Future<List<LatLng>> sendRecord(LatLng now) async {
+Future<List<MarkerData>> sendRecord(LatLng now) async {
   try {
     final url = Uri.https(
         'script.google.com',
@@ -12,7 +13,7 @@ Future<List<LatLng>> sendRecord(LatLng now) async {
           'lat': now.latitude.toString(),
           'lng': now.longitude.toString(),
           'rang': '300',
-          'extractKeys': 'latitude,longitude'
+          'extractKeys': 'latitude,longitude,overallscore'
         });
 
     final response = await http.get(url);
@@ -22,10 +23,14 @@ Future<List<LatLng>> sendRecord(LatLng now) async {
       final jsonResponse = jsonDecode(response.body);
 
       List<dynamic> data = jsonResponse['data'];
-      List<LatLng> points =
-          data.map((e) => LatLng(e['latitude'], e['longitude'])).toList();
+      List<Map<LatLng, String>> results = data
+          .map((e) => {
+                LatLng(e['latitude'], e['longitude']),
+                'overallscore': e['overallscore'] ?? "",
+              })
+          .toList();
 
-      return points;
+      return results;
     } else {
       throw Exception('送信失敗: ${response.statusCode} ${response.body}');
     }
