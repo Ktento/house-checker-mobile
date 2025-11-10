@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:latlong2/latlong.dart';
 import '../../models/map_model.dart';
 
-Future<List<MarkerData>> sendRecord(LatLng now) async {
+Future<List<MarkerData>> getMarkers(LatLng now) async {
   try {
     final url = Uri.https(
         'script.google.com',
@@ -23,12 +23,8 @@ Future<List<MarkerData>> sendRecord(LatLng now) async {
       final jsonResponse = jsonDecode(response.body);
 
       List<dynamic> data = jsonResponse['data'];
-      List<Map<LatLng, String>> results = data
-          .map((e) => {
-                LatLng(e['latitude'], e['longitude']),
-                'overallscore': e['overallscore'] ?? "",
-              })
-          .toList();
+      final List<MarkerData> results =
+          data.map((e) => MarkerData.fromJson(e)).toList();
 
       return results;
     } else {
