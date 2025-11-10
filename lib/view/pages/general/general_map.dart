@@ -53,7 +53,6 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final model = _controller.model;
     // 位置情報がまだ取得できていない場合はロード中表示
     if (currentLocation == null) {
       return const Scaffold(
@@ -80,20 +79,6 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
             urlTemplate: 'https://{s}.tile.openstreetmap.jp/{z}/{x}/{y}.png',
             subdomains: ['a', 'b', 'c'],
             userAgentPackageName: 'com.example.app',
-          ),
-          MarkerLayer(
-            markers: model.markers.map((latlng) {
-              return Marker(
-                point: latlng,
-                width: 40,
-                height: 40,
-                child: Transform.rotate(
-                  angle: (_locationController.model.heading ?? 0) *
-                      (3.14159265 / 180),
-                  child: Icon(Icons.navigation, color: Colors.blue, size: 40),
-                ),
-              );
-            }).toList(),
           ),
           RichAttributionWidget(
             attributions: [
