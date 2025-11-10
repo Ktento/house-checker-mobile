@@ -44,7 +44,7 @@ class _CupertinoDropdownState extends State<CupertinoDropdown> {
             },
             child: Text(
               option,
-              style: TextStyle(color: _getColor(option)),
+              style: TextStyle(color: _getColor(option), fontSize: 18),
             ),
           );
         }).toList(),
@@ -59,13 +59,18 @@ class _CupertinoDropdownState extends State<CupertinoDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      color: CupertinoColors.systemGrey5,
-      onPressed: () => _showPicker(context),
-      child: Text(
-        selectedValue,
-        style: TextStyle(
-          color: _getColor(selectedValue),
+    return SizedBox(
+      width: 400,
+      height: 60,
+      child: CupertinoButton(
+        color: CupertinoColors.systemGrey5,
+        onPressed: () => _showPicker(context),
+        child: Text(
+          selectedValue,
+          style: TextStyle(
+            color: _getColor(selectedValue),
+            fontSize: 18,
+          ),
         ),
       ),
     );
