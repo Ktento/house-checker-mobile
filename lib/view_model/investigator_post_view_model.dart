@@ -225,14 +225,14 @@ class InvestigationViewModel extends ChangeNotifier {
   }
 
   //外観調査の総合スコアの判定
-  String _calcOverallExteriorScore() {
-    if (_record == null) return 'C';
+  DamageLevel _calcOverallExteriorScore() {
+    if (_record == null) return DamageLevel.C;
 
     //外観調査の時点で危険の場合はスコアC
     if (_record!.content.exteriorInspectionScore == 0) {
-      return 'C';
+      return DamageLevel.C;
     } else {
-      return 'AB';
+      return DamageLevel.A;
     }
   }
 }
