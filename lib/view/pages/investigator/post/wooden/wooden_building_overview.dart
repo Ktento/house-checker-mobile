@@ -12,7 +12,7 @@ class WoodenBuildingOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<InvestigationViewModel>();
     final inputVM = context.read<FormViewModel>();
-
+    print(viewModel.record!.unit.currentPosition);
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text('木造建築物概要入力'),

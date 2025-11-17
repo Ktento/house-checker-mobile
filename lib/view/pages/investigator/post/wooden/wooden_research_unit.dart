@@ -6,12 +6,14 @@ import 'package:provider/provider.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import './wooden_building_overview.dart';
+import '../../../../../view_model/location_view_model.dart';
 
 class WoodenResearchUnit extends StatelessWidget {
   const WoodenResearchUnit({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final locationViewModel = context.watch<LocationViewModel>();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -101,7 +103,7 @@ class WoodenResearchUnit extends StatelessWidget {
                           child: CupertinoButton.filled(
                             onPressed: () {
                               viewModel.updateUnit(
-                                buildingtype: "木造建築物",
+                                buildingtype: "W",
                                 number: inputVM.numberController.text,
                                 date: inputVM.selectedDate,
                                 surveyCount: int.tryParse(
@@ -114,7 +116,8 @@ class WoodenResearchUnit extends StatelessWidget {
                                 investigatorNumber: [
                                   inputVM.investigatorNumberController.text
                                 ],
-                                currentPosition: LatLng(0, 0),
+                                currentPosition:
+                                    locationViewModel.currentPosition,
                               );
 
                               Navigator.push(

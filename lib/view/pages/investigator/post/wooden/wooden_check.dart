@@ -160,7 +160,6 @@ class DangerSurveyFormPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
 
