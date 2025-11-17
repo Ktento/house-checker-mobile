@@ -12,15 +12,15 @@ Future<List<MarkerData>> getMarkers(LatLng now) async {
           'mode': 'lat_lng_search',
           'lat': now.latitude.toString(),
           'lng': now.longitude.toString(),
-          'rang': '300',
+          'range': '3000',
           'extractKeys': 'latitude,longitude,overallscore'
         });
-
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
       print('送信成功: ${response.body}');
       final jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
 
       List<dynamic> data = jsonResponse['data'];
       final List<MarkerData> results =
