@@ -245,7 +245,6 @@ class _InvestigatorMapState extends State<InvestigatorMap>
 
                           mapViewModel.clearMarker();
                           mapViewModel.addMarkerAll(points);
-                          setState(() {}); //画面更新
                         }),
                     SizedBox(height: 20),
                     CupertinoButton(
