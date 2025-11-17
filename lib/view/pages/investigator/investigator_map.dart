@@ -76,25 +76,6 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                   subdomains: ['a', 'b', 'c'],
                   userAgentPackageName: 'com.example.app',
                 ),
-                MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: locationViewModel.currentPosition ??
-                          LatLng(35.6586, 139.7454),
-                      width: 40,
-                      height: 40,
-                      child: Transform.rotate(
-                        angle: (locationViewModel.heading ?? 0) *
-                            (3.14159265 / 180),
-                        child: const Icon(
-                          CupertinoIcons.location_north, // 矢印アイコン
-                          color: CupertinoColors.activeBlue,
-                          size: 40,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
 
                 // 危険度評価　赤のマーカー
                 MarkerLayer(
@@ -211,6 +192,26 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                       ),
                     );
                   }).toList(),
+                ),
+                //現在位置マーカー
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: locationViewModel.currentPosition ??
+                          LatLng(35.6586, 139.7454),
+                      width: 40,
+                      height: 40,
+                      child: Transform.rotate(
+                        angle: (locationViewModel.heading ?? 0) *
+                            (3.14159265 / 180),
+                        child: const Icon(
+                          CupertinoIcons.location_north, // 矢印アイコン
+                          color: CupertinoColors.activeBlue,
+                          size: 40,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 RichAttributionWidget(
                   attributions: [
