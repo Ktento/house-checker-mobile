@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_survery.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
@@ -123,6 +124,21 @@ class WoodenBuildingOverview extends StatelessWidget {
                                         inputVM.floorsController.text) ??
                                     0,
                                 scale: inputVM.scaleController.text,
+                              );
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (_) => MultiProvider(
+                                    providers: [
+                                      ChangeNotifierProvider.value(
+                                          value: context
+                                              .read<InvestigationViewModel>()),
+                                      ChangeNotifierProvider.value(
+                                          value: context.read<FormViewModel>()),
+                                    ],
+                                    child: WoodenSurvery(),
+                                  ),
+                                ),
                               );
                             },
                             borderRadius: BorderRadius.circular(12),
