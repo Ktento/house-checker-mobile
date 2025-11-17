@@ -20,7 +20,6 @@ MapState _$MapStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapState {
-  LatLng get currentLocation => throw _privateConstructorUsedError;
   List<LatLng> get redBuildingMarkers => throw _privateConstructorUsedError;
   List<LatLng> get yellowBuildingMarkers => throw _privateConstructorUsedError;
   List<LatLng> get greenBuildingMarkers => throw _privateConstructorUsedError;
@@ -42,8 +41,7 @@ abstract class $MapStateCopyWith<$Res> {
       _$MapStateCopyWithImpl<$Res, MapState>;
   @useResult
   $Res call(
-      {LatLng currentLocation,
-      List<LatLng> redBuildingMarkers,
+      {List<LatLng> redBuildingMarkers,
       List<LatLng> yellowBuildingMarkers,
       List<LatLng> greenBuildingMarkers,
       List<LatLng> waitingBuildingMarkers});
@@ -64,17 +62,12 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentLocation = null,
     Object? redBuildingMarkers = null,
     Object? yellowBuildingMarkers = null,
     Object? greenBuildingMarkers = null,
     Object? waitingBuildingMarkers = null,
   }) {
     return _then(_value.copyWith(
-      currentLocation: null == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as LatLng,
       redBuildingMarkers: null == redBuildingMarkers
           ? _value.redBuildingMarkers
           : redBuildingMarkers // ignore: cast_nullable_to_non_nullable
@@ -104,8 +97,7 @@ abstract class _$$MapStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {LatLng currentLocation,
-      List<LatLng> redBuildingMarkers,
+      {List<LatLng> redBuildingMarkers,
       List<LatLng> yellowBuildingMarkers,
       List<LatLng> greenBuildingMarkers,
       List<LatLng> waitingBuildingMarkers});
@@ -124,17 +116,12 @@ class __$$MapStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentLocation = null,
     Object? redBuildingMarkers = null,
     Object? yellowBuildingMarkers = null,
     Object? greenBuildingMarkers = null,
     Object? waitingBuildingMarkers = null,
   }) {
     return _then(_$MapStateImpl(
-      currentLocation: null == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as LatLng,
       redBuildingMarkers: null == redBuildingMarkers
           ? _value._redBuildingMarkers
           : redBuildingMarkers // ignore: cast_nullable_to_non_nullable
@@ -159,8 +146,7 @@ class __$$MapStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MapStateImpl implements _MapState {
   const _$MapStateImpl(
-      {this.currentLocation = const LatLng(35.6586, 139.7454),
-      final List<LatLng> redBuildingMarkers = const [],
+      {final List<LatLng> redBuildingMarkers = const [],
       final List<LatLng> yellowBuildingMarkers = const [],
       final List<LatLng> greenBuildingMarkers = const [],
       final List<LatLng> waitingBuildingMarkers = const []})
@@ -172,9 +158,6 @@ class _$MapStateImpl implements _MapState {
   factory _$MapStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapStateImplFromJson(json);
 
-  @override
-  @JsonKey()
-  final LatLng currentLocation;
   final List<LatLng> _redBuildingMarkers;
   @override
   @JsonKey()
@@ -217,7 +200,7 @@ class _$MapStateImpl implements _MapState {
 
   @override
   String toString() {
-    return 'MapState(currentLocation: $currentLocation, redBuildingMarkers: $redBuildingMarkers, yellowBuildingMarkers: $yellowBuildingMarkers, greenBuildingMarkers: $greenBuildingMarkers, waitingBuildingMarkers: $waitingBuildingMarkers)';
+    return 'MapState(redBuildingMarkers: $redBuildingMarkers, yellowBuildingMarkers: $yellowBuildingMarkers, greenBuildingMarkers: $greenBuildingMarkers, waitingBuildingMarkers: $waitingBuildingMarkers)';
   }
 
   @override
@@ -225,8 +208,6 @@ class _$MapStateImpl implements _MapState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapStateImpl &&
-            (identical(other.currentLocation, currentLocation) ||
-                other.currentLocation == currentLocation) &&
             const DeepCollectionEquality()
                 .equals(other._redBuildingMarkers, _redBuildingMarkers) &&
             const DeepCollectionEquality()
@@ -241,7 +222,6 @@ class _$MapStateImpl implements _MapState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      currentLocation,
       const DeepCollectionEquality().hash(_redBuildingMarkers),
       const DeepCollectionEquality().hash(_yellowBuildingMarkers),
       const DeepCollectionEquality().hash(_greenBuildingMarkers),
@@ -265,8 +245,7 @@ class _$MapStateImpl implements _MapState {
 
 abstract class _MapState implements MapState {
   const factory _MapState(
-      {final LatLng currentLocation,
-      final List<LatLng> redBuildingMarkers,
+      {final List<LatLng> redBuildingMarkers,
       final List<LatLng> yellowBuildingMarkers,
       final List<LatLng> greenBuildingMarkers,
       final List<LatLng> waitingBuildingMarkers}) = _$MapStateImpl;
@@ -274,8 +253,6 @@ abstract class _MapState implements MapState {
   factory _MapState.fromJson(Map<String, dynamic> json) =
       _$MapStateImpl.fromJson;
 
-  @override
-  LatLng get currentLocation;
   @override
   List<LatLng> get redBuildingMarkers;
   @override
