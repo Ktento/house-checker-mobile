@@ -7,7 +7,6 @@ part 'map_model.g.dart';
 @freezed
 class MapState with _$MapState {
   const factory MapState({
-    @Default(LatLng(35.6586, 139.7454)) LatLng currentLocation,
     @Default([]) List<LatLng> redBuildingMarkers,
     @Default([]) List<LatLng> yellowBuildingMarkers,
     @Default([]) List<LatLng> greenBuildingMarkers,

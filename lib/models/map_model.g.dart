@@ -8,9 +8,6 @@ part of 'map_model.dart';
 
 _$MapStateImpl _$$MapStateImplFromJson(Map<String, dynamic> json) =>
     _$MapStateImpl(
-      currentLocation: json['currentLocation'] == null
-          ? const LatLng(35.6586, 139.7454)
-          : LatLng.fromJson(json['currentLocation'] as Map<String, dynamic>),
       redBuildingMarkers: (json['redBuildingMarkers'] as List<dynamic>?)
               ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -31,7 +28,6 @@ _$MapStateImpl _$$MapStateImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$MapStateImplToJson(_$MapStateImpl instance) =>
     <String, dynamic>{
-      'currentLocation': instance.currentLocation,
       'redBuildingMarkers': instance.redBuildingMarkers,
       'yellowBuildingMarkers': instance.yellowBuildingMarkers,
       'greenBuildingMarkers': instance.greenBuildingMarkers,
