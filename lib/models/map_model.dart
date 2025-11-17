@@ -24,8 +24,13 @@ class MarkerData with _$MarkerData {
     @Default('') String overallScore,
   }) = _MarkerData;
 
-  factory MarkerData.fromJson(Map<String, dynamic> json) =>
-      _$MarkerDataFromJson(json);
+  factory MarkerData.fromJson(Map<String, dynamic> json) => MarkerData(
+        position: LatLng(
+          (json['latitude'] as num).toDouble(),
+          (json['longitude'] as num).toDouble(),
+        ),
+        overallScore: json['overallscore']?.toString() ?? '',
+      );
 }
 
 /// LatLngをJSONに変換するためのカスタムコンバー
