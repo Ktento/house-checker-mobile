@@ -3,27 +3,46 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:geocoding/geocoding.dart';
+import '../models/location_model.dart';
+import 'dart:async';
 
 class LocationViewModel extends ChangeNotifier {
-  LatLng _currentPosition = LatLng(35.6586, 139.7454);
-  double? _heading;
+  LocationState? _locationState;
+  LatLng? get currentPosition => _locationState?.now;
+  double? get heading => _locationState?.heading;
+  StreamSubscription<Position>? _positionSubscription;
+  StreamSubscription<CompassEvent>? _compassSubscription;
 
-  LatLng get currentPosition => _currentPosition;
-  double? get heading => _heading;
+  //現在位置を反映
+  void setCurrentPostion(LatLng pos) {
+    _locationState = LocationState(now: LatLng(pos.latitude, pos.longitude));
+    notifyListeners();
+  }
 
-  // 現在位置を取得
+  // 現在位置を取得して反映
   Future<void> updateCurrentPosition() async {
     try {
       Position pos = await _determinePosition();
-      _currentPosition = LatLng(pos.latitude, pos.longitude);
+      _locationState = LocationState(now: LatLng(pos.latitude, pos.longitude));
     } catch (e) {
-      _currentPosition = LatLng(35.6586, 139.7454); // デフォルト東京タワー
+      _locationState =
+          LocationState(now: LatLng(35.6586, 139.7454)); // デフォルト東京タワー
     }
     notifyListeners();
   }
 
+  //現在位置を取得
+  static Future<LatLng?> getCurrentPosition() async {
+    try {
+      Position pos = await _determinePosition();
+      return LatLng(pos.latitude, pos.longitude);
+    } catch (e) {
+      return null; // デフォルト東京タワー
+    }
+  }
+
   // 権限チェック + 位置情報取得
-  Future<Position> _determinePosition() async {
+  static Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -47,29 +66,48 @@ class LocationViewModel extends ChangeNotifier {
     return await Geolocator.getCurrentPosition();
   }
 
-  // ストリームで位置更新
+  // ストリームで位置更新 // 位置情報ストリーム購読
   void listenPosition({LocationSettings? settings}) {
     final locationSettings = settings ??
         const LocationSettings(
-            accuracy: LocationAccuracy.high, distanceFilter: 100);
-
-    Geolocator.getPositionStream(locationSettings: locationSettings)
-        .listen((position) {
+            accuracy: LocationAccuracy.bestForNavigation, distanceFilter: 1);
+    //ストリームを一度中止してから再度開始(二重に処理が続くのを防ぐため)
+    _positionSubscription?.cancel();
+    _positionSubscription =
+        Geolocator.getPositionStream(locationSettings: locationSettings)
+            .listen((position) {
       if (position == null) return;
-      _currentPosition = LatLng(position.latitude, position.longitude);
+      //監視しているリスナーがいなければ処理を中止
+      if (!hasListeners) return;
+      _locationState =
+          (_locationState ?? LocationState(now: LatLng(35.6586, 139.7454)))
+              .copyWith(now: LatLng(position.latitude, position.longitude));
       notifyListeners();
     });
   }
 
-  // ストリームで方位更新
+  // 方位ストリーム購読
   void listenHeading() {
     final compassStream = FlutterCompass.events;
     if (compassStream == null) return;
-
-    compassStream.listen((event) {
-      _heading = event.heading;
+    //ストリームを一度中止してから再度開始(二重に処理が続くのを防ぐため)
+    _compassSubscription?.cancel();
+    _compassSubscription = compassStream.listen((event) {
+      if (event.heading == null) return;
+      //監視しているリスナーがいなければ処理を中止
+      if (!hasListeners) return;
+      _locationState ??= LocationState(now: LatLng(35.6586, 139.7454));
+      _locationState = _locationState!.copyWith(heading: event.heading);
       notifyListeners();
     });
+  }
+
+  //Widget が破棄されるときのリソース解放
+  @override
+  void dispose() {
+    _positionSubscription?.cancel();
+    _compassSubscription?.cancel();
+    super.dispose();
   }
 
   // 緯度経度から住所取得
