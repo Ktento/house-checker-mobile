@@ -52,23 +52,47 @@ class BuildingOverview with _$BuildingOverview {
 }
 
 @freezed
+class ImageInfo with _$ImageInfo {
+  const factory ImageInfo({
+    required String localPath, // XFile.path などのローカル保存先
+    required String firebaseUrl, // Firebase Storage アップロード後の URL
+  }) = _ImageInfo;
+
+  factory ImageInfo.fromJson(Map<String, dynamic> json) =>
+      _$ImageInfoFromJson(json);
+}
+
+@freezed
 class InvestigationContent with _$InvestigationContent {
   const factory InvestigationContent({
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     required DamageLevel adjacentBuildingRisk,
+    List<ImageInfo>? adjacentBuildingRiskImages,
     required DamageLevel unevenSettlement,
+    List<ImageInfo>? unevenSettlementImages,
     required DamageLevel foundationDamage,
+    List<ImageInfo>? foundationDamageImages,
     required DamageLevel firstFloorTilt,
+    List<ImageInfo>? firstFloorTiltImages,
     required DamageLevel wallDamage,
+    List<ImageInfo>? wallDamageImages,
     required DamageLevel corrosionOrTermite,
+    List<ImageInfo>? corrosionOrTermiteImages,
     required DamageLevel roofTile,
+    List<ImageInfo>? roofTileImages,
     required DamageLevel windowFrame,
+    List<ImageInfo>? windowFrameImages,
     required DamageLevel exteriorWet,
+    List<ImageInfo>? exteriorWetImages,
     required DamageLevel exteriorDry,
+    List<ImageInfo>? exteriorDryImages,
     required DamageLevel signageAndEquipment,
+    List<ImageInfo>? signageAndEquipmentImages,
     required DamageLevel outdoorStairs,
+    List<ImageInfo>? outdoorStairsImages,
     required DamageLevel others,
+    List<ImageInfo>? othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
     required DamageLevel overallStructuralScore,
@@ -115,18 +139,31 @@ class InvestigationRecord with _$InvestigationRecord {
         content: InvestigationContent(
           exteriorInspectionScore: 5,
           adjacentBuildingRisk: DamageLevel.A,
+          adjacentBuildingRiskImages: null,
           unevenSettlement: DamageLevel.A,
+          unevenSettlementImages: null,
           foundationDamage: DamageLevel.A,
+          foundationDamageImages: null,
           firstFloorTilt: DamageLevel.A,
+          firstFloorTiltImages: null,
           wallDamage: DamageLevel.A,
+          wallDamageImages: null,
           corrosionOrTermite: DamageLevel.A,
+          corrosionOrTermiteImages: null,
           roofTile: DamageLevel.A,
+          roofTileImages: null,
           windowFrame: DamageLevel.A,
+          windowFrameImages: null,
           exteriorWet: DamageLevel.A,
+          exteriorWetImages: null,
           exteriorDry: DamageLevel.A,
+          exteriorDryImages: null,
           signageAndEquipment: DamageLevel.A,
+          signageAndEquipmentImages: null,
           outdoorStairs: DamageLevel.A,
+          outdoorStairsImages: null,
           others: DamageLevel.A,
+          othersImages: null,
           overallExteriorScore: "",
           overallStructuralScore: DamageLevel.A,
           overallFallingObjectScore: DamageLevel.A,
