@@ -24,6 +24,117 @@ class InvestigationViewModel extends ChangeNotifier {
     );
   }
 
+  void updateImageField(String fieldName, List<String> paths) {
+    if (_record == null) return;
+
+    // 新しい ImageInfo リストを作成
+    final updatedImages = paths
+        .map((path) => ImageInfo(localPath: path, firebaseUrl: ''))
+        .toList();
+
+    // content のコピーを作成
+    final updatedContent = _record!.content.copyWith(
+      // フィールド名によって更新するプロパティを選択
+      adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
+          ? updatedImages
+          : _record!.content.adjacentBuildingRiskImages,
+      unevenSettlementImages: fieldName == 'unevenSettlementImages'
+          ? updatedImages
+          : _record!.content.unevenSettlementImages,
+      foundationDamageImages: fieldName == 'foundationDamageImages'
+          ? updatedImages
+          : _record!.content.foundationDamageImages,
+      firstFloorTiltImages: fieldName == 'firstFloorTiltImages'
+          ? updatedImages
+          : _record!.content.firstFloorTiltImages,
+      wallDamageImages: fieldName == 'wallDamageImages'
+          ? updatedImages
+          : _record!.content.wallDamageImages,
+      corrosionOrTermiteImages: fieldName == 'corrosionOrTermiteImages'
+          ? updatedImages
+          : _record!.content.corrosionOrTermiteImages,
+      roofTileImages: fieldName == 'roofTileImages'
+          ? updatedImages
+          : _record!.content.roofTileImages,
+      windowFrameImages: fieldName == 'windowFrameImages'
+          ? updatedImages
+          : _record!.content.windowFrameImages,
+      exteriorWetImages: fieldName == 'exteriorWetImages'
+          ? updatedImages
+          : _record!.content.exteriorWetImages,
+      exteriorDryImages: fieldName == 'exteriorDryImages'
+          ? updatedImages
+          : _record!.content.exteriorDryImages,
+      signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
+          ? updatedImages
+          : _record!.content.signageAndEquipmentImages,
+      outdoorStairsImages: fieldName == 'outdoorStairsImages'
+          ? updatedImages
+          : _record!.content.outdoorStairsImages,
+      othersImages: fieldName == 'othersImages'
+          ? updatedImages
+          : _record!.content.othersImages,
+    );
+
+    _record = _record!.copyWith(content: updatedContent);
+    notifyListeners();
+  }
+
+  void updateImageFieldFirebase(String fieldName, List<String> firebaseUrls) {
+    if (_record == null) return;
+
+    // 新しい ImageInfo リストを作成
+    final updatedImages = firebaseUrls
+        .map((url) => ImageInfo(localPath: '', firebaseUrl: url))
+        .toList();
+
+    // content のコピーを作成
+    final updatedContent = _record!.content.copyWith(
+      adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
+          ? updatedImages
+          : _record!.content.adjacentBuildingRiskImages,
+      unevenSettlementImages: fieldName == 'unevenSettlementImages'
+          ? updatedImages
+          : _record!.content.unevenSettlementImages,
+      foundationDamageImages: fieldName == 'foundationDamageImages'
+          ? updatedImages
+          : _record!.content.foundationDamageImages,
+      firstFloorTiltImages: fieldName == 'firstFloorTiltImages'
+          ? updatedImages
+          : _record!.content.firstFloorTiltImages,
+      wallDamageImages: fieldName == 'wallDamageImages'
+          ? updatedImages
+          : _record!.content.wallDamageImages,
+      corrosionOrTermiteImages: fieldName == 'corrosionOrTermiteImages'
+          ? updatedImages
+          : _record!.content.corrosionOrTermiteImages,
+      roofTileImages: fieldName == 'roofTileImages'
+          ? updatedImages
+          : _record!.content.roofTileImages,
+      windowFrameImages: fieldName == 'windowFrameImages'
+          ? updatedImages
+          : _record!.content.windowFrameImages,
+      exteriorWetImages: fieldName == 'exteriorWetImages'
+          ? updatedImages
+          : _record!.content.exteriorWetImages,
+      exteriorDryImages: fieldName == 'exteriorDryImages'
+          ? updatedImages
+          : _record!.content.exteriorDryImages,
+      signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
+          ? updatedImages
+          : _record!.content.signageAndEquipmentImages,
+      outdoorStairsImages: fieldName == 'outdoorStairsImages'
+          ? updatedImages
+          : _record!.content.outdoorStairsImages,
+      othersImages: fieldName == 'othersImages'
+          ? updatedImages
+          : _record!.content.othersImages,
+    );
+
+    _record = _record!.copyWith(content: updatedContent);
+    notifyListeners();
+  }
+
   void setRecord(InvestigationRecord record) {
     _record = record;
     _recalculateScores();
