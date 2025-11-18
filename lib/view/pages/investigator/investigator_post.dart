@@ -1,5 +1,7 @@
 import 'post/wooden/wooden_research_unit.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import '../../../view_model/location_view_model.dart';
 
 class InvestigatorPost extends StatelessWidget {
   const InvestigatorPost({super.key});
@@ -16,7 +18,14 @@ class InvestigatorPost extends StatelessWidget {
                   Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) => const WoodenResearchUnit(),
+                      builder: (_) => MultiProvider(
+                        providers: [
+                          ChangeNotifierProvider.value(
+                            value: context.read<LocationViewModel>(),
+                          ),
+                        ],
+                        child: const WoodenResearchUnit(),
+                      ),
                     ),
                   );
                 },

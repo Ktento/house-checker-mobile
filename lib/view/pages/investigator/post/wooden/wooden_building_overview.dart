@@ -1,122 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_survery.dart';
-import '../../../../../models/investigator_post_model.dart';
-import '../../../../../controllers/investigator_post_controller.dart';
-import 'package:house_check_mobile/utils/helpers/dialog.dart';
+import 'package:provider/provider.dart';
+import '../../../../../view_model/Form_view_model.dart';
+import '../../../../../view_model/investigator_post_view_model.dart';
 import '../../../../wigets/choose_picker.dart';
-import '../../../../../controllers/loacation_controller.dart';
 
-class WoodenBuildigOverview extends StatefulWidget {
-  const WoodenBuildigOverview({super.key, required this.unit});
-  final InvestigationUnit unit;
-  @override
-  State<WoodenBuildigOverview> createState() => _WoodenBuildigOverviewState();
-}
-
-class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
-  final _formKey = GlobalKey<FormState>();
-  final controller = InvestigatorPostController();
-  final _locationController = LocationControllerMVC();
-  void _submit() {
-    if (_formKey.currentState!.validate()) {
-      final buildingname = controller.buildingNameController.text.trim();
-      final buildingnumber = controller.buildingNumberController.text.trim();
-      final address = controller.addressController.text.trim();
-      final mapnumber = controller.mapNumberController.text.trim();
-      final buildinguse = controller.buildingUseController.text.trim();
-      final structure = controller.structureController.text.trim();
-      final floors = controller.floorsController.text.trim();
-      final scale = controller.scaleController.text.trim();
-
-      if (buildingname.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「建築物名称」が未入力です。');
-        return;
-      }
-      if (buildingnumber.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「建築物番号」が未入力です。');
-        return;
-      }
-      if (address.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「建築物所在地」が未入力です。');
-        return;
-      }
-      if (mapnumber.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「住宅地図整理番号」が未入力です。');
-        return;
-      }
-      if (buildinguse.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「建築用途」が未入力です。');
-        return;
-      }
-      if (structure.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「構造形式」が未入力です。');
-        return;
-      }
-      if (floors.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「階数」が未入力です。');
-        return;
-      }
-      if (scale.isEmpty) {
-        DialogHelper.showErrorDialog(context, '「建築物規模」が未入力です。');
-        return;
-      }
-      BuildingOverview buildingOverview = controller.createBuildingOverview();
-      print('建築物名: ${buildingOverview.buildingName}');
-      Navigator.push(
-        context,
-        CupertinoPageRoute(
-            builder: (context) => WoodenSurvey(
-                unit: widget.unit, buildingOverview: buildingOverview)),
-      );
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _locationController
-        .getAddressFromLatLng(widget.unit.currentPostion)
-        .then((placemark) {
-      setState(() {
-        if (placemark != null) {
-          controller.addressController.text =
-              "${placemark.street}".replaceAll("日本、", "");
-        }
-      });
-    });
-  }
-
-  Widget _buildCupertinoTextField({
-    required String label,
-    required TextEditingController controller,
-    bool numeric = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label,
-            style: const TextStyle(
-                fontSize: 14,
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.w500)),
-        const SizedBox(height: 4),
-        CupertinoTextField(
-          controller: controller,
-          keyboardType: numeric ? TextInputType.number : TextInputType.text,
-          placeholder: '$label を入力',
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-          decoration: BoxDecoration(
-            color: CupertinoColors.systemGrey6,
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        const SizedBox(height: 16),
-      ],
-    );
-  }
+class WoodenBuildingOverview extends StatelessWidget {
+  const WoodenBuildingOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<InvestigationViewModel>();
+    final inputVM = context.read<FormViewModel>();
+    print(viewModel.record!.unit.currentPosition);
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text('木造建築物概要入力'),
@@ -124,7 +20,6 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
       ),
       child: SafeArea(
         child: Form(
-          key: _formKey,
           child: CupertinoScrollbar(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
@@ -134,16 +29,15 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                   // --- 各入力項目 ---
                   _buildCupertinoTextField(
                       label: '建築物名称',
-                      controller: controller.buildingNameController),
+                      controller: inputVM.buildingNameController),
                   _buildCupertinoTextField(
                       label: '建築物番号',
-                      controller: controller.buildingNumberController),
+                      controller: inputVM.buildingNumberController),
                   _buildCupertinoTextField(
-                      label: '建築物所在地',
-                      controller: controller.addressController),
+                      label: '建築物所在地', controller: inputVM.addressController),
                   _buildCupertinoTextField(
                       label: '住宅地図整理番号',
-                      controller: controller.mapNumberController),
+                      controller: inputVM.mapNumberController),
                   const Text(
                     '建築物用途',
                     style: TextStyle(
@@ -172,7 +66,7 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                     ],
                     initialValue: '戸建て専用住宅',
                     onChanged: (value) {
-                      controller.buildingUseController.text = value;
+                      inputVM.buildingUseController.text = value;
                     },
                   ),
                   const Text(
@@ -192,13 +86,13 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                     ],
                     initialValue: '在来軸組法',
                     onChanged: (value) {
-                      controller.structureController.text = value;
+                      inputVM.structureController.text = value;
                     },
                   ),
                   _buildCupertinoTextField(
-                      label: '階層', controller: controller.floorsController),
+                      label: '階層', controller: inputVM.floorsController),
                   _buildCupertinoTextField(
-                      label: '規模', controller: controller.scaleController),
+                      label: '規模', controller: inputVM.scaleController),
 
                   const SizedBox(height: 30),
 
@@ -217,7 +111,35 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
                           const SizedBox(width: 40),
                           CupertinoButton.filled(
                             onPressed: () {
-                              _submit();
+                              viewModel.updateOverview(
+                                buildingName:
+                                    inputVM.buildingNameController.text,
+                                buildingNumber:
+                                    inputVM.buildingNumberController.text,
+                                address: inputVM.addressController.text,
+                                mapNumber: inputVM.mapNumberController.text,
+                                buildingUse: inputVM.buildingUseController.text,
+                                structure: inputVM.structureController.text,
+                                floors: int.tryParse(
+                                        inputVM.floorsController.text) ??
+                                    0,
+                                scale: inputVM.scaleController.text,
+                              );
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (_) => MultiProvider(
+                                    providers: [
+                                      ChangeNotifierProvider.value(
+                                          value: context
+                                              .read<InvestigationViewModel>()),
+                                      ChangeNotifierProvider.value(
+                                          value: context.read<FormViewModel>()),
+                                    ],
+                                    child: WoodenSurvery(),
+                                  ),
+                                ),
+                              );
                             },
                             borderRadius: BorderRadius.circular(12),
                             child: const Text('次へ'),
@@ -232,4 +154,33 @@ class _WoodenBuildigOverviewState extends State<WoodenBuildigOverview> {
       ),
     );
   }
+}
+
+Widget _buildCupertinoTextField({
+  required String label,
+  required TextEditingController controller,
+  bool numeric = false,
+}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(label,
+          style: const TextStyle(
+              fontSize: 14,
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontWeight: FontWeight.w500)),
+      const SizedBox(height: 4),
+      CupertinoTextField(
+        controller: controller,
+        keyboardType: numeric ? TextInputType.number : TextInputType.text,
+        placeholder: '$label を入力',
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+        decoration: BoxDecoration(
+          color: CupertinoColors.systemGrey6,
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      const SizedBox(height: 16),
+    ],
+  );
 }
