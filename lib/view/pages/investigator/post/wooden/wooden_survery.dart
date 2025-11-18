@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_check.dart';
 import 'package:house_check_mobile/utils/helpers/dialog.dart';
 import '../../../../wigets/choose_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
@@ -10,7 +11,15 @@ import '../../../../../utils/helpers/damageLevel.dart';
 
 class WoodenSurvery extends StatelessWidget {
   const WoodenSurvery({super.key});
+  XFile? _image;
+  final ImagePicker _picker = ImagePicker();
 
+  // 画像選択関数
+  Future<void> pickImage() async {
+    final picked = await _picker.pickImage(source: ImageSource.gallery);
+    if (picked == null) return;
+    setState(() => _image = picked);
+  }
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<InvestigationViewModel>();
@@ -63,6 +72,11 @@ class WoodenSurvery extends StatelessWidget {
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.w500),
                   ),
+                                        ImagePickerButton(
+                        width: 40,
+                        height: 40,
+                        onImagePicked: (picked) {},
+                      ),
                   const SizedBox(height: 4),
                   CupertinoDropdown(
                     options: [
@@ -350,7 +364,43 @@ class WoodenSurvery extends StatelessWidget {
                       inputVM.othersController.text = value;
                     },
                   ),
-                  _buildCupertinoTextField(
+                  ...surveyItems.map((item) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item['label'] as String,
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.w500),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CupertinoDropdown(
+                                options: (item['options'] as List<String>),
+                                initialValue:
+                                    (item['options'] as List<String>).first,
+                                onChanged: (value) {
+                                  (item['controller'] as TextEditingController)
+                                      .text = value;
+                                },
+                              ),
+                            ),
+                            ImagePickerButton(
+                              width: 40,
+                              height: 40,
+                              onImagePicked: (picked) {},
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                      ],
+                    );
+                  }).toList(),
+                  buildCupertinoTextField(
                       label: 'その他の内容',
                       controller: inputVM.otherRemarksController),
 
