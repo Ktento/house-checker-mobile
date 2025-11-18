@@ -8,10 +8,16 @@ import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
+import '../../../../../view/wigets/image_pickere.dart';
 
-class WoodenSurvery extends StatelessWidget {
-  const WoodenSurvery({super.key});
+class WoodenSurvery extends StatefulWidget {
+  @override
+  State<WoodenSurvery> createState() => _WoodenSurveryState();
+}
+
+class _WoodenSurveryState extends State<WoodenSurvery> {
   XFile? _image;
+
   final ImagePicker _picker = ImagePicker();
 
   // 画像選択関数
@@ -20,6 +26,7 @@ class WoodenSurvery extends StatelessWidget {
     if (picked == null) return;
     setState(() => _image = picked);
   }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<InvestigationViewModel>();
@@ -61,6 +68,10 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.exteriorInspectionScoreController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      print(file?.path);
+                    },
                   ),
                   _buildCupertinoTextField(
                       label: '外観調査備考',
@@ -72,11 +83,6 @@ class WoodenSurvery extends StatelessWidget {
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.w500),
                   ),
-                                        ImagePickerButton(
-                        width: 40,
-                        height: 40,
-                        onImagePicked: (picked) {},
-                      ),
                   const SizedBox(height: 4),
                   CupertinoDropdown(
                     options: [
@@ -92,7 +98,15 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.adjacentBuildingRiskController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'adjacentBuildingRiskImages', [file.path]);
+                      }
+                    },
                   ),
+
                   const Text(
                     '構造躯体の不同沈下',
                     style: TextStyle(
@@ -114,6 +128,13 @@ class WoodenSurvery extends StatelessWidget {
                         : inputVM.unevenSettlementController.text,
                     onChanged: (value) {
                       inputVM.unevenSettlementController.text = value;
+                    },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'unevenSettlementImages', [file.path]);
+                      }
                     },
                   ),
                   const Text(
@@ -138,6 +159,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.foundationDamageController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'foundationDamageImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     '建築物の1階の傾斜',
@@ -161,6 +189,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.firstFloorTiltController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'firstFloorTiltImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     '壁の被害',
@@ -182,6 +217,13 @@ class WoodenSurvery extends StatelessWidget {
                         : inputVM.wallDamageController.text,
                     onChanged: (value) {
                       inputVM.wallDamageController.text = value;
+                    },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel
+                            .updateImageField('wallDamageImages', [file.path]);
+                      }
                     },
                   ),
                   const Text(
@@ -206,6 +248,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.corrosionOrTermiteController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'corrosionOrTermiteImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     '瓦',
@@ -229,6 +278,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.roofOrSignboardRiskController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'roofOrSignboardRiskImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     '窓枠・窓ガラス',
@@ -250,6 +306,13 @@ class WoodenSurvery extends StatelessWidget {
                         : inputVM.windowFrameController.text,
                     onChanged: (value) {
                       inputVM.windowFrameController.text = value;
+                    },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel
+                            .updateImageField('windowFrameImages', [file.path]);
+                      }
                     },
                   ),
                   const Text(
@@ -273,6 +336,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.exteriorWetController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel
+                            .updateImageField('exteriorWetImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     '外装材　乾式の場合',
@@ -294,6 +364,13 @@ class WoodenSurvery extends StatelessWidget {
                         : inputVM.exteriorDryController.text,
                     onChanged: (value) {
                       inputVM.exteriorDryController.text = value;
+                    },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel
+                            .updateImageField('exteriorDryImages', [file.path]);
+                      }
                     },
                   ),
                   const Text(
@@ -318,6 +395,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.signageAndEquipmentController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'signageAndEquipmentImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     '屋外階段',
@@ -341,6 +425,13 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.outdoorStairsController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField(
+                            'outdoorStairsImages', [file.path]);
+                      }
+                    },
                   ),
                   const Text(
                     'その他',
@@ -363,44 +454,14 @@ class WoodenSurvery extends StatelessWidget {
                     onChanged: (value) {
                       inputVM.othersController.text = value;
                     },
+                    showImagePicker: true,
+                    onImagePicked: (file) {
+                      if (file != null) {
+                        viewModel.updateImageField('othersImages', [file.path]);
+                      }
+                    },
                   ),
-                  ...surveyItems.map((item) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item['label'] as String,
-                          style: const TextStyle(
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontWeight: FontWeight.w500),
-                        ),
-                        const SizedBox(height: 4),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CupertinoDropdown(
-                                options: (item['options'] as List<String>),
-                                initialValue:
-                                    (item['options'] as List<String>).first,
-                                onChanged: (value) {
-                                  (item['controller'] as TextEditingController)
-                                      .text = value;
-                                },
-                              ),
-                            ),
-                            ImagePickerButton(
-                              width: 40,
-                              height: 40,
-                              onImagePicked: (picked) {},
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                      ],
-                    );
-                  }).toList(),
-                  buildCupertinoTextField(
+                  _buildCupertinoTextField(
                       label: 'その他の内容',
                       controller: inputVM.otherRemarksController),
 
