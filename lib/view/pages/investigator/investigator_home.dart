@@ -3,17 +3,25 @@ import 'investigator_info.dart';
 import 'investigator_map.dart';
 import 'investigator_post.dart';
 import 'investigator_total.dart';
+import 'package:provider/provider.dart';
+import '../../../view_model/location_view_model.dart';
+import '../../../view_model/map_view_model.dart';
 
-class InvestigatorHomePage extends StatefulWidget {
+class InvestigatorHomePage extends StatelessWidget {
   const InvestigatorHomePage({super.key});
 
   @override
-  State<InvestigatorHomePage> createState() => _InvestigatorHomePageState();
-}
-
-class _InvestigatorHomePageState extends State<InvestigatorHomePage> {
-  @override
   Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LocationViewModel()),
+        ChangeNotifierProvider(create: (_) => MapViewModel()),
+      ],
+      child: tabMenu(),
+    );
+  }
+
+  CupertinoTabScaffold tabMenu() {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         items: const [
