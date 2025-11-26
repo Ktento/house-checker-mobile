@@ -162,7 +162,6 @@ class DangerSurveyFormPage extends StatelessWidget {
                     onPressed: () async {
                       await uploadAllImages(viewModel);
                       sendRecord(record);
-                      print(record.content);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),
