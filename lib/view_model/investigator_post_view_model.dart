@@ -77,16 +77,28 @@ class InvestigationViewModel extends ChangeNotifier {
     );
 
     _record = _record!.copyWith(content: updatedContent);
+    print(_record);
     notifyListeners();
   }
 
-  void updateImageFieldFirebase(String fieldName, List<String> firebaseUrls) {
-    if (_record == null) return;
+  void updateImageFieldFirebase(
+      String fieldName, List<String> localUrls, List<String> uploadUrls) {
+    if (_record == null) {
+      print("エラー(updateImageFieldFirebase)：渡されたrecordがnullです");
+      return;
+    }
 
-    // 新しい ImageInfo リストを作成
-    final updatedImages = firebaseUrls
-        .map((url) => ImageInfo(localPath: '', firebaseUrl: url))
-        .toList();
+    int count = localUrls.length;
+    if (localUrls.length != uploadUrls.length) {
+      print("エラー(updateImageFieldFirebase):localUrlとuploadUrlの個数が違います");
+      return;
+    }
+    final updatedImages = List.generate(count, (i) {
+      return ImageInfo(
+          localPath: localUrls[i], // i番目のローカルパス
+          firebaseUrl: uploadUrls[i] // i番目のFirebase URL
+          );
+    });
 
     // content のコピーを作成
     final updatedContent = _record!.content.copyWith(
