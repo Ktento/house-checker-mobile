@@ -20,7 +20,6 @@ Future<List<MarkerData>> getMarkers(LatLng now) async {
     if (response.statusCode == 200) {
       print('送信成功: ${response.body}');
       final jsonResponse = jsonDecode(response.body);
-      print(jsonResponse);
 
       List<dynamic> data = jsonResponse['data'];
       final List<MarkerData> results =
