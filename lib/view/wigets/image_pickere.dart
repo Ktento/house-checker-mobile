@@ -36,7 +36,7 @@ class _ImagePickerButtonState extends State<ImagePickerButton> {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(5),
       color: CupertinoColors.activeBlue,
       child: _image != null
           ? Image.file(

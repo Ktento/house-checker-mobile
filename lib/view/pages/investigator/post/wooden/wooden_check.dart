@@ -8,7 +8,8 @@ import '../../../../wigets/choose_picker.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
-import '../../../../../models/investigator_model.dart';
+import '../../../../../utils/helpers/damageLevel.dart';
+import '../../../../../utils/services/image_upload.dart';
 
 class DangerSurveyFormPage extends StatelessWidget {
   const DangerSurveyFormPage({super.key});
@@ -75,37 +76,39 @@ class DangerSurveyFormPage extends StatelessWidget {
                 _buildRow(
                   context,
                   '隣接建築物・周辺の地盤の破壊による危険度',
-                  record.content.adjacentBuildingRisk.name,
+                  adjacentBuildingRiskToLabel(
+                      record.content.adjacentBuildingRisk.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '構造躯体の不同沈下',
-                  record.content.unevenSettlement.name,
+                  unevenSettlementToLabel(record.content.unevenSettlement.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '基礎の被害',
-                  record.content.foundationDamage.name,
+                  foundationDamageToLabel(record.content.foundationDamage.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '建築物の1階の傾斜',
-                  record.content.firstFloorTilt.name,
+                  firstFloorTiltToLabel(record.content.firstFloorTilt.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '壁の被害',
-                  record.content.wallDamage.name,
+                  wallDamageToLabel(record.content.wallDamage.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '腐食・蟻害の有無',
-                  record.content.corrosionOrTermite.name,
+                  corrosionOrTermiteToLabel(
+                      record.content.corrosionOrTermite.name),
                   labelWidth: 180,
                 ),
                 SizedBox(
@@ -116,14 +119,23 @@ class DangerSurveyFormPage extends StatelessWidget {
                         inherit: false,
                         fontSize: 17,
                         color: const Color.fromARGB(255, 140, 140, 246))),
-                _buildRow(context, '瓦', record.content.roofTile.name),
-                _buildRow(context, '窓枠・窓ガラス', record.content.windowFrame.name),
-                _buildRow(context, '外装材（湿式）', record.content.exteriorWet.name),
-                _buildRow(context, '外装材（乾式）', record.content.exteriorDry.name),
+                _buildRow(context, '瓦',
+                    roofTileToLabel(record.content.roofTile.name)),
+                _buildRow(context, '窓枠・窓ガラス',
+                    windowFrameToLabel(record.content.windowFrame.name)),
+                _buildRow(context, '外装材（湿式）',
+                    exteriorWetToLabel(record.content.exteriorWet.name)),
+                _buildRow(context, '外装材（乾式）',
+                    exteriorDryToLabel(record.content.exteriorDry.name)),
                 _buildRow(
-                    context, '看板・機器類', record.content.signageAndEquipment.name),
-                _buildRow(context, '屋外階段', record.content.outdoorStairs.name),
-                _buildRow(context, 'その他', record.content.others.name),
+                    context,
+                    '看板・機器類',
+                    signageAndEquipmentToLabel(
+                        record.content.signageAndEquipment.name)),
+                _buildRow(context, '屋外階段',
+                    outdoorStairsToLabel(record.content.outdoorStairs.name)),
+                _buildRow(
+                    context, 'その他', othersToLabel(record.content.others.name)),
               ]),
               _buildSection(context, '危険度評価', [
                 _buildRow(context, '一見して危険と判断される',
@@ -147,7 +159,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   CupertinoButton.filled(
-                    onPressed: () {
+                    onPressed: () async {
+                      await uploadAllImages(viewModel);
                       sendRecord(record);
                     },
                     borderRadius: BorderRadius.circular(12),
