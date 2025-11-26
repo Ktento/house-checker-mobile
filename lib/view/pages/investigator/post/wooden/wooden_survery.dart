@@ -31,7 +31,7 @@ class _WoodenSurveryState extends State<WoodenSurvery> {
   Widget build(BuildContext context) {
     final viewModel = context.read<InvestigationViewModel>();
     final inputVM = context.read<FormViewModel>();
-    print(inputVM.adjacentBuildingRiskController.text);
+
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text('調査内容入力'),
@@ -70,7 +70,7 @@ class _WoodenSurveryState extends State<WoodenSurvery> {
                     },
                     showImagePicker: true,
                     onImagePicked: (file) {
-                      print(file?.path);
+                      // print(file?.path);
                     },
                   ),
                   _buildCupertinoTextField(
