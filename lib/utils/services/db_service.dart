@@ -6,19 +6,18 @@ void sendRecord(InvestigationRecord record) async {
   try {
     final url = Uri.parse(
         'https://script.google.com/macros/s/AKfycbxm62dd1yIWL6WWFN4Hr5J1hzjME79WUFYle5AY91kfsfrlmNYQimCaCWdlXLV_ocb3/exec');
-    // 送信前に JSON を確認
-    final jsonBody = jsonEncode(record.toJson());
-    print("送信する JSON:\n$jsonBody");
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(record.toJson()),
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode != 200 || response.statusCode != 302) {
       throw Exception('送信失敗: ${response.body}');
+    } else {
+      print("送信成功");
     }
   } catch (e) {
-    print("データ保存処理のエラー:{$e}");
+    // print("データ保存処理のエラー:{$e}");
   }
 }

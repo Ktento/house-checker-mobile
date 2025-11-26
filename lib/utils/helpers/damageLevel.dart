@@ -9,7 +9,6 @@ DamageLevel stringToDamageLevel(String value) {
 
 // 隣接建築物・周辺地盤の危険
 String adjacentBuildingRiskToLabel(String level) {
-  print(level);
   switch (level) {
     case "DamageLevel.A":
       return 'A.危険無し';
