@@ -20,11 +20,11 @@ class DashboardData with _$DashboardData {
     // 判定結果の件数 red yellow greenの件数
     required CheckSituation checksituation,
 
-    // 判定結果の割合　
+    // 判定結果の割合
     required CheckSituationRatio checksituationRatio,
 
     // 日別判定件数 (キー: 日付, 値: 件数)
-    required Map<String, int> datecount,
+    required Map<String, DailyCheckCount> dateAnalysis,
 
     // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
     required Map<String, RegionAnalysis> regionanalysis,
@@ -75,4 +75,15 @@ class RegionAnalysis with _$RegionAnalysis {
 
   factory RegionAnalysis.fromJson(Map<String, dynamic> json) =>
       _$RegionAnalysisFromJson(json);
+}
+
+@freezed
+class DailyCheckCount with _$DailyCheckCount {
+  const factory DailyCheckCount({
+    @JsonKey(name: "totalbuilding") required int totalBuilding,
+    @JsonKey(name: "checkcomplete") required int checkComplete,
+  }) = _DailyCheckCount;
+
+  factory DailyCheckCount.fromJson(Map<String, dynamic> json) =>
+      _$DailyCheckCountFromJson(json);
 }

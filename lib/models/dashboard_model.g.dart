@@ -13,15 +13,18 @@ _$DashboardDataImpl _$$DashboardDataImplFromJson(Map<String, dynamic> json) =>
       dangerbuilding: (json['dangerbuilding'] as num?)?.toInt() ?? 0,
       checkwaiting: (json['checkwaiting'] as num?)?.toInt() ?? 0,
       completionRatioTotal:
-          (json['completionRatioTotal'] as num?)?.toDouble() ?? 0.0,
+          (json['completionRatioTotal'] as num?)?.toDouble() ?? 10.0,
       dangerRatioCompleted:
-          (json['dangerRatioCompleted'] as num?)?.toDouble() ?? 0.0,
+          (json['dangerRatioCompleted'] as num?)?.toDouble() ?? 8.0,
       workercount: Map<String, int>.from(json['workercount'] as Map),
       checksituation: CheckSituation.fromJson(
           json['checksituation'] as Map<String, dynamic>),
       checksituationRatio: CheckSituationRatio.fromJson(
           json['checksituationRatio'] as Map<String, dynamic>),
-      datecount: Map<String, int>.from(json['datecount'] as Map),
+      dateAnalysis: (json['dateAnalysis'] as Map<String, dynamic>).map(
+        (k, e) =>
+            MapEntry(k, DailyCheckCount.fromJson(e as Map<String, dynamic>)),
+      ),
       regionanalysis: (json['regionanalysis'] as Map<String, dynamic>).map(
         (k, e) =>
             MapEntry(k, RegionAnalysis.fromJson(e as Map<String, dynamic>)),
@@ -39,7 +42,7 @@ Map<String, dynamic> _$$DashboardDataImplToJson(_$DashboardDataImpl instance) =>
       'workercount': instance.workercount,
       'checksituation': instance.checksituation,
       'checksituationRatio': instance.checksituationRatio,
-      'datecount': instance.datecount,
+      'dateAnalysis': instance.dateAnalysis,
       'regionanalysis': instance.regionanalysis,
     };
 
@@ -93,4 +96,18 @@ Map<String, dynamic> _$$RegionAnalysisImplToJson(
       'checkcomplete': instance.checkcomplete,
       'dangerbuilding': instance.dangerbuilding,
       'checkwaiting': instance.checkwaiting,
+    };
+
+_$DailyCheckCountImpl _$$DailyCheckCountImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DailyCheckCountImpl(
+      totalBuilding: (json['totalbuilding'] as num).toInt(),
+      checkComplete: (json['checkcomplete'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$DailyCheckCountImplToJson(
+        _$DailyCheckCountImpl instance) =>
+    <String, dynamic>{
+      'totalbuilding': instance.totalBuilding,
+      'checkcomplete': instance.checkComplete,
     };

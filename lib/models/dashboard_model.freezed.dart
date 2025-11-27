@@ -35,7 +35,8 @@ mixin _$DashboardData {
       throw _privateConstructorUsedError; // 判定結果の割合
   CheckSituationRatio get checksituationRatio =>
       throw _privateConstructorUsedError; // 日別判定件数 (キー: 日付, 値: 件数)
-  Map<String, int> get datecount =>
+  @JsonKey(name: "dateAnalysis")
+  Map<String, DailyCheckCount> get dateAnalysis =>
       throw _privateConstructorUsedError; // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
   Map<String, RegionAnalysis> get regionanalysis =>
       throw _privateConstructorUsedError;
@@ -66,7 +67,7 @@ abstract class $DashboardDataCopyWith<$Res> {
       Map<String, int> workercount,
       CheckSituation checksituation,
       CheckSituationRatio checksituationRatio,
-      Map<String, int> datecount,
+      @JsonKey(name: "dateAnalysis") Map<String, DailyCheckCount> dateAnalysis,
       Map<String, RegionAnalysis> regionanalysis});
 
   $CheckSituationCopyWith<$Res> get checksituation;
@@ -97,7 +98,7 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
     Object? workercount = null,
     Object? checksituation = null,
     Object? checksituationRatio = null,
-    Object? datecount = null,
+    Object? dateAnalysis = null,
     Object? regionanalysis = null,
   }) {
     return _then(_value.copyWith(
@@ -137,10 +138,10 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
           ? _value.checksituationRatio
           : checksituationRatio // ignore: cast_nullable_to_non_nullable
               as CheckSituationRatio,
-      datecount: null == datecount
-          ? _value.datecount
-          : datecount // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>,
+      dateAnalysis: null == dateAnalysis
+          ? _value.dateAnalysis
+          : dateAnalysis // ignore: cast_nullable_to_non_nullable
+              as Map<String, DailyCheckCount>,
       regionanalysis: null == regionanalysis
           ? _value.regionanalysis
           : regionanalysis // ignore: cast_nullable_to_non_nullable
@@ -188,7 +189,7 @@ abstract class _$$DashboardDataImplCopyWith<$Res>
       Map<String, int> workercount,
       CheckSituation checksituation,
       CheckSituationRatio checksituationRatio,
-      Map<String, int> datecount,
+      @JsonKey(name: "dateAnalysis") Map<String, DailyCheckCount> dateAnalysis,
       Map<String, RegionAnalysis> regionanalysis});
 
   @override
@@ -219,7 +220,7 @@ class __$$DashboardDataImplCopyWithImpl<$Res>
     Object? workercount = null,
     Object? checksituation = null,
     Object? checksituationRatio = null,
-    Object? datecount = null,
+    Object? dateAnalysis = null,
     Object? regionanalysis = null,
   }) {
     return _then(_$DashboardDataImpl(
@@ -259,10 +260,10 @@ class __$$DashboardDataImplCopyWithImpl<$Res>
           ? _value.checksituationRatio
           : checksituationRatio // ignore: cast_nullable_to_non_nullable
               as CheckSituationRatio,
-      datecount: null == datecount
-          ? _value._datecount
-          : datecount // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>,
+      dateAnalysis: null == dateAnalysis
+          ? _value._dateAnalysis
+          : dateAnalysis // ignore: cast_nullable_to_non_nullable
+              as Map<String, DailyCheckCount>,
       regionanalysis: null == regionanalysis
           ? _value._regionanalysis
           : regionanalysis // ignore: cast_nullable_to_non_nullable
@@ -281,15 +282,16 @@ class _$DashboardDataImpl
       this.checkcomplete = 0,
       this.dangerbuilding = 0,
       this.checkwaiting = 0,
-      this.completionRatioTotal = 0.0,
-      this.dangerRatioCompleted = 0.0,
+      this.completionRatioTotal = 10.0,
+      this.dangerRatioCompleted = 8.0,
       required final Map<String, int> workercount,
       required this.checksituation,
       required this.checksituationRatio,
-      required final Map<String, int> datecount,
+      @JsonKey(name: "dateAnalysis")
+      required final Map<String, DailyCheckCount> dateAnalysis,
       required final Map<String, RegionAnalysis> regionanalysis})
       : _workercount = workercount,
-        _datecount = datecount,
+        _dateAnalysis = dateAnalysis,
         _regionanalysis = regionanalysis;
 
   factory _$DashboardDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -337,13 +339,14 @@ class _$DashboardDataImpl
   @override
   final CheckSituationRatio checksituationRatio;
 // 日別判定件数 (キー: 日付, 値: 件数)
-  final Map<String, int> _datecount;
+  final Map<String, DailyCheckCount> _dateAnalysis;
 // 日別判定件数 (キー: 日付, 値: 件数)
   @override
-  Map<String, int> get datecount {
-    if (_datecount is EqualUnmodifiableMapView) return _datecount;
+  @JsonKey(name: "dateAnalysis")
+  Map<String, DailyCheckCount> get dateAnalysis {
+    if (_dateAnalysis is EqualUnmodifiableMapView) return _dateAnalysis;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_datecount);
+    return EqualUnmodifiableMapView(_dateAnalysis);
   }
 
 // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
@@ -358,7 +361,7 @@ class _$DashboardDataImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DashboardData(totalbuilding: $totalbuilding, checkcomplete: $checkcomplete, dangerbuilding: $dangerbuilding, checkwaiting: $checkwaiting, completionRatioTotal: $completionRatioTotal, dangerRatioCompleted: $dangerRatioCompleted, workercount: $workercount, checksituation: $checksituation, checksituationRatio: $checksituationRatio, datecount: $datecount, regionanalysis: $regionanalysis)';
+    return 'DashboardData(totalbuilding: $totalbuilding, checkcomplete: $checkcomplete, dangerbuilding: $dangerbuilding, checkwaiting: $checkwaiting, completionRatioTotal: $completionRatioTotal, dangerRatioCompleted: $dangerRatioCompleted, workercount: $workercount, checksituation: $checksituation, checksituationRatio: $checksituationRatio, dateAnalysis: $dateAnalysis, regionanalysis: $regionanalysis)';
   }
 
   @override
@@ -375,7 +378,7 @@ class _$DashboardDataImpl
       ..add(DiagnosticsProperty('workercount', workercount))
       ..add(DiagnosticsProperty('checksituation', checksituation))
       ..add(DiagnosticsProperty('checksituationRatio', checksituationRatio))
-      ..add(DiagnosticsProperty('datecount', datecount))
+      ..add(DiagnosticsProperty('dateAnalysis', dateAnalysis))
       ..add(DiagnosticsProperty('regionanalysis', regionanalysis));
   }
 
@@ -403,7 +406,7 @@ class _$DashboardDataImpl
             (identical(other.checksituationRatio, checksituationRatio) ||
                 other.checksituationRatio == checksituationRatio) &&
             const DeepCollectionEquality()
-                .equals(other._datecount, _datecount) &&
+                .equals(other._dateAnalysis, _dateAnalysis) &&
             const DeepCollectionEquality()
                 .equals(other._regionanalysis, _regionanalysis));
   }
@@ -421,7 +424,7 @@ class _$DashboardDataImpl
       const DeepCollectionEquality().hash(_workercount),
       checksituation,
       checksituationRatio,
-      const DeepCollectionEquality().hash(_datecount),
+      const DeepCollectionEquality().hash(_dateAnalysis),
       const DeepCollectionEquality().hash(_regionanalysis));
 
   /// Create a copy of DashboardData
@@ -451,7 +454,8 @@ abstract class _DashboardData implements DashboardData {
           required final Map<String, int> workercount,
           required final CheckSituation checksituation,
           required final CheckSituationRatio checksituationRatio,
-          required final Map<String, int> datecount,
+          @JsonKey(name: "dateAnalysis")
+          required final Map<String, DailyCheckCount> dateAnalysis,
           required final Map<String, RegionAnalysis> regionanalysis}) =
       _$DashboardDataImpl;
 
@@ -478,7 +482,9 @@ abstract class _DashboardData implements DashboardData {
   @override
   CheckSituationRatio get checksituationRatio; // 日別判定件数 (キー: 日付, 値: 件数)
   @override
-  Map<String, int> get datecount; // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
+  @JsonKey(name: "dateAnalysis")
+  Map<String, DailyCheckCount>
+      get dateAnalysis; // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
   @override
   Map<String, RegionAnalysis> get regionanalysis;
 
@@ -1182,5 +1188,199 @@ abstract class _RegionAnalysis implements RegionAnalysis {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RegionAnalysisImplCopyWith<_$RegionAnalysisImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DailyCheckCount _$DailyCheckCountFromJson(Map<String, dynamic> json) {
+  return _DailyCheckCount.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DailyCheckCount {
+  @JsonKey(name: "totalbuilding")
+  int get totalBuilding => throw _privateConstructorUsedError;
+  @JsonKey(name: "checkcomplete")
+  int get checkComplete => throw _privateConstructorUsedError;
+
+  /// Serializes this DailyCheckCount to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DailyCheckCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DailyCheckCountCopyWith<DailyCheckCount> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DailyCheckCountCopyWith<$Res> {
+  factory $DailyCheckCountCopyWith(
+          DailyCheckCount value, $Res Function(DailyCheckCount) then) =
+      _$DailyCheckCountCopyWithImpl<$Res, DailyCheckCount>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "totalbuilding") int totalBuilding,
+      @JsonKey(name: "checkcomplete") int checkComplete});
+}
+
+/// @nodoc
+class _$DailyCheckCountCopyWithImpl<$Res, $Val extends DailyCheckCount>
+    implements $DailyCheckCountCopyWith<$Res> {
+  _$DailyCheckCountCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DailyCheckCount
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalBuilding = null,
+    Object? checkComplete = null,
+  }) {
+    return _then(_value.copyWith(
+      totalBuilding: null == totalBuilding
+          ? _value.totalBuilding
+          : totalBuilding // ignore: cast_nullable_to_non_nullable
+              as int,
+      checkComplete: null == checkComplete
+          ? _value.checkComplete
+          : checkComplete // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DailyCheckCountImplCopyWith<$Res>
+    implements $DailyCheckCountCopyWith<$Res> {
+  factory _$$DailyCheckCountImplCopyWith(_$DailyCheckCountImpl value,
+          $Res Function(_$DailyCheckCountImpl) then) =
+      __$$DailyCheckCountImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "totalbuilding") int totalBuilding,
+      @JsonKey(name: "checkcomplete") int checkComplete});
+}
+
+/// @nodoc
+class __$$DailyCheckCountImplCopyWithImpl<$Res>
+    extends _$DailyCheckCountCopyWithImpl<$Res, _$DailyCheckCountImpl>
+    implements _$$DailyCheckCountImplCopyWith<$Res> {
+  __$$DailyCheckCountImplCopyWithImpl(
+      _$DailyCheckCountImpl _value, $Res Function(_$DailyCheckCountImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DailyCheckCount
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalBuilding = null,
+    Object? checkComplete = null,
+  }) {
+    return _then(_$DailyCheckCountImpl(
+      totalBuilding: null == totalBuilding
+          ? _value.totalBuilding
+          : totalBuilding // ignore: cast_nullable_to_non_nullable
+              as int,
+      checkComplete: null == checkComplete
+          ? _value.checkComplete
+          : checkComplete // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DailyCheckCountImpl
+    with DiagnosticableTreeMixin
+    implements _DailyCheckCount {
+  const _$DailyCheckCountImpl(
+      {@JsonKey(name: "totalbuilding") required this.totalBuilding,
+      @JsonKey(name: "checkcomplete") required this.checkComplete});
+
+  factory _$DailyCheckCountImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DailyCheckCountImplFromJson(json);
+
+  @override
+  @JsonKey(name: "totalbuilding")
+  final int totalBuilding;
+  @override
+  @JsonKey(name: "checkcomplete")
+  final int checkComplete;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DailyCheckCount(totalBuilding: $totalBuilding, checkComplete: $checkComplete)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DailyCheckCount'))
+      ..add(DiagnosticsProperty('totalBuilding', totalBuilding))
+      ..add(DiagnosticsProperty('checkComplete', checkComplete));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DailyCheckCountImpl &&
+            (identical(other.totalBuilding, totalBuilding) ||
+                other.totalBuilding == totalBuilding) &&
+            (identical(other.checkComplete, checkComplete) ||
+                other.checkComplete == checkComplete));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, totalBuilding, checkComplete);
+
+  /// Create a copy of DailyCheckCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DailyCheckCountImplCopyWith<_$DailyCheckCountImpl> get copyWith =>
+      __$$DailyCheckCountImplCopyWithImpl<_$DailyCheckCountImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DailyCheckCountImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DailyCheckCount implements DailyCheckCount {
+  const factory _DailyCheckCount(
+          {@JsonKey(name: "totalbuilding") required final int totalBuilding,
+          @JsonKey(name: "checkcomplete") required final int checkComplete}) =
+      _$DailyCheckCountImpl;
+
+  factory _DailyCheckCount.fromJson(Map<String, dynamic> json) =
+      _$DailyCheckCountImpl.fromJson;
+
+  @override
+  @JsonKey(name: "totalbuilding")
+  int get totalBuilding;
+  @override
+  @JsonKey(name: "checkcomplete")
+  int get checkComplete;
+
+  /// Create a copy of DailyCheckCount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DailyCheckCountImplCopyWith<_$DailyCheckCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
