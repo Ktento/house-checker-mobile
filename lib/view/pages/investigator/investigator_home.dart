@@ -6,6 +6,7 @@ import 'investigator_total.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
 import '../../../view_model/map_view_model.dart';
+import '../../../view_model/dashboard_view_model.dart';
 
 class InvestigatorHomePage extends StatelessWidget {
   const InvestigatorHomePage({super.key});
@@ -16,6 +17,7 @@ class InvestigatorHomePage extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LocationViewModel()),
         ChangeNotifierProvider(create: (_) => MapViewModel()),
+        ChangeNotifierProvider(create: (_) => DashboardViewModel())
       ],
       child: tabMenu(),
     );

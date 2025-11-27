@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:latlong2/latlong.dart';
-import '../../models/map_model.dart';
+import '../../../models/map_model.dart';
 
 Future<List<MarkerData>> getMarkers(LatLng now) async {
   try {

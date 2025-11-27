@@ -3,7 +3,7 @@ import 'package:house_check_mobile/models/investigator_model.dart';
 import 'package:house_check_mobile/utils/helpers/damageLevel.dart';
 import 'dart:io';
 import 'package:path/path.dart' as p;
-import '../../view_model/investigator_post_view_model.dart';
+import '../../../view_model/investigator_post_view_model.dart';
 
 Future<void> uploadAllImages(InvestigationViewModel viewModel) async {
   final content = viewModel.record!.content;
