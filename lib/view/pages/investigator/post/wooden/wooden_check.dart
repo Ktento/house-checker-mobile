@@ -16,9 +16,10 @@ class DangerSurveyFormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<InvestigationViewModel>();
+    final viewModel = context.watch<InvestigationViewModel>();
     final inputVM = context.read<FormViewModel>();
     InvestigationRecord record = viewModel.record!;
+    print(record.content);
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('応急危険度 判定調査表'),

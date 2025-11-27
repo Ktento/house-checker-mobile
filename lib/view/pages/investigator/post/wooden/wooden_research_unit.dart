@@ -9,7 +9,6 @@ import './wooden_building_overview.dart';
 import '../../../../../view_model/location_view_model.dart';
 
 class WoodenResearchUnit extends StatelessWidget {
-
   const WoodenResearchUnit({super.key});
 
   @override
@@ -34,117 +33,210 @@ class WoodenResearchUnit extends StatelessWidget {
       child: Consumer2<InvestigationViewModel, FormViewModel>(
         builder: (context, viewModel, inputVM, _) {
           return CupertinoPageScaffold(
+            // [Design Change 1] 背景色をシステム標準のグループ背景色（薄いグレー）に変更
+            backgroundColor: CupertinoColors.systemGroupedBackground,
             navigationBar: const CupertinoNavigationBar(
               middle: Text('調査単位入力'),
             ),
             child: SafeArea(
-              child: Form(
-                child: CupertinoScrollbar(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // --- 調査日 ---
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '調査日: ${DateFormat('yyyy-MM-dd').format(inputVM.selectedDate)}',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: CupertinoColors.label,
-                              ),
-                            ),
-                            CupertinoButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () => _pickDate(context, inputVM),
-                              child: const Text('変更',
-                                  style: TextStyle(
-                                      color: CupertinoColors.activeBlue)),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-
-                        // --- 各入力項目 ---
-                        buildCupertinoInputField(
-                            label: '調査人氏名', controller: inputVM.nameController),
-                        buildCupertinoInputField(
-                            label: '調査人番号',
-                            controller: inputVM.investigatorNumberController),
-
-                        GestureDetector(
-                          onTap: () {
-                            _showPicker(
-                              context,
-                              inputVM.prefectures,
-                              inputVM.selectedPrefectureIndex,
-                              (newIndex) {
-                                inputVM.setSelectedPrefecture(newIndex);
-                              },
-                            );
-                          },
-                          child: AbsorbPointer(
-                            child: buildCupertinoInputField(
-                                label: '調査人都道府県名',
-                                controller:
-                                    inputVM.investigatorPrefectureController),
-                          ),
-                        ),
-                        buildCupertinoInputField(
-                            label: '整理番号',
-                            controller: inputVM.numberController),
-                        buildCupertinoInputField(
-                            label: '調査回数', controller: inputVM.countController),
-                        const SizedBox(height: 30),
-
-                        // --- 次の画面に行く ---
-                        Center(
-                          child: CupertinoButton.filled(
-                            onPressed: () {
-                              viewModel.updateUnit(
-                                buildingtype: "W",
-                                number: inputVM.numberController.text,
-                                date: inputVM.selectedDate,
-                                surveyCount: int.tryParse(
-                                        inputVM.countController.text) ??
-                                    0,
-                                investigator: [inputVM.nameController.text],
-                                investigatorPrefecture: [
-                                  inputVM.investigatorPrefectureController.text
-                                ],
-                                investigatorNumber: [
-                                  inputVM.investigatorNumberController.text
-                                ],
-                                currentPosition:
-                                    locationViewModel.currentPosition,
-                              );
-
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                  builder: (_) => MultiProvider(
-                                    providers: [
-                                      ChangeNotifierProvider.value(
-                                          value: context
-                                              .read<InvestigationViewModel>()),
-                                      ChangeNotifierProvider.value(
-                                          value: context.read<FormViewModel>()),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Form(
+                      child: ListView(
+                        children: [
+                          // [Design Change 2] FormSectionを使って設定画面のようなグループ化されたデザインに変更
+                          CupertinoFormSection.insetGrouped(
+                            header: const Text('基本情報'),
+                            children: [
+                              // --- 調査日 ---
+                              // [Design Change 3] 行全体をタップ可能にし、chevron（＞）を追加
+                              GestureDetector(
+                                onTap: () => _pickDate(context, inputVM),
+                                child: CupertinoFormRow(
+                                  prefix: const Row(
+                                    children: [
+                                      Icon(CupertinoIcons.calendar,
+                                          color: CupertinoColors.systemGrey),
+                                      SizedBox(width: 6),
+                                      Text('調査日'),
                                     ],
-                                    child: WoodenBuildingOverview(),
+                                  ),
+                                  helper: null,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12, horizontal: 16),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        DateFormat('yyyy-MM-dd')
+                                            .format(inputVM.selectedDate),
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          color: CupertinoColors.label,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 6),
+                                      const Icon(CupertinoIcons.chevron_forward,
+                                          size: 16,
+                                          color: CupertinoColors.systemGrey3)
+                                    ],
                                   ),
                                 ),
-                              );
-                            },
-                            borderRadius: BorderRadius.circular(12),
-                            child: const Text('次へ'),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+
+                          CupertinoFormSection.insetGrouped(
+                            header: const Text('調査員情報'),
+                            children: [
+                              // --- 調査人氏名 ---
+                              _buildNativeInputRow(
+                                icon: CupertinoIcons.person,
+                                label: '調査人氏名',
+                                controller: inputVM.nameController,
+                                placeholder: '氏名を入力',
+                              ),
+                              // --- 調査人番号 ---
+                              _buildNativeInputRow(
+                                icon: CupertinoIcons.number,
+                                label: '調査人番号',
+                                controller:
+                                    inputVM.investigatorNumberController,
+                                placeholder: '番号を入力',
+                              ),
+                              // --- 調査人都道府県名 ---
+                              GestureDetector(
+                                onTap: () {
+                                  _showPicker(
+                                    context,
+                                    inputVM.prefectures,
+                                    inputVM.selectedPrefectureIndex,
+                                    (newIndex) {
+                                      inputVM.setSelectedPrefecture(newIndex);
+                                    },
+                                  );
+                                },
+                                child: CupertinoFormRow(
+                                  prefix: const Row(
+                                    children: [
+                                      Icon(CupertinoIcons.map,
+                                          color: CupertinoColors.systemGrey),
+                                      SizedBox(width: 6),
+                                      Text('都道府県'),
+                                    ],
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        inputVM.investigatorPrefectureController
+                                                .text.isEmpty
+                                            ? '選択'
+                                            : inputVM
+                                                .investigatorPrefectureController
+                                                .text,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: inputVM
+                                                  .investigatorPrefectureController
+                                                  .text
+                                                  .isEmpty
+                                              ? CupertinoColors.placeholderText
+                                              : CupertinoColors.label,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 6),
+                                      const Icon(CupertinoIcons.chevron_forward,
+                                          size: 16,
+                                          color: CupertinoColors.systemGrey3),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          CupertinoFormSection.insetGrouped(
+                            header: const Text('詳細情報'),
+                            children: [
+                              // --- 整理番号 ---
+                              _buildNativeInputRow(
+                                icon: CupertinoIcons.doc_text,
+                                label: '整理番号',
+                                controller: inputVM.numberController,
+                                placeholder: '整理番号を入力',
+                              ),
+                              // --- 調査回数 ---
+                              _buildNativeInputRow(
+                                icon: CupertinoIcons.arrow_2_circlepath,
+                                label: '調査回数',
+                                controller: inputVM.countController,
+                                placeholder: '0',
+                                keyboardType: TextInputType.number,
+                              ),
+                            ],
+                          ),
+
+                          // 下部の余白確保
+                          const SizedBox(height: 100),
+                        ],
+                      ),
                     ),
                   ),
-                ),
+
+                  // [Design Change 4] ボタンをスクロール領域の外に出し、下部に固定（操作性向上）
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color:
+                          CupertinoColors.systemBackground.resolveFrom(context),
+                      border: const Border(
+                        top: BorderSide(
+                            color: CupertinoColors.separator, width: 0.5),
+                      ),
+                    ),
+                    child: CupertinoButton.filled(
+                      onPressed: () {
+                        viewModel.updateUnit(
+                          buildingtype: "W",
+                          number: inputVM.numberController.text,
+                          date: inputVM.selectedDate,
+                          surveyCount:
+                              int.tryParse(inputVM.countController.text) ?? 0,
+                          investigator: [inputVM.nameController.text],
+                          investigatorPrefecture: [
+                            inputVM.investigatorPrefectureController.text
+                          ],
+                          investigatorNumber: [
+                            inputVM.investigatorNumberController.text
+                          ],
+                          currentPosition: locationViewModel.currentPosition,
+                        );
+
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (_) => MultiProvider(
+                              providers: [
+                                ChangeNotifierProvider.value(
+                                    value:
+                                        context.read<InvestigationViewModel>()),
+                                ChangeNotifierProvider.value(
+                                    value: context.read<FormViewModel>()),
+                              ],
+                              child: WoodenBuildingOverview(),
+                            ),
+                          ),
+                        );
+                      },
+                      borderRadius: BorderRadius.circular(12),
+                      child: const Text('次へ',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ],
               ),
             ),
           );
@@ -152,19 +244,65 @@ class WoodenResearchUnit extends StatelessWidget {
       ),
     );
   }
+
+  // [Design Change 5] 標準的なリスト行デザインを作成するヘルパーメソッド
+  Widget _buildNativeInputRow({
+    required IconData icon,
+    required String label,
+    required TextEditingController controller,
+    String? placeholder,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return CupertinoFormRow(
+      prefix: Row(
+        children: [
+          Icon(icon, color: CupertinoColors.systemGrey),
+          const SizedBox(width: 6),
+          Text(label),
+        ],
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: CupertinoTextField(
+        controller: controller,
+        placeholder: placeholder,
+        keyboardType: keyboardType,
+        textAlign: TextAlign.end, // 入力テキストを右寄せに（iOS標準スタイル）
+        decoration: null, // 枠線を消して背景に溶け込ませる
+        style: const TextStyle(fontSize: 16),
+        padding: EdgeInsets.zero,
+      ),
+    );
+  }
 }
 
-//日にちを選択するためのwiget
+// --- 以下、ピッカー系のメソッド（ロジックは変更なし、デザイン微調整のみ） ---
+
 Future<void> _pickDate(BuildContext context, FormViewModel inputVM) async {
   await showCupertinoModalPopup(
     context: context,
     builder: (_) => Container(
-      height: 260,
+      height: 280, // 少し高さを確保
       color: CupertinoColors.systemBackground.resolveFrom(context),
       child: Column(
         children: [
-          SizedBox(
-            height: 200,
+          // ツールバー（完了ボタンのエリア）を追加して操作性を向上
+          Container(
+            height: 44,
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: CupertinoColors.systemGrey5)),
+            ),
+            child: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: const Text('完了',
+                  style: TextStyle(
+                      color: CupertinoColors.activeBlue,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+          Expanded(
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
               initialDateTime: inputVM.selectedDate,
@@ -175,63 +313,39 @@ Future<void> _pickDate(BuildContext context, FormViewModel inputVM) async {
               },
             ),
           ),
-          CupertinoButton(
-            child:
-                const Text('完了', style: TextStyle(fontWeight: FontWeight.bold)),
-            onPressed: () => Navigator.pop(context),
-          ),
         ],
       ),
     ),
   );
 }
 
-//入力フォームのwiget
-Widget buildCupertinoInputField({
-  required String label,
-  required TextEditingController controller,
-  TextInputType keyboardType = TextInputType.text,
-  String? placeholder,
-}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        label,
-        style: const TextStyle(
-          fontSize: 14,
-          color: Color.fromARGB(255, 0, 0, 0),
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      const SizedBox(height: 4),
-      CupertinoTextField(
-        controller: controller,
-        keyboardType: keyboardType,
-        placeholder: placeholder ?? '$label を入力',
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-        decoration: BoxDecoration(
-          color: CupertinoColors.systemGrey6,
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-      const SizedBox(height: 16),
-    ],
-  );
-}
-
-//都道府県名を選択するためのwiget
 void _showPicker(BuildContext context, List<String> items, int selectedIndex,
     ValueChanged<int> onChanged) {
   showCupertinoModalPopup(
     context: context,
     builder: (_) => Container(
-      height: 250,
+      height: 280,
       color: CupertinoColors.systemBackground,
       child: Column(
         children: [
-          SizedBox(
-            height: 180,
+          // ツールバー
+          Container(
+            height: 44,
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: CupertinoColors.systemGrey5)),
+            ),
+            child: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: const Text('完了',
+                  style: TextStyle(
+                      color: CupertinoColors.activeBlue,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+          Expanded(
             child: CupertinoPicker(
               itemExtent: 32,
               scrollController:
@@ -239,10 +353,6 @@ void _showPicker(BuildContext context, List<String> items, int selectedIndex,
               children: items.map((e) => Center(child: Text(e))).toList(),
               onSelectedItemChanged: onChanged,
             ),
-          ),
-          CupertinoButton(
-            child: const Text('完了'),
-            onPressed: () => Navigator.pop(context),
           ),
         ],
       ),

@@ -240,7 +240,6 @@ class InvestigationViewModel extends ChangeNotifier {
     DamageLevel? overallFallingObjectScore,
   }) {
     if (_record == null) return;
-
     final updatedContent = _record!.content.copyWith(
       exteriorInspectionScore:
           exteriorInspectionScore ?? _record!.content.exteriorInspectionScore,
