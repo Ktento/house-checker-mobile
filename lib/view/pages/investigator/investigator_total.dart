@@ -59,7 +59,7 @@ class _InvestigatorTotalState extends State<InvestigatorTotal> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(children: [
-                        ProgressRate(data: viewModel.dashboardData),
+                        ProgressRate(data: viewModel.dashboardData!),
                         const SizedBox(
                           height: 16,
                         ),
