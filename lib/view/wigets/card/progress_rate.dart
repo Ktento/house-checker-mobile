@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import '../../../models/percent_model.dart';
+import '../../../models/dashboard_model.dart';
 
 class ProgressRate extends StatefulWidget {
-  const ProgressRate({super.key});
+  final DashboardData? data;
+  const ProgressRate({super.key, this.data});
 
   @override
   State<ProgressRate> createState() => _ProgressRateState();
@@ -18,7 +20,10 @@ class _ProgressRateState extends State<ProgressRate>
   @override
   void initState() {
     super.initState();
-
+    if (widget.data != null) {
+      allprogress = widget.data!.completionRatioTotal;
+      riskprogress = widget.data!.dangerRatioCompleted;
+    }
     _controller = [
       PercentController(this),
       PercentController(this),

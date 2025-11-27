@@ -1,13 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
-class WorkStatus extends StatefulWidget {
+class WorkStatus extends StatelessWidget {
   const WorkStatus({super.key});
 
-  @override
-  State<WorkStatus> createState() => _WorkStatusState();
-}
-
-class _WorkStatusState extends State<WorkStatus> {
   @override
   Widget build(BuildContext context) {
     final inspectors = [
