@@ -3,7 +3,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map_animations/flutter_map_animations.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../utils/services/nearbuilding.dart';
+import '../../../utils/services/DB/get_nearbuilding.dart';
 import '../../../view_model/location_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/map_view_model.dart';

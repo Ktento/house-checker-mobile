@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import '../../../../../models/investigator_model.dart';
-import '../../../../../utils/services/db_service.dart';
+import '../../../../../utils/services/DB/send_record.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_check.dart';
 import 'package:house_check_mobile/utils/helpers/dialog.dart';
@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
-import '../../../../../utils/services/image_upload.dart';
+import '../../../../../utils/services/DB/image_upload.dart';
 
 class DangerSurveyFormPage extends StatelessWidget {
   const DangerSurveyFormPage({super.key});
