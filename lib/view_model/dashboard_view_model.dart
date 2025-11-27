@@ -15,7 +15,8 @@ class DashboardViewModel extends ChangeNotifier {
     _dashboardData = DashboardData(
       workercount: {},
       checksituation: const CheckSituation(noValue: 0),
-      checksituationRatio: const CheckSituationRatio(),
+      checksituationRatio:
+          const CheckSituationRatio(red: 0, yellow: 0, green: 0, noValue: 0),
       dateAnalysis: {
         "データなし": DailyCheckCount(totalBuilding: 20, checkComplete: 3),
       },
@@ -24,8 +25,9 @@ class DashboardViewModel extends ChangeNotifier {
     notifyListeners();
 
     final value = await getDashboardData();
-
-    _dashboardData = value;
-    notifyListeners();
+    if (value != null) {
+      _dashboardData = value;
+      notifyListeners();
+    }
   }
 }
