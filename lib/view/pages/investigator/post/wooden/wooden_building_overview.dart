@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
 import './wooden_survery.dart';
 import '../../../../../view_model/location_view_model.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class WoodenBuildingOverview extends StatelessWidget {
   const WoodenBuildingOverview({super.key});
@@ -51,6 +54,22 @@ class WoodenBuildingOverview extends StatelessWidget {
                           label: '建築物所在地',
                           controller: inputVM.addressController,
                           placeholder: '住所を入力',
+                          suffix: CupertinoButton(
+                            padding: EdgeInsets.zero,
+                            minSize: 0,
+                            onPressed: () {
+                              // キーボードを閉じる
+                              FocusScope.of(context).unfocus();
+                              // マップをモーダル表示
+                              _showMapModal(
+                                  context, inputVM.addressController, location);
+                            },
+                            child: const Icon(
+                              CupertinoIcons.map,
+                              size: 24,
+                              color: CupertinoColors.activeBlue,
+                            ),
+                          ),
                         ),
                         _buildNativeInputRow(
                           icon: CupertinoIcons.map,
@@ -201,32 +220,99 @@ class WoodenBuildingOverview extends StatelessWidget {
     );
   }
 
+  String? _showMapModal(BuildContext context, TextEditingController controller,
+      LocationViewModel location) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        // 画面の高さの80%を使う
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.8,
+          ),
+          decoration: const BoxDecoration(
+            color: CupertinoColors.systemBackground,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          child: Column(
+            children: [
+              // ヘッダー（閉じるボタンなど）
+              SizedBox(
+                height: 70,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CupertinoButton(
+                      child: const Text('キャンセル'),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    const Text('場所を選択',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    const SizedBox(width: 80), // バランス用空白
+                  ],
+                ),
+              ),
+              // マップ本体
+              Expanded(
+                child: MapSelectionWidget(
+                  initialPosition: location.currentPosition ??
+                      LatLng(35.6586, 139.7454), // 初期座標
+                  onPositionSelected: (latlng) async {
+                    if (location.currentPosition != null) {
+                      Placemark? addressPlacemark = await location
+                          .getAddressFromLatLng(location.currentPosition!);
+                      if (addressPlacemark != null) {
+                        String address =
+                            location.formatAddress(addressPlacemark);
+                        controller.text = address;
+                      }
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   Widget _buildNativeInputRow({
     required IconData icon,
     required String label,
     required TextEditingController controller,
     String? placeholder,
     TextInputType keyboardType = TextInputType.text,
+    Widget? suffix,
   }) {
     return CupertinoFormRow(
-      prefix: Row(
-        children: [
-          Icon(icon, color: CupertinoColors.systemGrey),
-          const SizedBox(width: 8),
-          Text(label),
-        ],
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: CupertinoTextField(
-        controller: controller,
-        placeholder: placeholder,
-        keyboardType: keyboardType,
-        textAlign: TextAlign.end,
-        decoration: null, // 枠線なし
-        style: const TextStyle(fontSize: 16),
-        padding: EdgeInsets.zero,
-      ),
-    );
+        prefix: Row(
+          children: [
+            Icon(icon, color: CupertinoColors.systemGrey),
+            const SizedBox(width: 8),
+            Text(label),
+          ],
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        child: Row(
+          children: [
+            Expanded(
+              child: CupertinoTextField(
+                controller: controller,
+                placeholder: placeholder,
+                keyboardType: keyboardType,
+                textAlign: TextAlign.end,
+                decoration: null, // 枠線なし
+                style: const TextStyle(fontSize: 16),
+                padding: EdgeInsets.zero,
+              ),
+            ),
+            if (suffix != null) ...[
+              const SizedBox(width: 8),
+              suffix,
+            ],
+          ],
+        ));
   }
 
   Widget _buildPickerRow({
@@ -319,6 +405,62 @@ class WoodenBuildingOverview extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class MapSelectionWidget extends StatefulWidget {
+  final LatLng initialPosition;
+  final Function(LatLng) onPositionSelected;
+
+  const MapSelectionWidget({
+    Key? key,
+    required this.initialPosition,
+    required this.onPositionSelected,
+  }) : super(key: key);
+
+  @override
+  State<MapSelectionWidget> createState() => _MapSelectionWidgetState();
+}
+
+class _MapSelectionWidgetState extends State<MapSelectionWidget> {
+  LatLng? selectedPosition;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlutterMap(
+      options: MapOptions(
+        initialCenter: widget.initialPosition,
+        initialZoom: 19,
+        onTap: (tapPosition, latlng) {
+          setState(() {
+            selectedPosition = latlng;
+          });
+          widget.onPositionSelected(latlng);
+        },
+      ),
+      children: [
+        TileLayer(
+          urlTemplate: 'https://{s}.tile.openstreetmap.jp/{z}/{x}/{y}.png',
+          subdomains: ['a', 'b', 'c'],
+          userAgentPackageName: 'com.example.app',
+        ),
+        if (selectedPosition != null)
+          MarkerLayer(
+            markers: [
+              Marker(
+                point: selectedPosition!,
+                width: 40,
+                height: 40,
+                child: const Icon(
+                  CupertinoIcons.circle_fill,
+                  color: CupertinoColors.systemGreen,
+                  size: 30,
+                ),
+              ),
+            ],
+          ),
+      ],
     );
   }
 }
