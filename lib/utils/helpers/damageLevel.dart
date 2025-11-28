@@ -7,6 +7,12 @@ DamageLevel stringToDamageLevel(String value) {
   throw Exception('Invalid DamageLevel string: $value');
 }
 
+int parseExteriorScore(String value) {
+  if (value.isEmpty) return 5;
+  final firstChar = value.trim().substring(0, 1);
+  return int.tryParse(firstChar) ?? 5;
+}
+
 // 隣接建築物・周辺地盤の危険
 String adjacentBuildingRiskToLabel(String level) {
   switch (level) {
