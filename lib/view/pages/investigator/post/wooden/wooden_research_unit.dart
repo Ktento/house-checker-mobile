@@ -33,7 +33,6 @@ class WoodenResearchUnit extends StatelessWidget {
       child: Consumer2<InvestigationViewModel, FormViewModel>(
         builder: (context, viewModel, inputVM, _) {
           return CupertinoPageScaffold(
-            // [Design Change 1] 背景色をシステム標準のグループ背景色（薄いグレー）に変更
             backgroundColor: CupertinoColors.systemGroupedBackground,
             navigationBar: const CupertinoNavigationBar(
               middle: Text('調査単位入力'),
@@ -45,12 +44,10 @@ class WoodenResearchUnit extends StatelessWidget {
                     child: Form(
                       child: ListView(
                         children: [
-                          // [Design Change 2] FormSectionを使って設定画面のようなグループ化されたデザインに変更
                           CupertinoFormSection.insetGrouped(
                             header: const Text('基本情報'),
                             children: [
                               // --- 調査日 ---
-                              // [Design Change 3] 行全体をタップ可能にし、chevron（＞）を追加
                               GestureDetector(
                                 onTap: () => _pickDate(context, inputVM),
                                 child: CupertinoFormRow(
@@ -245,7 +242,6 @@ class WoodenResearchUnit extends StatelessWidget {
     );
   }
 
-  // [Design Change 5] 標準的なリスト行デザインを作成するヘルパーメソッド
   Widget _buildNativeInputRow({
     required IconData icon,
     required String label,
@@ -275,17 +271,14 @@ class WoodenResearchUnit extends StatelessWidget {
   }
 }
 
-// --- 以下、ピッカー系のメソッド（ロジックは変更なし、デザイン微調整のみ） ---
-
 Future<void> _pickDate(BuildContext context, FormViewModel inputVM) async {
   await showCupertinoModalPopup(
     context: context,
     builder: (_) => Container(
-      height: 280, // 少し高さを確保
+      height: 280,
       color: CupertinoColors.systemBackground.resolveFrom(context),
       child: Column(
         children: [
-          // ツールバー（完了ボタンのエリア）を追加して操作性を向上
           Container(
             height: 44,
             alignment: Alignment.centerRight,
