@@ -1,11 +1,13 @@
 import '../../../models/investigator_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void sendRecord(InvestigationRecord record) async {
   try {
     final url = Uri.parse(
-        'https://script.google.com/macros/s/AKfycbxm62dd1yIWL6WWFN4Hr5J1hzjME79WUFYle5AY91kfsfrlmNYQimCaCWdlXLV_ocb3/exec');
+      dotenv.env['gas']!,
+    );
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -15,9 +17,9 @@ void sendRecord(InvestigationRecord record) async {
     if (response.statusCode != 200 || response.statusCode != 302) {
       throw Exception('送信失敗: ${response.body}');
     } else {
-      print("送信成功");
+      print("送信成功(sendRecord):");
     }
   } catch (e) {
-    // print("データ保存処理のエラー:{$e}");
+    print("エラー(sendRecord):{$e}");
   }
 }

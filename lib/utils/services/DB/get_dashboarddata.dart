@@ -5,15 +5,13 @@ import 'package:latlong2/latlong.dart';
 import '../../../models/map_model.dart';
 import '../../../models/dashboard_model.dart';
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<DashboardData?> getDashboardData() async {
   try {
-    final url = Uri.https(
-        'script.google.com',
-        '/macros/s/AKfycbxm62dd1yIWL6WWFN4Hr5J1hzjME79WUFYle5AY91kfsfrlmNYQimCaCWdlXLV_ocb3/exec',
-        {
-          'mode': 'Analysis/total',
-        });
+    final url = Uri.https('script.google.com', dotenv.env['httpgas']!, {
+      'mode': 'Analysis/total',
+    });
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
