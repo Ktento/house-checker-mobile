@@ -7,6 +7,7 @@ import '../../../../../models/investigator_model.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import './wooden_building_overview.dart';
 import '../../../../../view_model/location_view_model.dart';
+import '../../../../../view_model/location_view_model.dart';
 
 class WoodenResearchUnit extends StatelessWidget {
   const WoodenResearchUnit({super.key});
@@ -181,8 +182,6 @@ class WoodenResearchUnit extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  // [Design Change 4] ボタンをスクロール領域の外に出し、下部に固定（操作性向上）
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
@@ -222,6 +221,8 @@ class WoodenResearchUnit extends StatelessWidget {
                                         context.read<InvestigationViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
+                                ChangeNotifierProvider.value(
+                                    value: context.read<LocationViewModel>()),
                               ],
                               child: WoodenBuildingOverview(),
                             ),
