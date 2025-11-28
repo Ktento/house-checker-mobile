@@ -11,10 +11,10 @@ Future<List<MarkerData>> getMarkers(LatLng now) async {
       'lat': now.latitude.toString(),
       'lng': now.longitude.toString(),
       'range': '3000',
-      'extractKeys': 'latitude,longitude,overallscore'
+      'extractKeys': 'latitude,longitude,overallScore'
     });
     final response = await http.get(url);
-
+    print(response.body);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
 
