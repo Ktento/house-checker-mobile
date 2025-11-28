@@ -653,45 +653,46 @@ abstract class _BuildingOverview implements BuildingOverview {
       throw _privateConstructorUsedError;
 }
 
-ImageInfo _$ImageInfoFromJson(Map<String, dynamic> json) {
-  return _ImageInfo.fromJson(json);
+ImagePaths _$ImagePathsFromJson(Map<String, dynamic> json) {
+  return _ImagePaths.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ImageInfo {
+mixin _$ImagePaths {
   String get localPath =>
       throw _privateConstructorUsedError; // XFile.path などのローカル保存先
   String get firebaseUrl => throw _privateConstructorUsedError;
 
-  /// Serializes this ImageInfo to a JSON map.
+  /// Serializes this ImagePaths to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ImageInfo
+  /// Create a copy of ImagePaths
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ImageInfoCopyWith<ImageInfo> get copyWith =>
+  $ImagePathsCopyWith<ImagePaths> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ImageInfoCopyWith<$Res> {
-  factory $ImageInfoCopyWith(ImageInfo value, $Res Function(ImageInfo) then) =
-      _$ImageInfoCopyWithImpl<$Res, ImageInfo>;
+abstract class $ImagePathsCopyWith<$Res> {
+  factory $ImagePathsCopyWith(
+          ImagePaths value, $Res Function(ImagePaths) then) =
+      _$ImagePathsCopyWithImpl<$Res, ImagePaths>;
   @useResult
   $Res call({String localPath, String firebaseUrl});
 }
 
 /// @nodoc
-class _$ImageInfoCopyWithImpl<$Res, $Val extends ImageInfo>
-    implements $ImageInfoCopyWith<$Res> {
-  _$ImageInfoCopyWithImpl(this._value, this._then);
+class _$ImagePathsCopyWithImpl<$Res, $Val extends ImagePaths>
+    implements $ImagePathsCopyWith<$Res> {
+  _$ImagePathsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ImageInfo
+  /// Create a copy of ImagePaths
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -713,25 +714,25 @@ class _$ImageInfoCopyWithImpl<$Res, $Val extends ImageInfo>
 }
 
 /// @nodoc
-abstract class _$$ImageInfoImplCopyWith<$Res>
-    implements $ImageInfoCopyWith<$Res> {
-  factory _$$ImageInfoImplCopyWith(
-          _$ImageInfoImpl value, $Res Function(_$ImageInfoImpl) then) =
-      __$$ImageInfoImplCopyWithImpl<$Res>;
+abstract class _$$ImagePathsImplCopyWith<$Res>
+    implements $ImagePathsCopyWith<$Res> {
+  factory _$$ImagePathsImplCopyWith(
+          _$ImagePathsImpl value, $Res Function(_$ImagePathsImpl) then) =
+      __$$ImagePathsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String localPath, String firebaseUrl});
 }
 
 /// @nodoc
-class __$$ImageInfoImplCopyWithImpl<$Res>
-    extends _$ImageInfoCopyWithImpl<$Res, _$ImageInfoImpl>
-    implements _$$ImageInfoImplCopyWith<$Res> {
-  __$$ImageInfoImplCopyWithImpl(
-      _$ImageInfoImpl _value, $Res Function(_$ImageInfoImpl) _then)
+class __$$ImagePathsImplCopyWithImpl<$Res>
+    extends _$ImagePathsCopyWithImpl<$Res, _$ImagePathsImpl>
+    implements _$$ImagePathsImplCopyWith<$Res> {
+  __$$ImagePathsImplCopyWithImpl(
+      _$ImagePathsImpl _value, $Res Function(_$ImagePathsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ImageInfo
+  /// Create a copy of ImagePaths
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -739,7 +740,7 @@ class __$$ImageInfoImplCopyWithImpl<$Res>
     Object? localPath = null,
     Object? firebaseUrl = null,
   }) {
-    return _then(_$ImageInfoImpl(
+    return _then(_$ImagePathsImpl(
       localPath: null == localPath
           ? _value.localPath
           : localPath // ignore: cast_nullable_to_non_nullable
@@ -754,11 +755,11 @@ class __$$ImageInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ImageInfoImpl implements _ImageInfo {
-  const _$ImageInfoImpl({required this.localPath, required this.firebaseUrl});
+class _$ImagePathsImpl implements _ImagePaths {
+  const _$ImagePathsImpl({required this.localPath, required this.firebaseUrl});
 
-  factory _$ImageInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ImageInfoImplFromJson(json);
+  factory _$ImagePathsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImagePathsImplFromJson(json);
 
   @override
   final String localPath;
@@ -768,14 +769,14 @@ class _$ImageInfoImpl implements _ImageInfo {
 
   @override
   String toString() {
-    return 'ImageInfo(localPath: $localPath, firebaseUrl: $firebaseUrl)';
+    return 'ImagePaths(localPath: $localPath, firebaseUrl: $firebaseUrl)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ImageInfoImpl &&
+            other is _$ImagePathsImpl &&
             (identical(other.localPath, localPath) ||
                 other.localPath == localPath) &&
             (identical(other.firebaseUrl, firebaseUrl) ||
@@ -786,40 +787,40 @@ class _$ImageInfoImpl implements _ImageInfo {
   @override
   int get hashCode => Object.hash(runtimeType, localPath, firebaseUrl);
 
-  /// Create a copy of ImageInfo
+  /// Create a copy of ImagePaths
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImageInfoImplCopyWith<_$ImageInfoImpl> get copyWith =>
-      __$$ImageInfoImplCopyWithImpl<_$ImageInfoImpl>(this, _$identity);
+  _$$ImagePathsImplCopyWith<_$ImagePathsImpl> get copyWith =>
+      __$$ImagePathsImplCopyWithImpl<_$ImagePathsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ImageInfoImplToJson(
+    return _$$ImagePathsImplToJson(
       this,
     );
   }
 }
 
-abstract class _ImageInfo implements ImageInfo {
-  const factory _ImageInfo(
+abstract class _ImagePaths implements ImagePaths {
+  const factory _ImagePaths(
       {required final String localPath,
-      required final String firebaseUrl}) = _$ImageInfoImpl;
+      required final String firebaseUrl}) = _$ImagePathsImpl;
 
-  factory _ImageInfo.fromJson(Map<String, dynamic> json) =
-      _$ImageInfoImpl.fromJson;
+  factory _ImagePaths.fromJson(Map<String, dynamic> json) =
+      _$ImagePathsImpl.fromJson;
 
   @override
   String get localPath; // XFile.path などのローカル保存先
   @override
   String get firebaseUrl;
 
-  /// Create a copy of ImageInfo
+  /// Create a copy of ImagePaths
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImageInfoImplCopyWith<_$ImageInfoImpl> get copyWith =>
+  _$$ImagePathsImplCopyWith<_$ImagePathsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -832,38 +833,38 @@ mixin _$InvestigationContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks => throw _privateConstructorUsedError;
   DamageLevel get adjacentBuildingRisk => throw _privateConstructorUsedError;
-  List<ImageInfo>? get adjacentBuildingRiskImages =>
+  List<ImagePaths>? get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError;
   DamageLevel get unevenSettlement => throw _privateConstructorUsedError;
-  List<ImageInfo>? get unevenSettlementImages =>
+  List<ImagePaths>? get unevenSettlementImages =>
       throw _privateConstructorUsedError;
   DamageLevel get foundationDamage => throw _privateConstructorUsedError;
-  List<ImageInfo>? get foundationDamageImages =>
+  List<ImagePaths>? get foundationDamageImages =>
       throw _privateConstructorUsedError;
   DamageLevel get firstFloorTilt => throw _privateConstructorUsedError;
-  List<ImageInfo>? get firstFloorTiltImages =>
+  List<ImagePaths>? get firstFloorTiltImages =>
       throw _privateConstructorUsedError;
   DamageLevel get wallDamage => throw _privateConstructorUsedError;
-  List<ImageInfo>? get wallDamageImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get wallDamageImages => throw _privateConstructorUsedError;
   DamageLevel get corrosionOrTermite => throw _privateConstructorUsedError;
-  List<ImageInfo>? get corrosionOrTermiteImages =>
+  List<ImagePaths>? get corrosionOrTermiteImages =>
       throw _privateConstructorUsedError;
   DamageLevel get roofTile => throw _privateConstructorUsedError;
-  List<ImageInfo>? get roofTileImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get roofTileImages => throw _privateConstructorUsedError;
   DamageLevel get windowFrame => throw _privateConstructorUsedError;
-  List<ImageInfo>? get windowFrameImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get windowFrameImages => throw _privateConstructorUsedError;
   DamageLevel get exteriorWet => throw _privateConstructorUsedError;
-  List<ImageInfo>? get exteriorWetImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get exteriorWetImages => throw _privateConstructorUsedError;
   DamageLevel get exteriorDry => throw _privateConstructorUsedError;
-  List<ImageInfo>? get exteriorDryImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get exteriorDryImages => throw _privateConstructorUsedError;
   DamageLevel get signageAndEquipment => throw _privateConstructorUsedError;
-  List<ImageInfo>? get signageAndEquipmentImages =>
+  List<ImagePaths>? get signageAndEquipmentImages =>
       throw _privateConstructorUsedError;
   DamageLevel get outdoorStairs => throw _privateConstructorUsedError;
-  List<ImageInfo>? get outdoorStairsImages =>
+  List<ImagePaths>? get outdoorStairsImages =>
       throw _privateConstructorUsedError;
   DamageLevel get others => throw _privateConstructorUsedError;
-  List<ImageInfo>? get othersImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError;
   DamageLevel get overallStructuralScore => throw _privateConstructorUsedError;
@@ -890,31 +891,31 @@ abstract class $InvestigationContentCopyWith<$Res> {
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
       DamageLevel adjacentBuildingRisk,
-      List<ImageInfo>? adjacentBuildingRiskImages,
+      List<ImagePaths>? adjacentBuildingRiskImages,
       DamageLevel unevenSettlement,
-      List<ImageInfo>? unevenSettlementImages,
+      List<ImagePaths>? unevenSettlementImages,
       DamageLevel foundationDamage,
-      List<ImageInfo>? foundationDamageImages,
+      List<ImagePaths>? foundationDamageImages,
       DamageLevel firstFloorTilt,
-      List<ImageInfo>? firstFloorTiltImages,
+      List<ImagePaths>? firstFloorTiltImages,
       DamageLevel wallDamage,
-      List<ImageInfo>? wallDamageImages,
+      List<ImagePaths>? wallDamageImages,
       DamageLevel corrosionOrTermite,
-      List<ImageInfo>? corrosionOrTermiteImages,
+      List<ImagePaths>? corrosionOrTermiteImages,
       DamageLevel roofTile,
-      List<ImageInfo>? roofTileImages,
+      List<ImagePaths>? roofTileImages,
       DamageLevel windowFrame,
-      List<ImageInfo>? windowFrameImages,
+      List<ImagePaths>? windowFrameImages,
       DamageLevel exteriorWet,
-      List<ImageInfo>? exteriorWetImages,
+      List<ImagePaths>? exteriorWetImages,
       DamageLevel exteriorDry,
-      List<ImageInfo>? exteriorDryImages,
+      List<ImagePaths>? exteriorDryImages,
       DamageLevel signageAndEquipment,
-      List<ImageInfo>? signageAndEquipmentImages,
+      List<ImagePaths>? signageAndEquipmentImages,
       DamageLevel outdoorStairs,
-      List<ImageInfo>? outdoorStairsImages,
+      List<ImagePaths>? outdoorStairsImages,
       DamageLevel others,
-      List<ImageInfo>? othersImages,
+      List<ImagePaths>? othersImages,
       String? otherRemarks,
       String overallExteriorScore,
       DamageLevel overallStructuralScore,
@@ -986,7 +987,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       adjacentBuildingRiskImages: freezed == adjacentBuildingRiskImages
           ? _value.adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       unevenSettlement: null == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
@@ -994,7 +995,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       unevenSettlementImages: freezed == unevenSettlementImages
           ? _value.unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       foundationDamage: null == foundationDamage
           ? _value.foundationDamage
           : foundationDamage // ignore: cast_nullable_to_non_nullable
@@ -1002,7 +1003,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       foundationDamageImages: freezed == foundationDamageImages
           ? _value.foundationDamageImages
           : foundationDamageImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       firstFloorTilt: null == firstFloorTilt
           ? _value.firstFloorTilt
           : firstFloorTilt // ignore: cast_nullable_to_non_nullable
@@ -1010,7 +1011,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       firstFloorTiltImages: freezed == firstFloorTiltImages
           ? _value.firstFloorTiltImages
           : firstFloorTiltImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       wallDamage: null == wallDamage
           ? _value.wallDamage
           : wallDamage // ignore: cast_nullable_to_non_nullable
@@ -1018,7 +1019,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       wallDamageImages: freezed == wallDamageImages
           ? _value.wallDamageImages
           : wallDamageImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       corrosionOrTermite: null == corrosionOrTermite
           ? _value.corrosionOrTermite
           : corrosionOrTermite // ignore: cast_nullable_to_non_nullable
@@ -1026,7 +1027,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       corrosionOrTermiteImages: freezed == corrosionOrTermiteImages
           ? _value.corrosionOrTermiteImages
           : corrosionOrTermiteImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       roofTile: null == roofTile
           ? _value.roofTile
           : roofTile // ignore: cast_nullable_to_non_nullable
@@ -1034,7 +1035,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       roofTileImages: freezed == roofTileImages
           ? _value.roofTileImages
           : roofTileImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       windowFrame: null == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
@@ -1042,7 +1043,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       windowFrameImages: freezed == windowFrameImages
           ? _value.windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       exteriorWet: null == exteriorWet
           ? _value.exteriorWet
           : exteriorWet // ignore: cast_nullable_to_non_nullable
@@ -1050,7 +1051,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       exteriorWetImages: freezed == exteriorWetImages
           ? _value.exteriorWetImages
           : exteriorWetImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       exteriorDry: null == exteriorDry
           ? _value.exteriorDry
           : exteriorDry // ignore: cast_nullable_to_non_nullable
@@ -1058,7 +1059,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       exteriorDryImages: freezed == exteriorDryImages
           ? _value.exteriorDryImages
           : exteriorDryImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       signageAndEquipment: null == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
@@ -1066,7 +1067,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       signageAndEquipmentImages: freezed == signageAndEquipmentImages
           ? _value.signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       outdoorStairs: null == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
@@ -1074,7 +1075,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       outdoorStairsImages: freezed == outdoorStairsImages
           ? _value.outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       others: null == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
@@ -1082,7 +1083,7 @@ class _$InvestigationContentCopyWithImpl<$Res,
       othersImages: freezed == othersImages
           ? _value.othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       otherRemarks: freezed == otherRemarks
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
@@ -1115,31 +1116,31 @@ abstract class _$$InvestigationContentImplCopyWith<$Res>
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
       DamageLevel adjacentBuildingRisk,
-      List<ImageInfo>? adjacentBuildingRiskImages,
+      List<ImagePaths>? adjacentBuildingRiskImages,
       DamageLevel unevenSettlement,
-      List<ImageInfo>? unevenSettlementImages,
+      List<ImagePaths>? unevenSettlementImages,
       DamageLevel foundationDamage,
-      List<ImageInfo>? foundationDamageImages,
+      List<ImagePaths>? foundationDamageImages,
       DamageLevel firstFloorTilt,
-      List<ImageInfo>? firstFloorTiltImages,
+      List<ImagePaths>? firstFloorTiltImages,
       DamageLevel wallDamage,
-      List<ImageInfo>? wallDamageImages,
+      List<ImagePaths>? wallDamageImages,
       DamageLevel corrosionOrTermite,
-      List<ImageInfo>? corrosionOrTermiteImages,
+      List<ImagePaths>? corrosionOrTermiteImages,
       DamageLevel roofTile,
-      List<ImageInfo>? roofTileImages,
+      List<ImagePaths>? roofTileImages,
       DamageLevel windowFrame,
-      List<ImageInfo>? windowFrameImages,
+      List<ImagePaths>? windowFrameImages,
       DamageLevel exteriorWet,
-      List<ImageInfo>? exteriorWetImages,
+      List<ImagePaths>? exteriorWetImages,
       DamageLevel exteriorDry,
-      List<ImageInfo>? exteriorDryImages,
+      List<ImagePaths>? exteriorDryImages,
       DamageLevel signageAndEquipment,
-      List<ImageInfo>? signageAndEquipmentImages,
+      List<ImagePaths>? signageAndEquipmentImages,
       DamageLevel outdoorStairs,
-      List<ImageInfo>? outdoorStairsImages,
+      List<ImagePaths>? outdoorStairsImages,
       DamageLevel others,
-      List<ImageInfo>? othersImages,
+      List<ImagePaths>? othersImages,
       String? otherRemarks,
       String overallExteriorScore,
       DamageLevel overallStructuralScore,
@@ -1208,7 +1209,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       adjacentBuildingRiskImages: freezed == adjacentBuildingRiskImages
           ? _value._adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       unevenSettlement: null == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
@@ -1216,7 +1217,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       unevenSettlementImages: freezed == unevenSettlementImages
           ? _value._unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       foundationDamage: null == foundationDamage
           ? _value.foundationDamage
           : foundationDamage // ignore: cast_nullable_to_non_nullable
@@ -1224,7 +1225,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       foundationDamageImages: freezed == foundationDamageImages
           ? _value._foundationDamageImages
           : foundationDamageImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       firstFloorTilt: null == firstFloorTilt
           ? _value.firstFloorTilt
           : firstFloorTilt // ignore: cast_nullable_to_non_nullable
@@ -1232,7 +1233,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       firstFloorTiltImages: freezed == firstFloorTiltImages
           ? _value._firstFloorTiltImages
           : firstFloorTiltImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       wallDamage: null == wallDamage
           ? _value.wallDamage
           : wallDamage // ignore: cast_nullable_to_non_nullable
@@ -1240,7 +1241,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       wallDamageImages: freezed == wallDamageImages
           ? _value._wallDamageImages
           : wallDamageImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       corrosionOrTermite: null == corrosionOrTermite
           ? _value.corrosionOrTermite
           : corrosionOrTermite // ignore: cast_nullable_to_non_nullable
@@ -1248,7 +1249,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       corrosionOrTermiteImages: freezed == corrosionOrTermiteImages
           ? _value._corrosionOrTermiteImages
           : corrosionOrTermiteImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       roofTile: null == roofTile
           ? _value.roofTile
           : roofTile // ignore: cast_nullable_to_non_nullable
@@ -1256,7 +1257,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       roofTileImages: freezed == roofTileImages
           ? _value._roofTileImages
           : roofTileImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       windowFrame: null == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
@@ -1264,7 +1265,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       windowFrameImages: freezed == windowFrameImages
           ? _value._windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       exteriorWet: null == exteriorWet
           ? _value.exteriorWet
           : exteriorWet // ignore: cast_nullable_to_non_nullable
@@ -1272,7 +1273,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       exteriorWetImages: freezed == exteriorWetImages
           ? _value._exteriorWetImages
           : exteriorWetImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       exteriorDry: null == exteriorDry
           ? _value.exteriorDry
           : exteriorDry // ignore: cast_nullable_to_non_nullable
@@ -1280,7 +1281,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       exteriorDryImages: freezed == exteriorDryImages
           ? _value._exteriorDryImages
           : exteriorDryImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       signageAndEquipment: null == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
@@ -1288,7 +1289,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       signageAndEquipmentImages: freezed == signageAndEquipmentImages
           ? _value._signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       outdoorStairs: null == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
@@ -1296,7 +1297,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       outdoorStairsImages: freezed == outdoorStairsImages
           ? _value._outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       others: null == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
@@ -1304,7 +1305,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
       othersImages: freezed == othersImages
           ? _value._othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
-              as List<ImageInfo>?,
+              as List<ImagePaths>?,
       otherRemarks: freezed == otherRemarks
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
@@ -1332,31 +1333,31 @@ class _$InvestigationContentImpl implements _InvestigationContent {
       {required this.exteriorInspectionScore,
       this.exteriorInspectionRemarks,
       required this.adjacentBuildingRisk,
-      final List<ImageInfo>? adjacentBuildingRiskImages,
+      final List<ImagePaths>? adjacentBuildingRiskImages,
       required this.unevenSettlement,
-      final List<ImageInfo>? unevenSettlementImages,
+      final List<ImagePaths>? unevenSettlementImages,
       required this.foundationDamage,
-      final List<ImageInfo>? foundationDamageImages,
+      final List<ImagePaths>? foundationDamageImages,
       required this.firstFloorTilt,
-      final List<ImageInfo>? firstFloorTiltImages,
+      final List<ImagePaths>? firstFloorTiltImages,
       required this.wallDamage,
-      final List<ImageInfo>? wallDamageImages,
+      final List<ImagePaths>? wallDamageImages,
       required this.corrosionOrTermite,
-      final List<ImageInfo>? corrosionOrTermiteImages,
+      final List<ImagePaths>? corrosionOrTermiteImages,
       required this.roofTile,
-      final List<ImageInfo>? roofTileImages,
+      final List<ImagePaths>? roofTileImages,
       required this.windowFrame,
-      final List<ImageInfo>? windowFrameImages,
+      final List<ImagePaths>? windowFrameImages,
       required this.exteriorWet,
-      final List<ImageInfo>? exteriorWetImages,
+      final List<ImagePaths>? exteriorWetImages,
       required this.exteriorDry,
-      final List<ImageInfo>? exteriorDryImages,
+      final List<ImagePaths>? exteriorDryImages,
       required this.signageAndEquipment,
-      final List<ImageInfo>? signageAndEquipmentImages,
+      final List<ImagePaths>? signageAndEquipmentImages,
       required this.outdoorStairs,
-      final List<ImageInfo>? outdoorStairsImages,
+      final List<ImagePaths>? outdoorStairsImages,
       required this.others,
-      final List<ImageInfo>? othersImages,
+      final List<ImagePaths>? othersImages,
       this.otherRemarks,
       required this.overallExteriorScore,
       required this.overallStructuralScore,
@@ -1384,9 +1385,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
   final String? exteriorInspectionRemarks;
   @override
   final DamageLevel adjacentBuildingRisk;
-  final List<ImageInfo>? _adjacentBuildingRiskImages;
+  final List<ImagePaths>? _adjacentBuildingRiskImages;
   @override
-  List<ImageInfo>? get adjacentBuildingRiskImages {
+  List<ImagePaths>? get adjacentBuildingRiskImages {
     final value = _adjacentBuildingRiskImages;
     if (value == null) return null;
     if (_adjacentBuildingRiskImages is EqualUnmodifiableListView)
@@ -1397,9 +1398,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel unevenSettlement;
-  final List<ImageInfo>? _unevenSettlementImages;
+  final List<ImagePaths>? _unevenSettlementImages;
   @override
-  List<ImageInfo>? get unevenSettlementImages {
+  List<ImagePaths>? get unevenSettlementImages {
     final value = _unevenSettlementImages;
     if (value == null) return null;
     if (_unevenSettlementImages is EqualUnmodifiableListView)
@@ -1410,9 +1411,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel foundationDamage;
-  final List<ImageInfo>? _foundationDamageImages;
+  final List<ImagePaths>? _foundationDamageImages;
   @override
-  List<ImageInfo>? get foundationDamageImages {
+  List<ImagePaths>? get foundationDamageImages {
     final value = _foundationDamageImages;
     if (value == null) return null;
     if (_foundationDamageImages is EqualUnmodifiableListView)
@@ -1423,9 +1424,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel firstFloorTilt;
-  final List<ImageInfo>? _firstFloorTiltImages;
+  final List<ImagePaths>? _firstFloorTiltImages;
   @override
-  List<ImageInfo>? get firstFloorTiltImages {
+  List<ImagePaths>? get firstFloorTiltImages {
     final value = _firstFloorTiltImages;
     if (value == null) return null;
     if (_firstFloorTiltImages is EqualUnmodifiableListView)
@@ -1436,9 +1437,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel wallDamage;
-  final List<ImageInfo>? _wallDamageImages;
+  final List<ImagePaths>? _wallDamageImages;
   @override
-  List<ImageInfo>? get wallDamageImages {
+  List<ImagePaths>? get wallDamageImages {
     final value = _wallDamageImages;
     if (value == null) return null;
     if (_wallDamageImages is EqualUnmodifiableListView)
@@ -1449,9 +1450,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel corrosionOrTermite;
-  final List<ImageInfo>? _corrosionOrTermiteImages;
+  final List<ImagePaths>? _corrosionOrTermiteImages;
   @override
-  List<ImageInfo>? get corrosionOrTermiteImages {
+  List<ImagePaths>? get corrosionOrTermiteImages {
     final value = _corrosionOrTermiteImages;
     if (value == null) return null;
     if (_corrosionOrTermiteImages is EqualUnmodifiableListView)
@@ -1462,9 +1463,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel roofTile;
-  final List<ImageInfo>? _roofTileImages;
+  final List<ImagePaths>? _roofTileImages;
   @override
-  List<ImageInfo>? get roofTileImages {
+  List<ImagePaths>? get roofTileImages {
     final value = _roofTileImages;
     if (value == null) return null;
     if (_roofTileImages is EqualUnmodifiableListView) return _roofTileImages;
@@ -1474,9 +1475,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel windowFrame;
-  final List<ImageInfo>? _windowFrameImages;
+  final List<ImagePaths>? _windowFrameImages;
   @override
-  List<ImageInfo>? get windowFrameImages {
+  List<ImagePaths>? get windowFrameImages {
     final value = _windowFrameImages;
     if (value == null) return null;
     if (_windowFrameImages is EqualUnmodifiableListView)
@@ -1487,9 +1488,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel exteriorWet;
-  final List<ImageInfo>? _exteriorWetImages;
+  final List<ImagePaths>? _exteriorWetImages;
   @override
-  List<ImageInfo>? get exteriorWetImages {
+  List<ImagePaths>? get exteriorWetImages {
     final value = _exteriorWetImages;
     if (value == null) return null;
     if (_exteriorWetImages is EqualUnmodifiableListView)
@@ -1500,9 +1501,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel exteriorDry;
-  final List<ImageInfo>? _exteriorDryImages;
+  final List<ImagePaths>? _exteriorDryImages;
   @override
-  List<ImageInfo>? get exteriorDryImages {
+  List<ImagePaths>? get exteriorDryImages {
     final value = _exteriorDryImages;
     if (value == null) return null;
     if (_exteriorDryImages is EqualUnmodifiableListView)
@@ -1513,9 +1514,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel signageAndEquipment;
-  final List<ImageInfo>? _signageAndEquipmentImages;
+  final List<ImagePaths>? _signageAndEquipmentImages;
   @override
-  List<ImageInfo>? get signageAndEquipmentImages {
+  List<ImagePaths>? get signageAndEquipmentImages {
     final value = _signageAndEquipmentImages;
     if (value == null) return null;
     if (_signageAndEquipmentImages is EqualUnmodifiableListView)
@@ -1526,9 +1527,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel outdoorStairs;
-  final List<ImageInfo>? _outdoorStairsImages;
+  final List<ImagePaths>? _outdoorStairsImages;
   @override
-  List<ImageInfo>? get outdoorStairsImages {
+  List<ImagePaths>? get outdoorStairsImages {
     final value = _outdoorStairsImages;
     if (value == null) return null;
     if (_outdoorStairsImages is EqualUnmodifiableListView)
@@ -1539,9 +1540,9 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   final DamageLevel others;
-  final List<ImageInfo>? _othersImages;
+  final List<ImagePaths>? _othersImages;
   @override
-  List<ImageInfo>? get othersImages {
+  List<ImagePaths>? get othersImages {
     final value = _othersImages;
     if (value == null) return null;
     if (_othersImages is EqualUnmodifiableListView) return _othersImages;
@@ -1688,31 +1689,31 @@ abstract class _InvestigationContent implements InvestigationContent {
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
           required final DamageLevel adjacentBuildingRisk,
-          final List<ImageInfo>? adjacentBuildingRiskImages,
+          final List<ImagePaths>? adjacentBuildingRiskImages,
           required final DamageLevel unevenSettlement,
-          final List<ImageInfo>? unevenSettlementImages,
+          final List<ImagePaths>? unevenSettlementImages,
           required final DamageLevel foundationDamage,
-          final List<ImageInfo>? foundationDamageImages,
+          final List<ImagePaths>? foundationDamageImages,
           required final DamageLevel firstFloorTilt,
-          final List<ImageInfo>? firstFloorTiltImages,
+          final List<ImagePaths>? firstFloorTiltImages,
           required final DamageLevel wallDamage,
-          final List<ImageInfo>? wallDamageImages,
+          final List<ImagePaths>? wallDamageImages,
           required final DamageLevel corrosionOrTermite,
-          final List<ImageInfo>? corrosionOrTermiteImages,
+          final List<ImagePaths>? corrosionOrTermiteImages,
           required final DamageLevel roofTile,
-          final List<ImageInfo>? roofTileImages,
+          final List<ImagePaths>? roofTileImages,
           required final DamageLevel windowFrame,
-          final List<ImageInfo>? windowFrameImages,
+          final List<ImagePaths>? windowFrameImages,
           required final DamageLevel exteriorWet,
-          final List<ImageInfo>? exteriorWetImages,
+          final List<ImagePaths>? exteriorWetImages,
           required final DamageLevel exteriorDry,
-          final List<ImageInfo>? exteriorDryImages,
+          final List<ImagePaths>? exteriorDryImages,
           required final DamageLevel signageAndEquipment,
-          final List<ImageInfo>? signageAndEquipmentImages,
+          final List<ImagePaths>? signageAndEquipmentImages,
           required final DamageLevel outdoorStairs,
-          final List<ImageInfo>? outdoorStairsImages,
+          final List<ImagePaths>? outdoorStairsImages,
           required final DamageLevel others,
-          final List<ImageInfo>? othersImages,
+          final List<ImagePaths>? othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
           required final DamageLevel overallStructuralScore,
@@ -1729,55 +1730,55 @@ abstract class _InvestigationContent implements InvestigationContent {
   @override
   DamageLevel get adjacentBuildingRisk;
   @override
-  List<ImageInfo>? get adjacentBuildingRiskImages;
+  List<ImagePaths>? get adjacentBuildingRiskImages;
   @override
   DamageLevel get unevenSettlement;
   @override
-  List<ImageInfo>? get unevenSettlementImages;
+  List<ImagePaths>? get unevenSettlementImages;
   @override
   DamageLevel get foundationDamage;
   @override
-  List<ImageInfo>? get foundationDamageImages;
+  List<ImagePaths>? get foundationDamageImages;
   @override
   DamageLevel get firstFloorTilt;
   @override
-  List<ImageInfo>? get firstFloorTiltImages;
+  List<ImagePaths>? get firstFloorTiltImages;
   @override
   DamageLevel get wallDamage;
   @override
-  List<ImageInfo>? get wallDamageImages;
+  List<ImagePaths>? get wallDamageImages;
   @override
   DamageLevel get corrosionOrTermite;
   @override
-  List<ImageInfo>? get corrosionOrTermiteImages;
+  List<ImagePaths>? get corrosionOrTermiteImages;
   @override
   DamageLevel get roofTile;
   @override
-  List<ImageInfo>? get roofTileImages;
+  List<ImagePaths>? get roofTileImages;
   @override
   DamageLevel get windowFrame;
   @override
-  List<ImageInfo>? get windowFrameImages;
+  List<ImagePaths>? get windowFrameImages;
   @override
   DamageLevel get exteriorWet;
   @override
-  List<ImageInfo>? get exteriorWetImages;
+  List<ImagePaths>? get exteriorWetImages;
   @override
   DamageLevel get exteriorDry;
   @override
-  List<ImageInfo>? get exteriorDryImages;
+  List<ImagePaths>? get exteriorDryImages;
   @override
   DamageLevel get signageAndEquipment;
   @override
-  List<ImageInfo>? get signageAndEquipmentImages;
+  List<ImagePaths>? get signageAndEquipmentImages;
   @override
   DamageLevel get outdoorStairs;
   @override
-  List<ImageInfo>? get outdoorStairsImages;
+  List<ImagePaths>? get outdoorStairsImages;
   @override
   DamageLevel get others;
   @override
-  List<ImageInfo>? get othersImages;
+  List<ImagePaths>? get othersImages;
   @override
   String? get otherRemarks;
   @override
