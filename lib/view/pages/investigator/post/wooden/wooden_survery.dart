@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
-import '../../../../../models/investigator_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
 import './wooden_check.dart';
 import '../../../../wigets/image_pickere.dart';
+import '../../../../../models/investigator_model.dart';
 
 class WoodenSurvery extends StatelessWidget {
   const WoodenSurvery({super.key});
@@ -63,6 +62,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.危険無し', 'B.不明確', 'C.危険あり'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'adjacentBuildingRiskImages', [path]),
+                      savedImage:
+                          viewModel.record?.content.adjacentBuildingRiskImages,
                     ),
 
                     _buildRadioGroup(
@@ -75,6 +76,8 @@ class WoodenSurvery extends StatelessWidget {
                       ],
                       onImagePicked: (path) => viewModel
                           .updateImageField('unevenSettlementImages', [path]),
+                      savedImage:
+                          viewModel.record?.content.unevenSettlementImages,
                     ),
 
                     _buildRadioGroup(
@@ -83,6 +86,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.無被害', 'B.部分的', 'C.著しい(被害あり)'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('foundationDamageImages', [path]),
+                      savedImage:
+                          viewModel.record?.content.foundationDamageImages,
                     ),
 
                     _buildRadioGroup(
@@ -91,6 +96,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.1/60以下', 'B.1/60～1/20', 'C.1/20超'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('firstFloorTiltImages', [path]),
+                      savedImage:
+                          viewModel.record?.content.firstFloorTiltImages,
                     ),
 
                     _buildRadioGroup(
@@ -99,6 +106,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.軽微なひび割れ', 'B.大きな亀裂、剥離', 'C.落下の危険有り'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('wallDamageImages', [path]),
+                      savedImage: viewModel.record?.content.wallDamageImages,
                     ),
 
                     _buildRadioGroup(
@@ -107,6 +115,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無し', 'B.一部の断面欠損', 'C.著しい断面欠損'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('corrosionOrTermiteImages', [path]),
+                      savedImage:
+                          viewModel.record?.content.corrosionOrTermiteImages,
                     ),
 
                     const SizedBox(height: 20),
@@ -120,6 +130,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'roofOrSignboardRiskImages', [path]),
+                      savedImage: viewModel.record?.content.roofTileImages,
                     ),
 
                     _buildRadioGroup(
@@ -128,6 +139,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.歪み、ひび割れ', 'C.落下の危険有'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('windowFrameImages', [path]),
+                      savedImage: viewModel.record?.content.windowFrameImages,
                     ),
 
                     _buildRadioGroup(
@@ -136,6 +148,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.部分的なひび割れ、隙間', 'C.顕著なひび割れ、剥離'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorWetImages', [path]),
+                      savedImage: viewModel.record?.content.exteriorWetImages,
                     ),
 
                     _buildRadioGroup(
@@ -144,6 +157,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.目地の亀裂程度', 'B.板に隙間がみられる', 'C.顕著な目地ずれ、板破損'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorDryImages', [path]),
+                      savedImage: viewModel.record?.content.exteriorDryImages,
                     ),
 
                     _buildRadioGroup(
@@ -152,6 +166,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.傾斜無し', 'B.わずかな傾斜', 'C.落下の危険有り'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'signageAndEquipmentImages', [path]),
+                      savedImage:
+                          viewModel.record?.content.signageAndEquipmentImages,
                     ),
 
                     _buildRadioGroup(
@@ -160,6 +176,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.傾斜なし', 'B.わずかな傾斜', 'C.明瞭な傾斜'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('outdoorStairsImages', [path]),
+                      savedImage: viewModel.record?.content.outdoorStairsImages,
                     ),
 
                     _buildRadioGroup(
@@ -168,6 +185,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.安全', 'B.要注意', 'C.危険'],
                       onImagePicked: (path) =>
                           viewModel.updateImageField('othersImages', [path]),
+                      savedImage: viewModel.record?.content.othersImages,
                     ),
 
                     _buildTextInputSection(
@@ -215,39 +233,39 @@ class WoodenSurvery extends StatelessWidget {
                       onPressed: () {
                         // データ更新ロジック
                         viewModel.updateContent(
-                          exteriorInspectionScore: _parseExteriorScore(
+                          exteriorInspectionScore: parseExteriorScore(
                               inputVM.exteriorInspectionScoreController.text),
                           exteriorInspectionRemarks:
                               inputVM.exteriorInspectionRemarksController.text,
-                          adjacentBuildingRisk: _parseDamageLevel(
+                          adjacentBuildingRisk: stringToDamageLevel(
                               inputVM.adjacentBuildingRiskController.text),
-                          unevenSettlement: _parseDamageLevel(
+                          unevenSettlement: stringToDamageLevel(
                               inputVM.unevenSettlementController.text),
-                          foundationDamage: _parseDamageLevel(
+                          foundationDamage: stringToDamageLevel(
                               inputVM.foundationDamageController.text),
-                          firstFloorTilt: _parseDamageLevel(
+                          firstFloorTilt: stringToDamageLevel(
                               inputVM.firstFloorTiltController.text),
-                          wallDamage: _parseDamageLevel(
+                          wallDamage: stringToDamageLevel(
                               inputVM.wallDamageController.text),
-                          corrosionOrTermite: _parseDamageLevel(
+                          corrosionOrTermite: stringToDamageLevel(
                               inputVM.corrosionOrTermiteController.text),
-                          roofTile: _parseDamageLevel(
+                          roofTile: stringToDamageLevel(
                               inputVM.roofOrSignboardRiskController.text),
-                          windowFrame: _parseDamageLevel(
+                          windowFrame: stringToDamageLevel(
                               inputVM.windowFrameController.text),
-                          exteriorWet: _parseDamageLevel(
+                          exteriorWet: stringToDamageLevel(
                               inputVM.exteriorWetController.text),
-                          exteriorDry: _parseDamageLevel(
+                          exteriorDry: stringToDamageLevel(
                               inputVM.exteriorDryController.text),
-                          signageAndEquipment: _parseDamageLevel(
+                          signageAndEquipment: stringToDamageLevel(
                               inputVM.signageAndEquipmentController.text),
-                          outdoorStairs: _parseDamageLevel(
+                          outdoorStairs: stringToDamageLevel(
                               inputVM.outdoorStairsController.text),
-                          others:
-                              _parseDamageLevel(inputVM.othersController.text),
+                          others: stringToDamageLevel(
+                              inputVM.othersController.text),
                           otherRemarks: inputVM.otherRemarksController.text,
                         );
-                       
+
                         Navigator.push(
                           context,
                           CupertinoPageRoute(
@@ -322,11 +340,18 @@ class WoodenSurvery extends StatelessWidget {
     required TextEditingController controller,
     required List<String> options,
     Function(String path)? onImagePicked,
+    final List<ImagePaths>? savedImage,
   }) {
+    final String? path;
     // 初期値が空の場合の安全策
     if (controller.text.isEmpty && options.isNotEmpty) {
       // 必要であれば初期値を設定。ここではユーザーの選択を待つため何もしない、またはデフォルト値をセット
       // controller.text = options.first;
+    }
+    if (savedImage != null) {
+      path = savedImage[0].localPath;
+    } else {
+      path = null;
     }
 
     return CupertinoFormSection.insetGrouped(
@@ -342,6 +367,8 @@ class WoodenSurvery extends StatelessWidget {
                   onImagePicked(file.path);
                 }
               },
+              //モデルに保存された画像があればその保存先を渡し表示
+              imagePath: path,
             ),
         ],
       ),
@@ -350,7 +377,6 @@ class WoodenSurvery extends StatelessWidget {
           valueListenable: controller,
           builder: (context, value, child) {
             // 文字列比較で選択状態を判定
-            // ※データに"Damage"などの接頭辞がつく可能性がある場合は適宜 `contains` 等で調整してください
             final isSelected = value.text == option ||
                 (value.text.isNotEmpty &&
                     option.startsWith(value.text.substring(0, 1)));
@@ -392,18 +418,4 @@ class WoodenSurvery extends StatelessWidget {
       }).toList(),
     );
   }
-}
-
-// --- ユーティリティ ---
-DamageLevel _parseDamageLevel(String value) {
-  if (value.startsWith('A')) return DamageLevel.A;
-  if (value.startsWith('B')) return DamageLevel.B;
-  if (value.startsWith('C')) return DamageLevel.C;
-  return DamageLevel.A;
-}
-
-int _parseExteriorScore(String value) {
-  if (value.isEmpty) return 5;
-  final firstChar = value.trim().substring(0, 1);
-  return int.tryParse(firstChar) ?? 5;
 }
