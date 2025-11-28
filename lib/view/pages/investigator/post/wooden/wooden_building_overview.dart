@@ -25,7 +25,6 @@ class WoodenBuildingOverview extends StatelessWidget {
               child: Form(
                 child: ListView(
                   children: [
-                    // --- セクション1: 基本識別情報 ---
                     CupertinoFormSection.insetGrouped(
                       header: const Text('基本情報'),
                       children: [
@@ -56,8 +55,6 @@ class WoodenBuildingOverview extends StatelessWidget {
                       ],
                     ),
 
-                    // --- セクション2: 構造・用途 ---
-                    // [Design Change 2] ドロップダウンをiOS標準のピッカースタイルに変更
                     CupertinoFormSection.insetGrouped(
                       header: const Text('構造・用途'),
                       children: [
@@ -98,8 +95,6 @@ class WoodenBuildingOverview extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    // --- セクション3: 規模 ---
                     CupertinoFormSection.insetGrouped(
                       header: const Text('規模'),
                       children: [
@@ -125,9 +120,6 @@ class WoodenBuildingOverview extends StatelessWidget {
                 ),
               ),
             ),
-
-            // --- 下部アクションボタンエリア ---
-            // [Design Change 3] ボタンをスクロール外に出し、ボトムバーとして固定
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -203,9 +195,6 @@ class WoodenBuildingOverview extends StatelessWidget {
     );
   }
 
-  // --- ヘルパーメソッド ---
-
-  // テキスト入力用の行ビルルダー
   Widget _buildNativeInputRow({
     required IconData icon,
     required String label,
@@ -234,7 +223,6 @@ class WoodenBuildingOverview extends StatelessWidget {
     );
   }
 
-  // 選択（ピッカー）用の行ビルダー
   Widget _buildPickerRow({
     required BuildContext context,
     required IconData icon,
@@ -242,7 +230,7 @@ class WoodenBuildingOverview extends StatelessWidget {
     required TextEditingController controller,
     required List<String> options,
   }) {
-    // 初期値が空で、かつ選択肢がある場合は、とりあえず先頭を表示用にセットしておく（任意）
+  
     if (controller.text.isEmpty && options.isNotEmpty) {
       controller.text = options.first;
     }
@@ -283,7 +271,6 @@ class WoodenBuildingOverview extends StatelessWidget {
     );
   }
 
-  // ピッカー表示ロジック
   void _showNativePicker(BuildContext context, List<String> options,
       TextEditingController controller) {
     final int initialIndex = options.indexOf(controller.text);
