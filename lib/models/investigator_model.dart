@@ -52,14 +52,14 @@ class BuildingOverview with _$BuildingOverview {
 }
 
 @freezed
-class ImageInfo with _$ImageInfo {
-  const factory ImageInfo({
+class ImagePaths with _$ImagePaths {
+  const factory ImagePaths({
     required String localPath, // XFile.path などのローカル保存先
     required String firebaseUrl, // Firebase Storage アップロード後の URL
-  }) = _ImageInfo;
+  }) = _ImagePaths;
 
-  factory ImageInfo.fromJson(Map<String, dynamic> json) =>
-      _$ImageInfoFromJson(json);
+  factory ImagePaths.fromJson(Map<String, dynamic> json) =>
+      _$ImagePathsFromJson(json);
 }
 
 @freezed
@@ -68,31 +68,31 @@ class InvestigationContent with _$InvestigationContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     required DamageLevel adjacentBuildingRisk,
-    List<ImageInfo>? adjacentBuildingRiskImages,
+    List<ImagePaths>? adjacentBuildingRiskImages,
     required DamageLevel unevenSettlement,
-    List<ImageInfo>? unevenSettlementImages,
+    List<ImagePaths>? unevenSettlementImages,
     required DamageLevel foundationDamage,
-    List<ImageInfo>? foundationDamageImages,
+    List<ImagePaths>? foundationDamageImages,
     required DamageLevel firstFloorTilt,
-    List<ImageInfo>? firstFloorTiltImages,
+    List<ImagePaths>? firstFloorTiltImages,
     required DamageLevel wallDamage,
-    List<ImageInfo>? wallDamageImages,
+    List<ImagePaths>? wallDamageImages,
     required DamageLevel corrosionOrTermite,
-    List<ImageInfo>? corrosionOrTermiteImages,
+    List<ImagePaths>? corrosionOrTermiteImages,
     required DamageLevel roofTile,
-    List<ImageInfo>? roofTileImages,
+    List<ImagePaths>? roofTileImages,
     required DamageLevel windowFrame,
-    List<ImageInfo>? windowFrameImages,
+    List<ImagePaths>? windowFrameImages,
     required DamageLevel exteriorWet,
-    List<ImageInfo>? exteriorWetImages,
+    List<ImagePaths>? exteriorWetImages,
     required DamageLevel exteriorDry,
-    List<ImageInfo>? exteriorDryImages,
+    List<ImagePaths>? exteriorDryImages,
     required DamageLevel signageAndEquipment,
-    List<ImageInfo>? signageAndEquipmentImages,
+    List<ImagePaths>? signageAndEquipmentImages,
     required DamageLevel outdoorStairs,
-    List<ImageInfo>? outdoorStairsImages,
+    List<ImagePaths>? outdoorStairsImages,
     required DamageLevel others,
-    List<ImageInfo>? othersImages,
+    List<ImagePaths>? othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
     required DamageLevel overallStructuralScore,

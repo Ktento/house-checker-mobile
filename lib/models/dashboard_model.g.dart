@@ -13,9 +13,9 @@ _$DashboardDataImpl _$$DashboardDataImplFromJson(Map<String, dynamic> json) =>
       dangerbuilding: (json['dangerbuilding'] as num?)?.toInt() ?? 0,
       checkwaiting: (json['checkwaiting'] as num?)?.toInt() ?? 0,
       completionRatioTotal:
-          (json['completionRatioTotal'] as num?)?.toDouble() ?? 10.0,
+          (json['completionRatioTotal'] as num?)?.toDouble() ?? 0.0,
       dangerRatioCompleted:
-          (json['dangerRatioCompleted'] as num?)?.toDouble() ?? 8.0,
+          (json['dangerRatioCompleted'] as num?)?.toDouble() ?? 0.0,
       workercount: Map<String, int>.from(json['workercount'] as Map),
       checksituation: CheckSituation.fromJson(
           json['checksituation'] as Map<String, dynamic>),

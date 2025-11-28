@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LocationState {
   LatLng get now => throw _privateConstructorUsedError;
   double? get heading => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
 
   /// Create a copy of LocationState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,7 @@ abstract class $LocationStateCopyWith<$Res> {
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res, LocationState>;
   @useResult
-  $Res call({LatLng now, double? heading});
+  $Res call({LatLng now, double? heading, String? address});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
   $Res call({
     Object? now = null,
     Object? heading = freezed,
+    Object? address = freezed,
   }) {
     return _then(_value.copyWith(
       now: null == now
@@ -62,6 +64,10 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
           ? _value.heading
           : heading // ignore: cast_nullable_to_non_nullable
               as double?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -74,7 +80,7 @@ abstract class _$$LocationStateImplCopyWith<$Res>
       __$$LocationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LatLng now, double? heading});
+  $Res call({LatLng now, double? heading, String? address});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$LocationStateImplCopyWithImpl<$Res>
   $Res call({
     Object? now = null,
     Object? heading = freezed,
+    Object? address = freezed,
   }) {
     return _then(_$LocationStateImpl(
       now: null == now
@@ -102,6 +109,10 @@ class __$$LocationStateImplCopyWithImpl<$Res>
           ? _value.heading
           : heading // ignore: cast_nullable_to_non_nullable
               as double?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -109,16 +120,18 @@ class __$$LocationStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocationStateImpl implements _LocationState {
-  const _$LocationStateImpl({required this.now, this.heading});
+  const _$LocationStateImpl({required this.now, this.heading, this.address});
 
   @override
   final LatLng now;
   @override
   final double? heading;
+  @override
+  final String? address;
 
   @override
   String toString() {
-    return 'LocationState(now: $now, heading: $heading)';
+    return 'LocationState(now: $now, heading: $heading, address: $address)';
   }
 
   @override
@@ -127,11 +140,12 @@ class _$LocationStateImpl implements _LocationState {
         (other.runtimeType == runtimeType &&
             other is _$LocationStateImpl &&
             (identical(other.now, now) || other.now == now) &&
-            (identical(other.heading, heading) || other.heading == heading));
+            (identical(other.heading, heading) || other.heading == heading) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, now, heading);
+  int get hashCode => Object.hash(runtimeType, now, heading, address);
 
   /// Create a copy of LocationState
   /// with the given fields replaced by the non-null parameter values.
@@ -144,12 +158,16 @@ class _$LocationStateImpl implements _LocationState {
 
 abstract class _LocationState implements LocationState {
   const factory _LocationState(
-      {required final LatLng now, final double? heading}) = _$LocationStateImpl;
+      {required final LatLng now,
+      final double? heading,
+      final String? address}) = _$LocationStateImpl;
 
   @override
   LatLng get now;
   @override
   double? get heading;
+  @override
+  String? get address;
 
   /// Create a copy of LocationState
   /// with the given fields replaced by the non-null parameter values.

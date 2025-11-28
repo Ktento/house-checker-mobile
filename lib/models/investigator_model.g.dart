@@ -65,13 +65,13 @@ Map<String, dynamic> _$$BuildingOverviewImplToJson(
       'scale': instance.scale,
     };
 
-_$ImageInfoImpl _$$ImageInfoImplFromJson(Map<String, dynamic> json) =>
-    _$ImageInfoImpl(
+_$ImagePathsImpl _$$ImagePathsImplFromJson(Map<String, dynamic> json) =>
+    _$ImagePathsImpl(
       localPath: json['localPath'] as String,
       firebaseUrl: json['firebaseUrl'] as String,
     );
 
-Map<String, dynamic> _$$ImageInfoImplToJson(_$ImageInfoImpl instance) =>
+Map<String, dynamic> _$$ImagePathsImplToJson(_$ImagePathsImpl instance) =>
     <String, dynamic>{
       'localPath': instance.localPath,
       'firebaseUrl': instance.firebaseUrl,
@@ -86,61 +86,61 @@ _$InvestigationContentImpl _$$InvestigationContentImplFromJson(
           $enumDecode(_$DamageLevelEnumMap, json['adjacentBuildingRisk']),
       adjacentBuildingRiskImages:
           (json['adjacentBuildingRiskImages'] as List<dynamic>?)
-              ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList(),
       unevenSettlement:
           $enumDecode(_$DamageLevelEnumMap, json['unevenSettlement']),
       unevenSettlementImages: (json['unevenSettlementImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       foundationDamage:
           $enumDecode(_$DamageLevelEnumMap, json['foundationDamage']),
       foundationDamageImages: (json['foundationDamageImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       firstFloorTilt: $enumDecode(_$DamageLevelEnumMap, json['firstFloorTilt']),
       firstFloorTiltImages: (json['firstFloorTiltImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       wallDamage: $enumDecode(_$DamageLevelEnumMap, json['wallDamage']),
       wallDamageImages: (json['wallDamageImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       corrosionOrTermite:
           $enumDecode(_$DamageLevelEnumMap, json['corrosionOrTermite']),
       corrosionOrTermiteImages:
           (json['corrosionOrTermiteImages'] as List<dynamic>?)
-              ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList(),
       roofTile: $enumDecode(_$DamageLevelEnumMap, json['roofTile']),
       roofTileImages: (json['roofTileImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       windowFrame: $enumDecode(_$DamageLevelEnumMap, json['windowFrame']),
       windowFrameImages: (json['windowFrameImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       exteriorWet: $enumDecode(_$DamageLevelEnumMap, json['exteriorWet']),
       exteriorWetImages: (json['exteriorWetImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       exteriorDry: $enumDecode(_$DamageLevelEnumMap, json['exteriorDry']),
       exteriorDryImages: (json['exteriorDryImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       signageAndEquipment:
           $enumDecode(_$DamageLevelEnumMap, json['signageAndEquipment']),
       signageAndEquipmentImages:
           (json['signageAndEquipmentImages'] as List<dynamic>?)
-              ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList(),
       outdoorStairs: $enumDecode(_$DamageLevelEnumMap, json['outdoorStairs']),
       outdoorStairsImages: (json['outdoorStairsImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       others: $enumDecode(_$DamageLevelEnumMap, json['others']),
       othersImages: (json['othersImages'] as List<dynamic>?)
-          ?.map((e) => ImageInfo.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
           .toList(),
       otherRemarks: json['otherRemarks'] as String?,
       overallExteriorScore: json['overallExteriorScore'] as String,

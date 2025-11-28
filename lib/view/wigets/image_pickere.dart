@@ -7,6 +7,7 @@ class ImagePickerButton extends StatefulWidget {
   final double height;
   final Color color;
   final Function(XFile?)? onImagePicked;
+  final String? imagePath;
 
   const ImagePickerButton({
     super.key,
@@ -14,6 +15,7 @@ class ImagePickerButton extends StatefulWidget {
     this.height = 40,
     this.color = CupertinoColors.activeBlue,
     this.onImagePicked,
+    this.imagePath,
   });
 
   @override
@@ -35,14 +37,15 @@ class _ImagePickerButtonState extends State<ImagePickerButton> {
 
   @override
   Widget build(BuildContext context) {
+    final displayPath = _image?.path ?? widget.imagePath;
     return CupertinoButton(
       padding: EdgeInsets.all(5),
       color: CupertinoColors.activeBlue,
-      child: _image != null
+      child: displayPath != null && displayPath.isNotEmpty
           ? Image.file(
-              File(_image!.path),
-              width: 40,
-              height: 40,
+              File(displayPath),
+              width: 24,
+              height: 24,
               fit: BoxFit.cover,
             )
           : Icon(
