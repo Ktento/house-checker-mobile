@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'pages/general/general_home.dart';
 import 'pages/investigator/investigator_home.dart';
 import 'package:flutter/cupertino.dart';
@@ -46,7 +45,7 @@ class HomePage extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
+          CupertinoPageRoute(
             builder: (context) => const General_HomePage(),
           ),
         );
@@ -63,7 +62,7 @@ class HomePage extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black26,
+                color: CupertinoColors.systemGrey6,
                 offset: Offset(0, 4),
                 blurRadius: 6,
               ),
@@ -96,7 +95,7 @@ class HomePage extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
+          CupertinoPageRoute(
             builder: (context) => const InvestigatorHomePage(),
           ),
         );
@@ -113,7 +112,7 @@ class HomePage extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black26,
+                color: CupertinoColors.systemGrey6,
                 offset: Offset(0, 4),
                 blurRadius: 6,
               ),
