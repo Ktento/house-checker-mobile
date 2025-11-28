@@ -8,5 +8,6 @@ class LocationState with _$LocationState {
   const factory LocationState({
     required LatLng now,
     double? heading,
+    String? address,
   }) = _LocationState;
 }
