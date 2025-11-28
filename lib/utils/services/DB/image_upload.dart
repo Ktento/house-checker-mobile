@@ -123,7 +123,7 @@ Future<void> uploadAllImages(InvestigationViewModel viewModel) async {
   }
 }
 
-Future<List<String>> uploadImages(List<ImageInfo>? images) async {
+Future<List<String>> uploadImages(List<ImagePaths>? images) async {
   if (images == null) return [];
 
   List<String> updated = [];
@@ -160,12 +160,9 @@ Future<String?> sendImage(String path) async {
     final snapshot = await uploadTask;
     // Get download URL
     final downloadUrl = await snapshot.ref.getDownloadURL();
-    print("filepath:$filePath");
-    print("downloadUrl:$downloadUrl");
     return downloadUrl;
   } catch (e) {
-    print("filepath:$filePath");
-    print("Upload failed: $e");
+    print("エラー(sendImage):$e");
     return null;
   }
 }
