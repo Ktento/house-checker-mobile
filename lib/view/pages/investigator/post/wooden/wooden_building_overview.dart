@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../view_model/investigator_post_view_model.dart';
 import './wooden_survery.dart';
+import '../../../../../view_model/location_view_model.dart';
 
 class WoodenBuildingOverview extends StatelessWidget {
   const WoodenBuildingOverview({super.key});
@@ -10,8 +12,12 @@ class WoodenBuildingOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<InvestigationViewModel>();
+    final location = context.watch<LocationViewModel>();
     final inputVM = context.read<FormViewModel>();
 
+    if (location.address != null) {
+      inputVM.addressController.text = location.address.toString();
+    }
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.systemGroupedBackground,
       navigationBar: const CupertinoNavigationBar(
@@ -175,7 +181,7 @@ class WoodenBuildingOverview extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: WoodenSurvery(), 
+                              child: WoodenSurvery(),
                             ),
                           ),
                         );
@@ -230,7 +236,6 @@ class WoodenBuildingOverview extends StatelessWidget {
     required TextEditingController controller,
     required List<String> options,
   }) {
-  
     if (controller.text.isEmpty && options.isNotEmpty) {
       controller.text = options.first;
     }
