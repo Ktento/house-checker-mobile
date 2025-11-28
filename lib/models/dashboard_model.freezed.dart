@@ -35,7 +35,6 @@ mixin _$DashboardData {
       throw _privateConstructorUsedError; // 判定結果の割合
   CheckSituationRatio get checksituationRatio =>
       throw _privateConstructorUsedError; // 日別判定件数 (キー: 日付, 値: 件数)
-  @JsonKey(name: "dateAnalysis")
   Map<String, DailyCheckCount> get dateAnalysis =>
       throw _privateConstructorUsedError; // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
   Map<String, RegionAnalysis> get regionanalysis =>
@@ -67,7 +66,7 @@ abstract class $DashboardDataCopyWith<$Res> {
       Map<String, int> workercount,
       CheckSituation checksituation,
       CheckSituationRatio checksituationRatio,
-      @JsonKey(name: "dateAnalysis") Map<String, DailyCheckCount> dateAnalysis,
+      Map<String, DailyCheckCount> dateAnalysis,
       Map<String, RegionAnalysis> regionanalysis});
 
   $CheckSituationCopyWith<$Res> get checksituation;
@@ -189,7 +188,7 @@ abstract class _$$DashboardDataImplCopyWith<$Res>
       Map<String, int> workercount,
       CheckSituation checksituation,
       CheckSituationRatio checksituationRatio,
-      @JsonKey(name: "dateAnalysis") Map<String, DailyCheckCount> dateAnalysis,
+      Map<String, DailyCheckCount> dateAnalysis,
       Map<String, RegionAnalysis> regionanalysis});
 
   @override
@@ -282,12 +281,11 @@ class _$DashboardDataImpl
       this.checkcomplete = 0,
       this.dangerbuilding = 0,
       this.checkwaiting = 0,
-      this.completionRatioTotal = 10.0,
-      this.dangerRatioCompleted = 8.0,
+      this.completionRatioTotal = 0.0,
+      this.dangerRatioCompleted = 0.0,
       required final Map<String, int> workercount,
       required this.checksituation,
       required this.checksituationRatio,
-      @JsonKey(name: "dateAnalysis")
       required final Map<String, DailyCheckCount> dateAnalysis,
       required final Map<String, RegionAnalysis> regionanalysis})
       : _workercount = workercount,
@@ -342,7 +340,6 @@ class _$DashboardDataImpl
   final Map<String, DailyCheckCount> _dateAnalysis;
 // 日別判定件数 (キー: 日付, 値: 件数)
   @override
-  @JsonKey(name: "dateAnalysis")
   Map<String, DailyCheckCount> get dateAnalysis {
     if (_dateAnalysis is EqualUnmodifiableMapView) return _dateAnalysis;
     // ignore: implicit_dynamic_type
@@ -454,7 +451,6 @@ abstract class _DashboardData implements DashboardData {
           required final Map<String, int> workercount,
           required final CheckSituation checksituation,
           required final CheckSituationRatio checksituationRatio,
-          @JsonKey(name: "dateAnalysis")
           required final Map<String, DailyCheckCount> dateAnalysis,
           required final Map<String, RegionAnalysis> regionanalysis}) =
       _$DashboardDataImpl;
@@ -482,7 +478,6 @@ abstract class _DashboardData implements DashboardData {
   @override
   CheckSituationRatio get checksituationRatio; // 日別判定件数 (キー: 日付, 値: 件数)
   @override
-  @JsonKey(name: "dateAnalysis")
   Map<String, DailyCheckCount>
       get dateAnalysis; // 地域別分析データ (キー: 県名, 値: RegionAnalysis モデル)
   @override

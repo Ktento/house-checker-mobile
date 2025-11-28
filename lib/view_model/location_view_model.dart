@@ -10,6 +10,8 @@ class LocationViewModel extends ChangeNotifier {
   LocationState? _locationState;
   LatLng? get currentPosition => _locationState?.now;
   double? get heading => _locationState?.heading;
+  String? get address => _locationState?.address;
+
   StreamSubscription<Position>? _positionSubscription;
   StreamSubscription<CompassEvent>? _compassSubscription;
 
@@ -19,16 +21,41 @@ class LocationViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // 現在位置を取得して反映
+  // 現在位置,住所を取得して反映
   Future<void> updateCurrentPosition() async {
     try {
       Position pos = await _determinePosition();
       _locationState = LocationState(now: LatLng(pos.latitude, pos.longitude));
+      Placemark? address =
+          await getAddressFromLatLng(LatLng(pos.latitude, pos.longitude));
+      print(address);
+
+      if (address != null || address!.street != null) {
+        final String replaceAddress = formatAddress(address);
+
+        _locationState = _locationState!.copyWith(address: replaceAddress);
+      }
     } catch (e) {
       _locationState =
           LocationState(now: LatLng(35.6586, 139.7454)); // デフォルト東京タワー
+      print("エラー(updateCurrentPosition):$e");
     }
     notifyListeners();
+  }
+
+  //住所から日本と郵便番号を削除し、適切な文字列を返す関数
+  String formatAddress(Placemark placemark) {
+    String rawStreet = placemark.street.toString();
+
+    // 「日本、」を削除
+    String cleaned = rawStreet.replaceAll(RegExp(r'^日本、'), '');
+
+    // 「〒郵便番号」を削除（日本の郵便番号形式：〒数字3桁-数字4桁）
+    cleaned = cleaned.replaceAll(RegExp(r'〒\d{3}-\d{4}\s*'), '');
+
+    // 先頭・末尾の空白や余分なコンマを削除
+    cleaned = cleaned.trim().replaceAll(RegExp(r'^,|,$'), '');
+    return cleaned;
   }
 
   //現在位置を取得

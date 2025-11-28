@@ -29,7 +29,7 @@ class InvestigationViewModel extends ChangeNotifier {
 
     // 新しい ImageInfo リストを作成
     final updatedImages = paths
-        .map((path) => ImageInfo(localPath: path, firebaseUrl: ''))
+        .map((path) => ImagePaths(localPath: path, firebaseUrl: ''))
         .toList();
 
     // content のコピーを作成
@@ -94,7 +94,7 @@ class InvestigationViewModel extends ChangeNotifier {
       return;
     }
     final updatedImages = List.generate(count, (i) {
-      return ImageInfo(
+      return ImagePaths(
           localPath: localUrls[i], // i番目のローカルパス
           firebaseUrl: uploadUrls[i] // i番目のFirebase URL
           );
@@ -240,7 +240,6 @@ class InvestigationViewModel extends ChangeNotifier {
     DamageLevel? overallFallingObjectScore,
   }) {
     if (_record == null) return;
-
     final updatedContent = _record!.content.copyWith(
       exteriorInspectionScore:
           exteriorInspectionScore ?? _record!.content.exteriorInspectionScore,

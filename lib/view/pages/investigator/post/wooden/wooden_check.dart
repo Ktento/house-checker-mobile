@@ -16,7 +16,7 @@ class DangerSurveyFormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<InvestigationViewModel>();
+    final viewModel = context.watch<InvestigationViewModel>();
     final inputVM = context.read<FormViewModel>();
     InvestigationRecord record = viewModel.record!;
     return CupertinoPageScaffold(
