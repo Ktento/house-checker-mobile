@@ -115,40 +115,46 @@ class WoodenResearchUnit extends StatelessWidget {
                                     },
                                   );
                                 },
-                                child: CupertinoFormRow(
-                                  prefix: const Row(
-                                    children: [
-                                      Icon(CupertinoIcons.map,
-                                          color: CupertinoColors.systemGrey),
-                                      SizedBox(width: 6),
-                                      Text('都道府県'),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        inputVM.investigatorPrefectureController
-                                                .text.isEmpty
-                                            ? '選択'
-                                            : inputVM
-                                                .investigatorPrefectureController
-                                                .text,
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: inputVM
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 16, ),
+                                  child: CupertinoFormRow(
+                                    prefix: const Row(
+                                      children: [
+                                        Icon(CupertinoIcons.map,
+                                            color: CupertinoColors.systemGrey),
+                                        SizedBox(width: 6),
+                                        Text('都道府県'),
+                                      ],
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          inputVM.investigatorPrefectureController
+                                                  .text.isEmpty
+                                              ? '選択'
+                                              : inputVM
                                                   .investigatorPrefectureController
-                                                  .text
-                                                  .isEmpty
-                                              ? CupertinoColors.placeholderText
-                                              : CupertinoColors.label,
+                                                  .text,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: inputVM
+                                                    .investigatorPrefectureController
+                                                    .text
+                                                    .isEmpty
+                                                ? CupertinoColors
+                                                    .placeholderText
+                                                : CupertinoColors.label,
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(width: 6),
-                                      const Icon(CupertinoIcons.chevron_forward,
-                                          size: 16,
-                                          color: CupertinoColors.systemGrey3),
-                                    ],
+                                        const SizedBox(width: 6),
+                                        const Icon(
+                                            CupertinoIcons.chevron_forward,
+                                            size: 16,
+                                            color: CupertinoColors.systemGrey3),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -258,7 +264,7 @@ class WoodenResearchUnit extends StatelessWidget {
           Text(label),
         ],
       ),
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: CupertinoTextField(
         controller: controller,
         placeholder: placeholder,
