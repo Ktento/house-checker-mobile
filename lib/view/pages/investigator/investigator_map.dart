@@ -19,7 +19,7 @@ class _InvestigatorMapState extends State<InvestigatorMap>
     with TickerProviderStateMixin {
   late final AnimatedMapController _animatedMapController;
   late LatLng currentPosition = LatLng(35.6586, 139.7454);
-
+  bool markerbutton = false;
   // アニメーションで指定位置に移動
   void moveToLocation(LatLng latlng) {
     _animatedMapController.animateTo(
@@ -76,123 +76,124 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                   subdomains: ['a', 'b', 'c'],
                   userAgentPackageName: 'com.example.app',
                 ),
+                if (markerbutton) ...[
+                  // 危険度評価　赤のマーカー
+                  MarkerLayer(
+                    markers: mapViewModel.redBuildingMarkers.map((latlng) {
+                      return Marker(
+                        point: latlng,
+                        width: 30,
+                        height: 30,
+                        child: GestureDetector(
+                          onTap: () async {
+                            final googleMapsUrl = Uri.parse(
+                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
+                            if (await canLaunchUrl(googleMapsUrl)) {
+                              await launchUrl(googleMapsUrl,
+                                  mode: LaunchMode.externalApplication);
+                            } else {
+                              print('Could not launch Google Maps');
+                            }
 
-                // 危険度評価　赤のマーカー
-                MarkerLayer(
-                  markers: mapViewModel.redBuildingMarkers.map((latlng) {
-                    return Marker(
-                      point: latlng,
-                      width: 30,
-                      height: 30,
-                      child: GestureDetector(
-                        onTap: () async {
-                          final googleMapsUrl = Uri.parse(
-                              'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                          if (await canLaunchUrl(googleMapsUrl)) {
-                            await launchUrl(googleMapsUrl,
-                                mode: LaunchMode.externalApplication);
-                          } else {
-                            print('Could not launch Google Maps');
-                          }
-
-                          print('タップされました: $latlng');
-                        },
-                        child: const Icon(
-                          CupertinoIcons.circle_fill,
-                          color: CupertinoColors.systemRed,
-                          size: 30,
+                            print('タップされました: $latlng');
+                          },
+                          child: const Icon(
+                            CupertinoIcons.circle_fill,
+                            color: CupertinoColors.systemRed,
+                            size: 30,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-                // 危険度評価　黄色のマーカー
-                MarkerLayer(
-                  markers: mapViewModel.yellowBuildingMarkers.map((latlng) {
-                    return Marker(
-                      point: latlng,
-                      width: 30,
-                      height: 30,
-                      child: GestureDetector(
-                        onTap: () async {
-                          final googleMapsUrl = Uri.parse(
-                              'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                          if (await canLaunchUrl(googleMapsUrl)) {
-                            await launchUrl(googleMapsUrl,
-                                mode: LaunchMode.platformDefault);
-                          } else {
-                            print('Could not launch Google Maps');
-                          }
+                      );
+                    }).toList(),
+                  ),
+                  // 危険度評価　黄色のマーカー
+                  MarkerLayer(
+                    markers: mapViewModel.yellowBuildingMarkers.map((latlng) {
+                      return Marker(
+                        point: latlng,
+                        width: 30,
+                        height: 30,
+                        child: GestureDetector(
+                          onTap: () async {
+                            final googleMapsUrl = Uri.parse(
+                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
+                            if (await canLaunchUrl(googleMapsUrl)) {
+                              await launchUrl(googleMapsUrl,
+                                  mode: LaunchMode.platformDefault);
+                            } else {
+                              print('Could not launch Google Maps');
+                            }
 
-                          print('タップされました: $latlng');
-                        },
-                        child: const Icon(
-                          CupertinoIcons.circle_fill,
-                          color: CupertinoColors.systemYellow,
-                          size: 30,
+                            print('タップされました: $latlng');
+                          },
+                          child: const Icon(
+                            CupertinoIcons.circle_fill,
+                            color: CupertinoColors.systemYellow,
+                            size: 30,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-                // 危険度評価　緑のマーカー
-                MarkerLayer(
-                  markers: mapViewModel.greenBuildingMarkers.map((latlng) {
-                    return Marker(
-                      point: latlng,
-                      width: 30,
-                      height: 30,
-                      child: GestureDetector(
-                        onTap: () async {
-                          final googleMapsUrl = Uri.parse(
-                              'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                          if (await canLaunchUrl(googleMapsUrl)) {
-                            await launchUrl(googleMapsUrl,
-                                mode: LaunchMode.externalApplication);
-                          } else {
-                            print('Could not launch Google Maps');
-                          }
+                      );
+                    }).toList(),
+                  ),
+                  // 危険度評価　緑のマーカー
+                  MarkerLayer(
+                    markers: mapViewModel.greenBuildingMarkers.map((latlng) {
+                      return Marker(
+                        point: latlng,
+                        width: 30,
+                        height: 30,
+                        child: GestureDetector(
+                          onTap: () async {
+                            final googleMapsUrl = Uri.parse(
+                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
+                            if (await canLaunchUrl(googleMapsUrl)) {
+                              await launchUrl(googleMapsUrl,
+                                  mode: LaunchMode.externalApplication);
+                            } else {
+                              print('Could not launch Google Maps');
+                            }
 
-                          print('タップされました: $latlng');
-                        },
-                        child: const Icon(
-                          CupertinoIcons.circle_fill,
-                          color: CupertinoColors.systemGreen,
-                          size: 30,
+                            print('タップされました: $latlng');
+                          },
+                          child: const Icon(
+                            CupertinoIcons.circle_fill,
+                            color: CupertinoColors.systemGreen,
+                            size: 30,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-                // 判定待ちのマーカー
-                MarkerLayer(
-                  markers: mapViewModel.waitingBuildingMarkers.map((latlng) {
-                    return Marker(
-                      point: latlng,
-                      width: 30,
-                      height: 30,
-                      child: GestureDetector(
-                        onTap: () async {
-                          final googleMapsUrl = Uri.parse(
-                              'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                          if (await canLaunchUrl(googleMapsUrl)) {
-                            await launchUrl(googleMapsUrl,
-                                mode: LaunchMode.externalApplication);
-                          } else {
-                            print('Could not launch Google Maps');
-                          }
+                      );
+                    }).toList(),
+                  ),
+                  // 判定待ちのマーカー
+                  MarkerLayer(
+                    markers: mapViewModel.waitingBuildingMarkers.map((latlng) {
+                      return Marker(
+                        point: latlng,
+                        width: 30,
+                        height: 30,
+                        child: GestureDetector(
+                          onTap: () async {
+                            final googleMapsUrl = Uri.parse(
+                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
+                            if (await canLaunchUrl(googleMapsUrl)) {
+                              await launchUrl(googleMapsUrl,
+                                  mode: LaunchMode.externalApplication);
+                            } else {
+                              print('Could not launch Google Maps');
+                            }
 
-                          print('タップされました: $latlng');
-                        },
-                        child: const Icon(
-                          CupertinoIcons.clock_fill,
-                          color: CupertinoColors.systemGrey,
-                          size: 30,
+                            print('タップされました: $latlng');
+                          },
+                          child: const Icon(
+                            CupertinoIcons.clock_fill,
+                            color: CupertinoColors.systemGrey,
+                            size: 30,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                ),
+                      );
+                    }).toList(),
+                  ),
+                ],
                 //現在位置マーカー
                 MarkerLayer(
                   markers: [
@@ -240,7 +241,12 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                           size: 26,
                         ),
                         onPressed: () async {
-                          if (locationViewModel.currentPosition == null) return;
+                          setState(() {
+                            markerbutton = !markerbutton;
+                          });
+
+                          if (locationViewModel.currentPosition == null ||
+                              !markerbutton) return;
                           final points = await getMarkers(
                               locationViewModel.currentPosition!);
 
