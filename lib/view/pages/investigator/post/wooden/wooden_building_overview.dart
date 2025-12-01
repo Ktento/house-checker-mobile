@@ -54,6 +54,7 @@ class WoodenBuildingOverview extends StatelessWidget {
                           label: '建築物所在地',
                           controller: inputVM.addressController,
                           placeholder: '住所を入力',
+                          maxLines: 2,
                           suffix: CupertinoButton(
                             padding: EdgeInsets.zero,
                             onPressed: () async {
@@ -224,12 +225,15 @@ class WoodenBuildingOverview extends StatelessWidget {
     );
   }
 
+  //マップから住所を選択できるモーダル
   Future<String?> _showMapModal(
       BuildContext context, LocationViewModel location) async {
+    //結果を格納する変数を定義
     String? resultAddress;
     resultAddress = await showCupertinoModalPopup<String?>(
       context: context,
       builder: (BuildContext context) {
+        //一時的に結果を保持する変数を定義
         String? tempSelectedAddress;
         return Container(
           constraints: BoxConstraints(
@@ -304,6 +308,7 @@ class WoodenBuildingOverview extends StatelessWidget {
     String? placeholder,
     TextInputType keyboardType = TextInputType.text,
     Widget? suffix,
+    int? maxLines = 1,
   }) {
     return CupertinoFormRow(
         prefix: Row(
@@ -313,7 +318,7 @@ class WoodenBuildingOverview extends StatelessWidget {
             Text(label),
           ],
         ),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Row(
           children: [
             Expanded(
@@ -325,6 +330,7 @@ class WoodenBuildingOverview extends StatelessWidget {
                 decoration: null, // 枠線なし
                 style: const TextStyle(fontSize: 16),
                 padding: EdgeInsets.zero,
+                maxLines: maxLines,
               ),
             ),
             if (suffix != null) ...[
@@ -465,9 +471,19 @@ class _MapSelectionWidgetState extends State<MapSelectionWidget> {
           subdomains: ['a', 'b', 'c'],
           userAgentPackageName: 'com.example.app',
         ),
-        if (selectedPosition != null)
-          MarkerLayer(
-            markers: [
+        MarkerLayer(
+          markers: [
+            Marker(
+              point: widget.initialPosition,
+              width: 40,
+              height: 40,
+              child: const Icon(
+                CupertinoIcons.location_north_fill,
+                color: CupertinoColors.activeBlue,
+                size: 40,
+              ),
+            ),
+            if (selectedPosition != null)
               Marker(
                 point: selectedPosition!,
                 width: 40,
@@ -478,8 +494,8 @@ class _MapSelectionWidgetState extends State<MapSelectionWidget> {
                   size: 30,
                 ),
               ),
-            ],
-          ),
+          ],
+        ),
       ],
     );
   }
