@@ -205,7 +205,7 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                         angle: (locationViewModel.heading ?? 0) *
                             (3.14159265 / 180),
                         child: const Icon(
-                          CupertinoIcons.location_north, // 矢印アイコン
+                          CupertinoIcons.location_north_fill, // 矢印アイコン
                           color: CupertinoColors.activeBlue,
                           size: 40,
                         ),
