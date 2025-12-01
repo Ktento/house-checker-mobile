@@ -824,42 +824,49 @@ abstract class _ImagePaths implements ImagePaths {
       throw _privateConstructorUsedError;
 }
 
-InvestigationContent _$InvestigationContentFromJson(Map<String, dynamic> json) {
-  return _InvestigationContent.fromJson(json);
+WoodenContent _$WoodenContentFromJson(Map<String, dynamic> json) {
+  return _WoodenContent.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InvestigationContent {
+mixin _$WoodenContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
-  String? get exteriorInspectionRemarks => throw _privateConstructorUsedError;
+  String? get exteriorInspectionRemarks =>
+      throw _privateConstructorUsedError; //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   DamageLevel get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths>? get adjacentBuildingRiskImages =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; //構造躯体の不同沈下
   DamageLevel get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths>? get unevenSettlementImages =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; //基礎の被害
   DamageLevel get foundationDamage => throw _privateConstructorUsedError;
   List<ImagePaths>? get foundationDamageImages =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; //建築物の一回の傾斜
   DamageLevel get firstFloorTilt => throw _privateConstructorUsedError;
   List<ImagePaths>? get firstFloorTiltImages =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; //壁の被害
   DamageLevel get wallDamage => throw _privateConstructorUsedError;
-  List<ImagePaths>? get wallDamageImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get wallDamageImages =>
+      throw _privateConstructorUsedError; //腐食・蟻害の有無
   DamageLevel get corrosionOrTermite => throw _privateConstructorUsedError;
   List<ImagePaths>? get corrosionOrTermiteImages =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
+//瓦
   DamageLevel get roofTile => throw _privateConstructorUsedError;
-  List<ImagePaths>? get roofTileImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get roofTileImages =>
+      throw _privateConstructorUsedError; //窓枠・窓ガラス
   DamageLevel get windowFrame => throw _privateConstructorUsedError;
-  List<ImagePaths>? get windowFrameImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get windowFrameImages =>
+      throw _privateConstructorUsedError; //外装材　湿式
   DamageLevel get exteriorWet => throw _privateConstructorUsedError;
-  List<ImagePaths>? get exteriorWetImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get exteriorWetImages =>
+      throw _privateConstructorUsedError; //外装材　乾式
   DamageLevel get exteriorDry => throw _privateConstructorUsedError;
-  List<ImagePaths>? get exteriorDryImages => throw _privateConstructorUsedError;
+  List<ImagePaths>? get exteriorDryImages =>
+      throw _privateConstructorUsedError; //看板・機器類
   DamageLevel get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths>? get signageAndEquipmentImages =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; //その他
   DamageLevel get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths>? get outdoorStairsImages =>
       throw _privateConstructorUsedError;
@@ -871,21 +878,21 @@ mixin _$InvestigationContent {
   DamageLevel get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this InvestigationContent to a JSON map.
+  /// Serializes this WoodenContent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InvestigationContent
+  /// Create a copy of WoodenContent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InvestigationContentCopyWith<InvestigationContent> get copyWith =>
+  $WoodenContentCopyWith<WoodenContent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvestigationContentCopyWith<$Res> {
-  factory $InvestigationContentCopyWith(InvestigationContent value,
-          $Res Function(InvestigationContent) then) =
-      _$InvestigationContentCopyWithImpl<$Res, InvestigationContent>;
+abstract class $WoodenContentCopyWith<$Res> {
+  factory $WoodenContentCopyWith(
+          WoodenContent value, $Res Function(WoodenContent) then) =
+      _$WoodenContentCopyWithImpl<$Res, WoodenContent>;
   @useResult
   $Res call(
       {int exteriorInspectionScore,
@@ -923,17 +930,16 @@ abstract class $InvestigationContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InvestigationContentCopyWithImpl<$Res,
-        $Val extends InvestigationContent>
-    implements $InvestigationContentCopyWith<$Res> {
-  _$InvestigationContentCopyWithImpl(this._value, this._then);
+class _$WoodenContentCopyWithImpl<$Res, $Val extends WoodenContent>
+    implements $WoodenContentCopyWith<$Res> {
+  _$WoodenContentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InvestigationContent
+  /// Create a copy of WoodenContent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1105,11 +1111,11 @@ class _$InvestigationContentCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$InvestigationContentImplCopyWith<$Res>
-    implements $InvestigationContentCopyWith<$Res> {
-  factory _$$InvestigationContentImplCopyWith(_$InvestigationContentImpl value,
-          $Res Function(_$InvestigationContentImpl) then) =
-      __$$InvestigationContentImplCopyWithImpl<$Res>;
+abstract class _$$WoodenContentImplCopyWith<$Res>
+    implements $WoodenContentCopyWith<$Res> {
+  factory _$$WoodenContentImplCopyWith(
+          _$WoodenContentImpl value, $Res Function(_$WoodenContentImpl) then) =
+      __$$WoodenContentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1148,14 +1154,14 @@ abstract class _$$InvestigationContentImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InvestigationContentImplCopyWithImpl<$Res>
-    extends _$InvestigationContentCopyWithImpl<$Res, _$InvestigationContentImpl>
-    implements _$$InvestigationContentImplCopyWith<$Res> {
-  __$$InvestigationContentImplCopyWithImpl(_$InvestigationContentImpl _value,
-      $Res Function(_$InvestigationContentImpl) _then)
+class __$$WoodenContentImplCopyWithImpl<$Res>
+    extends _$WoodenContentCopyWithImpl<$Res, _$WoodenContentImpl>
+    implements _$$WoodenContentImplCopyWith<$Res> {
+  __$$WoodenContentImplCopyWithImpl(
+      _$WoodenContentImpl _value, $Res Function(_$WoodenContentImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InvestigationContent
+  /// Create a copy of WoodenContent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1193,7 +1199,7 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
     Object? overallStructuralScore = null,
     Object? overallFallingObjectScore = null,
   }) {
-    return _then(_$InvestigationContentImpl(
+    return _then(_$WoodenContentImpl(
       exteriorInspectionScore: null == exteriorInspectionScore
           ? _value.exteriorInspectionScore
           : exteriorInspectionScore // ignore: cast_nullable_to_non_nullable
@@ -1328,8 +1334,8 @@ class __$$InvestigationContentImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvestigationContentImpl implements _InvestigationContent {
-  const _$InvestigationContentImpl(
+class _$WoodenContentImpl implements _WoodenContent {
+  const _$WoodenContentImpl(
       {required this.exteriorInspectionScore,
       this.exteriorInspectionRemarks,
       required this.adjacentBuildingRisk,
@@ -1376,13 +1382,14 @@ class _$InvestigationContentImpl implements _InvestigationContent {
         _outdoorStairsImages = outdoorStairsImages,
         _othersImages = othersImages;
 
-  factory _$InvestigationContentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvestigationContentImplFromJson(json);
+  factory _$WoodenContentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WoodenContentImplFromJson(json);
 
   @override
   final int exteriorInspectionScore;
   @override
   final String? exteriorInspectionRemarks;
+//隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   @override
   final DamageLevel adjacentBuildingRisk;
   final List<ImagePaths>? _adjacentBuildingRiskImages;
@@ -1396,6 +1403,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//構造躯体の不同沈下
   @override
   final DamageLevel unevenSettlement;
   final List<ImagePaths>? _unevenSettlementImages;
@@ -1409,6 +1417,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//基礎の被害
   @override
   final DamageLevel foundationDamage;
   final List<ImagePaths>? _foundationDamageImages;
@@ -1422,6 +1431,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//建築物の一回の傾斜
   @override
   final DamageLevel firstFloorTilt;
   final List<ImagePaths>? _firstFloorTiltImages;
@@ -1435,6 +1445,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//壁の被害
   @override
   final DamageLevel wallDamage;
   final List<ImagePaths>? _wallDamageImages;
@@ -1448,6 +1459,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//腐食・蟻害の有無
   @override
   final DamageLevel corrosionOrTermite;
   final List<ImagePaths>? _corrosionOrTermiteImages;
@@ -1461,6 +1473,8 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//落下危険物・転倒危険物に関する危険度
+//瓦
   @override
   final DamageLevel roofTile;
   final List<ImagePaths>? _roofTileImages;
@@ -1473,6 +1487,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//窓枠・窓ガラス
   @override
   final DamageLevel windowFrame;
   final List<ImagePaths>? _windowFrameImages;
@@ -1486,6 +1501,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//外装材　湿式
   @override
   final DamageLevel exteriorWet;
   final List<ImagePaths>? _exteriorWetImages;
@@ -1499,6 +1515,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//外装材　乾式
   @override
   final DamageLevel exteriorDry;
   final List<ImagePaths>? _exteriorDryImages;
@@ -1512,6 +1529,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//看板・機器類
   @override
   final DamageLevel signageAndEquipment;
   final List<ImagePaths>? _signageAndEquipmentImages;
@@ -1525,6 +1543,7 @@ class _$InvestigationContentImpl implements _InvestigationContent {
     return EqualUnmodifiableListView(value);
   }
 
+//その他
   @override
   final DamageLevel outdoorStairs;
   final List<ImagePaths>? _outdoorStairsImages;
@@ -1561,14 +1580,14 @@ class _$InvestigationContentImpl implements _InvestigationContent {
 
   @override
   String toString() {
-    return 'InvestigationContent(exteriorInspectionScore: $exteriorInspectionScore, exteriorInspectionRemarks: $exteriorInspectionRemarks, adjacentBuildingRisk: $adjacentBuildingRisk, adjacentBuildingRiskImages: $adjacentBuildingRiskImages, unevenSettlement: $unevenSettlement, unevenSettlementImages: $unevenSettlementImages, foundationDamage: $foundationDamage, foundationDamageImages: $foundationDamageImages, firstFloorTilt: $firstFloorTilt, firstFloorTiltImages: $firstFloorTiltImages, wallDamage: $wallDamage, wallDamageImages: $wallDamageImages, corrosionOrTermite: $corrosionOrTermite, corrosionOrTermiteImages: $corrosionOrTermiteImages, roofTile: $roofTile, roofTileImages: $roofTileImages, windowFrame: $windowFrame, windowFrameImages: $windowFrameImages, exteriorWet: $exteriorWet, exteriorWetImages: $exteriorWetImages, exteriorDry: $exteriorDry, exteriorDryImages: $exteriorDryImages, signageAndEquipment: $signageAndEquipment, signageAndEquipmentImages: $signageAndEquipmentImages, outdoorStairs: $outdoorStairs, outdoorStairsImages: $outdoorStairsImages, others: $others, othersImages: $othersImages, otherRemarks: $otherRemarks, overallExteriorScore: $overallExteriorScore, overallStructuralScore: $overallStructuralScore, overallFallingObjectScore: $overallFallingObjectScore)';
+    return 'WoodenContent(exteriorInspectionScore: $exteriorInspectionScore, exteriorInspectionRemarks: $exteriorInspectionRemarks, adjacentBuildingRisk: $adjacentBuildingRisk, adjacentBuildingRiskImages: $adjacentBuildingRiskImages, unevenSettlement: $unevenSettlement, unevenSettlementImages: $unevenSettlementImages, foundationDamage: $foundationDamage, foundationDamageImages: $foundationDamageImages, firstFloorTilt: $firstFloorTilt, firstFloorTiltImages: $firstFloorTiltImages, wallDamage: $wallDamage, wallDamageImages: $wallDamageImages, corrosionOrTermite: $corrosionOrTermite, corrosionOrTermiteImages: $corrosionOrTermiteImages, roofTile: $roofTile, roofTileImages: $roofTileImages, windowFrame: $windowFrame, windowFrameImages: $windowFrameImages, exteriorWet: $exteriorWet, exteriorWetImages: $exteriorWetImages, exteriorDry: $exteriorDry, exteriorDryImages: $exteriorDryImages, signageAndEquipment: $signageAndEquipment, signageAndEquipmentImages: $signageAndEquipmentImages, outdoorStairs: $outdoorStairs, outdoorStairsImages: $outdoorStairsImages, others: $others, othersImages: $othersImages, otherRemarks: $otherRemarks, overallExteriorScore: $overallExteriorScore, overallStructuralScore: $overallStructuralScore, overallFallingObjectScore: $overallFallingObjectScore)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvestigationContentImpl &&
+            other is _$WoodenContentImpl &&
             (identical(other.exteriorInspectionScore, exteriorInspectionScore) ||
                 other.exteriorInspectionScore == exteriorInspectionScore) &&
             (identical(other.exteriorInspectionRemarks, exteriorInspectionRemarks) ||
@@ -1666,26 +1685,24 @@ class _$InvestigationContentImpl implements _InvestigationContent {
         overallFallingObjectScore
       ]);
 
-  /// Create a copy of InvestigationContent
+  /// Create a copy of WoodenContent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvestigationContentImplCopyWith<_$InvestigationContentImpl>
-      get copyWith =>
-          __$$InvestigationContentImplCopyWithImpl<_$InvestigationContentImpl>(
-              this, _$identity);
+  _$$WoodenContentImplCopyWith<_$WoodenContentImpl> get copyWith =>
+      __$$WoodenContentImplCopyWithImpl<_$WoodenContentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvestigationContentImplToJson(
+    return _$$WoodenContentImplToJson(
       this,
     );
   }
 }
 
-abstract class _InvestigationContent implements InvestigationContent {
-  const factory _InvestigationContent(
+abstract class _WoodenContent implements WoodenContent {
+  const factory _WoodenContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
           required final DamageLevel adjacentBuildingRisk,
@@ -1718,59 +1735,60 @@ abstract class _InvestigationContent implements InvestigationContent {
           required final String overallExteriorScore,
           required final DamageLevel overallStructuralScore,
           required final DamageLevel overallFallingObjectScore}) =
-      _$InvestigationContentImpl;
+      _$WoodenContentImpl;
 
-  factory _InvestigationContent.fromJson(Map<String, dynamic> json) =
-      _$InvestigationContentImpl.fromJson;
+  factory _WoodenContent.fromJson(Map<String, dynamic> json) =
+      _$WoodenContentImpl.fromJson;
 
   @override
   int get exteriorInspectionScore;
   @override
-  String? get exteriorInspectionRemarks;
+  String? get exteriorInspectionRemarks; //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   @override
   DamageLevel get adjacentBuildingRisk;
   @override
-  List<ImagePaths>? get adjacentBuildingRiskImages;
+  List<ImagePaths>? get adjacentBuildingRiskImages; //構造躯体の不同沈下
   @override
   DamageLevel get unevenSettlement;
   @override
-  List<ImagePaths>? get unevenSettlementImages;
+  List<ImagePaths>? get unevenSettlementImages; //基礎の被害
   @override
   DamageLevel get foundationDamage;
   @override
-  List<ImagePaths>? get foundationDamageImages;
+  List<ImagePaths>? get foundationDamageImages; //建築物の一回の傾斜
   @override
   DamageLevel get firstFloorTilt;
   @override
-  List<ImagePaths>? get firstFloorTiltImages;
+  List<ImagePaths>? get firstFloorTiltImages; //壁の被害
   @override
   DamageLevel get wallDamage;
   @override
-  List<ImagePaths>? get wallDamageImages;
+  List<ImagePaths>? get wallDamageImages; //腐食・蟻害の有無
   @override
   DamageLevel get corrosionOrTermite;
   @override
-  List<ImagePaths>? get corrosionOrTermiteImages;
+  List<ImagePaths>? get corrosionOrTermiteImages; //落下危険物・転倒危険物に関する危険度
+//瓦
   @override
   DamageLevel get roofTile;
   @override
-  List<ImagePaths>? get roofTileImages;
+  List<ImagePaths>? get roofTileImages; //窓枠・窓ガラス
   @override
   DamageLevel get windowFrame;
   @override
-  List<ImagePaths>? get windowFrameImages;
+  List<ImagePaths>? get windowFrameImages; //外装材　湿式
   @override
   DamageLevel get exteriorWet;
   @override
-  List<ImagePaths>? get exteriorWetImages;
+  List<ImagePaths>? get exteriorWetImages; //外装材　乾式
   @override
   DamageLevel get exteriorDry;
   @override
-  List<ImagePaths>? get exteriorDryImages;
+  List<ImagePaths>? get exteriorDryImages; //看板・機器類
   @override
   DamageLevel get signageAndEquipment;
   @override
-  List<ImagePaths>? get signageAndEquipmentImages;
+  List<ImagePaths>? get signageAndEquipmentImages; //その他
   @override
   DamageLevel get outdoorStairs;
   @override
@@ -1788,63 +1806,63 @@ abstract class _InvestigationContent implements InvestigationContent {
   @override
   DamageLevel get overallFallingObjectScore;
 
-  /// Create a copy of InvestigationContent
+  /// Create a copy of WoodenContent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvestigationContentImplCopyWith<_$InvestigationContentImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$WoodenContentImplCopyWith<_$WoodenContentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-InvestigationRecord _$InvestigationRecordFromJson(Map<String, dynamic> json) {
-  return _InvestigationRecord.fromJson(json);
+WoodenRecord _$WoodenRecordFromJson(Map<String, dynamic> json) {
+  return _WoodenRecord.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InvestigationRecord {
+mixin _$WoodenRecord {
   InvestigationUnit get unit => throw _privateConstructorUsedError;
   BuildingOverview get overview => throw _privateConstructorUsedError;
-  InvestigationContent get content => throw _privateConstructorUsedError;
+  WoodenContent get content => throw _privateConstructorUsedError;
   OverallScore get overallScore => throw _privateConstructorUsedError;
 
-  /// Serializes this InvestigationRecord to a JSON map.
+  /// Serializes this WoodenRecord to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InvestigationRecordCopyWith<InvestigationRecord> get copyWith =>
+  $WoodenRecordCopyWith<WoodenRecord> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvestigationRecordCopyWith<$Res> {
-  factory $InvestigationRecordCopyWith(
-          InvestigationRecord value, $Res Function(InvestigationRecord) then) =
-      _$InvestigationRecordCopyWithImpl<$Res, InvestigationRecord>;
+abstract class $WoodenRecordCopyWith<$Res> {
+  factory $WoodenRecordCopyWith(
+          WoodenRecord value, $Res Function(WoodenRecord) then) =
+      _$WoodenRecordCopyWithImpl<$Res, WoodenRecord>;
   @useResult
   $Res call(
       {InvestigationUnit unit,
       BuildingOverview overview,
-      InvestigationContent content,
+      WoodenContent content,
       OverallScore overallScore});
 
   $InvestigationUnitCopyWith<$Res> get unit;
   $BuildingOverviewCopyWith<$Res> get overview;
-  $InvestigationContentCopyWith<$Res> get content;
+  $WoodenContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class _$InvestigationRecordCopyWithImpl<$Res, $Val extends InvestigationRecord>
-    implements $InvestigationRecordCopyWith<$Res> {
-  _$InvestigationRecordCopyWithImpl(this._value, this._then);
+class _$WoodenRecordCopyWithImpl<$Res, $Val extends WoodenRecord>
+    implements $WoodenRecordCopyWith<$Res> {
+  _$WoodenRecordCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1866,7 +1884,7 @@ class _$InvestigationRecordCopyWithImpl<$Res, $Val extends InvestigationRecord>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as InvestigationContent,
+              as WoodenContent,
       overallScore: null == overallScore
           ? _value.overallScore
           : overallScore // ignore: cast_nullable_to_non_nullable
@@ -1874,7 +1892,7 @@ class _$InvestigationRecordCopyWithImpl<$Res, $Val extends InvestigationRecord>
     ) as $Val);
   }
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1884,7 +1902,7 @@ class _$InvestigationRecordCopyWithImpl<$Res, $Val extends InvestigationRecord>
     });
   }
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1894,29 +1912,29 @@ class _$InvestigationRecordCopyWithImpl<$Res, $Val extends InvestigationRecord>
     });
   }
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $InvestigationContentCopyWith<$Res> get content {
-    return $InvestigationContentCopyWith<$Res>(_value.content, (value) {
+  $WoodenContentCopyWith<$Res> get content {
+    return $WoodenContentCopyWith<$Res>(_value.content, (value) {
       return _then(_value.copyWith(content: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$InvestigationRecordImplCopyWith<$Res>
-    implements $InvestigationRecordCopyWith<$Res> {
-  factory _$$InvestigationRecordImplCopyWith(_$InvestigationRecordImpl value,
-          $Res Function(_$InvestigationRecordImpl) then) =
-      __$$InvestigationRecordImplCopyWithImpl<$Res>;
+abstract class _$$WoodenRecordImplCopyWith<$Res>
+    implements $WoodenRecordCopyWith<$Res> {
+  factory _$$WoodenRecordImplCopyWith(
+          _$WoodenRecordImpl value, $Res Function(_$WoodenRecordImpl) then) =
+      __$$WoodenRecordImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {InvestigationUnit unit,
       BuildingOverview overview,
-      InvestigationContent content,
+      WoodenContent content,
       OverallScore overallScore});
 
   @override
@@ -1924,18 +1942,18 @@ abstract class _$$InvestigationRecordImplCopyWith<$Res>
   @override
   $BuildingOverviewCopyWith<$Res> get overview;
   @override
-  $InvestigationContentCopyWith<$Res> get content;
+  $WoodenContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class __$$InvestigationRecordImplCopyWithImpl<$Res>
-    extends _$InvestigationRecordCopyWithImpl<$Res, _$InvestigationRecordImpl>
-    implements _$$InvestigationRecordImplCopyWith<$Res> {
-  __$$InvestigationRecordImplCopyWithImpl(_$InvestigationRecordImpl _value,
-      $Res Function(_$InvestigationRecordImpl) _then)
+class __$$WoodenRecordImplCopyWithImpl<$Res>
+    extends _$WoodenRecordCopyWithImpl<$Res, _$WoodenRecordImpl>
+    implements _$$WoodenRecordImplCopyWith<$Res> {
+  __$$WoodenRecordImplCopyWithImpl(
+      _$WoodenRecordImpl _value, $Res Function(_$WoodenRecordImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1945,7 +1963,7 @@ class __$$InvestigationRecordImplCopyWithImpl<$Res>
     Object? content = null,
     Object? overallScore = null,
   }) {
-    return _then(_$InvestigationRecordImpl(
+    return _then(_$WoodenRecordImpl(
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
@@ -1957,7 +1975,7 @@ class __$$InvestigationRecordImplCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as InvestigationContent,
+              as WoodenContent,
       overallScore: null == overallScore
           ? _value.overallScore
           : overallScore // ignore: cast_nullable_to_non_nullable
@@ -1968,35 +1986,35 @@ class __$$InvestigationRecordImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvestigationRecordImpl implements _InvestigationRecord {
-  const _$InvestigationRecordImpl(
+class _$WoodenRecordImpl implements _WoodenRecord {
+  const _$WoodenRecordImpl(
       {required this.unit,
       required this.overview,
       required this.content,
       required this.overallScore});
 
-  factory _$InvestigationRecordImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvestigationRecordImplFromJson(json);
+  factory _$WoodenRecordImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WoodenRecordImplFromJson(json);
 
   @override
   final InvestigationUnit unit;
   @override
   final BuildingOverview overview;
   @override
-  final InvestigationContent content;
+  final WoodenContent content;
   @override
   final OverallScore overallScore;
 
   @override
   String toString() {
-    return 'InvestigationRecord(unit: $unit, overview: $overview, content: $content, overallScore: $overallScore)';
+    return 'WoodenRecord(unit: $unit, overview: $overview, content: $content, overallScore: $overallScore)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvestigationRecordImpl &&
+            other is _$WoodenRecordImpl &&
             (identical(other.unit, unit) || other.unit == unit) &&
             (identical(other.overview, overview) ||
                 other.overview == overview) &&
@@ -2010,46 +2028,45 @@ class _$InvestigationRecordImpl implements _InvestigationRecord {
   int get hashCode =>
       Object.hash(runtimeType, unit, overview, content, overallScore);
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvestigationRecordImplCopyWith<_$InvestigationRecordImpl> get copyWith =>
-      __$$InvestigationRecordImplCopyWithImpl<_$InvestigationRecordImpl>(
-          this, _$identity);
+  _$$WoodenRecordImplCopyWith<_$WoodenRecordImpl> get copyWith =>
+      __$$WoodenRecordImplCopyWithImpl<_$WoodenRecordImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvestigationRecordImplToJson(
+    return _$$WoodenRecordImplToJson(
       this,
     );
   }
 }
 
-abstract class _InvestigationRecord implements InvestigationRecord {
-  const factory _InvestigationRecord(
+abstract class _WoodenRecord implements WoodenRecord {
+  const factory _WoodenRecord(
       {required final InvestigationUnit unit,
       required final BuildingOverview overview,
-      required final InvestigationContent content,
-      required final OverallScore overallScore}) = _$InvestigationRecordImpl;
+      required final WoodenContent content,
+      required final OverallScore overallScore}) = _$WoodenRecordImpl;
 
-  factory _InvestigationRecord.fromJson(Map<String, dynamic> json) =
-      _$InvestigationRecordImpl.fromJson;
+  factory _WoodenRecord.fromJson(Map<String, dynamic> json) =
+      _$WoodenRecordImpl.fromJson;
 
   @override
   InvestigationUnit get unit;
   @override
   BuildingOverview get overview;
   @override
-  InvestigationContent get content;
+  WoodenContent get content;
   @override
   OverallScore get overallScore;
 
-  /// Create a copy of InvestigationRecord
+  /// Create a copy of WoodenRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvestigationRecordImplCopyWith<_$InvestigationRecordImpl> get copyWith =>
+  _$$WoodenRecordImplCopyWith<_$WoodenRecordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

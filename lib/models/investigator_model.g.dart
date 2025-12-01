@@ -77,9 +77,8 @@ Map<String, dynamic> _$$ImagePathsImplToJson(_$ImagePathsImpl instance) =>
       'firebaseUrl': instance.firebaseUrl,
     };
 
-_$InvestigationContentImpl _$$InvestigationContentImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InvestigationContentImpl(
+_$WoodenContentImpl _$$WoodenContentImplFromJson(Map<String, dynamic> json) =>
+    _$WoodenContentImpl(
       exteriorInspectionScore: (json['exteriorInspectionScore'] as num).toInt(),
       exteriorInspectionRemarks: json['exteriorInspectionRemarks'] as String?,
       adjacentBuildingRisk:
@@ -150,8 +149,7 @@ _$InvestigationContentImpl _$$InvestigationContentImplFromJson(
           $enumDecode(_$DamageLevelEnumMap, json['overallFallingObjectScore']),
     );
 
-Map<String, dynamic> _$$InvestigationContentImplToJson(
-        _$InvestigationContentImpl instance) =>
+Map<String, dynamic> _$$WoodenContentImplToJson(_$WoodenContentImpl instance) =>
     <String, dynamic>{
       'exteriorInspectionScore': instance.exteriorInspectionScore,
       'exteriorInspectionRemarks': instance.exteriorInspectionRemarks,
@@ -197,19 +195,16 @@ const _$DamageLevelEnumMap = {
   DamageLevel.C: 'C',
 };
 
-_$InvestigationRecordImpl _$$InvestigationRecordImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InvestigationRecordImpl(
+_$WoodenRecordImpl _$$WoodenRecordImplFromJson(Map<String, dynamic> json) =>
+    _$WoodenRecordImpl(
       unit: InvestigationUnit.fromJson(json['unit'] as Map<String, dynamic>),
       overview:
           BuildingOverview.fromJson(json['overview'] as Map<String, dynamic>),
-      content: InvestigationContent.fromJson(
-          json['content'] as Map<String, dynamic>),
+      content: WoodenContent.fromJson(json['content'] as Map<String, dynamic>),
       overallScore: $enumDecode(_$OverallScoreEnumMap, json['overallScore']),
     );
 
-Map<String, dynamic> _$$InvestigationRecordImplToJson(
-        _$InvestigationRecordImpl instance) =>
+Map<String, dynamic> _$$WoodenRecordImplToJson(_$WoodenRecordImpl instance) =>
     <String, dynamic>{
       'unit': instance.unit,
       'overview': instance.overview,

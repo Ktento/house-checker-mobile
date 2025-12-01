@@ -63,32 +63,46 @@ class ImagePaths with _$ImagePaths {
 }
 
 @freezed
-class InvestigationContent with _$InvestigationContent {
-  const factory InvestigationContent({
+class WoodenContent with _$WoodenContent {
+  const factory WoodenContent({
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
+    //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
     required DamageLevel adjacentBuildingRisk,
     List<ImagePaths>? adjacentBuildingRiskImages,
+    //構造躯体の不同沈下
     required DamageLevel unevenSettlement,
     List<ImagePaths>? unevenSettlementImages,
+    //基礎の被害
     required DamageLevel foundationDamage,
     List<ImagePaths>? foundationDamageImages,
+    //建築物の一回の傾斜
     required DamageLevel firstFloorTilt,
     List<ImagePaths>? firstFloorTiltImages,
+    //壁の被害
     required DamageLevel wallDamage,
     List<ImagePaths>? wallDamageImages,
+    //腐食・蟻害の有無
     required DamageLevel corrosionOrTermite,
     List<ImagePaths>? corrosionOrTermiteImages,
+
+    //落下危険物・転倒危険物に関する危険度
+    //瓦
     required DamageLevel roofTile,
     List<ImagePaths>? roofTileImages,
+    //窓枠・窓ガラス
     required DamageLevel windowFrame,
     List<ImagePaths>? windowFrameImages,
+    //外装材　湿式
     required DamageLevel exteriorWet,
     List<ImagePaths>? exteriorWetImages,
+    //外装材　乾式
     required DamageLevel exteriorDry,
     List<ImagePaths>? exteriorDryImages,
+    //看板・機器類
     required DamageLevel signageAndEquipment,
     List<ImagePaths>? signageAndEquipmentImages,
+    //その他
     required DamageLevel outdoorStairs,
     List<ImagePaths>? outdoorStairsImages,
     required DamageLevel others,
@@ -97,25 +111,25 @@ class InvestigationContent with _$InvestigationContent {
     required String overallExteriorScore,
     required DamageLevel overallStructuralScore,
     required DamageLevel overallFallingObjectScore,
-  }) = _InvestigationContent;
+  }) = _WoodenContent;
 
-  factory InvestigationContent.fromJson(Map<String, dynamic> json) =>
-      _$InvestigationContentFromJson(json);
+  factory WoodenContent.fromJson(Map<String, dynamic> json) =>
+      _$WoodenContentFromJson(json);
 }
 
 @freezed
-class InvestigationRecord with _$InvestigationRecord {
-  const factory InvestigationRecord({
+class WoodenRecord with _$WoodenRecord {
+  const factory WoodenRecord({
     required InvestigationUnit unit,
     required BuildingOverview overview,
-    required InvestigationContent content,
+    required WoodenContent content,
     required OverallScore overallScore,
-  }) = _InvestigationRecord;
+  }) = _WoodenRecord;
 
-  factory InvestigationRecord.fromJson(Map<String, dynamic> json) =>
-      _$InvestigationRecordFromJson(json);
+  factory WoodenRecord.fromJson(Map<String, dynamic> json) =>
+      _$WoodenRecordFromJson(json);
 
-  factory InvestigationRecord.empty() => InvestigationRecord(
+  factory WoodenRecord.empty() => WoodenRecord(
         unit: InvestigationUnit(
           buildingtype: "",
           number: "",
@@ -136,7 +150,7 @@ class InvestigationRecord with _$InvestigationRecord {
           floors: 0,
           scale: "",
         ),
-        content: InvestigationContent(
+        content: WoodenContent(
           exteriorInspectionScore: 5,
           adjacentBuildingRisk: DamageLevel.A,
           adjacentBuildingRiskImages: null,
