@@ -18,7 +18,7 @@ class WoodenBuildingOverview extends StatelessWidget {
     final location = context.watch<LocationViewModel>();
     final inputVM = context.read<FormViewModel>();
 
-    if (location.address != null) {
+    if (location.address != null && inputVM.addressController.text.isEmpty) {
       inputVM.addressController.text = location.address.toString();
     }
     return CupertinoPageScaffold(
@@ -56,13 +56,17 @@ class WoodenBuildingOverview extends StatelessWidget {
                           placeholder: '住所を入力',
                           suffix: CupertinoButton(
                             padding: EdgeInsets.zero,
-                            minSize: 0,
-                            onPressed: () {
+                            onPressed: () async {
                               // キーボードを閉じる
                               FocusScope.of(context).unfocus();
                               // マップをモーダル表示
-                              _showMapModal(
-                                  context, inputVM.addressController, location);
+                              final String? result =
+                                  await _showMapModal(context, location);
+
+                              // 結果が返ってきたら入力欄に反映する
+                              if (result != null) {
+                                inputVM.addressController.text = result;
+                              }
                             },
                             child: const Icon(
                               CupertinoIcons.map,
@@ -220,12 +224,13 @@ class WoodenBuildingOverview extends StatelessWidget {
     );
   }
 
-  String? _showMapModal(BuildContext context, TextEditingController controller,
-      LocationViewModel location) {
-    showCupertinoModalPopup(
+  Future<String?> _showMapModal(
+      BuildContext context, LocationViewModel location) async {
+    String? resultAddress;
+    resultAddress = await showCupertinoModalPopup<String?>(
       context: context,
       builder: (BuildContext context) {
-        // 画面の高さの80%を使う
+        String? tempSelectedAddress;
         return Container(
           constraints: BoxConstraints(
             maxHeight: MediaQuery.of(context).size.height * 0.8,
@@ -236,19 +241,33 @@ class WoodenBuildingOverview extends StatelessWidget {
           ),
           child: Column(
             children: [
-              // ヘッダー（閉じるボタンなど）
+              // ヘッダー部分
               SizedBox(
                 height: 70,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // キャンセルボタン
                     CupertinoButton(
                       child: const Text('キャンセル'),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {
+                        // キャンセル時は何も返さずに閉じる (null)
+                        Navigator.pop(context, null);
+                      },
                     ),
-                    const Text('場所を選択',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
-                    const SizedBox(width: 80), // バランス用空白
+                    const Text(
+                      '場所を選択',
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    //決定ボタン
+                    CupertinoButton(
+                      child: const Text('決定',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      onPressed: () {
+                        // 決定時に選択された住所を返して閉じる
+                        Navigator.pop(context, tempSelectedAddress);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -256,16 +275,14 @@ class WoodenBuildingOverview extends StatelessWidget {
               Expanded(
                 child: MapSelectionWidget(
                   initialPosition: location.currentPosition ??
-                      LatLng(35.6586, 139.7454), // 初期座標
+                      const LatLng(35.6586, 139.7454),
                   onPositionSelected: (latlng) async {
-                    if (location.currentPosition != null) {
-                      Placemark? addressPlacemark = await location
-                          .getAddressFromLatLng(location.currentPosition!);
-                      if (addressPlacemark != null) {
-                        String address =
-                            location.formatAddress(addressPlacemark);
-                        controller.text = address;
-                      }
+                    Placemark? addressPlacemark =
+                        await location.getAddressFromLatLng(latlng);
+                    if (addressPlacemark != null) {
+                      // 一時変数に保存
+                      tempSelectedAddress =
+                          location.formatAddress(addressPlacemark);
                     }
                   },
                 ),
@@ -275,6 +292,9 @@ class WoodenBuildingOverview extends StatelessWidget {
         );
       },
     );
+
+    // 最終的に受け取った結果を返す
+    return resultAddress;
   }
 
   Widget _buildNativeInputRow({
