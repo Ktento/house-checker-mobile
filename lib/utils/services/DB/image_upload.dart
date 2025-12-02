@@ -1,125 +1,79 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:house_check_mobile/models/investigator_model.dart';
 import 'package:house_check_mobile/utils/helpers/damageLevel.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
 import 'dart:io';
 import 'package:path/path.dart' as p;
-import '../../../view_model/investigator_post_view_model.dart';
 
-Future<void> uploadAllImages(InvestigationViewModel viewModel) async {
-  final content = viewModel.record!.content;
+Future<void> uploadAllImages(
+    {WoodenViewModel? woodenViewModel, RebarViewModel? rebarViewModel}) async {
+  final content;
+  if (woodenViewModel != null) {
+    content = woodenViewModel.woodenRecord!.content;
+    // WoodenContent 用の画像フィールド
+    final fields = {
+      "adjacentBuildingRiskImages": content.adjacentBuildingRiskImages,
+      "unevenSettlementImages": content.unevenSettlementImages,
+      "foundationDamageImages": content.foundationDamageImages,
+      "firstFloorTiltImages": content.firstFloorTiltImages,
+      "wallDamageImages": content.wallDamageImages,
+      "corrosionOrTermiteImages": content.corrosionOrTermiteImages,
+      "roofTileImages": content.roofTileImages,
+      "windowFrameImages": content.windowFrameImages,
+      "exteriorWetImages": content.exteriorWetImages,
+      "exteriorDryImages": content.exteriorDryImages,
+      "signageAndEquipmentImages": content.signageAndEquipmentImages,
+      "outdoorStairsImages": content.outdoorStairsImages,
+      "othersImages": content.othersImages,
+    };
 
-  // 各フィールドごとに画像をアップロードして Firebase に保存
-  if (content.adjacentBuildingRiskImages != null) {
-    final uploadUrls = await uploadImages(content.adjacentBuildingRiskImages!);
-    final localUrls = (content.adjacentBuildingRiskImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "adjacentBuildingRiskImages", localUrls, uploadUrls);
-  }
+    for (var entry in fields.entries) {
+      final images = entry.value;
+      if (images.isNotEmpty) {
+        final uploadUrls = await uploadImages(images);
+        final localUrls =
+            images.map<String>((ImagePaths i) => i.localPath).toList();
+        woodenViewModel.updateImageFieldFirebase(
+            entry.key, localUrls, uploadUrls);
+      }
+    }
+  } else if (rebarViewModel != null) {
+    content = rebarViewModel.rebarRecord!.content;
 
-  if (content.unevenSettlementImages != null) {
-    final uploadUrls = await uploadImages(content.unevenSettlementImages!);
-    final localUrls = (content.unevenSettlementImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "unevenSettlementImages", localUrls, uploadUrls);
-  }
+    // RebarContent 用の画像フィールド
+    final fields = {
+      "adjacentBuildingRiskImages": content.adjacentBuildingRiskImages,
+      "unevenSettlementImages": content.unevenSettlementImages,
+      "upperFloorLe1Images": content.upperFloorLe1Images,
+      "upperFloorLe2Images": content.upperFloorLe2Images,
+      "hasBucklingImages": content.hasBucklingImages,
+      "bracingBreakRateImages": content.bracingBreakRateImages,
+      "jointFailureImages": content.jointFailureImages,
+      "columnBaseDamageImages": content.columnBaseDamageImages,
+      "corrosionImages": content.corrosionImages,
+      "roofingMaterialImages": content.roofingMaterialImages,
+      "windowFrameImages": content.windowFrameImages,
+      "exteriorWetImages": content.exteriorWetImages,
+      "exteriorDryImages": content.exteriorDryImages,
+      "signageAndEquipmentImages": content.signageAndEquipmentImages,
+      "outdoorStairsImages": content.outdoorStairsImages,
+      "othersImages": content.othersImages,
+    };
 
-  if (content.foundationDamageImages != null) {
-    final uploadUrls = await uploadImages(content.foundationDamageImages!);
-    final localUrls = (content.foundationDamageImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "foundationDamageImages", localUrls, uploadUrls);
-  }
-
-  if (content.firstFloorTiltImages != null) {
-    final uploadUrls = await uploadImages(content.firstFloorTiltImages!);
-    final localUrls = (content.firstFloorTiltImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "firstFloorTiltImages", localUrls, uploadUrls);
-  }
-
-  if (content.wallDamageImages != null) {
-    final uploadUrls = await uploadImages(content.wallDamageImages!);
-    final localUrls = (content.wallDamageImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "wallDamageImages", localUrls, uploadUrls);
-  }
-
-  if (content.corrosionOrTermiteImages != null) {
-    final uploadUrls = await uploadImages(content.corrosionOrTermiteImages!);
-    final localUrls = (content.corrosionOrTermiteImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "corrosionOrTermiteImages", localUrls, uploadUrls);
-  }
-
-  if (content.roofTileImages != null) {
-    final uploadUrls = await uploadImages(content.roofTileImages!);
-    final localUrls =
-        (content.roofTileImages ?? []).map((image) => image.localPath).toList();
-    viewModel.updateImageFieldFirebase("roofTileImages", localUrls, uploadUrls);
-  }
-
-  if (content.windowFrameImages != null) {
-    final uploadUrls = await uploadImages(content.windowFrameImages!);
-    final localUrls = (content.windowFrameImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "windowFrameImages", localUrls, uploadUrls);
-  }
-
-  if (content.exteriorWetImages != null) {
-    final uploadUrls = await uploadImages(content.exteriorWetImages!);
-    final localUrls = (content.exteriorDryImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "exteriorWetImages", localUrls, uploadUrls);
-  }
-
-  if (content.exteriorDryImages != null) {
-    final uploadUrls = await uploadImages(content.exteriorDryImages!);
-    final localUrls = (content.exteriorDryImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "exteriorDryImages", localUrls, uploadUrls);
-  }
-
-  if (content.signageAndEquipmentImages != null) {
-    final uploadUrls = await uploadImages(content.signageAndEquipmentImages!);
-    final localUrls = (content.signageAndEquipmentImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "signageAndEquipmentImages", localUrls, uploadUrls);
-  }
-
-  if (content.outdoorStairsImages != null) {
-    final uploadUrls = await uploadImages(content.outdoorStairsImages!);
-    final localUrls = (content.outdoorStairsImages ?? [])
-        .map((image) => image.localPath)
-        .toList();
-    viewModel.updateImageFieldFirebase(
-        "outdoorStairsImages", localUrls, uploadUrls);
-  }
-
-  if (content.othersImages != null) {
-    final uploadUrls = await uploadImages(content.othersImages!);
-    final localUrls =
-        (content.othersImages ?? []).map((image) => image.localPath).toList();
-    viewModel.updateImageFieldFirebase("othersImages", localUrls, uploadUrls);
+    for (var entry in fields.entries) {
+      final images = entry.value;
+      if (images.isNotEmpty) {
+        final uploadUrls = await uploadImages(images);
+        final localUrls =
+            images.map<String>((ImagePaths i) => i.localPath).toList();
+        rebarViewModel.updateImageFieldFirebase(
+            entry.key, localUrls, uploadUrls);
+      }
+    }
+  } else {
+    print("エラー(uploadAllImages)：viewmodelがありません");
+    return;
   }
 }
 
@@ -130,6 +84,7 @@ Future<List<String>> uploadImages(List<ImagePaths>? images) async {
 
   for (final image in images) {
     final url = await sendImage(image.localPath);
+    print(url);
     if (url != null) {
       updated.add(url);
     } else {
