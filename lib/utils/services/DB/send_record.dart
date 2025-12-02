@@ -3,7 +3,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void sendRecord(InvestigationRecord record) async {
+void sendRecord({WoodenRecord? woodenRecord, RebarRecord? rebarRecord}) async {
+  final record;
+  if (woodenRecord != null) {
+    record = woodenRecord;
+  } else if (rebarRecord != null) {
+    record = rebarRecord;
+  } else {
+    return;
+  }
   try {
     final url = Uri.parse(
       dotenv.env['gas']!,
