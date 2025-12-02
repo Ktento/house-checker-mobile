@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
-import '../../../../../view_model/investigator_post_view_model.dart';
+import '../../../../../view_model/investigator_post/wooden_view_model.dart';
 import './wooden_survery.dart';
 import '../../../../../view_model/location_view_model.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -14,7 +13,7 @@ class WoodenBuildingOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<InvestigationViewModel>();
+    final viewModel = context.read<WoodenViewModel>();
     final location = context.watch<LocationViewModel>();
     final inputVM = context.read<FormViewModel>();
 
@@ -200,8 +199,7 @@ class WoodenBuildingOverview extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value:
-                                        context.read<InvestigationViewModel>()),
+                                    value: context.read<WoodenViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],

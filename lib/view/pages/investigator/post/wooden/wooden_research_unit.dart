@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:latlong2/latlong.dart';
-import '../../../../../view_model/investigator_post_view_model.dart';
+import '../../../../../view_model/investigator_post/investigation_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import './wooden_building_overview.dart';
 import '../../../../../view_model/location_view_model.dart';
-import '../../../../../view_model/location_view_model.dart';
+import '../../../../../view_model/investigator_post/wooden_view_model.dart';
 
 class WoodenResearchUnit extends StatelessWidget {
   const WoodenResearchUnit({super.key});
@@ -19,19 +18,19 @@ class WoodenResearchUnit extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) {
-            final post = InvestigationViewModel();
-            post.setRecord(InvestigationRecord.empty());
+            final post = WoodenViewModel();
+            post.setRecord(WoodenRecord.empty());
             return post;
           },
         ),
         ChangeNotifierProvider(
           create: (context) {
-            final record = context.read<InvestigationViewModel>().record;
-            return FormViewModel(record: record);
+            final record = context.read<WoodenViewModel>().woodenRecord;
+            return FormViewModel(woodenRecord: record);
           },
         ),
       ],
-      child: Consumer2<InvestigationViewModel, FormViewModel>(
+      child: Consumer2<WoodenViewModel, FormViewModel>(
         builder: (context, viewModel, inputVM, _) {
           return CupertinoPageScaffold(
             backgroundColor: CupertinoColors.systemGroupedBackground,
@@ -117,7 +116,8 @@ class WoodenResearchUnit extends StatelessWidget {
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 16, ),
+                                    vertical: 16,
+                                  ),
                                   child: CupertinoFormRow(
                                     prefix: const Row(
                                       children: [
@@ -223,8 +223,7 @@ class WoodenResearchUnit extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value:
-                                        context.read<InvestigationViewModel>()),
+                                    value: context.read<WoodenViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                                 ChangeNotifierProvider.value(

@@ -1,13 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../utils/services/DB/send_record.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_check.dart';
-import 'package:house_check_mobile/utils/helpers/dialog.dart';
-import '../../../../wigets/choose_picker.dart';
 import 'package:provider/provider.dart';
-import '../../../../../view_model/Form_view_model.dart';
-import '../../../../../view_model/investigator_post_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
 import '../../../../../utils/services/DB/image_upload.dart';
 
@@ -16,9 +11,9 @@ class DangerSurveyFormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<InvestigationViewModel>();
-    final inputVM = context.read<FormViewModel>();
-    InvestigationRecord record = viewModel.record!;
+    final viewModel = context.watch<WoodenViewModel>();
+    // final inputVM = context.read<FormViewModel>();
+    WoodenRecord record = viewModel.woodenRecord!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('応急危険度 判定調査表'),
@@ -160,8 +155,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   CupertinoButton.filled(
                     onPressed: () async {
-                      await uploadAllImages(viewModel);
-                      sendRecord(record);
+                      await uploadAllImages(woodenViewModel: viewModel);
+                      sendRecord(woodenRecord: record);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),
