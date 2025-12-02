@@ -4,6 +4,7 @@ DamageLevel stringToDamageLevel(String value) {
   if (value.startsWith('A')) return DamageLevel.A;
   if (value.startsWith('B')) return DamageLevel.B;
   if (value.startsWith('C')) return DamageLevel.C;
+  if (value == "DamageLevel.A") return DamageLevel.A;
   throw Exception('Invalid DamageLevel string: $value');
 }
 
@@ -192,5 +193,127 @@ String othersToLabel(String level) {
       return 'C.危険';
     default:
       return 'A.安全';
+  }
+}
+
+// 鉄筋・コンクリート関連のラベル関数
+String exteriorInspectionScoreToLabel(String value) {
+  switch (value) {
+    case "1":
+      return '1.建物全体又は一部の崩壊・落階';
+    case "2":
+      return '2.基礎の著しい破壊、上部構造との著しいずれ';
+    case "3":
+      return '3.建物全体又は一部の著しい傾斜';
+    case "4":
+      return '4.その他';
+    case "5":
+      return '5.なし';
+    default:
+      return '5.なし';
+  }
+}
+
+String upperFloorLe1ToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.1/100以下';
+    case "B":
+      return 'B.1/100～1/30';
+    case "C":
+      return 'C.1/30超';
+    default:
+      return 'A.1/100以下';
+  }
+}
+
+String upperFloorLe2ToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.1/200以下';
+    case "B":
+      return 'B.1/200～1/50';
+    case "C":
+      return 'C.1/50超';
+    default:
+      return 'A.1/200以下';
+  }
+}
+
+String hasBucklingToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.無し';
+    case "B":
+      return 'B.局部座屈あり';
+    case "C":
+      return 'C.全体座屈あるいは著しい局部座屈';
+    default:
+      return 'A.無し';
+  }
+}
+
+String bracingBreakRateToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.20%以下';
+    case "B":
+      return 'B.20%～50%';
+    case "C":
+      return 'C.50%超';
+    default:
+      return 'A.20%以下';
+  }
+}
+
+String jointFailureToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.無し';
+    case "B":
+      return 'B.一部破断あるいは亀裂';
+    case "C":
+      return 'C.20%以上の破断';
+    default:
+      return 'A.無し';
+  }
+}
+
+String columnBaseDamageToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.無し';
+    case "B":
+      return 'B.部分的';
+    case "C":
+      return 'C.著しい';
+    default:
+      return 'A.無し';
+  }
+}
+
+String corrosionToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.ほとんど無し';
+    case "B":
+      return 'B.各所に著しい錆';
+    case "C":
+      return 'C.孔所が各所に見られる';
+    default:
+      return 'A.ほとんど無し';
+  }
+}
+
+String roofOrSignboardRiskToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.ほとんど無被害';
+    case "B":
+      return 'B.著しいずれ';
+    case "C":
+      return 'C.全面的にずれ、破損';
+    default:
+      return 'A.ほとんど無被害';
   }
 }
