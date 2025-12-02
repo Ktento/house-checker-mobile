@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
-import '../../../../../view_model/investigator_post_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
 import './wooden_check.dart';
 import '../../../../wigets/image_pickere.dart';
@@ -12,7 +12,7 @@ class WoodenSurvery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<InvestigationViewModel>();
+    final viewModel = context.read<WoodenViewModel>();
     final inputVM = context.read<FormViewModel>();
 
     return CupertinoPageScaffold(
@@ -62,8 +62,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.危険無し', 'B.不明確', 'C.危険あり'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'adjacentBuildingRiskImages', [path]),
-                      savedImage:
-                          viewModel.record?.content.adjacentBuildingRiskImages,
+                      savedImage: viewModel
+                          .woodenRecord?.content.adjacentBuildingRiskImages,
                     ),
 
                     _buildRadioGroup(
@@ -76,8 +76,8 @@ class WoodenSurvery extends StatelessWidget {
                       ],
                       onImagePicked: (path) => viewModel
                           .updateImageField('unevenSettlementImages', [path]),
-                      savedImage:
-                          viewModel.record?.content.unevenSettlementImages,
+                      savedImage: viewModel
+                          .woodenRecord?.content.unevenSettlementImages,
                     ),
 
                     _buildRadioGroup(
@@ -86,8 +86,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.無被害', 'B.部分的', 'C.著しい(被害あり)'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('foundationDamageImages', [path]),
-                      savedImage:
-                          viewModel.record?.content.foundationDamageImages,
+                      savedImage: viewModel
+                          .woodenRecord?.content.foundationDamageImages,
                     ),
 
                     _buildRadioGroup(
@@ -97,7 +97,7 @@ class WoodenSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('firstFloorTiltImages', [path]),
                       savedImage:
-                          viewModel.record?.content.firstFloorTiltImages,
+                          viewModel.woodenRecord?.content.firstFloorTiltImages,
                     ),
 
                     _buildRadioGroup(
@@ -106,7 +106,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.軽微なひび割れ', 'B.大きな亀裂、剥離', 'C.落下の危険有り'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('wallDamageImages', [path]),
-                      savedImage: viewModel.record?.content.wallDamageImages,
+                      savedImage:
+                          viewModel.woodenRecord?.content.wallDamageImages,
                     ),
 
                     _buildRadioGroup(
@@ -115,8 +116,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無し', 'B.一部の断面欠損', 'C.著しい断面欠損'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('corrosionOrTermiteImages', [path]),
-                      savedImage:
-                          viewModel.record?.content.corrosionOrTermiteImages,
+                      savedImage: viewModel
+                          .woodenRecord?.content.corrosionOrTermiteImages,
                     ),
 
                     const SizedBox(height: 20),
@@ -130,7 +131,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'roofOrSignboardRiskImages', [path]),
-                      savedImage: viewModel.record?.content.roofTileImages,
+                      savedImage:
+                          viewModel.woodenRecord?.content.roofTileImages,
                     ),
 
                     _buildRadioGroup(
@@ -139,7 +141,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.歪み、ひび割れ', 'C.落下の危険有'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('windowFrameImages', [path]),
-                      savedImage: viewModel.record?.content.windowFrameImages,
+                      savedImage:
+                          viewModel.woodenRecord?.content.windowFrameImages,
                     ),
 
                     _buildRadioGroup(
@@ -148,7 +151,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.部分的なひび割れ、隙間', 'C.顕著なひび割れ、剥離'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorWetImages', [path]),
-                      savedImage: viewModel.record?.content.exteriorWetImages,
+                      savedImage:
+                          viewModel.woodenRecord?.content.exteriorWetImages,
                     ),
 
                     _buildRadioGroup(
@@ -157,7 +161,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.目地の亀裂程度', 'B.板に隙間がみられる', 'C.顕著な目地ずれ、板破損'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorDryImages', [path]),
-                      savedImage: viewModel.record?.content.exteriorDryImages,
+                      savedImage:
+                          viewModel.woodenRecord?.content.exteriorDryImages,
                     ),
 
                     _buildRadioGroup(
@@ -166,8 +171,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.傾斜無し', 'B.わずかな傾斜', 'C.落下の危険有り'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'signageAndEquipmentImages', [path]),
-                      savedImage:
-                          viewModel.record?.content.signageAndEquipmentImages,
+                      savedImage: viewModel
+                          .woodenRecord?.content.signageAndEquipmentImages,
                     ),
 
                     _buildRadioGroup(
@@ -176,7 +181,8 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.傾斜なし', 'B.わずかな傾斜', 'C.明瞭な傾斜'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('outdoorStairsImages', [path]),
-                      savedImage: viewModel.record?.content.outdoorStairsImages,
+                      savedImage:
+                          viewModel.woodenRecord?.content.outdoorStairsImages,
                     ),
 
                     _buildRadioGroup(
@@ -185,7 +191,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.安全', 'B.要注意', 'C.危険'],
                       onImagePicked: (path) =>
                           viewModel.updateImageField('othersImages', [path]),
-                      savedImage: viewModel.record?.content.othersImages,
+                      savedImage: viewModel.woodenRecord?.content.othersImages,
                     ),
 
                     _buildTextInputSection(
@@ -272,8 +278,7 @@ class WoodenSurvery extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value:
-                                        context.read<InvestigationViewModel>()),
+                                    value: context.read<WoodenViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
@@ -348,7 +353,7 @@ class WoodenSurvery extends StatelessWidget {
       // 必要であれば初期値を設定。ここではユーザーの選択を待つため何もしない、またはデフォルト値をセット
       // controller.text = options.first;
     }
-    if (savedImage != null) {
+    if (savedImage != null && savedImage.isNotEmpty) {
       path = savedImage[0].localPath;
     } else {
       path = null;
