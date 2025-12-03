@@ -1801,12 +1801,12 @@ abstract class _WoodenContent implements WoodenContent {
       throw _privateConstructorUsedError;
 }
 
-RebarContent _$RebarContentFromJson(Map<String, dynamic> json) {
-  return _RebarContent.fromJson(json);
+SteelFrameContent _$SteelFrameContentFromJson(Map<String, dynamic> json) {
+  return _SteelFrameContent.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RebarContent {
+mixin _$SteelFrameContent {
 //外観調査(一見して危険と判断される)
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
@@ -1865,21 +1865,21 @@ mixin _$RebarContent {
   DamageLevel get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this RebarContent to a JSON map.
+  /// Serializes this SteelFrameContent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of RebarContent
+  /// Create a copy of SteelFrameContent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $RebarContentCopyWith<RebarContent> get copyWith =>
+  $SteelFrameContentCopyWith<SteelFrameContent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RebarContentCopyWith<$Res> {
-  factory $RebarContentCopyWith(
-          RebarContent value, $Res Function(RebarContent) then) =
-      _$RebarContentCopyWithImpl<$Res, RebarContent>;
+abstract class $SteelFrameContentCopyWith<$Res> {
+  factory $SteelFrameContentCopyWith(
+          SteelFrameContent value, $Res Function(SteelFrameContent) then) =
+      _$SteelFrameContentCopyWithImpl<$Res, SteelFrameContent>;
   @useResult
   $Res call(
       {int exteriorInspectionScore,
@@ -1923,16 +1923,16 @@ abstract class $RebarContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
-    implements $RebarContentCopyWith<$Res> {
-  _$RebarContentCopyWithImpl(this._value, this._then);
+class _$SteelFrameContentCopyWithImpl<$Res, $Val extends SteelFrameContent>
+    implements $SteelFrameContentCopyWith<$Res> {
+  _$SteelFrameContentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RebarContent
+  /// Create a copy of SteelFrameContent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2134,11 +2134,11 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
 }
 
 /// @nodoc
-abstract class _$$RebarContentImplCopyWith<$Res>
-    implements $RebarContentCopyWith<$Res> {
-  factory _$$RebarContentImplCopyWith(
-          _$RebarContentImpl value, $Res Function(_$RebarContentImpl) then) =
-      __$$RebarContentImplCopyWithImpl<$Res>;
+abstract class _$$SteelFrameContentImplCopyWith<$Res>
+    implements $SteelFrameContentCopyWith<$Res> {
+  factory _$$SteelFrameContentImplCopyWith(_$SteelFrameContentImpl value,
+          $Res Function(_$SteelFrameContentImpl) then) =
+      __$$SteelFrameContentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2183,14 +2183,14 @@ abstract class _$$RebarContentImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RebarContentImplCopyWithImpl<$Res>
-    extends _$RebarContentCopyWithImpl<$Res, _$RebarContentImpl>
-    implements _$$RebarContentImplCopyWith<$Res> {
-  __$$RebarContentImplCopyWithImpl(
-      _$RebarContentImpl _value, $Res Function(_$RebarContentImpl) _then)
+class __$$SteelFrameContentImplCopyWithImpl<$Res>
+    extends _$SteelFrameContentCopyWithImpl<$Res, _$SteelFrameContentImpl>
+    implements _$$SteelFrameContentImplCopyWith<$Res> {
+  __$$SteelFrameContentImplCopyWithImpl(_$SteelFrameContentImpl _value,
+      $Res Function(_$SteelFrameContentImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RebarContent
+  /// Create a copy of SteelFrameContent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2234,7 +2234,7 @@ class __$$RebarContentImplCopyWithImpl<$Res>
     Object? overallStructuralScore = null,
     Object? overallFallingObjectScore = null,
   }) {
-    return _then(_$RebarContentImpl(
+    return _then(_$SteelFrameContentImpl(
       exteriorInspectionScore: null == exteriorInspectionScore
           ? _value.exteriorInspectionScore
           : exteriorInspectionScore // ignore: cast_nullable_to_non_nullable
@@ -2393,8 +2393,8 @@ class __$$RebarContentImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RebarContentImpl implements _RebarContent {
-  const _$RebarContentImpl(
+class _$SteelFrameContentImpl implements _SteelFrameContent {
+  const _$SteelFrameContentImpl(
       {required this.exteriorInspectionScore,
       this.exteriorInspectionRemarks,
       required this.adjacentBuildingRisk,
@@ -2450,8 +2450,8 @@ class _$RebarContentImpl implements _RebarContent {
         _outdoorStairsImages = outdoorStairsImages,
         _othersImages = othersImages;
 
-  factory _$RebarContentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RebarContentImplFromJson(json);
+  factory _$SteelFrameContentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SteelFrameContentImplFromJson(json);
 
 //外観調査(一見して危険と判断される)
   @override
@@ -2676,14 +2676,14 @@ class _$RebarContentImpl implements _RebarContent {
 
   @override
   String toString() {
-    return 'RebarContent(exteriorInspectionScore: $exteriorInspectionScore, exteriorInspectionRemarks: $exteriorInspectionRemarks, adjacentBuildingRisk: $adjacentBuildingRisk, adjacentBuildingRiskImages: $adjacentBuildingRiskImages, unevenSettlement: $unevenSettlement, unevenSettlementImages: $unevenSettlementImages, upperFloorLe1: $upperFloorLe1, upperFloorLe1Images: $upperFloorLe1Images, upperFloorLe2: $upperFloorLe2, upperFloorLe2Images: $upperFloorLe2Images, hasBuckling: $hasBuckling, hasBucklingImages: $hasBucklingImages, bracingBreakRate: $bracingBreakRate, bracingBreakRateImages: $bracingBreakRateImages, jointFailure: $jointFailure, jointFailureImages: $jointFailureImages, columnBaseDamage: $columnBaseDamage, columnBaseDamageImages: $columnBaseDamageImages, corrosion: $corrosion, corrosionImages: $corrosionImages, roofingMaterial: $roofingMaterial, roofingMaterialImages: $roofingMaterialImages, windowFrame: $windowFrame, windowFrameImages: $windowFrameImages, exteriorWet: $exteriorWet, exteriorWetImages: $exteriorWetImages, exteriorDry: $exteriorDry, exteriorDryImages: $exteriorDryImages, signageAndEquipment: $signageAndEquipment, signageAndEquipmentImages: $signageAndEquipmentImages, outdoorStairs: $outdoorStairs, outdoorStairsImages: $outdoorStairsImages, others: $others, othersImages: $othersImages, otherRemarks: $otherRemarks, overallExteriorScore: $overallExteriorScore, overallStructuralScore: $overallStructuralScore, overallFallingObjectScore: $overallFallingObjectScore)';
+    return 'SteelFrameContent(exteriorInspectionScore: $exteriorInspectionScore, exteriorInspectionRemarks: $exteriorInspectionRemarks, adjacentBuildingRisk: $adjacentBuildingRisk, adjacentBuildingRiskImages: $adjacentBuildingRiskImages, unevenSettlement: $unevenSettlement, unevenSettlementImages: $unevenSettlementImages, upperFloorLe1: $upperFloorLe1, upperFloorLe1Images: $upperFloorLe1Images, upperFloorLe2: $upperFloorLe2, upperFloorLe2Images: $upperFloorLe2Images, hasBuckling: $hasBuckling, hasBucklingImages: $hasBucklingImages, bracingBreakRate: $bracingBreakRate, bracingBreakRateImages: $bracingBreakRateImages, jointFailure: $jointFailure, jointFailureImages: $jointFailureImages, columnBaseDamage: $columnBaseDamage, columnBaseDamageImages: $columnBaseDamageImages, corrosion: $corrosion, corrosionImages: $corrosionImages, roofingMaterial: $roofingMaterial, roofingMaterialImages: $roofingMaterialImages, windowFrame: $windowFrame, windowFrameImages: $windowFrameImages, exteriorWet: $exteriorWet, exteriorWetImages: $exteriorWetImages, exteriorDry: $exteriorDry, exteriorDryImages: $exteriorDryImages, signageAndEquipment: $signageAndEquipment, signageAndEquipmentImages: $signageAndEquipmentImages, outdoorStairs: $outdoorStairs, outdoorStairsImages: $outdoorStairsImages, others: $others, othersImages: $othersImages, otherRemarks: $otherRemarks, overallExteriorScore: $overallExteriorScore, overallStructuralScore: $overallStructuralScore, overallFallingObjectScore: $overallFallingObjectScore)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RebarContentImpl &&
+            other is _$SteelFrameContentImpl &&
             (identical(other.exteriorInspectionScore, exteriorInspectionScore) ||
                 other.exteriorInspectionScore == exteriorInspectionScore) &&
             (identical(other.exteriorInspectionRemarks, exteriorInspectionRemarks) ||
@@ -2793,24 +2793,25 @@ class _$RebarContentImpl implements _RebarContent {
         overallFallingObjectScore
       ]);
 
-  /// Create a copy of RebarContent
+  /// Create a copy of SteelFrameContent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$RebarContentImplCopyWith<_$RebarContentImpl> get copyWith =>
-      __$$RebarContentImplCopyWithImpl<_$RebarContentImpl>(this, _$identity);
+  _$$SteelFrameContentImplCopyWith<_$SteelFrameContentImpl> get copyWith =>
+      __$$SteelFrameContentImplCopyWithImpl<_$SteelFrameContentImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RebarContentImplToJson(
+    return _$$SteelFrameContentImplToJson(
       this,
     );
   }
 }
 
-abstract class _RebarContent implements RebarContent {
-  const factory _RebarContent(
+abstract class _SteelFrameContent implements SteelFrameContent {
+  const factory _SteelFrameContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
           required final DamageLevel adjacentBuildingRisk,
@@ -2849,10 +2850,10 @@ abstract class _RebarContent implements RebarContent {
           required final String overallExteriorScore,
           required final DamageLevel overallStructuralScore,
           required final DamageLevel overallFallingObjectScore}) =
-      _$RebarContentImpl;
+      _$SteelFrameContentImpl;
 
-  factory _RebarContent.fromJson(Map<String, dynamic> json) =
-      _$RebarContentImpl.fromJson;
+  factory _SteelFrameContent.fromJson(Map<String, dynamic> json) =
+      _$SteelFrameContentImpl.fromJson;
 
 //外観調査(一見して危険と判断される)
   @override
@@ -2933,11 +2934,11 @@ abstract class _RebarContent implements RebarContent {
   @override
   DamageLevel get overallFallingObjectScore;
 
-  /// Create a copy of RebarContent
+  /// Create a copy of SteelFrameContent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RebarContentImplCopyWith<_$RebarContentImpl> get copyWith =>
+  _$$SteelFrameContentImplCopyWith<_$SteelFrameContentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3198,55 +3199,55 @@ abstract class _WoodenRecord implements WoodenRecord {
       throw _privateConstructorUsedError;
 }
 
-RebarRecord _$RebarRecordFromJson(Map<String, dynamic> json) {
-  return _RebarRecord.fromJson(json);
+SteelFrameRecord _$SteelFrameRecordFromJson(Map<String, dynamic> json) {
+  return _SteelFrameRecord.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RebarRecord {
+mixin _$SteelFrameRecord {
   InvestigationUnit get unit => throw _privateConstructorUsedError;
   BuildingOverview get overview => throw _privateConstructorUsedError;
-  RebarContent get content => throw _privateConstructorUsedError;
+  SteelFrameContent get content => throw _privateConstructorUsedError;
   OverallScore get overallScore => throw _privateConstructorUsedError;
 
-  /// Serializes this RebarRecord to a JSON map.
+  /// Serializes this SteelFrameRecord to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $RebarRecordCopyWith<RebarRecord> get copyWith =>
+  $SteelFrameRecordCopyWith<SteelFrameRecord> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RebarRecordCopyWith<$Res> {
-  factory $RebarRecordCopyWith(
-          RebarRecord value, $Res Function(RebarRecord) then) =
-      _$RebarRecordCopyWithImpl<$Res, RebarRecord>;
+abstract class $SteelFrameRecordCopyWith<$Res> {
+  factory $SteelFrameRecordCopyWith(
+          SteelFrameRecord value, $Res Function(SteelFrameRecord) then) =
+      _$SteelFrameRecordCopyWithImpl<$Res, SteelFrameRecord>;
   @useResult
   $Res call(
       {InvestigationUnit unit,
       BuildingOverview overview,
-      RebarContent content,
+      SteelFrameContent content,
       OverallScore overallScore});
 
   $InvestigationUnitCopyWith<$Res> get unit;
   $BuildingOverviewCopyWith<$Res> get overview;
-  $RebarContentCopyWith<$Res> get content;
+  $SteelFrameContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class _$RebarRecordCopyWithImpl<$Res, $Val extends RebarRecord>
-    implements $RebarRecordCopyWith<$Res> {
-  _$RebarRecordCopyWithImpl(this._value, this._then);
+class _$SteelFrameRecordCopyWithImpl<$Res, $Val extends SteelFrameRecord>
+    implements $SteelFrameRecordCopyWith<$Res> {
+  _$SteelFrameRecordCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -3268,7 +3269,7 @@ class _$RebarRecordCopyWithImpl<$Res, $Val extends RebarRecord>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as RebarContent,
+              as SteelFrameContent,
       overallScore: null == overallScore
           ? _value.overallScore
           : overallScore // ignore: cast_nullable_to_non_nullable
@@ -3276,7 +3277,7 @@ class _$RebarRecordCopyWithImpl<$Res, $Val extends RebarRecord>
     ) as $Val);
   }
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3286,7 +3287,7 @@ class _$RebarRecordCopyWithImpl<$Res, $Val extends RebarRecord>
     });
   }
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -3296,29 +3297,29 @@ class _$RebarRecordCopyWithImpl<$Res, $Val extends RebarRecord>
     });
   }
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $RebarContentCopyWith<$Res> get content {
-    return $RebarContentCopyWith<$Res>(_value.content, (value) {
+  $SteelFrameContentCopyWith<$Res> get content {
+    return $SteelFrameContentCopyWith<$Res>(_value.content, (value) {
       return _then(_value.copyWith(content: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$RebarRecordImplCopyWith<$Res>
-    implements $RebarRecordCopyWith<$Res> {
-  factory _$$RebarRecordImplCopyWith(
-          _$RebarRecordImpl value, $Res Function(_$RebarRecordImpl) then) =
-      __$$RebarRecordImplCopyWithImpl<$Res>;
+abstract class _$$SteelFrameRecordImplCopyWith<$Res>
+    implements $SteelFrameRecordCopyWith<$Res> {
+  factory _$$SteelFrameRecordImplCopyWith(_$SteelFrameRecordImpl value,
+          $Res Function(_$SteelFrameRecordImpl) then) =
+      __$$SteelFrameRecordImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {InvestigationUnit unit,
       BuildingOverview overview,
-      RebarContent content,
+      SteelFrameContent content,
       OverallScore overallScore});
 
   @override
@@ -3326,18 +3327,18 @@ abstract class _$$RebarRecordImplCopyWith<$Res>
   @override
   $BuildingOverviewCopyWith<$Res> get overview;
   @override
-  $RebarContentCopyWith<$Res> get content;
+  $SteelFrameContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class __$$RebarRecordImplCopyWithImpl<$Res>
-    extends _$RebarRecordCopyWithImpl<$Res, _$RebarRecordImpl>
-    implements _$$RebarRecordImplCopyWith<$Res> {
-  __$$RebarRecordImplCopyWithImpl(
-      _$RebarRecordImpl _value, $Res Function(_$RebarRecordImpl) _then)
+class __$$SteelFrameRecordImplCopyWithImpl<$Res>
+    extends _$SteelFrameRecordCopyWithImpl<$Res, _$SteelFrameRecordImpl>
+    implements _$$SteelFrameRecordImplCopyWith<$Res> {
+  __$$SteelFrameRecordImplCopyWithImpl(_$SteelFrameRecordImpl _value,
+      $Res Function(_$SteelFrameRecordImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -3347,7 +3348,7 @@ class __$$RebarRecordImplCopyWithImpl<$Res>
     Object? content = null,
     Object? overallScore = null,
   }) {
-    return _then(_$RebarRecordImpl(
+    return _then(_$SteelFrameRecordImpl(
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
@@ -3359,7 +3360,7 @@ class __$$RebarRecordImplCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as RebarContent,
+              as SteelFrameContent,
       overallScore: null == overallScore
           ? _value.overallScore
           : overallScore // ignore: cast_nullable_to_non_nullable
@@ -3370,35 +3371,35 @@ class __$$RebarRecordImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RebarRecordImpl implements _RebarRecord {
-  const _$RebarRecordImpl(
+class _$SteelFrameRecordImpl implements _SteelFrameRecord {
+  const _$SteelFrameRecordImpl(
       {required this.unit,
       required this.overview,
       required this.content,
       required this.overallScore});
 
-  factory _$RebarRecordImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RebarRecordImplFromJson(json);
+  factory _$SteelFrameRecordImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SteelFrameRecordImplFromJson(json);
 
   @override
   final InvestigationUnit unit;
   @override
   final BuildingOverview overview;
   @override
-  final RebarContent content;
+  final SteelFrameContent content;
   @override
   final OverallScore overallScore;
 
   @override
   String toString() {
-    return 'RebarRecord(unit: $unit, overview: $overview, content: $content, overallScore: $overallScore)';
+    return 'SteelFrameRecord(unit: $unit, overview: $overview, content: $content, overallScore: $overallScore)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RebarRecordImpl &&
+            other is _$SteelFrameRecordImpl &&
             (identical(other.unit, unit) || other.unit == unit) &&
             (identical(other.overview, overview) ||
                 other.overview == overview) &&
@@ -3412,45 +3413,46 @@ class _$RebarRecordImpl implements _RebarRecord {
   int get hashCode =>
       Object.hash(runtimeType, unit, overview, content, overallScore);
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$RebarRecordImplCopyWith<_$RebarRecordImpl> get copyWith =>
-      __$$RebarRecordImplCopyWithImpl<_$RebarRecordImpl>(this, _$identity);
+  _$$SteelFrameRecordImplCopyWith<_$SteelFrameRecordImpl> get copyWith =>
+      __$$SteelFrameRecordImplCopyWithImpl<_$SteelFrameRecordImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RebarRecordImplToJson(
+    return _$$SteelFrameRecordImplToJson(
       this,
     );
   }
 }
 
-abstract class _RebarRecord implements RebarRecord {
-  const factory _RebarRecord(
+abstract class _SteelFrameRecord implements SteelFrameRecord {
+  const factory _SteelFrameRecord(
       {required final InvestigationUnit unit,
       required final BuildingOverview overview,
-      required final RebarContent content,
-      required final OverallScore overallScore}) = _$RebarRecordImpl;
+      required final SteelFrameContent content,
+      required final OverallScore overallScore}) = _$SteelFrameRecordImpl;
 
-  factory _RebarRecord.fromJson(Map<String, dynamic> json) =
-      _$RebarRecordImpl.fromJson;
+  factory _SteelFrameRecord.fromJson(Map<String, dynamic> json) =
+      _$SteelFrameRecordImpl.fromJson;
 
   @override
   InvestigationUnit get unit;
   @override
   BuildingOverview get overview;
   @override
-  RebarContent get content;
+  SteelFrameContent get content;
   @override
   OverallScore get overallScore;
 
-  /// Create a copy of RebarRecord
+  /// Create a copy of SteelFrameRecord
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RebarRecordImplCopyWith<_$RebarRecordImpl> get copyWith =>
+  _$$SteelFrameRecordImplCopyWith<_$SteelFrameRecordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

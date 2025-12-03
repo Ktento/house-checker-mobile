@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/steelFrame_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
-import 'rebar_survery.dart';
+import 'steelFrame_survery.dart';
 import '../../../../../view_model/location_view_model.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-class RebarBuildingOverview extends StatelessWidget {
-  const RebarBuildingOverview({super.key});
+class SteelFrameBuildingOverview extends StatelessWidget {
+  const SteelFrameBuildingOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<RebarViewModel>();
+    final viewModel = context.read<SteelFrameViewModel>();
     final location = context.watch<LocationViewModel>();
     final inputVM = context.read<FormViewModel>();
 
@@ -199,11 +199,11 @@ class RebarBuildingOverview extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value: context.read<RebarViewModel>()),
+                                    value: context.read<SteelFrameViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: RebarSurvery(),
+                              child: SteelFrameSurvery(),
                             ),
                           ),
                         );
