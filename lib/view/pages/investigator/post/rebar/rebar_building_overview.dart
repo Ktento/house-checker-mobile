@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
-import '../../../../../view_model/investigator_post/wooden_view_model.dart';
-import './wooden_survery.dart';
+import 'rebar_survery.dart';
 import '../../../../../view_model/location_view_model.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-class WoodenBuildingOverview extends StatelessWidget {
-  const WoodenBuildingOverview({super.key});
+class RebarBuildingOverview extends StatelessWidget {
+  const RebarBuildingOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<WoodenViewModel>();
+    final viewModel = context.read<RebarViewModel>();
     final location = context.watch<LocationViewModel>();
     final inputVM = context.read<FormViewModel>();
 
@@ -23,7 +23,7 @@ class WoodenBuildingOverview extends StatelessWidget {
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.systemGroupedBackground,
       navigationBar: const CupertinoNavigationBar(
-        middle: Text('木造建築物概要入力'),
+        middle: Text('鉄骨造建築物概要入力'),
         automaticallyImplyLeading: false,
       ),
       child: SafeArea(
@@ -116,8 +116,8 @@ class WoodenBuildingOverview extends StatelessWidget {
                           label: '構造形式',
                           controller: inputVM.structureController,
                           options: [
-                            '在来軸組法',
-                            '枠組(壁)工法(ツーバイフォー)',
+                            'ラーメン構造',
+                            'ブレース構造',
                             'プレファブ',
                             'その他',
                           ],
@@ -199,11 +199,11 @@ class WoodenBuildingOverview extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value: context.read<WoodenViewModel>()),
+                                    value: context.read<RebarViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: WoodenSurvery(),
+                              child: RebarSurvery(),
                             ),
                           ),
                         );

@@ -1,31 +1,34 @@
 import 'package:flutter/foundation.dart';
-import '../models/investigator_model.dart';
+import '../../models/investigator_model.dart';
 import 'package:latlong2/latlong.dart';
 
-class InvestigationViewModel extends ChangeNotifier {
-  InvestigationRecord? _record;
+class WoodenViewModel extends ChangeNotifier {
+  WoodenRecord? _woodenRecord;
 
-  InvestigationRecord? get record => _record;
+  WoodenRecord? get woodenRecord => _woodenRecord;
 
   //すべてのスコアを計算
   void _recalculateScores() {
-    if (_record == null) return;
-
-    final updatedContent = _record!.content.copyWith(
+    if (_woodenRecord == null) return;
+    //調査項目2,3の危険度を算出
+    final updatedContent = _woodenRecord!.content.copyWith(
+      //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
       overallStructuralScore: _calcOverallStructuralScore(),
+      //落下危険物に関する危険度の算出
       overallFallingObjectScore: _calcOverallFallingObjectScore(),
     );
-
+    //調査項目1の危険度を算出し総合の危険度を算出
     final updatedOverallScore = _calcOverallScore(updatedContent);
-
-    _record = _record!.copyWith(
+    //レコードに反映
+    _woodenRecord = _woodenRecord!.copyWith(
       content: updatedContent,
       overallScore: updatedOverallScore,
     );
   }
 
+  //各調査内容の添付画像を更新する関数
   void updateImageField(String fieldName, List<String> paths) {
-    if (_record == null) return;
+    if (_woodenRecord == null) return;
 
     // 新しい ImageInfo リストを作成
     final updatedImages = paths
@@ -33,57 +36,57 @@ class InvestigationViewModel extends ChangeNotifier {
         .toList();
 
     // content のコピーを作成
-    final updatedContent = _record!.content.copyWith(
+    final updatedContent = _woodenRecord!.content.copyWith(
       // フィールド名によって更新するプロパティを選択
       adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
           ? updatedImages
-          : _record!.content.adjacentBuildingRiskImages,
+          : _woodenRecord!.content.adjacentBuildingRiskImages,
       unevenSettlementImages: fieldName == 'unevenSettlementImages'
           ? updatedImages
-          : _record!.content.unevenSettlementImages,
+          : _woodenRecord!.content.unevenSettlementImages,
       foundationDamageImages: fieldName == 'foundationDamageImages'
           ? updatedImages
-          : _record!.content.foundationDamageImages,
+          : _woodenRecord!.content.foundationDamageImages,
       firstFloorTiltImages: fieldName == 'firstFloorTiltImages'
           ? updatedImages
-          : _record!.content.firstFloorTiltImages,
+          : _woodenRecord!.content.firstFloorTiltImages,
       wallDamageImages: fieldName == 'wallDamageImages'
           ? updatedImages
-          : _record!.content.wallDamageImages,
+          : _woodenRecord!.content.wallDamageImages,
       corrosionOrTermiteImages: fieldName == 'corrosionOrTermiteImages'
           ? updatedImages
-          : _record!.content.corrosionOrTermiteImages,
+          : _woodenRecord!.content.corrosionOrTermiteImages,
       roofTileImages: fieldName == 'roofTileImages'
           ? updatedImages
-          : _record!.content.roofTileImages,
+          : _woodenRecord!.content.roofTileImages,
       windowFrameImages: fieldName == 'windowFrameImages'
           ? updatedImages
-          : _record!.content.windowFrameImages,
+          : _woodenRecord!.content.windowFrameImages,
       exteriorWetImages: fieldName == 'exteriorWetImages'
           ? updatedImages
-          : _record!.content.exteriorWetImages,
+          : _woodenRecord!.content.exteriorWetImages,
       exteriorDryImages: fieldName == 'exteriorDryImages'
           ? updatedImages
-          : _record!.content.exteriorDryImages,
+          : _woodenRecord!.content.exteriorDryImages,
       signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
           ? updatedImages
-          : _record!.content.signageAndEquipmentImages,
+          : _woodenRecord!.content.signageAndEquipmentImages,
       outdoorStairsImages: fieldName == 'outdoorStairsImages'
           ? updatedImages
-          : _record!.content.outdoorStairsImages,
+          : _woodenRecord!.content.outdoorStairsImages,
       othersImages: fieldName == 'othersImages'
           ? updatedImages
-          : _record!.content.othersImages,
+          : _woodenRecord!.content.othersImages,
     );
 
-    _record = _record!.copyWith(content: updatedContent);
-    print(_record);
+    _woodenRecord = _woodenRecord!.copyWith(content: updatedContent);
+    print(_woodenRecord);
     notifyListeners();
   }
 
   void updateImageFieldFirebase(
       String fieldName, List<String> localUrls, List<String> uploadUrls) {
-    if (_record == null) {
+    if (_woodenRecord == null) {
       print("エラー(updateImageFieldFirebase)：渡されたrecordがnullです");
       return;
     }
@@ -101,63 +104,67 @@ class InvestigationViewModel extends ChangeNotifier {
     });
 
     // content のコピーを作成
-    final updatedContent = _record!.content.copyWith(
+    final updatedContent = _woodenRecord!.content.copyWith(
       adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
           ? updatedImages
-          : _record!.content.adjacentBuildingRiskImages,
+          : _woodenRecord!.content.adjacentBuildingRiskImages,
       unevenSettlementImages: fieldName == 'unevenSettlementImages'
           ? updatedImages
-          : _record!.content.unevenSettlementImages,
+          : _woodenRecord!.content.unevenSettlementImages,
       foundationDamageImages: fieldName == 'foundationDamageImages'
           ? updatedImages
-          : _record!.content.foundationDamageImages,
+          : _woodenRecord!.content.foundationDamageImages,
       firstFloorTiltImages: fieldName == 'firstFloorTiltImages'
           ? updatedImages
-          : _record!.content.firstFloorTiltImages,
+          : _woodenRecord!.content.firstFloorTiltImages,
       wallDamageImages: fieldName == 'wallDamageImages'
           ? updatedImages
-          : _record!.content.wallDamageImages,
+          : _woodenRecord!.content.wallDamageImages,
       corrosionOrTermiteImages: fieldName == 'corrosionOrTermiteImages'
           ? updatedImages
-          : _record!.content.corrosionOrTermiteImages,
+          : _woodenRecord!.content.corrosionOrTermiteImages,
       roofTileImages: fieldName == 'roofTileImages'
           ? updatedImages
-          : _record!.content.roofTileImages,
+          : _woodenRecord!.content.roofTileImages,
       windowFrameImages: fieldName == 'windowFrameImages'
           ? updatedImages
-          : _record!.content.windowFrameImages,
+          : _woodenRecord!.content.windowFrameImages,
       exteriorWetImages: fieldName == 'exteriorWetImages'
           ? updatedImages
-          : _record!.content.exteriorWetImages,
+          : _woodenRecord!.content.exteriorWetImages,
       exteriorDryImages: fieldName == 'exteriorDryImages'
           ? updatedImages
-          : _record!.content.exteriorDryImages,
+          : _woodenRecord!.content.exteriorDryImages,
       signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
           ? updatedImages
-          : _record!.content.signageAndEquipmentImages,
+          : _woodenRecord!.content.signageAndEquipmentImages,
       outdoorStairsImages: fieldName == 'outdoorStairsImages'
           ? updatedImages
-          : _record!.content.outdoorStairsImages,
+          : _woodenRecord!.content.outdoorStairsImages,
       othersImages: fieldName == 'othersImages'
           ? updatedImages
-          : _record!.content.othersImages,
+          : _woodenRecord!.content.othersImages,
     );
 
-    _record = _record!.copyWith(content: updatedContent);
+    _woodenRecord = _woodenRecord!.copyWith(content: updatedContent);
     notifyListeners();
   }
 
-  void setRecord(InvestigationRecord record) {
-    _record = record;
+  //木造建築物のレコードを初期化する関数
+  void setRecord(WoodenRecord record) {
+    //初期化
+    _woodenRecord = record;
+    //危険度を算出
     _recalculateScores();
     notifyListeners();
   }
 
+  //現在位置を更新する関数
   void updateCurrentPosition(LatLng newPosition) {
-    if (_record == null) return;
+    if (_woodenRecord == null) return;
 
-    _record = _record!.copyWith(
-      unit: _record!.unit.copyWith(currentPosition: newPosition),
+    _woodenRecord = _woodenRecord!.copyWith(
+      unit: _woodenRecord!.unit.copyWith(currentPosition: newPosition),
     );
 
     notifyListeners();
@@ -173,19 +180,19 @@ class InvestigationViewModel extends ChangeNotifier {
       List<String>? investigatorPrefecture,
       List<String>? investigatorNumber,
       LatLng? currentPosition}) {
-    if (_record == null) return;
-    final updatedUnit = _record!.unit.copyWith(
-      buildingtype: buildingtype ?? _record!.unit.buildingtype,
-      currentPosition: currentPosition ?? _record!.unit.currentPosition,
-      surveyCount: surveyCount ?? _record!.unit.surveyCount,
-      investigator: investigator ?? _record!.unit.investigator,
+    if (_woodenRecord == null) return;
+    final updatedUnit = _woodenRecord!.unit.copyWith(
+      buildingtype: buildingtype ?? _woodenRecord!.unit.buildingtype,
+      currentPosition: currentPosition ?? _woodenRecord!.unit.currentPosition,
+      surveyCount: surveyCount ?? _woodenRecord!.unit.surveyCount,
+      investigator: investigator ?? _woodenRecord!.unit.investigator,
       investigatorPrefecture:
-          investigatorPrefecture ?? _record!.unit.investigatorPrefecture,
+          investigatorPrefecture ?? _woodenRecord!.unit.investigatorPrefecture,
       investigatorNumber:
-          investigatorNumber ?? _record!.unit.investigatorNumber,
+          investigatorNumber ?? _woodenRecord!.unit.investigatorNumber,
     );
 
-    _record = _record!.copyWith(unit: updatedUnit);
+    _woodenRecord = _woodenRecord!.copyWith(unit: updatedUnit);
     notifyListeners();
   }
 
@@ -200,24 +207,24 @@ class InvestigationViewModel extends ChangeNotifier {
     int? floors,
     String? scale,
   }) {
-    if (_record == null) return;
+    if (_woodenRecord == null) return;
 
-    final updatedOverview = _record!.overview.copyWith(
-      buildingName: buildingName ?? _record!.overview.buildingName,
-      buildingNumber: buildingNumber ?? _record!.overview.buildingNumber,
-      address: address ?? _record!.overview.address,
-      mapNumber: mapNumber ?? _record!.overview.mapNumber,
-      buildingUse: buildingUse ?? _record!.overview.buildingUse,
-      structure: structure ?? _record!.overview.structure,
-      floors: floors ?? _record!.overview.floors,
-      scale: scale ?? _record!.overview.scale,
+    final updatedOverview = _woodenRecord!.overview.copyWith(
+      buildingName: buildingName ?? _woodenRecord!.overview.buildingName,
+      buildingNumber: buildingNumber ?? _woodenRecord!.overview.buildingNumber,
+      address: address ?? _woodenRecord!.overview.address,
+      mapNumber: mapNumber ?? _woodenRecord!.overview.mapNumber,
+      buildingUse: buildingUse ?? _woodenRecord!.overview.buildingUse,
+      structure: structure ?? _woodenRecord!.overview.structure,
+      floors: floors ?? _woodenRecord!.overview.floors,
+      scale: scale ?? _woodenRecord!.overview.scale,
     );
 
-    _record = _record!.copyWith(overview: updatedOverview);
+    _woodenRecord = _woodenRecord!.copyWith(overview: updatedOverview);
     notifyListeners();
   }
 
-  //Contentの一部を更新するメソッド
+  //木材建築物のContentの一部を更新するメソッド
   void updateContent({
     int? exteriorInspectionScore,
     String? exteriorInspectionRemarks,
@@ -239,59 +246,61 @@ class InvestigationViewModel extends ChangeNotifier {
     DamageLevel? overallStructuralScore,
     DamageLevel? overallFallingObjectScore,
   }) {
-    if (_record == null) return;
-    final updatedContent = _record!.content.copyWith(
-      exteriorInspectionScore:
-          exteriorInspectionScore ?? _record!.content.exteriorInspectionScore,
+    if (_woodenRecord == null) return;
+    final updatedContent = _woodenRecord!.content.copyWith(
+      exteriorInspectionScore: exteriorInspectionScore ??
+          _woodenRecord!.content.exteriorInspectionScore,
       exteriorInspectionRemarks: exteriorInspectionRemarks ??
-          _record!.content.exteriorInspectionRemarks,
+          _woodenRecord!.content.exteriorInspectionRemarks,
       adjacentBuildingRisk:
-          adjacentBuildingRisk ?? _record!.content.adjacentBuildingRisk,
-      unevenSettlement: unevenSettlement ?? _record!.content.unevenSettlement,
-      foundationDamage: foundationDamage ?? _record!.content.foundationDamage,
-      firstFloorTilt: firstFloorTilt ?? _record!.content.firstFloorTilt,
-      wallDamage: wallDamage ?? _record!.content.wallDamage,
+          adjacentBuildingRisk ?? _woodenRecord!.content.adjacentBuildingRisk,
+      unevenSettlement:
+          unevenSettlement ?? _woodenRecord!.content.unevenSettlement,
+      foundationDamage:
+          foundationDamage ?? _woodenRecord!.content.foundationDamage,
+      firstFloorTilt: firstFloorTilt ?? _woodenRecord!.content.firstFloorTilt,
+      wallDamage: wallDamage ?? _woodenRecord!.content.wallDamage,
       corrosionOrTermite:
-          corrosionOrTermite ?? _record!.content.corrosionOrTermite,
-      roofTile: roofTile ?? _record!.content.roofTile,
-      windowFrame: windowFrame ?? _record!.content.windowFrame,
-      exteriorWet: exteriorWet ?? _record!.content.exteriorWet,
-      exteriorDry: exteriorDry ?? _record!.content.exteriorDry,
+          corrosionOrTermite ?? _woodenRecord!.content.corrosionOrTermite,
+      roofTile: roofTile ?? _woodenRecord!.content.roofTile,
+      windowFrame: windowFrame ?? _woodenRecord!.content.windowFrame,
+      exteriorWet: exteriorWet ?? _woodenRecord!.content.exteriorWet,
+      exteriorDry: exteriorDry ?? _woodenRecord!.content.exteriorDry,
       signageAndEquipment:
-          signageAndEquipment ?? _record!.content.signageAndEquipment,
-      outdoorStairs: outdoorStairs ?? _record!.content.outdoorStairs,
-      others: others ?? _record!.content.others,
-      otherRemarks: otherRemarks ?? _record!.content.otherRemarks,
+          signageAndEquipment ?? _woodenRecord!.content.signageAndEquipment,
+      outdoorStairs: outdoorStairs ?? _woodenRecord!.content.outdoorStairs,
+      others: others ?? _woodenRecord!.content.others,
+      otherRemarks: otherRemarks ?? _woodenRecord!.content.otherRemarks,
       overallExteriorScore:
-          overallExteriorScore ?? _record!.content.overallExteriorScore,
-      overallStructuralScore:
-          overallStructuralScore ?? _record!.content.overallStructuralScore,
+          overallExteriorScore ?? _woodenRecord!.content.overallExteriorScore,
+      overallStructuralScore: overallStructuralScore ??
+          _woodenRecord!.content.overallStructuralScore,
       overallFallingObjectScore: overallFallingObjectScore ??
-          _record!.content.overallFallingObjectScore,
+          _woodenRecord!.content.overallFallingObjectScore,
     );
 
-    _record = _record!.copyWith(content: updatedContent);
+    _woodenRecord = _woodenRecord!.copyWith(content: updatedContent);
     _recalculateScores();
     notifyListeners();
   }
-
+  //木材建築物の総合スコアを更新する関数
   void updateOverallScore(OverallScore score) {
-    if (_record == null) return;
+    if (_woodenRecord == null) return;
 
-    _record = _record!.copyWith(overallScore: score);
+    _woodenRecord = _woodenRecord!.copyWith(overallScore: score);
     notifyListeners();
   }
 
   //隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
   DamageLevel _calcOverallStructuralScore() {
-    if (_record == null) return DamageLevel.C;
+    if (_woodenRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
-      _record!.content.adjacentBuildingRisk,
-      _record!.content.unevenSettlement,
-      _record!.content.foundationDamage,
-      _record!.content.firstFloorTilt,
-      _record!.content.wallDamage,
-      _record!.content.corrosionOrTermite
+      _woodenRecord!.content.adjacentBuildingRisk,
+      _woodenRecord!.content.unevenSettlement,
+      _woodenRecord!.content.foundationDamage,
+      _woodenRecord!.content.firstFloorTilt,
+      _woodenRecord!.content.wallDamage,
+      _woodenRecord!.content.corrosionOrTermite
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {
@@ -305,16 +314,16 @@ class InvestigationViewModel extends ChangeNotifier {
 
   //落下危険物・転倒危険物に関する危険度の総合スコアの判定
   DamageLevel _calcOverallFallingObjectScore() {
-    if (_record == null) return DamageLevel.C;
+    if (_woodenRecord == null) return DamageLevel.C;
 
     List<DamageLevel> levels = [
-      _record!.content.roofTile,
-      _record!.content.windowFrame,
-      _record!.content.exteriorWet,
-      _record!.content.exteriorDry,
-      _record!.content.signageAndEquipment,
-      _record!.content.outdoorStairs,
-      _record!.content.others,
+      _woodenRecord!.content.roofTile,
+      _woodenRecord!.content.windowFrame,
+      _woodenRecord!.content.exteriorWet,
+      _woodenRecord!.content.exteriorDry,
+      _woodenRecord!.content.signageAndEquipment,
+      _woodenRecord!.content.outdoorStairs,
+      _woodenRecord!.content.others,
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {
@@ -327,7 +336,7 @@ class InvestigationViewModel extends ChangeNotifier {
   }
 
   //家屋危険度を算出する関数
-  OverallScore _calcOverallScore(InvestigationContent content) {
+  OverallScore _calcOverallScore(WoodenContent content) {
     //１の外観調査の点数がついている場合は赤
     if (content.exteriorInspectionScore != 5) {
       return OverallScore.red;
@@ -343,18 +352,6 @@ class InvestigationViewModel extends ChangeNotifier {
       return OverallScore.yellow;
     } else {
       return OverallScore.green;
-    }
-  }
-
-  //外観調査の総合スコアの判定
-  DamageLevel _calcOverallExteriorScore() {
-    if (_record == null) return DamageLevel.C;
-
-    //外観調査の時点で危険の場合はスコアC
-    if (_record!.content.exteriorInspectionScore == 0) {
-      return DamageLevel.C;
-    } else {
-      return DamageLevel.A;
     }
   }
 }
