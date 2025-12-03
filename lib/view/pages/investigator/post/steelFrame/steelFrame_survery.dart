@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/steelFrame_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
-import 'rebar_check.dart';
+import 'steelFrame_check.dart';
 import '../../../../wigets/image_pickere.dart';
 import '../../../../../models/investigator_model.dart';
 
-class RebarSurvery extends StatelessWidget {
-  const RebarSurvery({super.key});
+class SteelFrameSurvery extends StatelessWidget {
+  const SteelFrameSurvery({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<RebarViewModel>();
+    final viewModel = context.read<SteelFrameViewModel>();
     final inputVM = context.read<FormViewModel>();
 
     return CupertinoPageScaffold(
@@ -63,7 +63,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel.updateImageField(
                           'adjacentBuildingRiskImages', [path]),
                       savedImage: viewModel
-                          .rebarRecord?.content.adjacentBuildingRiskImages,
+                          .steelFrameRecord?.content.adjacentBuildingRiskImages,
                     ),
 
                     _buildRadioGroup(
@@ -73,7 +73,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('unevenSettlementImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.unevenSettlementImages,
+                          viewModel.steelFrameRecord?.content.unevenSettlementImages,
                     ),
 
                     _buildRadioGroup(
@@ -83,7 +83,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('upperFloorLe1Images', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.upperFloorLe1Images,
+                          viewModel.steelFrameRecord?.content.upperFloorLe1Images,
                     ),
                     _buildRadioGroup(
                       title: '傾斜を生じた階の上の階数が2階以下の場合',
@@ -92,7 +92,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('upperFloorLe2Images', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.upperFloorLe2Images,
+                          viewModel.steelFrameRecord?.content.upperFloorLe2Images,
                     ),
 
                     _buildRadioGroup(
@@ -102,7 +102,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('hasBucklingImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.hasBucklingImages,
+                          viewModel.steelFrameRecord?.content.hasBucklingImages,
                     ),
                     _buildRadioGroup(
                       title: '筋違の破断率',
@@ -111,7 +111,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('bracingBreakRateImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.bracingBreakRateImages,
+                          viewModel.steelFrameRecord?.content.bracingBreakRateImages,
                     ),
                     _buildRadioGroup(
                       title: '柱梁接合部および継手の破壊',
@@ -120,7 +120,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('jointFailureImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.jointFailureImages,
+                          viewModel.steelFrameRecord?.content.jointFailureImages,
                     ),
 
                     _buildRadioGroup(
@@ -130,7 +130,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('columnBaseDamageImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.columnBaseDamageImages,
+                          viewModel.steelFrameRecord?.content.columnBaseDamageImages,
                     ),
 
                     _buildRadioGroup(
@@ -140,7 +140,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) =>
                           viewModel.updateImageField('corrosionImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.corrosionImages,
+                          viewModel.steelFrameRecord?.content.corrosionImages,
                     ),
 
                     const SizedBox(height: 20),
@@ -155,7 +155,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('roofingMaterialImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.roofingMaterialImages,
+                          viewModel.steelFrameRecord?.content.roofingMaterialImages,
                     ),
 
                     _buildRadioGroup(
@@ -165,7 +165,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('windowFrameImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.windowFrameImages,
+                          viewModel.steelFrameRecord?.content.windowFrameImages,
                     ),
 
                     _buildRadioGroup(
@@ -175,7 +175,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorWetImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.exteriorWetImages,
+                          viewModel.steelFrameRecord?.content.exteriorWetImages,
                     ),
 
                     _buildRadioGroup(
@@ -185,7 +185,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorDryImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.exteriorDryImages,
+                          viewModel.steelFrameRecord?.content.exteriorDryImages,
                     ),
 
                     _buildRadioGroup(
@@ -195,7 +195,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel.updateImageField(
                           'signageAndEquipmentImages', [path]),
                       savedImage: viewModel
-                          .rebarRecord?.content.signageAndEquipmentImages,
+                          .steelFrameRecord?.content.signageAndEquipmentImages,
                     ),
 
                     _buildRadioGroup(
@@ -205,7 +205,7 @@ class RebarSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('outdoorStairsImages', [path]),
                       savedImage:
-                          viewModel.rebarRecord?.content.outdoorStairsImages,
+                          viewModel.steelFrameRecord?.content.outdoorStairsImages,
                     ),
 
                     _buildRadioGroup(
@@ -214,7 +214,7 @@ class RebarSurvery extends StatelessWidget {
                       options: ['A.安全', 'B.要注意', 'C.危険'],
                       onImagePicked: (path) =>
                           viewModel.updateImageField('othersImages', [path]),
-                      savedImage: viewModel.rebarRecord?.content.othersImages,
+                      savedImage: viewModel.steelFrameRecord?.content.othersImages,
                     ),
 
                     _buildTextInputSection(
@@ -308,7 +308,7 @@ class RebarSurvery extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value: context.read<RebarViewModel>()),
+                                    value: context.read<SteelFrameViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],

@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void sendRecord({WoodenRecord? woodenRecord, RebarRecord? rebarRecord}) async {
+void sendRecord({WoodenRecord? woodenRecord, SteelFrameRecord? SteelFrameRecord}) async {
   final record;
   if (woodenRecord != null) {
     record = woodenRecord;
-  } else if (rebarRecord != null) {
-    record = rebarRecord;
+  } else if (SteelFrameRecord != null) {
+    record = SteelFrameRecord;
   } else {
     return;
   }

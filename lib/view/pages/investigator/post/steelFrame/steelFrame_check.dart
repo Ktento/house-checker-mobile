@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/steelFrame_view_model.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../utils/services/DB/send_record.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +12,9 @@ class DangerSurveyFormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<RebarViewModel>();
+    final viewModel = context.watch<SteelFrameViewModel>();
     final inputVM = context.read<FormViewModel>();
-    RebarRecord record = viewModel.rebarRecord!;
+    SteelFrameRecord record = viewModel.steelFrameRecord!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('応急危険度 判定調査表'),
@@ -177,8 +177,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   CupertinoButton.filled(
                     onPressed: () async {
-                      await uploadAllImages(rebarViewModel: viewModel);
-                      sendRecord(rebarRecord: viewModel.rebarRecord);
+                      await uploadAllImages(SteelFrameViewModel: viewModel);
+                      sendRecord(SteelFrameRecord: viewModel.steelFrameRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),

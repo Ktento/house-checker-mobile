@@ -1,13 +1,13 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:house_check_mobile/models/investigator_model.dart';
 import 'package:house_check_mobile/utils/helpers/damageLevel.dart';
-import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/steelFrame_view_model.dart';
 import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
 import 'dart:io';
 import 'package:path/path.dart' as p;
 
 Future<void> uploadAllImages(
-    {WoodenViewModel? woodenViewModel, RebarViewModel? rebarViewModel}) async {
+    {WoodenViewModel? woodenViewModel, SteelFrameViewModel? SteelFrameViewModel}) async {
   final content;
   if (woodenViewModel != null) {
     content = woodenViewModel.woodenRecord!.content;
@@ -38,10 +38,10 @@ Future<void> uploadAllImages(
             entry.key, localUrls, uploadUrls);
       }
     }
-  } else if (rebarViewModel != null) {
-    content = rebarViewModel.rebarRecord!.content;
+  } else if (SteelFrameViewModel != null) {
+    content = SteelFrameViewModel.steelFrameRecord!.content;
 
-    // RebarContent 用の画像フィールド
+    // SteelFrameContent 用の画像フィールド
     final fields = {
       "adjacentBuildingRiskImages": content.adjacentBuildingRiskImages,
       "unevenSettlementImages": content.unevenSettlementImages,
@@ -67,7 +67,7 @@ Future<void> uploadAllImages(
         final uploadUrls = await uploadImages(images);
         final localUrls =
             images.map<String>((ImagePaths i) => i.localPath).toList();
-        rebarViewModel.updateImageFieldFirebase(
+        SteelFrameViewModel.updateImageFieldFirebase(
             entry.key, localUrls, uploadUrls);
       }
     }
