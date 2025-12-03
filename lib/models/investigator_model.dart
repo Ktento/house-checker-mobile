@@ -118,8 +118,8 @@ class WoodenContent with _$WoodenContent {
 }
 
 @freezed
-class RebarContent with _$RebarContent {
-  const factory RebarContent({
+class SteelFrameContent with _$SteelFrameContent {
+  const factory SteelFrameContent({
     //外観調査(一見して危険と判断される)
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
@@ -177,10 +177,10 @@ class RebarContent with _$RebarContent {
     required String overallExteriorScore,
     required DamageLevel overallStructuralScore,
     required DamageLevel overallFallingObjectScore,
-  }) = _RebarContent;
+  }) = _SteelFrameContent;
 
-  factory RebarContent.fromJson(Map<String, dynamic> json) =>
-      _$RebarContentFromJson(json);
+  factory SteelFrameContent.fromJson(Map<String, dynamic> json) =>
+      _$SteelFrameContentFromJson(json);
 }
 
 @freezed
@@ -253,18 +253,18 @@ class WoodenRecord with _$WoodenRecord {
 }
 
 @freezed
-class RebarRecord with _$RebarRecord {
-  const factory RebarRecord({
+class SteelFrameRecord with _$SteelFrameRecord {
+  const factory SteelFrameRecord({
     required InvestigationUnit unit,
     required BuildingOverview overview,
-    required RebarContent content,
+    required SteelFrameContent content,
     required OverallScore overallScore,
-  }) = _RebarRecord;
+  }) = _SteelFrameRecord;
 
-  factory RebarRecord.fromJson(Map<String, dynamic> json) =>
-      _$RebarRecordFromJson(json);
+  factory SteelFrameRecord.fromJson(Map<String, dynamic> json) =>
+      _$SteelFrameRecordFromJson(json);
 
-  factory RebarRecord.empty() => RebarRecord(
+  factory SteelFrameRecord.empty() => SteelFrameRecord(
         unit: InvestigationUnit(
           buildingtype: "",
           number: "",
@@ -285,7 +285,7 @@ class RebarRecord with _$RebarRecord {
           floors: 0,
           scale: "",
         ),
-        content: RebarContent(
+        content: SteelFrameContent(
           exteriorInspectionScore: 5,
           adjacentBuildingRisk: DamageLevel.A,
           adjacentBuildingRiskImages: [],

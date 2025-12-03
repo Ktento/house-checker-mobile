@@ -2,7 +2,7 @@ import 'post/wooden/wooden_research_unit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
-import './post/rebar/rebar_research_unit.dart';
+import 'post/steelFrame/steelFrame_research_unit.dart';
 
 class InvestigatorPost extends StatelessWidget {
   const InvestigatorPost({super.key});
@@ -44,7 +44,7 @@ class InvestigatorPost extends StatelessWidget {
                             value: context.read<LocationViewModel>(),
                           ),
                         ],
-                        child: const RebarResearchUnit(),
+                        child: const SteelFrameResearchUnit(),
                       ),
                     ),
                   );
