@@ -208,8 +208,9 @@ const _$DamageLevelEnumMap = {
   DamageLevel.C: 'C',
 };
 
-_$RebarContentImpl _$$RebarContentImplFromJson(Map<String, dynamic> json) =>
-    _$RebarContentImpl(
+_$SteelFrameContentImpl _$$SteelFrameContentImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SteelFrameContentImpl(
       exteriorInspectionScore: (json['exteriorInspectionScore'] as num).toInt(),
       exteriorInspectionRemarks: json['exteriorInspectionRemarks'] as String?,
       adjacentBuildingRisk:
@@ -308,7 +309,8 @@ _$RebarContentImpl _$$RebarContentImplFromJson(Map<String, dynamic> json) =>
           $enumDecode(_$DamageLevelEnumMap, json['overallFallingObjectScore']),
     );
 
-Map<String, dynamic> _$$RebarContentImplToJson(_$RebarContentImpl instance) =>
+Map<String, dynamic> _$$SteelFrameContentImplToJson(
+        _$SteelFrameContentImpl instance) =>
     <String, dynamic>{
       'exteriorInspectionScore': instance.exteriorInspectionScore,
       'exteriorInspectionRemarks': instance.exteriorInspectionRemarks,
@@ -377,16 +379,19 @@ const _$OverallScoreEnumMap = {
   OverallScore.green: 'green',
 };
 
-_$RebarRecordImpl _$$RebarRecordImplFromJson(Map<String, dynamic> json) =>
-    _$RebarRecordImpl(
+_$SteelFrameRecordImpl _$$SteelFrameRecordImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SteelFrameRecordImpl(
       unit: InvestigationUnit.fromJson(json['unit'] as Map<String, dynamic>),
       overview:
           BuildingOverview.fromJson(json['overview'] as Map<String, dynamic>),
-      content: RebarContent.fromJson(json['content'] as Map<String, dynamic>),
+      content:
+          SteelFrameContent.fromJson(json['content'] as Map<String, dynamic>),
       overallScore: $enumDecode(_$OverallScoreEnumMap, json['overallScore']),
     );
 
-Map<String, dynamic> _$$RebarRecordImplToJson(_$RebarRecordImpl instance) =>
+Map<String, dynamic> _$$SteelFrameRecordImplToJson(
+        _$SteelFrameRecordImpl instance) =>
     <String, dynamic>{
       'unit': instance.unit,
       'overview': instance.overview,

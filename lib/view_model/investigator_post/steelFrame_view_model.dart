@@ -2,16 +2,16 @@ import 'package:flutter/foundation.dart';
 import '../../models/investigator_model.dart';
 import 'package:latlong2/latlong.dart';
 
-class RebarViewModel extends ChangeNotifier {
-  RebarRecord? _rebarRecord;
+class SteelFrameViewModel extends ChangeNotifier {
+  SteelFrameRecord? _steelFrameRecord;
 
-  RebarRecord? get rebarRecord => _rebarRecord;
+  SteelFrameRecord? get steelFrameRecord => _steelFrameRecord;
 
   //すべてのスコアを計算
   void _recalculateScores() {
-    if (_rebarRecord == null) return;
+    if (_steelFrameRecord == null) return;
     //調査項目2,3の危険度を算出
-    final updatedContent = _rebarRecord!.content.copyWith(
+    final updatedContent = _steelFrameRecord!.content.copyWith(
       //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
       overallStructuralScore: _calcOverallStructuralScore(),
       //落下危険物に関する危険度の算出
@@ -21,7 +21,7 @@ class RebarViewModel extends ChangeNotifier {
     //調査項目1の危険度を算出し総合の危険度を算出
     final updatedOverallScore = _calcOverallScore(updatedContent);
     //レコードに反映
-    _rebarRecord = _rebarRecord!.copyWith(
+    _steelFrameRecord = _steelFrameRecord!.copyWith(
       content: updatedContent,
       overallScore: updatedOverallScore,
     );
@@ -29,7 +29,7 @@ class RebarViewModel extends ChangeNotifier {
 
   //各調査内容の添付画像を更新する関数
   void updateImageField(String fieldName, List<String> paths) {
-    if (_rebarRecord == null) return;
+    if (_steelFrameRecord == null) return;
 
     // 新しい ImageInfo リストを作成
     final updatedImages = paths
@@ -37,65 +37,65 @@ class RebarViewModel extends ChangeNotifier {
         .toList();
 
     // content のコピーを作成
-    final updatedContent = _rebarRecord!.content.copyWith(
+    final updatedContent = _steelFrameRecord!.content.copyWith(
       // フィールド名によって更新するプロパティを選択
       adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
           ? updatedImages
-          : _rebarRecord!.content.adjacentBuildingRiskImages,
+          : _steelFrameRecord!.content.adjacentBuildingRiskImages,
       unevenSettlementImages: fieldName == 'unevenSettlementImages'
           ? updatedImages
-          : _rebarRecord!.content.unevenSettlementImages,
+          : _steelFrameRecord!.content.unevenSettlementImages,
       upperFloorLe1Images: fieldName == 'upperFloorLe1Images'
           ? updatedImages
-          : _rebarRecord!.content.upperFloorLe1Images,
+          : _steelFrameRecord!.content.upperFloorLe1Images,
       upperFloorLe2Images: fieldName == 'upperFloorLe2Images'
           ? updatedImages
-          : _rebarRecord!.content.upperFloorLe2Images,
+          : _steelFrameRecord!.content.upperFloorLe2Images,
       hasBucklingImages: fieldName == 'hasBucklingImages'
           ? updatedImages
-          : _rebarRecord!.content.hasBucklingImages,
+          : _steelFrameRecord!.content.hasBucklingImages,
       bracingBreakRateImages: fieldName == 'bracingBreakRateImages'
           ? updatedImages
-          : _rebarRecord!.content.bracingBreakRateImages,
+          : _steelFrameRecord!.content.bracingBreakRateImages,
       jointFailureImages: fieldName == 'jointFailureImages'
           ? updatedImages
-          : _rebarRecord!.content.jointFailureImages,
+          : _steelFrameRecord!.content.jointFailureImages,
       columnBaseDamageImages: fieldName == 'columnBaseDamageImages'
           ? updatedImages
-          : _rebarRecord!.content.columnBaseDamageImages,
+          : _steelFrameRecord!.content.columnBaseDamageImages,
       corrosionImages: fieldName == 'corrosionImages'
           ? updatedImages
-          : _rebarRecord!.content.corrosionImages,
+          : _steelFrameRecord!.content.corrosionImages,
       roofingMaterialImages: fieldName == 'roofingMaterialImages'
           ? updatedImages
-          : _rebarRecord!.content.roofingMaterialImages,
+          : _steelFrameRecord!.content.roofingMaterialImages,
       windowFrameImages: fieldName == 'windowFrameImages'
           ? updatedImages
-          : _rebarRecord!.content.windowFrameImages,
+          : _steelFrameRecord!.content.windowFrameImages,
       exteriorWetImages: fieldName == 'exteriorWetImages'
           ? updatedImages
-          : _rebarRecord!.content.exteriorWetImages,
+          : _steelFrameRecord!.content.exteriorWetImages,
       exteriorDryImages: fieldName == 'exteriorDryImages'
           ? updatedImages
-          : _rebarRecord!.content.exteriorDryImages,
+          : _steelFrameRecord!.content.exteriorDryImages,
       signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
           ? updatedImages
-          : _rebarRecord!.content.signageAndEquipmentImages,
+          : _steelFrameRecord!.content.signageAndEquipmentImages,
       outdoorStairsImages: fieldName == 'outdoorStairsImages'
           ? updatedImages
-          : _rebarRecord!.content.outdoorStairsImages,
+          : _steelFrameRecord!.content.outdoorStairsImages,
       othersImages: fieldName == 'othersImages'
           ? updatedImages
-          : _rebarRecord!.content.othersImages,
+          : _steelFrameRecord!.content.othersImages,
     );
 
-    _rebarRecord = _rebarRecord!.copyWith(content: updatedContent);
+    _steelFrameRecord = _steelFrameRecord!.copyWith(content: updatedContent);
     notifyListeners();
   }
 
   void updateImageFieldFirebase(
       String fieldName, List<String> localUrls, List<String> uploadUrls) {
-    if (_rebarRecord == null) {
+    if (_steelFrameRecord == null) {
       print("エラー(updateImageFieldFirebase)：渡されたrecordがnullです");
       return;
     }
@@ -113,65 +113,65 @@ class RebarViewModel extends ChangeNotifier {
     });
 
     // content のコピーを作成
-    final updatedContent = _rebarRecord!.content.copyWith(
+    final updatedContent = _steelFrameRecord!.content.copyWith(
       adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
           ? updatedImages
-          : _rebarRecord!.content.adjacentBuildingRiskImages,
+          : _steelFrameRecord!.content.adjacentBuildingRiskImages,
       unevenSettlementImages: fieldName == 'unevenSettlementImages'
           ? updatedImages
-          : _rebarRecord!.content.unevenSettlementImages,
+          : _steelFrameRecord!.content.unevenSettlementImages,
       upperFloorLe1Images: fieldName == 'upperFloorLe1Images'
           ? updatedImages
-          : _rebarRecord!.content.upperFloorLe1Images,
+          : _steelFrameRecord!.content.upperFloorLe1Images,
       upperFloorLe2Images: fieldName == 'upperFloorLe2Images'
           ? updatedImages
-          : _rebarRecord!.content.upperFloorLe2Images,
+          : _steelFrameRecord!.content.upperFloorLe2Images,
       hasBucklingImages: fieldName == 'hasBucklingImages'
           ? updatedImages
-          : _rebarRecord!.content.hasBucklingImages,
+          : _steelFrameRecord!.content.hasBucklingImages,
       bracingBreakRateImages: fieldName == 'bracingBreakRateImages'
           ? updatedImages
-          : _rebarRecord!.content.bracingBreakRateImages,
+          : _steelFrameRecord!.content.bracingBreakRateImages,
       jointFailureImages: fieldName == 'jointFailureImages'
           ? updatedImages
-          : _rebarRecord!.content.jointFailureImages,
+          : _steelFrameRecord!.content.jointFailureImages,
       columnBaseDamageImages: fieldName == 'columnBaseDamageImages'
           ? updatedImages
-          : _rebarRecord!.content.columnBaseDamageImages,
+          : _steelFrameRecord!.content.columnBaseDamageImages,
       corrosionImages: fieldName == 'corrosionImages'
           ? updatedImages
-          : _rebarRecord!.content.corrosionImages,
+          : _steelFrameRecord!.content.corrosionImages,
       roofingMaterialImages: fieldName == 'roofingMaterialImages'
           ? updatedImages
-          : _rebarRecord!.content.roofingMaterialImages,
+          : _steelFrameRecord!.content.roofingMaterialImages,
       windowFrameImages: fieldName == 'windowFrameImages'
           ? updatedImages
-          : _rebarRecord!.content.windowFrameImages,
+          : _steelFrameRecord!.content.windowFrameImages,
       exteriorWetImages: fieldName == 'exteriorWetImages'
           ? updatedImages
-          : _rebarRecord!.content.exteriorWetImages,
+          : _steelFrameRecord!.content.exteriorWetImages,
       exteriorDryImages: fieldName == 'exteriorDryImages'
           ? updatedImages
-          : _rebarRecord!.content.exteriorDryImages,
+          : _steelFrameRecord!.content.exteriorDryImages,
       signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
           ? updatedImages
-          : _rebarRecord!.content.signageAndEquipmentImages,
+          : _steelFrameRecord!.content.signageAndEquipmentImages,
       outdoorStairsImages: fieldName == 'outdoorStairsImages'
           ? updatedImages
-          : _rebarRecord!.content.outdoorStairsImages,
+          : _steelFrameRecord!.content.outdoorStairsImages,
       othersImages: fieldName == 'othersImages'
           ? updatedImages
-          : _rebarRecord!.content.othersImages,
+          : _steelFrameRecord!.content.othersImages,
     );
 
-    _rebarRecord = _rebarRecord!.copyWith(content: updatedContent);
+    _steelFrameRecord = _steelFrameRecord!.copyWith(content: updatedContent);
     notifyListeners();
   }
 
   //鉄筋建築物のレコードを初期化する関数
-  void setRecord(RebarRecord record) {
+  void setRecord(SteelFrameRecord record) {
     //初期化
-    _rebarRecord = record;
+    _steelFrameRecord = record;
     //危険度を算出
     _recalculateScores();
     notifyListeners();
@@ -179,10 +179,10 @@ class RebarViewModel extends ChangeNotifier {
 
   //現在位置を更新する関数
   void updateCurrentPosition(LatLng newPosition) {
-    if (_rebarRecord == null) return;
+    if (_steelFrameRecord == null) return;
 
-    _rebarRecord = _rebarRecord!.copyWith(
-      unit: _rebarRecord!.unit.copyWith(currentPosition: newPosition),
+    _steelFrameRecord = _steelFrameRecord!.copyWith(
+      unit: _steelFrameRecord!.unit.copyWith(currentPosition: newPosition),
     );
 
     notifyListeners();
@@ -198,19 +198,19 @@ class RebarViewModel extends ChangeNotifier {
       List<String>? investigatorPrefecture,
       List<String>? investigatorNumber,
       LatLng? currentPosition}) {
-    if (_rebarRecord == null) return;
-    final updatedUnit = _rebarRecord!.unit.copyWith(
-      buildingtype: buildingtype ?? _rebarRecord!.unit.buildingtype,
-      currentPosition: currentPosition ?? _rebarRecord!.unit.currentPosition,
-      surveyCount: surveyCount ?? _rebarRecord!.unit.surveyCount,
-      investigator: investigator ?? _rebarRecord!.unit.investigator,
+    if (_steelFrameRecord == null) return;
+    final updatedUnit = _steelFrameRecord!.unit.copyWith(
+      buildingtype: buildingtype ?? _steelFrameRecord!.unit.buildingtype,
+      currentPosition: currentPosition ?? _steelFrameRecord!.unit.currentPosition,
+      surveyCount: surveyCount ?? _steelFrameRecord!.unit.surveyCount,
+      investigator: investigator ?? _steelFrameRecord!.unit.investigator,
       investigatorPrefecture:
-          investigatorPrefecture ?? _rebarRecord!.unit.investigatorPrefecture,
+          investigatorPrefecture ?? _steelFrameRecord!.unit.investigatorPrefecture,
       investigatorNumber:
-          investigatorNumber ?? _rebarRecord!.unit.investigatorNumber,
+          investigatorNumber ?? _steelFrameRecord!.unit.investigatorNumber,
     );
 
-    _rebarRecord = _rebarRecord!.copyWith(unit: updatedUnit);
+    _steelFrameRecord = _steelFrameRecord!.copyWith(unit: updatedUnit);
     notifyListeners();
   }
 
@@ -225,20 +225,20 @@ class RebarViewModel extends ChangeNotifier {
     int? floors,
     String? scale,
   }) {
-    if (_rebarRecord == null) return;
+    if (_steelFrameRecord == null) return;
 
-    final updatedOverview = _rebarRecord!.overview.copyWith(
-      buildingName: buildingName ?? _rebarRecord!.overview.buildingName,
-      buildingNumber: buildingNumber ?? _rebarRecord!.overview.buildingNumber,
-      address: address ?? _rebarRecord!.overview.address,
-      mapNumber: mapNumber ?? _rebarRecord!.overview.mapNumber,
-      buildingUse: buildingUse ?? _rebarRecord!.overview.buildingUse,
-      structure: structure ?? _rebarRecord!.overview.structure,
-      floors: floors ?? _rebarRecord!.overview.floors,
-      scale: scale ?? _rebarRecord!.overview.scale,
+    final updatedOverview = _steelFrameRecord!.overview.copyWith(
+      buildingName: buildingName ?? _steelFrameRecord!.overview.buildingName,
+      buildingNumber: buildingNumber ?? _steelFrameRecord!.overview.buildingNumber,
+      address: address ?? _steelFrameRecord!.overview.address,
+      mapNumber: mapNumber ?? _steelFrameRecord!.overview.mapNumber,
+      buildingUse: buildingUse ?? _steelFrameRecord!.overview.buildingUse,
+      structure: structure ?? _steelFrameRecord!.overview.structure,
+      floors: floors ?? _steelFrameRecord!.overview.floors,
+      scale: scale ?? _steelFrameRecord!.overview.scale,
     );
 
-    _rebarRecord = _rebarRecord!.copyWith(overview: updatedOverview);
+    _steelFrameRecord = _steelFrameRecord!.copyWith(overview: updatedOverview);
     notifyListeners();
   }
 
@@ -267,69 +267,69 @@ class RebarViewModel extends ChangeNotifier {
     DamageLevel? overallStructuralScore,
     DamageLevel? overallFallingObjectScore,
   }) {
-    if (_rebarRecord == null) return;
+    if (_steelFrameRecord == null) return;
 
-    final updatedContent = _rebarRecord!.content.copyWith(
+    final updatedContent = _steelFrameRecord!.content.copyWith(
       exteriorInspectionScore: exteriorInspectionScore ??
-          _rebarRecord!.content.exteriorInspectionScore,
+          _steelFrameRecord!.content.exteriorInspectionScore,
       exteriorInspectionRemarks: exteriorInspectionRemarks ??
-          _rebarRecord!.content.exteriorInspectionRemarks,
+          _steelFrameRecord!.content.exteriorInspectionRemarks,
       adjacentBuildingRisk:
-          adjacentBuildingRisk ?? _rebarRecord!.content.adjacentBuildingRisk,
+          adjacentBuildingRisk ?? _steelFrameRecord!.content.adjacentBuildingRisk,
       unevenSettlement:
-          unevenSettlement ?? _rebarRecord!.content.unevenSettlement,
-      upperFloorLe1: upperFloorLe1 ?? _rebarRecord!.content.upperFloorLe1,
-      upperFloorLe2: upperFloorLe2 ?? _rebarRecord!.content.upperFloorLe2,
-      hasBuckling: hasBuckling ?? _rebarRecord!.content.hasBuckling,
+          unevenSettlement ?? _steelFrameRecord!.content.unevenSettlement,
+      upperFloorLe1: upperFloorLe1 ?? _steelFrameRecord!.content.upperFloorLe1,
+      upperFloorLe2: upperFloorLe2 ?? _steelFrameRecord!.content.upperFloorLe2,
+      hasBuckling: hasBuckling ?? _steelFrameRecord!.content.hasBuckling,
       bracingBreakRate:
-          bracingBreakRate ?? _rebarRecord!.content.bracingBreakRate,
-      jointFailure: jointFailure ?? _rebarRecord!.content.jointFailure,
+          bracingBreakRate ?? _steelFrameRecord!.content.bracingBreakRate,
+      jointFailure: jointFailure ?? _steelFrameRecord!.content.jointFailure,
       columnBaseDamage:
-          columnBaseDamage ?? _rebarRecord!.content.columnBaseDamage,
-      corrosion: corrosion ?? _rebarRecord!.content.corrosion,
-      roofingMaterial: roofingMaterial ?? _rebarRecord!.content.roofingMaterial,
-      windowFrame: windowFrame ?? _rebarRecord!.content.windowFrame,
-      exteriorWet: exteriorWet ?? _rebarRecord!.content.exteriorWet,
-      exteriorDry: exteriorDry ?? _rebarRecord!.content.exteriorDry,
+          columnBaseDamage ?? _steelFrameRecord!.content.columnBaseDamage,
+      corrosion: corrosion ?? _steelFrameRecord!.content.corrosion,
+      roofingMaterial: roofingMaterial ?? _steelFrameRecord!.content.roofingMaterial,
+      windowFrame: windowFrame ?? _steelFrameRecord!.content.windowFrame,
+      exteriorWet: exteriorWet ?? _steelFrameRecord!.content.exteriorWet,
+      exteriorDry: exteriorDry ?? _steelFrameRecord!.content.exteriorDry,
       signageAndEquipment:
-          signageAndEquipment ?? _rebarRecord!.content.signageAndEquipment,
-      outdoorStairs: outdoorStairs ?? _rebarRecord!.content.outdoorStairs,
-      others: others ?? _rebarRecord!.content.others,
-      otherRemarks: otherRemarks ?? _rebarRecord!.content.otherRemarks,
+          signageAndEquipment ?? _steelFrameRecord!.content.signageAndEquipment,
+      outdoorStairs: outdoorStairs ?? _steelFrameRecord!.content.outdoorStairs,
+      others: others ?? _steelFrameRecord!.content.others,
+      otherRemarks: otherRemarks ?? _steelFrameRecord!.content.otherRemarks,
       overallExteriorScore:
-          overallExteriorScore ?? _rebarRecord!.content.overallExteriorScore,
+          overallExteriorScore ?? _steelFrameRecord!.content.overallExteriorScore,
       overallStructuralScore: overallStructuralScore ??
-          _rebarRecord!.content.overallStructuralScore,
+          _steelFrameRecord!.content.overallStructuralScore,
       overallFallingObjectScore: overallFallingObjectScore ??
-          _rebarRecord!.content.overallFallingObjectScore,
+          _steelFrameRecord!.content.overallFallingObjectScore,
     );
 
-    _rebarRecord = _rebarRecord!.copyWith(content: updatedContent);
+    _steelFrameRecord = _steelFrameRecord!.copyWith(content: updatedContent);
     _recalculateScores();
     notifyListeners();
   }
 
   //鉄筋建築物の総合スコアを更新する関数
   void updateOverallScore(OverallScore score) {
-    if (_rebarRecord == null) return;
+    if (_steelFrameRecord == null) return;
 
-    _rebarRecord = _rebarRecord!.copyWith(overallScore: score);
+    _steelFrameRecord = _steelFrameRecord!.copyWith(overallScore: score);
     notifyListeners();
   }
 
 //鉄筋建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
   DamageLevel _calcOverallStructuralScore() {
-    if (_rebarRecord == null) return DamageLevel.C;
+    if (_steelFrameRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
-      _rebarRecord!.content.adjacentBuildingRisk,
-      _rebarRecord!.content.unevenSettlement,
-      _rebarRecord!.content.upperFloorLe1,
-      _rebarRecord!.content.upperFloorLe2,
-      _rebarRecord!.content.hasBuckling,
-      _rebarRecord!.content.bracingBreakRate,
-      _rebarRecord!.content.jointFailure,
-      _rebarRecord!.content.columnBaseDamage,
-      _rebarRecord!.content.corrosion,
+      _steelFrameRecord!.content.adjacentBuildingRisk,
+      _steelFrameRecord!.content.unevenSettlement,
+      _steelFrameRecord!.content.upperFloorLe1,
+      _steelFrameRecord!.content.upperFloorLe2,
+      _steelFrameRecord!.content.hasBuckling,
+      _steelFrameRecord!.content.bracingBreakRate,
+      _steelFrameRecord!.content.jointFailure,
+      _steelFrameRecord!.content.columnBaseDamage,
+      _steelFrameRecord!.content.corrosion,
     ];
     final cCount = levels.where((e) => e == DamageLevel.C).length;
     final bCount = levels.where((e) => e == DamageLevel.B).length;
@@ -347,16 +347,16 @@ class RebarViewModel extends ChangeNotifier {
 
   //鉄筋建築物の落下危険物・転倒危険物に関する危険度の総合スコアの判定
   DamageLevel _calcOverallFallingObjectScore() {
-    if (_rebarRecord == null) return DamageLevel.C;
+    if (_steelFrameRecord == null) return DamageLevel.C;
 
     List<DamageLevel> levels = [
-      _rebarRecord!.content.roofingMaterial,
-      _rebarRecord!.content.windowFrame,
-      _rebarRecord!.content.exteriorWet,
-      _rebarRecord!.content.exteriorDry,
-      _rebarRecord!.content.signageAndEquipment,
-      _rebarRecord!.content.outdoorStairs,
-      _rebarRecord!.content.others,
+      _steelFrameRecord!.content.roofingMaterial,
+      _steelFrameRecord!.content.windowFrame,
+      _steelFrameRecord!.content.exteriorWet,
+      _steelFrameRecord!.content.exteriorDry,
+      _steelFrameRecord!.content.signageAndEquipment,
+      _steelFrameRecord!.content.outdoorStairs,
+      _steelFrameRecord!.content.others,
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {
@@ -369,7 +369,7 @@ class RebarViewModel extends ChangeNotifier {
   }
 
 //鉄筋建築物家屋の危険度を算出する関数
-  OverallScore _calcOverallScore(RebarContent content) {
+  OverallScore _calcOverallScore(SteelFrameContent content) {
     //１の外観調査の点数がついている場合は赤
     if (content.exteriorInspectionScore != 5) {
       return OverallScore.red;
