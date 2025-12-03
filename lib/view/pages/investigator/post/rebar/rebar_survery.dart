@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
-import './wooden_check.dart';
+import 'rebar_check.dart';
 import '../../../../wigets/image_pickere.dart';
 import '../../../../../models/investigator_model.dart';
 
-class WoodenSurvery extends StatelessWidget {
-  const WoodenSurvery({super.key});
+class RebarSurvery extends StatelessWidget {
+  const RebarSurvery({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<WoodenViewModel>();
+    final viewModel = context.read<RebarViewModel>();
     final inputVM = context.read<FormViewModel>();
 
     return CupertinoPageScaffold(
@@ -57,67 +57,90 @@ class WoodenSurvery extends StatelessWidget {
                     _buildSectionTitle('2. 構造躯体・周辺地盤等の危険度'),
 
                     _buildRadioGroup(
-                      title: '隣接建築物・地盤',
+                      title: '隣接建築物・周辺地盤の破壊による危険',
                       controller: inputVM.adjacentBuildingRiskController,
                       options: ['A.危険無し', 'B.不明確', 'C.危険あり'],
                       onImagePicked: (path) => viewModel.updateImageField(
                           'adjacentBuildingRiskImages', [path]),
                       savedImage: viewModel
-                          .woodenRecord?.content.adjacentBuildingRiskImages,
+                          .rebarRecord?.content.adjacentBuildingRiskImages,
                     ),
 
                     _buildRadioGroup(
-                      title: '不同沈下',
+                      title: '不同沈下による建築物全体の傾斜',
                       controller: inputVM.unevenSettlementController,
-                      options: [
-                        'A.無し又は軽微',
-                        'B.著しい床、屋根の落ち込み、浮き上がり',
-                        'C.小屋組みの破壊、床全体の沈下'
-                      ],
+                      options: ['A.1/300以下', 'B.1/300～1/100', 'C.1/100超'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('unevenSettlementImages', [path]),
-                      savedImage: viewModel
-                          .woodenRecord?.content.unevenSettlementImages,
-                    ),
-
-                    _buildRadioGroup(
-                      title: '基礎の被害',
-                      controller: inputVM.foundationDamageController,
-                      options: ['A.無被害', 'B.部分的', 'C.著しい(被害あり)'],
-                      onImagePicked: (path) => viewModel
-                          .updateImageField('foundationDamageImages', [path]),
-                      savedImage: viewModel
-                          .woodenRecord?.content.foundationDamageImages,
-                    ),
-
-                    _buildRadioGroup(
-                      title: '1階の傾斜',
-                      controller: inputVM.firstFloorTiltController,
-                      options: ['A.1/60以下', 'B.1/60～1/20', 'C.1/20超'],
-                      onImagePicked: (path) => viewModel
-                          .updateImageField('firstFloorTiltImages', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.firstFloorTiltImages,
+                          viewModel.rebarRecord?.content.unevenSettlementImages,
                     ),
 
                     _buildRadioGroup(
-                      title: '壁の被害',
-                      controller: inputVM.wallDamageController,
-                      options: ['A.軽微なひび割れ', 'B.大きな亀裂、剥離', 'C.落下の危険有り'],
+                      title: '傾斜を生じた階の上の階数が1階以下の場合',
+                      controller: inputVM.upperFloorLe1Controller,
+                      options: ['A.1/100以下', 'B.1/100～1/30', 'C.1/30超'],
                       onImagePicked: (path) => viewModel
-                          .updateImageField('wallDamageImages', [path]),
+                          .updateImageField('upperFloorLe1Images', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.wallDamageImages,
+                          viewModel.rebarRecord?.content.upperFloorLe1Images,
+                    ),
+                    _buildRadioGroup(
+                      title: '傾斜を生じた階の上の階数が2階以下の場合',
+                      controller: inputVM.upperFloorLe2Controller,
+                      options: ['A.1/200以下', 'B.1/200～1/50', 'C.1/50超'],
+                      onImagePicked: (path) => viewModel
+                          .updateImageField('upperFloorLe2Images', [path]),
+                      savedImage:
+                          viewModel.rebarRecord?.content.upperFloorLe2Images,
                     ),
 
                     _buildRadioGroup(
-                      title: '腐食・蟻害',
-                      controller: inputVM.corrosionOrTermiteController,
-                      options: ['A.ほとんど無し', 'B.一部の断面欠損', 'C.著しい断面欠損'],
+                      title: '部材の座屈の有無',
+                      controller: inputVM.hasBucklingController,
+                      options: ['A.無し', 'B.局部座屈あり', 'C.全体座屈あるいは著しい局部座屈'],
                       onImagePicked: (path) => viewModel
-                          .updateImageField('corrosionOrTermiteImages', [path]),
-                      savedImage: viewModel
-                          .woodenRecord?.content.corrosionOrTermiteImages,
+                          .updateImageField('hasBucklingImages', [path]),
+                      savedImage:
+                          viewModel.rebarRecord?.content.hasBucklingImages,
+                    ),
+                    _buildRadioGroup(
+                      title: '筋違の破断率',
+                      controller: inputVM.bracingBreakRateController,
+                      options: ['A.20%以下', 'B.20%～50%', 'C.50%超'],
+                      onImagePicked: (path) => viewModel
+                          .updateImageField('bracingBreakRateImages', [path]),
+                      savedImage:
+                          viewModel.rebarRecord?.content.bracingBreakRateImages,
+                    ),
+                    _buildRadioGroup(
+                      title: '柱梁接合部および継手の破壊',
+                      controller: inputVM.jointFailureController,
+                      options: ['A.無し', 'B.一部破断あるいは亀裂', 'C.20%以上の破断'],
+                      onImagePicked: (path) => viewModel
+                          .updateImageField('jointFailureImages', [path]),
+                      savedImage:
+                          viewModel.rebarRecord?.content.jointFailureImages,
+                    ),
+
+                    _buildRadioGroup(
+                      title: '柱脚の破損',
+                      controller: inputVM.columnBaseDamageController,
+                      options: ['A.無し', 'B.部分的', 'C.著しい'],
+                      onImagePicked: (path) => viewModel
+                          .updateImageField('columnBaseDamageImages', [path]),
+                      savedImage:
+                          viewModel.rebarRecord?.content.columnBaseDamageImages,
+                    ),
+
+                    _buildRadioGroup(
+                      title: '腐食の有無',
+                      controller: inputVM.corrosionController,
+                      options: ['A.ほとんど無し', 'B.各所に著しい錆', 'C.孔所が各所に見られる'],
+                      onImagePicked: (path) =>
+                          viewModel.updateImageField('corrosionImages', [path]),
+                      savedImage:
+                          viewModel.rebarRecord?.content.corrosionImages,
                     ),
 
                     const SizedBox(height: 20),
@@ -126,13 +149,13 @@ class WoodenSurvery extends StatelessWidget {
                     _buildSectionTitle('3. 落下・転倒危険物の危険度'),
 
                     _buildRadioGroup(
-                      title: '瓦',
+                      title: '屋根材',
                       controller: inputVM.roofOrSignboardRiskController,
                       options: ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
-                      onImagePicked: (path) => viewModel.updateImageField(
-                          'roofOrSignboardRiskImages', [path]),
+                      onImagePicked: (path) => viewModel
+                          .updateImageField('roofingMaterialImages', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.roofTileImages,
+                          viewModel.rebarRecord?.content.roofingMaterialImages,
                     ),
 
                     _buildRadioGroup(
@@ -142,7 +165,7 @@ class WoodenSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('windowFrameImages', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.windowFrameImages,
+                          viewModel.rebarRecord?.content.windowFrameImages,
                     ),
 
                     _buildRadioGroup(
@@ -152,7 +175,7 @@ class WoodenSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorWetImages', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.exteriorWetImages,
+                          viewModel.rebarRecord?.content.exteriorWetImages,
                     ),
 
                     _buildRadioGroup(
@@ -162,7 +185,7 @@ class WoodenSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('exteriorDryImages', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.exteriorDryImages,
+                          viewModel.rebarRecord?.content.exteriorDryImages,
                     ),
 
                     _buildRadioGroup(
@@ -172,7 +195,7 @@ class WoodenSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel.updateImageField(
                           'signageAndEquipmentImages', [path]),
                       savedImage: viewModel
-                          .woodenRecord?.content.signageAndEquipmentImages,
+                          .rebarRecord?.content.signageAndEquipmentImages,
                     ),
 
                     _buildRadioGroup(
@@ -182,7 +205,7 @@ class WoodenSurvery extends StatelessWidget {
                       onImagePicked: (path) => viewModel
                           .updateImageField('outdoorStairsImages', [path]),
                       savedImage:
-                          viewModel.woodenRecord?.content.outdoorStairsImages,
+                          viewModel.rebarRecord?.content.outdoorStairsImages,
                     ),
 
                     _buildRadioGroup(
@@ -191,7 +214,7 @@ class WoodenSurvery extends StatelessWidget {
                       options: ['A.安全', 'B.要注意', 'C.危険'],
                       onImagePicked: (path) =>
                           viewModel.updateImageField('othersImages', [path]),
-                      savedImage: viewModel.woodenRecord?.content.othersImages,
+                      savedImage: viewModel.rebarRecord?.content.othersImages,
                     ),
 
                     _buildTextInputSection(
@@ -237,6 +260,7 @@ class WoodenSurvery extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       borderRadius: BorderRadius.circular(12),
                       onPressed: () {
+                        print(inputVM.adjacentBuildingRiskController.text);
                         // データ更新ロジック
                         viewModel.updateContent(
                           exteriorInspectionScore: parseExteriorScore(
@@ -247,15 +271,21 @@ class WoodenSurvery extends StatelessWidget {
                               inputVM.adjacentBuildingRiskController.text),
                           unevenSettlement: stringToDamageLevel(
                               inputVM.unevenSettlementController.text),
-                          foundationDamage: stringToDamageLevel(
-                              inputVM.foundationDamageController.text),
-                          firstFloorTilt: stringToDamageLevel(
-                              inputVM.firstFloorTiltController.text),
-                          wallDamage: stringToDamageLevel(
-                              inputVM.wallDamageController.text),
-                          corrosionOrTermite: stringToDamageLevel(
-                              inputVM.corrosionOrTermiteController.text),
-                          roofTile: stringToDamageLevel(
+                          upperFloorLe1: stringToDamageLevel(
+                              inputVM.upperFloorLe1Controller.text),
+                          upperFloorLe2: stringToDamageLevel(
+                              inputVM.upperFloorLe2Controller.text),
+                          hasBuckling: stringToDamageLevel(
+                              inputVM.hasBucklingController.text),
+                          bracingBreakRate: stringToDamageLevel(
+                              inputVM.bracingBreakRateController.text),
+                          jointFailure: stringToDamageLevel(
+                              inputVM.jointFailureController.text),
+                          columnBaseDamage: stringToDamageLevel(
+                              inputVM.columnBaseDamageController.text),
+                          corrosion: stringToDamageLevel(
+                              inputVM.corrosionController.text),
+                          roofingMaterial: stringToDamageLevel(
                               inputVM.roofOrSignboardRiskController.text),
                           windowFrame: stringToDamageLevel(
                               inputVM.windowFrameController.text),
@@ -278,7 +308,7 @@ class WoodenSurvery extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value: context.read<WoodenViewModel>()),
+                                    value: context.read<RebarViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],

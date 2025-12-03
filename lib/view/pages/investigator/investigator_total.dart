@@ -5,7 +5,6 @@ import '../../wigets/card/work_status.dart';
 import '../../wigets/card/judgment_status_pie_chart.dart';
 import '../../wigets/card/days_bargraph.dart';
 import '../../wigets/card/regional_statistics.dart';
-import '../../../models/dashboard_model.dart';
 import '../../../view_model/dashboard_view_model.dart';
 import 'package:provider/provider.dart';
 

@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import 'package:intl/intl.dart';
-import '../../../../../view_model/investigator_post/investigation_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../view_model/Form_view_model.dart';
-import './wooden_building_overview.dart';
+import 'rebar_building_overview.dart';
 import '../../../../../view_model/location_view_model.dart';
-import '../../../../../view_model/investigator_post/wooden_view_model.dart';
 
-class WoodenResearchUnit extends StatelessWidget {
-  const WoodenResearchUnit({super.key});
+class RebarResearchUnit extends StatelessWidget {
+  const RebarResearchUnit({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +17,19 @@ class WoodenResearchUnit extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) {
-            final post = WoodenViewModel();
-            post.setRecord(WoodenRecord.empty());
+            final post = RebarViewModel();
+            post.setRecord(RebarRecord.empty());
             return post;
           },
         ),
         ChangeNotifierProvider(
           create: (context) {
-            final record = context.read<WoodenViewModel>().woodenRecord;
-            return FormViewModel(woodenRecord: record);
+            final record = context.read<RebarViewModel>().rebarRecord;
+            return FormViewModel(rebarRecord: record);
           },
         ),
       ],
-      child: Consumer2<WoodenViewModel, FormViewModel>(
+      child: Consumer2<RebarViewModel, FormViewModel>(
         builder: (context, viewModel, inputVM, _) {
           return CupertinoPageScaffold(
             backgroundColor: CupertinoColors.systemGroupedBackground,
@@ -202,7 +201,7 @@ class WoodenResearchUnit extends StatelessWidget {
                     child: CupertinoButton.filled(
                       onPressed: () {
                         viewModel.updateUnit(
-                          buildingtype: "W",
+                          buildingtype: "R",
                           number: inputVM.numberController.text,
                           date: inputVM.selectedDate,
                           surveyCount:
@@ -223,13 +222,13 @@ class WoodenResearchUnit extends StatelessWidget {
                             builder: (_) => MultiProvider(
                               providers: [
                                 ChangeNotifierProvider.value(
-                                    value: context.read<WoodenViewModel>()),
+                                    value: context.read<RebarViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                                 ChangeNotifierProvider.value(
                                     value: context.read<LocationViewModel>()),
                               ],
-                              child: WoodenBuildingOverview(),
+                              child: RebarBuildingOverview(),
                             ),
                           ),
                         );
