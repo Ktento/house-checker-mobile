@@ -4,7 +4,7 @@ DamageLevel stringToDamageLevel(String value) {
   if (value.startsWith('A')) return DamageLevel.A;
   if (value.startsWith('B')) return DamageLevel.B;
   if (value.startsWith('C')) return DamageLevel.C;
-  if (value == "DamageLevel.A") return DamageLevel.A;
+  if (value == "DamageLevel.A" || value.isEmpty) return DamageLevel.A;
   throw Exception('Invalid DamageLevel string: $value');
 }
 
@@ -315,5 +315,87 @@ String roofOrSignboardRiskToLabel(String level) {
       return 'C.全面的にずれ、破損';
     default:
       return 'A.ほとんど無被害';
+  }
+}
+
+// 損傷度Ⅲ以上の損傷部材の有無
+String hasSevereDamageMembersToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.無し';
+    case "B":
+      return 'B.あり';
+    default:
+      return 'A.無し';
+  }
+}
+
+// 地盤破壊による建物全体の傾斜
+String groundFailureInclinationToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.0.2m以下';
+    case "B":
+      return 'B.0.2m～1.0m';
+    case "C":
+      return 'C.1.0m超';
+    default:
+      return 'A.0.2m以下';
+  }
+}
+
+// 損傷度Ⅴの柱本数
+String percentColumnsLevel5ToLabel(String level) {
+  switch (level) {
+    case "A":
+      return "A.1%以下";
+    case "B":
+      return "B.1%〜10%";
+    case "C":
+      return "C.10%超";
+    default:
+      return "A.1%以下";
+  }
+}
+
+// 損傷度Ⅳの柱本数
+String percentColumnsLevel4ToLabel(String level) {
+  switch (level) {
+    case "A":
+      return "A.10%以下";
+    case "B":
+      return "B.10%〜20%";
+    case "C":
+      return "C.20%超";
+    default:
+      return "A.10%以下";
+  }
+}
+
+// 外装材(モルタル・タイル・石貼り等)
+String exteriorMaterialMortarTileStoneToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.ほとんど無被害';
+    case "B":
+      return 'B.部分的なひび割れ、隙間';
+    case "C":
+      return 'C.顕著なひび割れ、剥離';
+    default:
+      return 'A.ほとんど無被害';
+  }
+}
+
+// 外装材(ALC板・PC板・金属・ブロック等)
+String exteriorMaterialALCPCMetalBlockToLabel(String level) {
+  switch (level) {
+    case "A":
+      return 'A.目地の亀裂程度';
+    case "B":
+      return 'B.板に隙間がみられる';
+    case "C":
+      return 'C.顕著な目地ずれ、板破損';
+    default:
+      return 'A.目地の亀裂程度';
   }
 }
