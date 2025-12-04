@@ -113,13 +113,14 @@ class RebarBuildingOverview extends StatelessWidget {
                         _buildPickerRow(
                           context: context,
                           icon: CupertinoIcons.hammer,
-                          label: '構造形式',
+                          label: '構造種別',
                           controller: inputVM.structureController,
                           options: [
-                            'ラーメン構造',
-                            'ブレース構造',
-                            'プレファブ',
-                            'その他',
+                            '鉄筋コンクリート造',
+                            'プレキャストコンクリート造',
+                            'ブロック造',
+                            '鉄骨鉄筋コンクリート造'
+                            '混合構造',
                           ],
                         ),
                       ],
