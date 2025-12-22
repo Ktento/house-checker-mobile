@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:house_check_mobile/view_model/investigator_post/Rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import 'rebar_survery.dart';
