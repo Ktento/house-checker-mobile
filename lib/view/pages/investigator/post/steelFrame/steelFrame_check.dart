@@ -177,8 +177,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   CupertinoButton.filled(
                     onPressed: () async {
-                      await uploadAllImages(SteelFrameViewModel: viewModel);
-                      sendRecord(SteelFrameRecord: viewModel.steelFrameRecord);
+                      await uploadAllImages(steelFrameViewModel: viewModel);
+                      sendRecord(steelFrameRecord: viewModel.steelFrameRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),
