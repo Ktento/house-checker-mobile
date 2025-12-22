@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view_model/investigator_post/Rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import '../../../../../models/investigator_model.dart';
 import 'package:provider/provider.dart';
-import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
+import '../../../../../utils/services/DB/image_upload.dart';
+import '../../../../../utils/services/DB/send_record.dart';
 
 class DangerSurveyFormPage extends StatelessWidget {
   const DangerSurveyFormPage({super.key});
@@ -11,7 +12,6 @@ class DangerSurveyFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<RebarViewModel>();
-    final inputVM = context.read<FormViewModel>();
     RebarRecord record = viewModel.rebarRecord!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -162,8 +162,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   CupertinoButton.filled(
                     onPressed: () async {
-                      // await uploadAllImages(RebarViewModel: viewModel);
-                      // sendRecord(RebarRecord: viewModel.RebarRecord);
+                      await uploadAllImages(rebarViewModel: viewModel);
+                      sendRecord(rebarRecord: viewModel.rebarRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),
