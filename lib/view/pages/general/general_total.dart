@@ -5,18 +5,17 @@ import '../../wigets/card/work_status.dart';
 import '../../wigets/card/judgment_status_pie_chart.dart';
 import '../../wigets/card/days_bargraph.dart';
 import '../../wigets/card/regional_statistics.dart';
-import '../../../models/dashboard_model.dart';
 import '../../../view_model/dashboard_view_model.dart';
 import 'package:provider/provider.dart';
 
-class generalTotal extends StatefulWidget {
-  const generalTotal({super.key});
+class GeneralTotal extends StatefulWidget {
+  const GeneralTotal({super.key});
 
   @override
-  State<generalTotal> createState() => _generalTotalState();
+  State<GeneralTotal> createState() => _GeneralTotalState();
 }
 
-class _generalTotalState extends State<generalTotal> {
+class _GeneralTotalState extends State<GeneralTotal> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<DashboardViewModel>();

@@ -8,8 +8,8 @@ import '../../../view_model/location_view_model.dart';
 import '../../../view_model/map_view_model.dart';
 import '../../../view_model/dashboard_view_model.dart';
 
-class General_HomePage extends StatelessWidget {
-  const General_HomePage({super.key});
+class GeneralHomePage extends StatelessWidget {
+  const GeneralHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,21 +48,21 @@ class General_HomePage extends StatelessWidget {
               navigationBar: CupertinoNavigationBar(
                 middle: Text('マップ'),
               ),
-              child: SafeArea(child: generalMap()),
+              child: SafeArea(child: GeneralMap()),
             );
           case 1:
             return const CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
                 middle: Text('判定作業'),
               ),
-              child: SafeArea(child: generalPost()),
+              child: SafeArea(child: GeneralPost()),
             );
           case 2:
             return const CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
                 middle: Text('集計情報'),
               ),
-              child: SafeArea(child: generalTotal()),
+              child: SafeArea(child: GeneralTotal()),
             );
           default:
             return const SizedBox.shrink();
