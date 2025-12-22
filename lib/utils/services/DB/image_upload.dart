@@ -1,13 +1,15 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:house_check_mobile/models/investigator_model.dart';
-import 'package:house_check_mobile/utils/helpers/damageLevel.dart';
 import 'package:house_check_mobile/view_model/investigator_post/steelFrame_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
 import 'dart:io';
 import 'package:path/path.dart' as p;
 
 Future<void> uploadAllImages(
-    {WoodenViewModel? woodenViewModel, SteelFrameViewModel? SteelFrameViewModel}) async {
+    {WoodenViewModel? woodenViewModel,
+    SteelFrameViewModel? steelFrameViewModel,
+    RebarViewModel? rebarViewModel}) async {
   final content;
   if (woodenViewModel != null) {
     content = woodenViewModel.woodenRecord!.content;
@@ -38,8 +40,8 @@ Future<void> uploadAllImages(
             entry.key, localUrls, uploadUrls);
       }
     }
-  } else if (SteelFrameViewModel != null) {
-    content = SteelFrameViewModel.steelFrameRecord!.content;
+  } else if (steelFrameViewModel != null) {
+    content = steelFrameViewModel.steelFrameRecord!.content;
 
     // SteelFrameContent 用の画像フィールド
     final fields = {
@@ -67,7 +69,40 @@ Future<void> uploadAllImages(
         final uploadUrls = await uploadImages(images);
         final localUrls =
             images.map<String>((ImagePaths i) => i.localPath).toList();
-        SteelFrameViewModel.updateImageFieldFirebase(
+        steelFrameViewModel.updateImageFieldFirebase(
+            entry.key, localUrls, uploadUrls);
+      }
+    }
+  } else if (rebarViewModel != null) {
+    content = rebarViewModel.rebarRecord!.content;
+
+    // RebarContent 用の画像フィールド
+    final fields = {
+      "hasSevereDamageMembersImages": content.hasSevereDamageMembersImages,
+      "adjacentBuildingRiskImages": content.adjacentBuildingRiskImages,
+      "groundFailureInclinationImages": content.groundFailureInclinationImages,
+      "unevenSettlementImages": content.unevenSettlementImages,
+      "percentColumnsDamageLevel5Images":
+          content.percentColumnsDamageLevel5Images,
+      "percentColumnsDamageLevel4Images":
+          content.percentColumnsDamageLevel4Images,
+      "windowFrameImages": content.windowFrameImages,
+      "exteriorMaterialMortarTileStoneImages":
+          content.exteriorMaterialMortarTileStoneImages,
+      "exteriorMaterialALCPCMetalBlockImages":
+          content.exteriorMaterialALCPCMetalBlockImages,
+      "signageAndEquipmentImages": content.signageAndEquipmentImages,
+      "outdoorStairsImages": content.outdoorStairsImages,
+      "othersImages": content.othersImages,
+    };
+
+    for (var entry in fields.entries) {
+      final images = entry.value;
+      if (images.isNotEmpty) {
+        final uploadUrls = await uploadImages(images);
+        final localUrls =
+            images.map<String>((ImagePaths i) => i.localPath).toList();
+        rebarViewModel.updateImageFieldFirebase(
             entry.key, localUrls, uploadUrls);
       }
     }

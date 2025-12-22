@@ -3,16 +3,26 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void sendRecord({WoodenRecord? woodenRecord, SteelFrameRecord? SteelFrameRecord}) async {
+void sendRecord(
+    {WoodenRecord? woodenRecord,
+    SteelFrameRecord? steelFrameRecord,
+    RebarRecord? rebarRecord}) async {
   final record;
   if (woodenRecord != null) {
     record = woodenRecord;
-  } else if (SteelFrameRecord != null) {
-    record = SteelFrameRecord;
+  } else if (steelFrameRecord != null) {
+    record = steelFrameRecord;
+  } else if (rebarRecord != null) {
+    record = rebarRecord;
   } else {
     return;
   }
   try {
+    final jsonBody = record.toJson();
+
+    print('送信する record:');
+    printLong(jsonBody);
+
     final url = Uri.parse(
       dotenv.env['gas']!,
     );
@@ -29,5 +39,17 @@ void sendRecord({WoodenRecord? woodenRecord, SteelFrameRecord? SteelFrameRecord}
     }
   } catch (e) {
     print("エラー(sendRecord):{$e}");
+  }
+}
+
+void printLong(Object obj) {
+  final text = const JsonEncoder.withIndent('  ').convert(obj);
+  const chunkSize = 800;
+
+  for (var i = 0; i < text.length; i += chunkSize) {
+    print(text.substring(
+      i,
+      i + chunkSize > text.length ? text.length : i + chunkSize,
+    ));
   }
 }
