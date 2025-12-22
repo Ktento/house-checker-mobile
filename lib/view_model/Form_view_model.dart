@@ -29,13 +29,13 @@ class FormViewModel extends ChangeNotifier {
   final TextEditingController firstFloorTiltController; // Wooden専用
   final TextEditingController wallDamageController; // Wooden専用
   final TextEditingController corrosionOrTermiteController; // Wooden専用
-  final TextEditingController upperFloorLe1Controller; // Rebar専用
-  final TextEditingController upperFloorLe2Controller; // Rebar専用
-  final TextEditingController hasBucklingController; // Rebar専用
-  final TextEditingController bracingBreakRateController; // Rebar専用
-  final TextEditingController jointFailureController; // Rebar専用
-  final TextEditingController columnBaseDamageController; // Rebar専用
-  final TextEditingController corrosionController; // Rebar専用
+  final TextEditingController upperFloorLe1Controller; // SteelFrame専用
+  final TextEditingController upperFloorLe2Controller; // SteelFrame専用
+  final TextEditingController hasBucklingController; // SteelFrame専用
+  final TextEditingController bracingBreakRateController; // SteelFrame専用
+  final TextEditingController jointFailureController; // SteelFrame専用
+  final TextEditingController columnBaseDamageController; // SteelFrame専用
+  final TextEditingController corrosionController; // SteelFrame専用
   final TextEditingController roofOrSignboardRiskController;
   final TextEditingController windowFrameController;
   final TextEditingController exteriorWetController;
@@ -44,6 +44,67 @@ class FormViewModel extends ChangeNotifier {
   final TextEditingController outdoorStairsController;
   final TextEditingController othersController;
   final TextEditingController otherRemarksController;
+
+  // --- Rebar（鉄筋コンクリート造）用 ---
+  // 損傷度Ⅲ以上の損傷部材の有無
+  final TextEditingController hasSevereDamageMembersController;
+  // 地盤破壊による建築物全体の沈下
+  final TextEditingController groundFailureInclinationController;
+  // 柱の被害調査（階数）
+  final TextEditingController inspectedFloorsForColumnsController;
+  // 損傷度Ⅴ
+  final TextEditingController totalColumnsLevel5Controller;
+  final TextEditingController surveyedColumnsLevel5Controller;
+  final TextEditingController percentColumnsLevel5Controller;
+  final TextEditingController percentColumnsDamageLevel5Controller;
+  final TextEditingController surveyRateLevel5Controller;
+  // 損傷度Ⅳ
+  final TextEditingController totalColumnsLevel4Controller;
+  final TextEditingController surveyedColumnsLevel4Controller;
+  final TextEditingController percentColumnsLevel4Controller;
+  final TextEditingController percentColumnsDamageLevel4Controller;
+  final TextEditingController surveyRateLevel4Controller;
+  // 落下危険物・転倒危険物
+  final TextEditingController exteriorMaterialMortarTileStoneController;
+  final TextEditingController exteriorMaterialALCPCMetalBlockController;
+  // その他
+  final TextEditingController overallStructuralScore2Controller;
+
+  DamageLevel? calc4DamageLevel() {
+    int damagedPillar = int.tryParse(totalColumnsLevel4Controller.text) ?? 0;
+    int total = int.tryParse(surveyedColumnsLevel4Controller.text) ?? 0;
+    late double percent;
+    if (damagedPillar < total) {
+      percent = (damagedPillar / total) * 100;
+      if (percent > 10) {
+        return DamageLevel.C;
+      } else if (percent > 1) {
+        return DamageLevel.B;
+      } else {
+        return DamageLevel.A;
+      }
+    } else {
+      return null;
+    }
+  }
+
+  DamageLevel? calc5DamageLevel() {
+    int damagedPillar = int.tryParse(totalColumnsLevel5Controller.text) ?? 0;
+    int total = int.tryParse(surveyedColumnsLevel5Controller.text) ?? 0;
+    late double percent;
+    if (damagedPillar < total) {
+      percent = (damagedPillar / total) * 100;
+      if (percent > 20) {
+        return DamageLevel.C;
+      } else if (percent > 10) {
+        return DamageLevel.B;
+      } else {
+        return DamageLevel.A;
+      }
+    } else {
+      return null;
+    }
+  }
 
   // 調査日
   DateTime selectedDate = DateTime.now();
@@ -101,151 +162,212 @@ class FormViewModel extends ChangeNotifier {
   ];
   List<String> get prefectures => _prefectures;
 
-  FormViewModel({WoodenRecord? woodenRecord, RebarRecord? rebarRecord})
+  FormViewModel(
+      {WoodenRecord? woodenRecord,
+      SteelFrameRecord? SteelFrameRecord,
+      RebarRecord? rebarRecord})
       : buildingtypeController = TextEditingController(
             text: woodenRecord?.unit.buildingtype ??
-                rebarRecord?.unit.buildingtype ??
+                SteelFrameRecord?.unit.buildingtype ??
                 ''),
         nameController = TextEditingController(
             text: (woodenRecord?.unit.investigator.isNotEmpty == true
                 ? woodenRecord!.unit.investigator[0]
-                : (rebarRecord?.unit.investigator.isNotEmpty == true
-                    ? rebarRecord!.unit.investigator[0]
+                : (SteelFrameRecord?.unit.investigator.isNotEmpty == true
+                    ? SteelFrameRecord!.unit.investigator[0]
                     : ''))),
         numberController = TextEditingController(
-            text: woodenRecord?.unit.number ?? rebarRecord?.unit.number ?? ''),
+            text: woodenRecord?.unit.number ??
+                SteelFrameRecord?.unit.number ??
+                ''),
         investigatorPrefectureController = TextEditingController(
             text: (woodenRecord?.unit.investigatorPrefecture.isNotEmpty == true
                 ? woodenRecord!.unit.investigatorPrefecture[0]
-                : (rebarRecord?.unit.investigatorPrefecture.isNotEmpty == true
-                    ? rebarRecord!.unit.investigatorPrefecture[0]
+                : (SteelFrameRecord?.unit.investigatorPrefecture.isNotEmpty ==
+                        true
+                    ? SteelFrameRecord!.unit.investigatorPrefecture[0]
                     : ''))),
         investigatorNumberController = TextEditingController(
             text: (woodenRecord?.unit.investigatorNumber.isNotEmpty == true
                 ? woodenRecord!.unit.investigatorNumber[0]
-                : (rebarRecord?.unit.investigatorNumber.isNotEmpty == true
-                    ? rebarRecord!.unit.investigatorNumber[0]
+                : (SteelFrameRecord?.unit.investigatorNumber.isNotEmpty == true
+                    ? SteelFrameRecord!.unit.investigatorNumber[0]
                     : ''))),
         countController = TextEditingController(
             text: woodenRecord?.unit.surveyCount.toString() ??
-                rebarRecord?.unit.surveyCount.toString() ??
+                SteelFrameRecord?.unit.surveyCount.toString() ??
                 ''),
         buildingNameController = TextEditingController(
             text: woodenRecord?.overview.buildingName ??
-                rebarRecord?.overview.buildingName ??
+                SteelFrameRecord?.overview.buildingName ??
                 ''),
         buildingNumberController = TextEditingController(
             text: woodenRecord?.overview.buildingNumber ??
-                rebarRecord?.overview.buildingNumber ??
+                SteelFrameRecord?.overview.buildingNumber ??
                 ''),
         addressController = TextEditingController(
             text: woodenRecord?.overview.address ??
-                rebarRecord?.overview.address ??
+                SteelFrameRecord?.overview.address ??
                 ''),
         mapNumberController = TextEditingController(
             text: woodenRecord?.overview.mapNumber ??
-                rebarRecord?.overview.mapNumber ??
+                SteelFrameRecord?.overview.mapNumber ??
                 ''),
         buildingUseController = TextEditingController(
             text: woodenRecord?.overview.buildingUse ??
-                rebarRecord?.overview.buildingUse ??
+                SteelFrameRecord?.overview.buildingUse ??
                 ''),
         structureController = TextEditingController(
             text: woodenRecord?.overview.structure ??
-                rebarRecord?.overview.structure ??
+                SteelFrameRecord?.overview.structure ??
                 ''),
         floorsController = TextEditingController(
             text: woodenRecord?.overview.floors.toString() ??
-                rebarRecord?.overview.floors.toString() ??
+                SteelFrameRecord?.overview.floors.toString() ??
                 ''),
         scaleController = TextEditingController(
             text: woodenRecord?.overview.scale ??
-                rebarRecord?.overview.scale ??
+                SteelFrameRecord?.overview.scale ??
                 ''),
         exteriorInspectionScoreController = TextEditingController(
             text: woodenRecord?.content.exteriorInspectionScore.toString() ??
-                rebarRecord?.content.exteriorInspectionScore.toString() ??
+                SteelFrameRecord?.content.exteriorInspectionScore.toString() ??
                 ''),
         exteriorInspectionRemarksController = TextEditingController(
             text: woodenRecord?.content.exteriorInspectionRemarks ??
-                rebarRecord?.content.exteriorInspectionRemarks ??
+                SteelFrameRecord?.content.exteriorInspectionRemarks ??
                 ''),
         adjacentBuildingRiskController = TextEditingController(
             text: woodenRecord?.content.adjacentBuildingRisk.toString() ??
-                rebarRecord?.content.adjacentBuildingRisk.toString() ??
+                SteelFrameRecord?.content.adjacentBuildingRisk.toString() ??
                 ''),
         unevenSettlementController = TextEditingController(
             text: woodenRecord?.content.unevenSettlement.toString() ??
-                rebarRecord?.content.unevenSettlement.toString() ??
+                SteelFrameRecord?.content.unevenSettlement.toString() ??
                 ''),
         foundationDamageController = TextEditingController(
             text: woodenRecord?.content.foundationDamage.toString() ??
-                ''), // Rebarにはなし
+                ''), // SteelFrameにはなし
         firstFloorTiltController = TextEditingController(
             text: woodenRecord?.content.firstFloorTilt.toString() ??
-                ''), // Rebarにはなし
+                ''), // SteelFrameにはなし
         wallDamageController = TextEditingController(
-            text:
-                woodenRecord?.content.wallDamage.toString() ?? ''), // Rebarにはなし
+            text: woodenRecord?.content.wallDamage.toString() ??
+                ''), // SteelFrameにはなし
         corrosionOrTermiteController = TextEditingController(
             text: woodenRecord?.content.corrosionOrTermite.toString() ??
-                ''), // Rebarにはなし
+                ''), // SteelFrameにはなし
         upperFloorLe1Controller = TextEditingController(
-            text: rebarRecord?.content.upperFloorLe1.toString() ??
+            text: SteelFrameRecord?.content.upperFloorLe1.toString() ??
                 ''), // Woodenにはなし
         upperFloorLe2Controller = TextEditingController(
-            text: rebarRecord?.content.upperFloorLe2.toString() ?? ''),
+            text: SteelFrameRecord?.content.upperFloorLe2.toString() ?? ''),
         hasBucklingController = TextEditingController(
-            text: rebarRecord?.content.hasBuckling.toString() ?? ''),
+            text: SteelFrameRecord?.content.hasBuckling.toString() ?? ''),
         bracingBreakRateController = TextEditingController(
-            text: rebarRecord?.content.bracingBreakRate.toString() ?? ''),
+            text: SteelFrameRecord?.content.bracingBreakRate.toString() ?? ''),
         jointFailureController = TextEditingController(
-            text: rebarRecord?.content.jointFailure.toString() ?? ''),
+            text: SteelFrameRecord?.content.jointFailure.toString() ?? ''),
         columnBaseDamageController = TextEditingController(
-            text: rebarRecord?.content.columnBaseDamage.toString() ?? ''),
+            text: SteelFrameRecord?.content.columnBaseDamage.toString() ?? ''),
         corrosionController = TextEditingController(
-            text: rebarRecord?.content.corrosion.toString() ?? ''),
+            text: SteelFrameRecord?.content.corrosion.toString() ?? ''),
         roofOrSignboardRiskController = TextEditingController(
             text: woodenRecord?.content.roofTile.toString() ??
-                rebarRecord?.content.roofingMaterial.toString() ??
+                SteelFrameRecord?.content.roofingMaterial.toString() ??
                 ''),
         windowFrameController = TextEditingController(
             text: woodenRecord?.content.windowFrame.toString() ??
-                rebarRecord?.content.windowFrame.toString() ??
+                SteelFrameRecord?.content.windowFrame.toString() ??
                 ''),
         exteriorWetController = TextEditingController(
             text: woodenRecord?.content.exteriorWet.toString() ??
-                rebarRecord?.content.exteriorWet.toString() ??
+                SteelFrameRecord?.content.exteriorWet.toString() ??
                 ''),
         exteriorDryController = TextEditingController(
             text: woodenRecord?.content.exteriorDry.toString() ??
-                rebarRecord?.content.exteriorDry.toString() ??
+                SteelFrameRecord?.content.exteriorDry.toString() ??
                 ''),
         signageAndEquipmentController = TextEditingController(
             text: woodenRecord?.content.signageAndEquipment.toString() ??
-                rebarRecord?.content.signageAndEquipment.toString() ??
+                SteelFrameRecord?.content.signageAndEquipment.toString() ??
                 ''),
         outdoorStairsController = TextEditingController(
             text: woodenRecord?.content.outdoorStairs.toString() ??
-                rebarRecord?.content.outdoorStairs.toString() ??
+                SteelFrameRecord?.content.outdoorStairs.toString() ??
                 ''),
         othersController = TextEditingController(
             text: woodenRecord?.content.others.toString() ??
-                rebarRecord?.content.others.toString() ??
+                SteelFrameRecord?.content.others.toString() ??
                 ''),
         otherRemarksController = TextEditingController(
             text: woodenRecord?.content.otherRemarks ??
-                rebarRecord?.content.otherRemarks ??
+                SteelFrameRecord?.content.otherRemarks ??
                 ''),
+        hasSevereDamageMembersController = TextEditingController(
+          text: rebarRecord?.content.hasSevereDamageMembers.toString() ?? '',
+        ),
+        groundFailureInclinationController = TextEditingController(
+          text: rebarRecord?.content.groundFailureInclination.toString() ?? '',
+        ),
+        inspectedFloorsForColumnsController = TextEditingController(
+          text: rebarRecord?.content.inspectedFloorsForColumns.toString() ?? '',
+        ),
+        totalColumnsLevel5Controller = TextEditingController(
+          text: rebarRecord?.content.totalColumnsLevel5.toString() ?? '',
+        ),
+        surveyedColumnsLevel5Controller = TextEditingController(
+          text: rebarRecord?.content.surveyedColumnsLevel5.toString() ?? '',
+        ),
+        percentColumnsLevel5Controller = TextEditingController(
+          text: rebarRecord?.content.percentColumnsLevel5.toString() ?? '',
+        ),
+        percentColumnsDamageLevel5Controller = TextEditingController(
+          text:
+              rebarRecord?.content.percentColumnsDamageLevel5.toString() ?? '',
+        ),
+        surveyRateLevel5Controller = TextEditingController(
+          text: rebarRecord?.content.surveyRateLevel5.toString() ?? '',
+        ),
+        totalColumnsLevel4Controller = TextEditingController(
+          text: rebarRecord?.content.totalColumnsLevel4.toString() ?? '',
+        ),
+        surveyedColumnsLevel4Controller = TextEditingController(
+          text: rebarRecord?.content.surveyedColumnsLevel4.toString() ?? '',
+        ),
+        percentColumnsLevel4Controller = TextEditingController(
+          text: rebarRecord?.content.percentColumnsLevel4.toString() ?? '',
+        ),
+        percentColumnsDamageLevel4Controller = TextEditingController(
+          text:
+              rebarRecord?.content.percentColumnsDamageLevel4.toString() ?? '',
+        ),
+        surveyRateLevel4Controller = TextEditingController(
+          text: rebarRecord?.content.surveyRateLevel4.toString() ?? '',
+        ),
+        exteriorMaterialMortarTileStoneController = TextEditingController(
+          text:
+              rebarRecord?.content.exteriorMaterialMortarTileStone.toString() ??
+                  '',
+        ),
+        exteriorMaterialALCPCMetalBlockController = TextEditingController(
+          text:
+              rebarRecord?.content.exteriorMaterialALCPCMetalBlock.toString() ??
+                  '',
+        ),
+        overallStructuralScore2Controller = TextEditingController(
+          text: rebarRecord?.content.overallStructuralScore2.toString() ?? '',
+        ),
         selectedDate = woodenRecord?.unit.date ??
-            rebarRecord?.unit.date ??
+            SteelFrameRecord?.unit.date ??
             DateTime.now() {
     if (woodenRecord?.unit.investigatorPrefecture.isNotEmpty == true) {
       selectedPrefectureIndex =
           _prefectures.indexOf(woodenRecord!.unit.investigatorPrefecture[0]);
-    } else if (rebarRecord?.unit.investigatorPrefecture.isNotEmpty == true) {
-      selectedPrefectureIndex =
-          _prefectures.indexOf(rebarRecord!.unit.investigatorPrefecture[0]);
+    } else if (SteelFrameRecord?.unit.investigatorPrefecture.isNotEmpty ==
+        true) {
+      selectedPrefectureIndex = _prefectures
+          .indexOf(SteelFrameRecord!.unit.investigatorPrefecture[0]);
     }
   }
 
@@ -301,6 +423,23 @@ class FormViewModel extends ChangeNotifier {
     outdoorStairsController.dispose();
     othersController.dispose();
     otherRemarksController.dispose();
+    hasSevereDamageMembersController.dispose();
+    groundFailureInclinationController.dispose();
+    inspectedFloorsForColumnsController.dispose();
+    totalColumnsLevel5Controller.dispose();
+    surveyedColumnsLevel5Controller.dispose();
+    percentColumnsLevel5Controller.dispose();
+    percentColumnsDamageLevel5Controller.dispose();
+    surveyRateLevel5Controller.dispose();
+    totalColumnsLevel4Controller.dispose();
+    surveyedColumnsLevel4Controller.dispose();
+    percentColumnsLevel4Controller.dispose();
+    percentColumnsDamageLevel4Controller.dispose();
+    surveyRateLevel4Controller.dispose();
+    exteriorMaterialMortarTileStoneController.dispose();
+    exteriorMaterialALCPCMetalBlockController.dispose();
+    overallStructuralScore2Controller.dispose();
+
     super.dispose();
   }
 }
