@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
 
-class generalPost extends StatelessWidget {
-  const generalPost({super.key});
+class GeneralPost extends StatelessWidget {
+  const GeneralPost({super.key});
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -23,7 +23,7 @@ class generalPost extends StatelessWidget {
                             value: context.read<LocationViewModel>(),
                           ),
                         ],
-                        // child: const WoodenResearchUnit(),
+                        child: const WoodenResearchUnit(),
                       ),
                     ),
                   );

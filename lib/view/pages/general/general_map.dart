@@ -8,14 +8,14 @@ import '../../../view_model/location_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/map_view_model.dart';
 
-class generalMap extends StatefulWidget {
-  const generalMap({super.key});
+class GeneralMap extends StatefulWidget {
+  const GeneralMap({super.key});
 
   @override
-  State<generalMap> createState() => _generalMapState();
+  State<GeneralMap> createState() => _GeneralMapState();
 }
 
-class _generalMapState extends State<generalMap> with TickerProviderStateMixin {
+class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
   late final AnimatedMapController _animatedMapController;
   late LatLng currentPosition = LatLng(35.6586, 139.7454);
   bool markerbutton = false;
