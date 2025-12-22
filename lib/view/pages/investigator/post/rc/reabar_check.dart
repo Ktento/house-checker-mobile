@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import '../../../../../models/investigator_model.dart';
-import '../../../../../utils/services/DB/send_record.dart';
 import 'package:provider/provider.dart';
-import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
 import '../../../../../utils/services/DB/image_upload.dart';
+import '../../../../../utils/services/DB/send_record.dart';
 
 class DangerSurveyFormPage extends StatelessWidget {
   const DangerSurveyFormPage({super.key});
@@ -13,7 +12,6 @@ class DangerSurveyFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<RebarViewModel>();
-    final inputVM = context.read<FormViewModel>();
     RebarRecord record = viewModel.rebarRecord!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -72,6 +70,13 @@ class DangerSurveyFormPage extends StatelessWidget {
                         color: const Color.fromARGB(255, 140, 140, 246))),
                 _buildRow(
                   context,
+                  '損傷度Ⅲ以上の損傷部材の有無',
+                  hasSevereDamageMembersToLabel(
+                      record.content.hasSevereDamageMembers.name),
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  context,
                   '隣接建築物・周辺の地盤の破壊による危険度',
                   adjacentBuildingRiskToLabel(
                       record.content.adjacentBuildingRisk.name),
@@ -79,50 +84,29 @@ class DangerSurveyFormPage extends StatelessWidget {
                 ),
                 _buildRow(
                   context,
-                  '構造躯体の不同沈下による建築物全体の傾斜',
+                  '地盤破壊による建築物全体の沈下',
+                  groundFailureInclinationToLabel(
+                      record.content.groundFailureInclination.name),
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  context,
+                  '不同沈下による建築物全体の傾斜',
                   unevenSettlementToLabel(record.content.unevenSettlement.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
-                  '傾斜を生じた階の上の階数が1階以下の場合',
-                  upperFloorLe1ToLabel(record.content.upperFloorLe1.name),
+                  '損傷度Ⅴの柱本数/調査柱本数',
+                  percentColumnsLevel5ToLabel(
+                      record.content.percentColumnsDamageLevel5.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
-                  '傾斜を生じた階の上の階数が2階以下の場合',
-                  upperFloorLe2ToLabel(record.content.upperFloorLe2.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '部材の座屈の有無',
-                  hasBucklingToLabel(record.content.hasBuckling.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '筋違の破断率',
-                  bracingBreakRateToLabel(record.content.bracingBreakRate.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '柱梁接合部および継手の破壊',
-                  jointFailureToLabel(record.content.jointFailure.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '柱脚の破損',
-                  columnBaseDamageToLabel(record.content.columnBaseDamage.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '腐食の有無',
-                  corrosionToLabel(record.content.corrosion.name),
+                  '損傷度Ⅳの柱本数/調査柱本数',
+                  percentColumnsLevel4ToLabel(
+                      record.content.percentColumnsDamageLevel4.name),
                   labelWidth: 180,
                 ),
                 SizedBox(
@@ -133,17 +117,18 @@ class DangerSurveyFormPage extends StatelessWidget {
                         inherit: false,
                         fontSize: 17,
                         color: const Color.fromARGB(255, 140, 140, 246))),
-                _buildRow(
-                    context,
-                    '屋根材',
-                    roofOrSignboardRiskToLabel(
-                        record.content.roofingMaterial.name)),
                 _buildRow(context, '窓枠・窓ガラス',
                     windowFrameToLabel(record.content.windowFrame.name)),
-                _buildRow(context, '外装材（湿式）',
-                    exteriorWetToLabel(record.content.exteriorWet.name)),
-                _buildRow(context, '外装材（乾式）',
-                    exteriorDryToLabel(record.content.exteriorDry.name)),
+                _buildRow(
+                    context,
+                    '外装材(モルタル・タイル・石貼り等)',
+                    exteriorMaterialMortarTileStoneToLabel(
+                        record.content.exteriorMaterialMortarTileStone.name)),
+                _buildRow(
+                    context,
+                    '外装材(ALC板・PC板・金属・ブロック等)',
+                    exteriorMaterialALCPCMetalBlockToLabel(
+                        record.content.exteriorMaterialALCPCMetalBlock.name)),
                 _buildRow(
                     context,
                     '看板・機器類',

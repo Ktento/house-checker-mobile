@@ -118,8 +118,8 @@ class WoodenContent with _$WoodenContent {
 }
 
 @freezed
-class RebarContent with _$RebarContent {
-  const factory RebarContent({
+class SteelFrameContent with _$SteelFrameContent {
+  const factory SteelFrameContent({
     //外観調査(一見して危険と判断される)
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
@@ -175,6 +175,85 @@ class RebarContent with _$RebarContent {
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
+    required DamageLevel overallStructuralScore,
+    required DamageLevel overallFallingObjectScore,
+  }) = _SteelFrameContent;
+
+  factory SteelFrameContent.fromJson(Map<String, dynamic> json) =>
+      _$SteelFrameContentFromJson(json);
+}
+
+@freezed
+class RebarContent with _$RebarContent {
+  const factory RebarContent({
+    //外観調査(一見して危険と判断される)
+    required int exteriorInspectionScore,
+    String? exteriorInspectionRemarks,
+    //損傷度Ⅲ以上の損傷部材の有無
+    required DamageLevel hasSevereDamageMembers,
+    @Default([]) List<ImagePaths> hasSevereDamageMembersImages,
+    //隣接建築物・周辺地盤の破壊による危険
+    required DamageLevel adjacentBuildingRisk,
+    @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
+    //地盤破壊による建築物全体の沈下
+    required DamageLevel groundFailureInclination,
+    @Default([]) List<ImagePaths> groundFailureInclinationImages,
+    //不同沈下による建築物全体の傾斜
+    required DamageLevel unevenSettlement,
+    @Default([]) List<ImagePaths> unevenSettlementImages,
+
+    //柱の被害の調査階数
+    required int inspectedFloorsForColumns,
+    //損傷度Ⅴ
+    //損傷度Ⅴの柱総数
+    required int totalColumnsLevel5,
+    //損傷度Ⅴの調査柱数
+    required int surveyedColumnsLevel5,
+    //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率
+    required double percentColumnsLevel5,
+    //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
+    required DamageLevel percentColumnsDamageLevel5,
+    @Default([]) List<ImagePaths> percentColumnsDamageLevel5Images,
+    //損傷度Ⅴに関する調査率
+    required double surveyRateLevel5,
+
+    //損傷度Ⅳ
+    //損傷度Ⅳの柱総数
+    required int totalColumnsLevel4,
+    //損傷度Ⅳの調査柱数
+    required int surveyedColumnsLevel4,
+    //損傷度Ⅳの調査柱本数のうち損傷度Ⅳの柱のパーセントの調査率
+    required double percentColumnsLevel4,
+    //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
+    required DamageLevel percentColumnsDamageLevel4,
+    @Default([]) List<ImagePaths> percentColumnsDamageLevel4Images,
+    //損傷度Ⅳに関する調査率
+    required double surveyRateLevel4,
+
+    //落下危険物・転倒危険物に関する危険度
+    //窓枠・窓ガラス
+    required DamageLevel windowFrame,
+    @Default([]) List<ImagePaths> windowFrameImages,
+    //外装材（モルタル・タイル・石貼り等）
+    required DamageLevel exteriorMaterialMortarTileStone,
+    @Default([]) List<ImagePaths> exteriorMaterialMortarTileStoneImages,
+    //外装材（ALC板・PC板・金属・ブロック等）
+    required DamageLevel exteriorMaterialALCPCMetalBlock,
+    @Default([]) List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
+    //看板・機器類
+    required DamageLevel signageAndEquipment,
+    @Default([]) List<ImagePaths> signageAndEquipmentImages,
+    //屋外階段
+    required DamageLevel outdoorStairs,
+    @Default([]) List<ImagePaths> outdoorStairsImages,
+    //その他
+    required DamageLevel others,
+    @Default([]) List<ImagePaths> othersImages,
+    String? otherRemarks,
+    required String overallExteriorScore,
+    //判定(2)
+    required DamageLevel overallStructuralScore2,
+    //総合判定（調査番号2)
     required DamageLevel overallStructuralScore,
     required DamageLevel overallFallingObjectScore,
   }) = _RebarContent;
@@ -253,6 +332,73 @@ class WoodenRecord with _$WoodenRecord {
 }
 
 @freezed
+class SteelFrameRecord with _$SteelFrameRecord {
+  const factory SteelFrameRecord({
+    required InvestigationUnit unit,
+    required BuildingOverview overview,
+    required SteelFrameContent content,
+    required OverallScore overallScore,
+  }) = _SteelFrameRecord;
+
+  factory SteelFrameRecord.fromJson(Map<String, dynamic> json) =>
+      _$SteelFrameRecordFromJson(json);
+
+  factory SteelFrameRecord.empty() => SteelFrameRecord(
+        unit: InvestigationUnit(
+          buildingtype: "",
+          number: "",
+          date: DateTime.now(),
+          currentPosition: LatLng(0, 0),
+          surveyCount: 0,
+          investigator: [],
+          investigatorPrefecture: [],
+          investigatorNumber: [],
+        ),
+        overview: BuildingOverview(
+          buildingName: "",
+          buildingNumber: "",
+          address: "",
+          mapNumber: "",
+          buildingUse: "",
+          structure: "",
+          floors: 0,
+          scale: "",
+        ),
+        content: SteelFrameContent(
+          exteriorInspectionScore: 5,
+          adjacentBuildingRisk: DamageLevel.A,
+          adjacentBuildingRiskImages: [],
+          unevenSettlement: DamageLevel.A,
+          unevenSettlementImages: [],
+          upperFloorLe1: DamageLevel.A,
+          upperFloorLe2: DamageLevel.A,
+          hasBuckling: DamageLevel.A,
+          bracingBreakRate: DamageLevel.A,
+          jointFailure: DamageLevel.A,
+          columnBaseDamage: DamageLevel.A,
+          corrosion: DamageLevel.A,
+          roofingMaterial: DamageLevel.A,
+          windowFrame: DamageLevel.A,
+          windowFrameImages: [],
+          exteriorWet: DamageLevel.A,
+          exteriorWetImages: [],
+          exteriorDry: DamageLevel.A,
+          exteriorDryImages: [],
+          signageAndEquipment: DamageLevel.A,
+          signageAndEquipmentImages: [],
+          outdoorStairs: DamageLevel.A,
+          outdoorStairsImages: [],
+          others: DamageLevel.A,
+          othersImages: [],
+          overallExteriorScore: "",
+          overallStructuralScore: DamageLevel.A,
+          overallFallingObjectScore: DamageLevel.A,
+        ),
+        overallScore: OverallScore.green,
+      );
+}
+
+@freezed
 class RebarRecord with _$RebarRecord {
   const factory RebarRecord({
     required InvestigationUnit unit,
@@ -287,24 +433,33 @@ class RebarRecord with _$RebarRecord {
         ),
         content: RebarContent(
           exteriorInspectionScore: 5,
+          hasSevereDamageMembers: DamageLevel.A,
+          hasSevereDamageMembersImages: [],
           adjacentBuildingRisk: DamageLevel.A,
           adjacentBuildingRiskImages: [],
+          groundFailureInclination: DamageLevel.A,
+          groundFailureInclinationImages: [],
           unevenSettlement: DamageLevel.A,
           unevenSettlementImages: [],
-          upperFloorLe1: DamageLevel.A,
-          upperFloorLe2: DamageLevel.A,
-          hasBuckling: DamageLevel.A,
-          bracingBreakRate: DamageLevel.A,
-          jointFailure: DamageLevel.A,
-          columnBaseDamage: DamageLevel.A,
-          corrosion: DamageLevel.A,
-          roofingMaterial: DamageLevel.A,
+          inspectedFloorsForColumns: 0,
+          totalColumnsLevel5: 0,
+          surveyedColumnsLevel5: 0,
+          percentColumnsLevel5: 0.0,
+          percentColumnsDamageLevel4: DamageLevel.A,
+          percentColumnsDamageLevel4Images: [],
+          surveyRateLevel5: 0.0,
+          totalColumnsLevel4: 0,
+          surveyedColumnsLevel4: 0,
+          percentColumnsLevel4: 0.0,
+          percentColumnsDamageLevel5: DamageLevel.A,
+          percentColumnsDamageLevel5Images: [],
+          surveyRateLevel4: 0.0,
           windowFrame: DamageLevel.A,
           windowFrameImages: [],
-          exteriorWet: DamageLevel.A,
-          exteriorWetImages: [],
-          exteriorDry: DamageLevel.A,
-          exteriorDryImages: [],
+          exteriorMaterialMortarTileStone: DamageLevel.A,
+          exteriorMaterialMortarTileStoneImages: [],
+          exteriorMaterialALCPCMetalBlock: DamageLevel.A,
+          exteriorMaterialALCPCMetalBlockImages: [],
           signageAndEquipment: DamageLevel.A,
           signageAndEquipmentImages: [],
           outdoorStairs: DamageLevel.A,
@@ -312,6 +467,7 @@ class RebarRecord with _$RebarRecord {
           others: DamageLevel.A,
           othersImages: [],
           overallExteriorScore: "",
+          overallStructuralScore2: DamageLevel.A,
           overallStructuralScore: DamageLevel.A,
           overallFallingObjectScore: DamageLevel.A,
         ),

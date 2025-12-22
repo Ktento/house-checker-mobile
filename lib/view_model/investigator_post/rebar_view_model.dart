@@ -13,6 +13,7 @@ class RebarViewModel extends ChangeNotifier {
     //調査項目2,3の危険度を算出
     final updatedContent = _rebarRecord!.content.copyWith(
       //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
+      overallStructuralScore2: _calcOverallStructuralScore2(),
       overallStructuralScore: _calcOverallStructuralScore(),
       //落下危険物に関する危険度の算出
       overallFallingObjectScore: _calcOverallFallingObjectScore(),
@@ -39,45 +40,39 @@ class RebarViewModel extends ChangeNotifier {
     // content のコピーを作成
     final updatedContent = _rebarRecord!.content.copyWith(
       // フィールド名によって更新するプロパティを選択
+      hasSevereDamageMembersImages: fieldName == 'hasSevereDamageMembersImages'
+          ? updatedImages
+          : _rebarRecord!.content.hasSevereDamageMembersImages,
       adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
           ? updatedImages
           : _rebarRecord!.content.adjacentBuildingRiskImages,
+      groundFailureInclinationImages:
+          fieldName == 'groundFailureInclinationImages'
+              ? updatedImages
+              : _rebarRecord!.content.groundFailureInclinationImages,
       unevenSettlementImages: fieldName == 'unevenSettlementImages'
           ? updatedImages
           : _rebarRecord!.content.unevenSettlementImages,
-      upperFloorLe1Images: fieldName == 'upperFloorLe1Images'
-          ? updatedImages
-          : _rebarRecord!.content.upperFloorLe1Images,
-      upperFloorLe2Images: fieldName == 'upperFloorLe2Images'
-          ? updatedImages
-          : _rebarRecord!.content.upperFloorLe2Images,
-      hasBucklingImages: fieldName == 'hasBucklingImages'
-          ? updatedImages
-          : _rebarRecord!.content.hasBucklingImages,
-      bracingBreakRateImages: fieldName == 'bracingBreakRateImages'
-          ? updatedImages
-          : _rebarRecord!.content.bracingBreakRateImages,
-      jointFailureImages: fieldName == 'jointFailureImages'
-          ? updatedImages
-          : _rebarRecord!.content.jointFailureImages,
-      columnBaseDamageImages: fieldName == 'columnBaseDamageImages'
-          ? updatedImages
-          : _rebarRecord!.content.columnBaseDamageImages,
-      corrosionImages: fieldName == 'corrosionImages'
-          ? updatedImages
-          : _rebarRecord!.content.corrosionImages,
-      roofingMaterialImages: fieldName == 'roofingMaterialImages'
-          ? updatedImages
-          : _rebarRecord!.content.roofingMaterialImages,
+
+      percentColumnsDamageLevel5Images:
+          fieldName == 'percentColumnsDamageLevel5Images'
+              ? updatedImages
+              : _rebarRecord!.content.percentColumnsDamageLevel5Images,
+      percentColumnsDamageLevel4Images:
+          fieldName == 'percentColumnsDamageLevel4Images'
+              ? updatedImages
+              : _rebarRecord!.content.percentColumnsDamageLevel4Images,
       windowFrameImages: fieldName == 'windowFrameImages'
           ? updatedImages
           : _rebarRecord!.content.windowFrameImages,
-      exteriorWetImages: fieldName == 'exteriorWetImages'
-          ? updatedImages
-          : _rebarRecord!.content.exteriorWetImages,
-      exteriorDryImages: fieldName == 'exteriorDryImages'
-          ? updatedImages
-          : _rebarRecord!.content.exteriorDryImages,
+      exteriorMaterialMortarTileStoneImages:
+          fieldName == 'exteriorMaterialMortarTileStoneImages'
+              ? updatedImages
+              : _rebarRecord!.content.exteriorMaterialMortarTileStoneImages,
+      exteriorMaterialALCPCMetalBlockImages:
+          fieldName == 'exteriorMaterialALCPCMetalBlockImages'
+              ? updatedImages
+              : _rebarRecord!.content.exteriorMaterialALCPCMetalBlockImages,
       signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
           ? updatedImages
           : _rebarRecord!.content.signageAndEquipmentImages,
@@ -114,45 +109,38 @@ class RebarViewModel extends ChangeNotifier {
 
     // content のコピーを作成
     final updatedContent = _rebarRecord!.content.copyWith(
+      hasSevereDamageMembersImages: fieldName == 'hasSevereDamageMembersImages'
+          ? updatedImages
+          : _rebarRecord!.content.hasSevereDamageMembersImages,
       adjacentBuildingRiskImages: fieldName == 'adjacentBuildingRiskImages'
           ? updatedImages
           : _rebarRecord!.content.adjacentBuildingRiskImages,
+      groundFailureInclinationImages:
+          fieldName == 'groundFailureInclinationImages'
+              ? updatedImages
+              : _rebarRecord!.content.groundFailureInclinationImages,
       unevenSettlementImages: fieldName == 'unevenSettlementImages'
           ? updatedImages
           : _rebarRecord!.content.unevenSettlementImages,
-      upperFloorLe1Images: fieldName == 'upperFloorLe1Images'
-          ? updatedImages
-          : _rebarRecord!.content.upperFloorLe1Images,
-      upperFloorLe2Images: fieldName == 'upperFloorLe2Images'
-          ? updatedImages
-          : _rebarRecord!.content.upperFloorLe2Images,
-      hasBucklingImages: fieldName == 'hasBucklingImages'
-          ? updatedImages
-          : _rebarRecord!.content.hasBucklingImages,
-      bracingBreakRateImages: fieldName == 'bracingBreakRateImages'
-          ? updatedImages
-          : _rebarRecord!.content.bracingBreakRateImages,
-      jointFailureImages: fieldName == 'jointFailureImages'
-          ? updatedImages
-          : _rebarRecord!.content.jointFailureImages,
-      columnBaseDamageImages: fieldName == 'columnBaseDamageImages'
-          ? updatedImages
-          : _rebarRecord!.content.columnBaseDamageImages,
-      corrosionImages: fieldName == 'corrosionImages'
-          ? updatedImages
-          : _rebarRecord!.content.corrosionImages,
-      roofingMaterialImages: fieldName == 'roofingMaterialImages'
-          ? updatedImages
-          : _rebarRecord!.content.roofingMaterialImages,
+      percentColumnsDamageLevel5Images:
+          fieldName == 'percentColumnsDamageLevel5Images'
+              ? updatedImages
+              : _rebarRecord!.content.percentColumnsDamageLevel5Images,
+      percentColumnsDamageLevel4Images:
+          fieldName == 'percentColumnsDamageLevel4Images'
+              ? updatedImages
+              : _rebarRecord!.content.percentColumnsDamageLevel4Images,
       windowFrameImages: fieldName == 'windowFrameImages'
           ? updatedImages
           : _rebarRecord!.content.windowFrameImages,
-      exteriorWetImages: fieldName == 'exteriorWetImages'
-          ? updatedImages
-          : _rebarRecord!.content.exteriorWetImages,
-      exteriorDryImages: fieldName == 'exteriorDryImages'
-          ? updatedImages
-          : _rebarRecord!.content.exteriorDryImages,
+      exteriorMaterialMortarTileStoneImages:
+          fieldName == 'exteriorMaterialMortarTileStoneImages'
+              ? updatedImages
+              : _rebarRecord!.content.exteriorMaterialMortarTileStoneImages,
+      exteriorMaterialALCPCMetalBlockImages:
+          fieldName == 'exteriorMaterialALCPCMetalBlockImages'
+              ? updatedImages
+              : _rebarRecord!.content.exteriorMaterialALCPCMetalBlockImages,
       signageAndEquipmentImages: fieldName == 'signageAndEquipmentImages'
           ? updatedImages
           : _rebarRecord!.content.signageAndEquipmentImages,
@@ -246,24 +234,37 @@ class RebarViewModel extends ChangeNotifier {
   void updateContent({
     int? exteriorInspectionScore,
     String? exteriorInspectionRemarks,
+    // 損傷度Ⅲ以上の損傷部材の有無
+    DamageLevel? hasSevereDamageMembers,
+    // 隣接建築物・周辺地盤破壊の危険
     DamageLevel? adjacentBuildingRisk,
+    // 地盤破壊による傾斜
+    DamageLevel? groundFailureInclination,
+    // 不同沈下
     DamageLevel? unevenSettlement,
-    DamageLevel? upperFloorLe1,
-    DamageLevel? upperFloorLe2,
-    DamageLevel? hasBuckling,
-    DamageLevel? bracingBreakRate,
-    DamageLevel? jointFailure,
-    DamageLevel? columnBaseDamage,
-    DamageLevel? corrosion,
-    DamageLevel? roofingMaterial,
+    // 柱の被害調査
+    int? inspectedFloorsForColumns,
+    int? totalColumnsLevel5,
+    int? surveyedColumnsLevel5,
+    double? percentColumnsLevel5,
+    DamageLevel? percentColumnsDamageLevel5,
+    double? surveyRateLevel5,
+    int? totalColumnsLevel4,
+    int? surveyedColumnsLevel4,
+    double? percentColumnsLevel4,
+    DamageLevel? percentColumnsDamageLevel4,
+    double? surveyRateLevel4,
+
+    // 落下・転倒危険物
     DamageLevel? windowFrame,
-    DamageLevel? exteriorWet,
-    DamageLevel? exteriorDry,
+    DamageLevel? exteriorMaterialMortarTileStone,
+    DamageLevel? exteriorMaterialALCPCMetalBlock,
     DamageLevel? signageAndEquipment,
     DamageLevel? outdoorStairs,
     DamageLevel? others,
     String? otherRemarks,
     String? overallExteriorScore,
+    DamageLevel? overallStructuralScore2,
     DamageLevel? overallStructuralScore,
     DamageLevel? overallFallingObjectScore,
   }) {
@@ -274,23 +275,41 @@ class RebarViewModel extends ChangeNotifier {
           _rebarRecord!.content.exteriorInspectionScore,
       exteriorInspectionRemarks: exteriorInspectionRemarks ??
           _rebarRecord!.content.exteriorInspectionRemarks,
+      hasSevereDamageMembers: hasSevereDamageMembers ??
+          _rebarRecord!.content.hasSevereDamageMembers,
       adjacentBuildingRisk:
           adjacentBuildingRisk ?? _rebarRecord!.content.adjacentBuildingRisk,
+      groundFailureInclination: groundFailureInclination ??
+          _rebarRecord!.content.groundFailureInclination,
       unevenSettlement:
           unevenSettlement ?? _rebarRecord!.content.unevenSettlement,
-      upperFloorLe1: upperFloorLe1 ?? _rebarRecord!.content.upperFloorLe1,
-      upperFloorLe2: upperFloorLe2 ?? _rebarRecord!.content.upperFloorLe2,
-      hasBuckling: hasBuckling ?? _rebarRecord!.content.hasBuckling,
-      bracingBreakRate:
-          bracingBreakRate ?? _rebarRecord!.content.bracingBreakRate,
-      jointFailure: jointFailure ?? _rebarRecord!.content.jointFailure,
-      columnBaseDamage:
-          columnBaseDamage ?? _rebarRecord!.content.columnBaseDamage,
-      corrosion: corrosion ?? _rebarRecord!.content.corrosion,
-      roofingMaterial: roofingMaterial ?? _rebarRecord!.content.roofingMaterial,
+      inspectedFloorsForColumns: inspectedFloorsForColumns ??
+          _rebarRecord!.content.inspectedFloorsForColumns,
+      totalColumnsLevel5:
+          totalColumnsLevel5 ?? _rebarRecord!.content.totalColumnsLevel5,
+      surveyedColumnsLevel5:
+          surveyedColumnsLevel5 ?? _rebarRecord!.content.surveyedColumnsLevel5,
+      percentColumnsLevel5:
+          percentColumnsLevel5 ?? _rebarRecord!.content.percentColumnsLevel5,
+      percentColumnsDamageLevel5: percentColumnsDamageLevel5 ??
+          _rebarRecord!.content.percentColumnsDamageLevel5,
+      percentColumnsDamageLevel4: percentColumnsDamageLevel4 ??
+          _rebarRecord!.content.percentColumnsDamageLevel4,
+      surveyRateLevel5:
+          surveyRateLevel5 ?? _rebarRecord!.content.surveyRateLevel5,
+      totalColumnsLevel4:
+          totalColumnsLevel4 ?? _rebarRecord!.content.totalColumnsLevel4,
+      surveyedColumnsLevel4:
+          surveyedColumnsLevel4 ?? _rebarRecord!.content.surveyedColumnsLevel4,
+      percentColumnsLevel4:
+          percentColumnsLevel4 ?? _rebarRecord!.content.percentColumnsLevel4,
+      surveyRateLevel4:
+          surveyRateLevel4 ?? _rebarRecord!.content.surveyRateLevel4,
       windowFrame: windowFrame ?? _rebarRecord!.content.windowFrame,
-      exteriorWet: exteriorWet ?? _rebarRecord!.content.exteriorWet,
-      exteriorDry: exteriorDry ?? _rebarRecord!.content.exteriorDry,
+      exteriorMaterialMortarTileStone: exteriorMaterialMortarTileStone ??
+          _rebarRecord!.content.exteriorMaterialMortarTileStone,
+      exteriorMaterialALCPCMetalBlock: exteriorMaterialALCPCMetalBlock ??
+          _rebarRecord!.content.exteriorMaterialALCPCMetalBlock,
       signageAndEquipment:
           signageAndEquipment ?? _rebarRecord!.content.signageAndEquipment,
       outdoorStairs: outdoorStairs ?? _rebarRecord!.content.outdoorStairs,
@@ -298,6 +317,8 @@ class RebarViewModel extends ChangeNotifier {
       otherRemarks: otherRemarks ?? _rebarRecord!.content.otherRemarks,
       overallExteriorScore:
           overallExteriorScore ?? _rebarRecord!.content.overallExteriorScore,
+      overallStructuralScore2: overallStructuralScore2 ??
+          _rebarRecord!.content.overallStructuralScore2,
       overallStructuralScore: overallStructuralScore ??
           _rebarRecord!.content.overallStructuralScore,
       overallFallingObjectScore: overallFallingObjectScore ??
@@ -318,26 +339,40 @@ class RebarViewModel extends ChangeNotifier {
   }
 
 //鉄筋建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
-  DamageLevel _calcOverallStructuralScore() {
+  DamageLevel _calcOverallStructuralScore2() {
     if (_rebarRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
       _rebarRecord!.content.adjacentBuildingRisk,
+      _rebarRecord!.content.groundFailureInclination,
       _rebarRecord!.content.unevenSettlement,
-      _rebarRecord!.content.upperFloorLe1,
-      _rebarRecord!.content.upperFloorLe2,
-      _rebarRecord!.content.hasBuckling,
-      _rebarRecord!.content.bracingBreakRate,
-      _rebarRecord!.content.jointFailure,
-      _rebarRecord!.content.columnBaseDamage,
-      _rebarRecord!.content.corrosion,
+      _rebarRecord!.content.percentColumnsDamageLevel4,
+      _rebarRecord!.content.percentColumnsDamageLevel5,
     ];
     final cCount = levels.where((e) => e == DamageLevel.C).length;
     final bCount = levels.where((e) => e == DamageLevel.B).length;
+    final aCount = levels.where((e) => e == DamageLevel.A).length;
+    //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
+    if (cCount >= 1 || bCount >= 2) {
+      return DamageLevel.C;
+    } else if (bCount == 1) {
+      return DamageLevel.B;
+    } else if (aCount == 5) {
+      return DamageLevel.A;
+    } else {
+      print("エラー(_calcOverallStructuralScore2):DamageLevelが指定されていません");
+      return DamageLevel.C;
+    }
+  }
+
+  DamageLevel _calcOverallStructuralScore() {
+    if (_rebarRecord == null) return DamageLevel.C;
+    final level1 = _rebarRecord!.content.hasSevereDamageMembers;
+    final level2 = _rebarRecord!.content.overallStructuralScore2;
     //C評価が1つ又はBが4以上あればC
-    if (cCount >= 1 || bCount >= 4) {
+    if (level1 == DamageLevel.C || level2 == DamageLevel.C) {
       return DamageLevel.C;
       //B評価が3つ以内ならB
-    } else if (bCount >= 1 && bCount <= 3) {
+    } else if (level1 == DamageLevel.B || level2 == DamageLevel.B) {
       return DamageLevel.B;
       //すべてA評価の場合A
     } else {
@@ -350,10 +385,9 @@ class RebarViewModel extends ChangeNotifier {
     if (_rebarRecord == null) return DamageLevel.C;
 
     List<DamageLevel> levels = [
-      _rebarRecord!.content.roofingMaterial,
       _rebarRecord!.content.windowFrame,
-      _rebarRecord!.content.exteriorWet,
-      _rebarRecord!.content.exteriorDry,
+      _rebarRecord!.content.exteriorMaterialMortarTileStone,
+      _rebarRecord!.content.exteriorMaterialALCPCMetalBlock,
       _rebarRecord!.content.signageAndEquipment,
       _rebarRecord!.content.outdoorStairs,
       _rebarRecord!.content.others,
