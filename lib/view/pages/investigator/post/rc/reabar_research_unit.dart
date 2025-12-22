@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view_model/investigator_post/Rebar_view_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../../../../models/investigator_model.dart';
