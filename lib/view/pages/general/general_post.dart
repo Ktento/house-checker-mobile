@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
+import './post/wooden_research_unit.dart';
 
 class GeneralPost extends StatelessWidget {
   const GeneralPost({super.key});
