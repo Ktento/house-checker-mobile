@@ -342,11 +342,11 @@ class RebarViewModel extends ChangeNotifier {
   DamageLevel _calcOverallStructuralScore2() {
     if (_rebarRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
-      _rebarRecord!.content.adjacentBuildingRisk,
-      _rebarRecord!.content.groundFailureInclination,
-      _rebarRecord!.content.unevenSettlement,
-      _rebarRecord!.content.percentColumnsDamageLevel4,
-      _rebarRecord!.content.percentColumnsDamageLevel5,
+      _rebarRecord!.content.adjacentBuildingRisk ?? DamageLevel.A,
+      _rebarRecord!.content.groundFailureInclination ?? DamageLevel.A,
+      _rebarRecord!.content.unevenSettlement ?? DamageLevel.A,
+      _rebarRecord!.content.percentColumnsDamageLevel4 ?? DamageLevel.A,
+      _rebarRecord!.content.percentColumnsDamageLevel5 ?? DamageLevel.A,
     ];
     final cCount = levels.where((e) => e == DamageLevel.C).length;
     final bCount = levels.where((e) => e == DamageLevel.B).length;
@@ -384,13 +384,14 @@ class RebarViewModel extends ChangeNotifier {
   DamageLevel _calcOverallFallingObjectScore() {
     if (_rebarRecord == null) return DamageLevel.C;
 
+    //未入力やデータ不足している場合Aとして評価を行う
     List<DamageLevel> levels = [
-      _rebarRecord!.content.windowFrame,
-      _rebarRecord!.content.exteriorMaterialMortarTileStone,
-      _rebarRecord!.content.exteriorMaterialALCPCMetalBlock,
-      _rebarRecord!.content.signageAndEquipment,
-      _rebarRecord!.content.outdoorStairs,
-      _rebarRecord!.content.others,
+      _rebarRecord!.content.windowFrame ?? DamageLevel.A,
+      _rebarRecord!.content.exteriorMaterialMortarTileStone ?? DamageLevel.A,
+      _rebarRecord!.content.exteriorMaterialALCPCMetalBlock ?? DamageLevel.A,
+      _rebarRecord!.content.signageAndEquipment ?? DamageLevel.A,
+      _rebarRecord!.content.outdoorStairs ?? DamageLevel.A,
+      _rebarRecord!.content.others ?? DamageLevel.A,
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {
