@@ -282,10 +282,6 @@ class _RebarSurveryState extends State<RebarSurvery> {
                               inputVM.otherRemarksController,
                         };
 
-                        controllers.forEach((name, controller) {
-                          print('$name: ${controller.text}');
-                        });
-
                         // データ更新ロジック
                         viewModel.updateContent(
                           exteriorInspectionScore: parseExteriorScore(
