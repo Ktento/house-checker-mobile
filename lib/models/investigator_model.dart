@@ -4,7 +4,11 @@ import 'package:latlong2/latlong.dart';
 part 'investigator_model.freezed.dart';
 part 'investigator_model.g.dart';
 
-enum DamageLevel { A, B, C }
+enum DamageLevel {
+  A,
+  B,
+  C,
+}
 
 enum OverallScore { red, yellow, green }
 
@@ -68,49 +72,49 @@ class WoodenContent with _$WoodenContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
-    required DamageLevel adjacentBuildingRisk,
+    required DamageLevel? adjacentBuildingRisk,
     @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
     //構造躯体の不同沈下
-    required DamageLevel unevenSettlement,
+    required DamageLevel? unevenSettlement,
     @Default([]) List<ImagePaths> unevenSettlementImages,
     //基礎の被害
-    required DamageLevel foundationDamage,
+    required DamageLevel? foundationDamage,
     @Default([]) List<ImagePaths> foundationDamageImages,
     //建築物の一回の傾斜
-    required DamageLevel firstFloorTilt,
+    required DamageLevel? firstFloorTilt,
     @Default([]) List<ImagePaths> firstFloorTiltImages,
     //壁の被害
-    required DamageLevel wallDamage,
+    required DamageLevel? wallDamage,
     @Default([]) List<ImagePaths> wallDamageImages,
     //腐食・蟻害の有無
-    required DamageLevel corrosionOrTermite,
+    required DamageLevel? corrosionOrTermite,
     @Default([]) List<ImagePaths> corrosionOrTermiteImages,
 
     //落下危険物・転倒危険物に関する危険度
     //瓦
-    required DamageLevel roofTile,
+    required DamageLevel? roofTile,
     @Default([]) List<ImagePaths> roofTileImages,
     //窓枠・窓ガラス
-    required DamageLevel windowFrame,
+    required DamageLevel? windowFrame,
     @Default([]) List<ImagePaths> windowFrameImages,
     //外装材　湿式
-    required DamageLevel exteriorWet,
+    required DamageLevel? exteriorWet,
     @Default([]) List<ImagePaths> exteriorWetImages,
     //外装材　乾式
-    required DamageLevel exteriorDry,
+    required DamageLevel? exteriorDry,
     @Default([]) List<ImagePaths> exteriorDryImages,
     //看板・機器類
-    required DamageLevel signageAndEquipment,
+    required DamageLevel? signageAndEquipment,
     @Default([]) List<ImagePaths> signageAndEquipmentImages,
     //その他
-    required DamageLevel outdoorStairs,
+    required DamageLevel? outdoorStairs,
     @Default([]) List<ImagePaths> outdoorStairsImages,
-    required DamageLevel others,
+    required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
-    required DamageLevel overallStructuralScore,
-    required DamageLevel overallFallingObjectScore,
+    required DamageLevel? overallStructuralScore,
+    required DamageLevel? overallFallingObjectScore,
   }) = _WoodenContent;
 
   factory WoodenContent.fromJson(Map<String, dynamic> json) =>
@@ -124,59 +128,59 @@ class SteelFrameContent with _$SteelFrameContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     //隣接建築物・周辺地盤等及び構造躯体に関する危険度
-    required DamageLevel adjacentBuildingRisk,
+    required DamageLevel? adjacentBuildingRisk,
     @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
     //不同沈下による建築物全体の傾斜
-    required DamageLevel unevenSettlement,
+    required DamageLevel? unevenSettlement,
     @Default([]) List<ImagePaths> unevenSettlementImages,
     //傾斜を生じた階の上の階数が1階以下
-    required DamageLevel upperFloorLe1,
+    required DamageLevel? upperFloorLe1,
     @Default([]) List<ImagePaths> upperFloorLe1Images,
     //傾斜を生じた階の上の階数が2階以下
-    required DamageLevel upperFloorLe2,
+    required DamageLevel? upperFloorLe2,
     @Default([]) List<ImagePaths> upperFloorLe2Images,
     //部材の座屈の有無
-    required DamageLevel hasBuckling,
+    required DamageLevel? hasBuckling,
     @Default([]) List<ImagePaths> hasBucklingImages,
     //筋違の破断率
-    required DamageLevel bracingBreakRate,
+    required DamageLevel? bracingBreakRate,
     @Default([]) List<ImagePaths> bracingBreakRateImages,
     //柱梁接合部および継手の破壊
-    required DamageLevel jointFailure,
+    required DamageLevel? jointFailure,
     @Default([]) List<ImagePaths> jointFailureImages,
     //柱脚の破損
-    required DamageLevel columnBaseDamage,
+    required DamageLevel? columnBaseDamage,
     @Default([]) List<ImagePaths> columnBaseDamageImages,
     //腐食の有無
-    required DamageLevel corrosion,
+    required DamageLevel? corrosion,
     @Default([]) List<ImagePaths> corrosionImages,
 
     //落下危険物・転倒危険物に関する危険度
     //屋根材
-    required DamageLevel roofingMaterial,
+    required DamageLevel? roofingMaterial,
     @Default([]) List<ImagePaths> roofingMaterialImages,
     //窓枠・窓ガラス
-    required DamageLevel windowFrame,
+    required DamageLevel? windowFrame,
     @Default([]) List<ImagePaths> windowFrameImages,
     //外装材　湿式
-    required DamageLevel exteriorWet,
+    required DamageLevel? exteriorWet,
     @Default([]) List<ImagePaths> exteriorWetImages,
     //外装材　乾式
-    required DamageLevel exteriorDry,
+    required DamageLevel? exteriorDry,
     @Default([]) List<ImagePaths> exteriorDryImages,
     //看板・機器類
-    required DamageLevel signageAndEquipment,
+    required DamageLevel? signageAndEquipment,
     @Default([]) List<ImagePaths> signageAndEquipmentImages,
     //屋外階段
-    required DamageLevel outdoorStairs,
+    required DamageLevel? outdoorStairs,
     @Default([]) List<ImagePaths> outdoorStairsImages,
     //その他
-    required DamageLevel others,
+    required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
-    required DamageLevel overallStructuralScore,
-    required DamageLevel overallFallingObjectScore,
+    required DamageLevel? overallStructuralScore,
+    required DamageLevel? overallFallingObjectScore,
   }) = _SteelFrameContent;
 
   factory SteelFrameContent.fromJson(Map<String, dynamic> json) =>
@@ -190,16 +194,16 @@ class RebarContent with _$RebarContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     //損傷度Ⅲ以上の損傷部材の有無
-    required DamageLevel hasSevereDamageMembers,
+    required DamageLevel? hasSevereDamageMembers,
     @Default([]) List<ImagePaths> hasSevereDamageMembersImages,
     //隣接建築物・周辺地盤の破壊による危険
-    required DamageLevel adjacentBuildingRisk,
+    required DamageLevel? adjacentBuildingRisk,
     @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
     //地盤破壊による建築物全体の沈下
-    required DamageLevel groundFailureInclination,
+    required DamageLevel? groundFailureInclination,
     @Default([]) List<ImagePaths> groundFailureInclinationImages,
     //不同沈下による建築物全体の傾斜
-    required DamageLevel unevenSettlement,
+    required DamageLevel? unevenSettlement,
     @Default([]) List<ImagePaths> unevenSettlementImages,
 
     //柱の被害の調査階数
@@ -212,7 +216,7 @@ class RebarContent with _$RebarContent {
     //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率
     required double percentColumnsLevel5,
     //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
-    required DamageLevel percentColumnsDamageLevel5,
+    required DamageLevel? percentColumnsDamageLevel5,
     @Default([]) List<ImagePaths> percentColumnsDamageLevel5Images,
     //損傷度Ⅴに関する調査率
     required double surveyRateLevel5,
@@ -225,37 +229,37 @@ class RebarContent with _$RebarContent {
     //損傷度Ⅳの調査柱本数のうち損傷度Ⅳの柱のパーセントの調査率
     required double percentColumnsLevel4,
     //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
-    required DamageLevel percentColumnsDamageLevel4,
+    required DamageLevel? percentColumnsDamageLevel4,
     @Default([]) List<ImagePaths> percentColumnsDamageLevel4Images,
     //損傷度Ⅳに関する調査率
     required double surveyRateLevel4,
 
     //落下危険物・転倒危険物に関する危険度
     //窓枠・窓ガラス
-    required DamageLevel windowFrame,
+    required DamageLevel? windowFrame,
     @Default([]) List<ImagePaths> windowFrameImages,
     //外装材（モルタル・タイル・石貼り等）
-    required DamageLevel exteriorMaterialMortarTileStone,
+    required DamageLevel? exteriorMaterialMortarTileStone,
     @Default([]) List<ImagePaths> exteriorMaterialMortarTileStoneImages,
     //外装材（ALC板・PC板・金属・ブロック等）
-    required DamageLevel exteriorMaterialALCPCMetalBlock,
+    required DamageLevel? exteriorMaterialALCPCMetalBlock,
     @Default([]) List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
     //看板・機器類
-    required DamageLevel signageAndEquipment,
+    required DamageLevel? signageAndEquipment,
     @Default([]) List<ImagePaths> signageAndEquipmentImages,
     //屋外階段
-    required DamageLevel outdoorStairs,
+    required DamageLevel? outdoorStairs,
     @Default([]) List<ImagePaths> outdoorStairsImages,
     //その他
-    required DamageLevel others,
+    required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
     //判定(2)
-    required DamageLevel overallStructuralScore2,
+    required DamageLevel? overallStructuralScore2,
     //総合判定（調査番号2)
-    required DamageLevel overallStructuralScore,
-    required DamageLevel overallFallingObjectScore,
+    required DamageLevel? overallStructuralScore,
+    required DamageLevel? overallFallingObjectScore,
   }) = _RebarContent;
 
   factory RebarContent.fromJson(Map<String, dynamic> json) =>
@@ -297,35 +301,35 @@ class WoodenRecord with _$WoodenRecord {
         ),
         content: WoodenContent(
           exteriorInspectionScore: 5,
-          adjacentBuildingRisk: DamageLevel.A,
+          adjacentBuildingRisk: null,
           adjacentBuildingRiskImages: [],
-          unevenSettlement: DamageLevel.A,
+          unevenSettlement: null,
           unevenSettlementImages: [],
-          foundationDamage: DamageLevel.A,
+          foundationDamage: null,
           foundationDamageImages: [],
-          firstFloorTilt: DamageLevel.A,
+          firstFloorTilt: null,
           firstFloorTiltImages: [],
-          wallDamage: DamageLevel.A,
+          wallDamage: null,
           wallDamageImages: [],
-          corrosionOrTermite: DamageLevel.A,
+          corrosionOrTermite: null,
           corrosionOrTermiteImages: [],
-          roofTile: DamageLevel.A,
+          roofTile: null,
           roofTileImages: [],
-          windowFrame: DamageLevel.A,
+          windowFrame: null,
           windowFrameImages: [],
-          exteriorWet: DamageLevel.A,
+          exteriorWet: null,
           exteriorWetImages: [],
-          exteriorDry: DamageLevel.A,
+          exteriorDry: null,
           exteriorDryImages: [],
-          signageAndEquipment: DamageLevel.A,
+          signageAndEquipment: null,
           signageAndEquipmentImages: [],
-          outdoorStairs: DamageLevel.A,
+          outdoorStairs: null,
           outdoorStairsImages: [],
-          others: DamageLevel.A,
+          others: null,
           othersImages: [],
           overallExteriorScore: "",
-          overallStructuralScore: DamageLevel.A,
-          overallFallingObjectScore: DamageLevel.A,
+          overallStructuralScore: null,
+          overallFallingObjectScore: null,
         ),
         overallScore: OverallScore.green,
       );
@@ -366,33 +370,33 @@ class SteelFrameRecord with _$SteelFrameRecord {
         ),
         content: SteelFrameContent(
           exteriorInspectionScore: 5,
-          adjacentBuildingRisk: DamageLevel.A,
+          adjacentBuildingRisk: null,
           adjacentBuildingRiskImages: [],
-          unevenSettlement: DamageLevel.A,
+          unevenSettlement: null,
           unevenSettlementImages: [],
-          upperFloorLe1: DamageLevel.A,
-          upperFloorLe2: DamageLevel.A,
-          hasBuckling: DamageLevel.A,
-          bracingBreakRate: DamageLevel.A,
-          jointFailure: DamageLevel.A,
-          columnBaseDamage: DamageLevel.A,
-          corrosion: DamageLevel.A,
-          roofingMaterial: DamageLevel.A,
-          windowFrame: DamageLevel.A,
+          upperFloorLe1: null,
+          upperFloorLe2: null,
+          hasBuckling: null,
+          bracingBreakRate: null,
+          jointFailure: null,
+          columnBaseDamage: null,
+          corrosion: null,
+          roofingMaterial: null,
+          windowFrame: null,
           windowFrameImages: [],
-          exteriorWet: DamageLevel.A,
+          exteriorWet: null,
           exteriorWetImages: [],
-          exteriorDry: DamageLevel.A,
+          exteriorDry: null,
           exteriorDryImages: [],
-          signageAndEquipment: DamageLevel.A,
+          signageAndEquipment: null,
           signageAndEquipmentImages: [],
-          outdoorStairs: DamageLevel.A,
+          outdoorStairs: null,
           outdoorStairsImages: [],
-          others: DamageLevel.A,
+          others: null,
           othersImages: [],
           overallExteriorScore: "",
-          overallStructuralScore: DamageLevel.A,
-          overallFallingObjectScore: DamageLevel.A,
+          overallStructuralScore: null,
+          overallFallingObjectScore: null,
         ),
         overallScore: OverallScore.green,
       );
@@ -433,43 +437,43 @@ class RebarRecord with _$RebarRecord {
         ),
         content: RebarContent(
           exteriorInspectionScore: 5,
-          hasSevereDamageMembers: DamageLevel.A,
+          hasSevereDamageMembers: null,
           hasSevereDamageMembersImages: [],
-          adjacentBuildingRisk: DamageLevel.A,
+          adjacentBuildingRisk: null,
           adjacentBuildingRiskImages: [],
-          groundFailureInclination: DamageLevel.A,
+          groundFailureInclination: null,
           groundFailureInclinationImages: [],
-          unevenSettlement: DamageLevel.A,
+          unevenSettlement: null,
           unevenSettlementImages: [],
           inspectedFloorsForColumns: 0,
           totalColumnsLevel5: 0,
           surveyedColumnsLevel5: 0,
           percentColumnsLevel5: 0.0,
-          percentColumnsDamageLevel4: DamageLevel.A,
+          percentColumnsDamageLevel4: null,
           percentColumnsDamageLevel4Images: [],
           surveyRateLevel5: 0.0,
           totalColumnsLevel4: 0,
           surveyedColumnsLevel4: 0,
           percentColumnsLevel4: 0.0,
-          percentColumnsDamageLevel5: DamageLevel.A,
+          percentColumnsDamageLevel5: null,
           percentColumnsDamageLevel5Images: [],
           surveyRateLevel4: 0.0,
-          windowFrame: DamageLevel.A,
+          windowFrame: null,
           windowFrameImages: [],
-          exteriorMaterialMortarTileStone: DamageLevel.A,
+          exteriorMaterialMortarTileStone: null,
           exteriorMaterialMortarTileStoneImages: [],
-          exteriorMaterialALCPCMetalBlock: DamageLevel.A,
+          exteriorMaterialALCPCMetalBlock: null,
           exteriorMaterialALCPCMetalBlockImages: [],
-          signageAndEquipment: DamageLevel.A,
+          signageAndEquipment: null,
           signageAndEquipmentImages: [],
-          outdoorStairs: DamageLevel.A,
+          outdoorStairs: null,
           outdoorStairsImages: [],
-          others: DamageLevel.A,
+          others: null,
           othersImages: [],
           overallExteriorScore: "",
-          overallStructuralScore2: DamageLevel.A,
-          overallStructuralScore: DamageLevel.A,
-          overallFallingObjectScore: DamageLevel.A,
+          overallStructuralScore2: null,
+          overallStructuralScore: null,
+          overallFallingObjectScore: null,
         ),
         overallScore: OverallScore.green,
       );

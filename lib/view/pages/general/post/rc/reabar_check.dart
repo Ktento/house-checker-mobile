@@ -68,13 +68,13 @@ class DangerSurveyFormPage extends StatelessWidget {
                         inherit: false,
                         fontSize: 17,
                         color: const Color.fromARGB(255, 140, 140, 246))),
-                _buildRow(
-                  context,
-                  '損傷度Ⅲ以上の損傷部材の有無',
-                  hasSevereDamageMembersToLabel(
-                      record.content.hasSevereDamageMembers?.name),
-                  labelWidth: 180,
-                ),
+                // _buildRow(
+                //   context,
+                //   '損傷度Ⅲ以上の損傷部材の有無',
+                //   hasSevereDamageMembersToLabel(
+                //       record.content.hasSevereDamageMembers?.name),
+                //   labelWidth: 180,
+                // ),
                 _buildRow(
                   context,
                   '隣接建築物・周辺の地盤の破壊による危険度',
@@ -96,20 +96,20 @@ class DangerSurveyFormPage extends StatelessWidget {
                       record.content.unevenSettlement?.name),
                   labelWidth: 180,
                 ),
-                _buildRow(
-                  context,
-                  '損傷度Ⅴの柱本数/調査柱本数',
-                  percentColumnsLevel5ToLabel(
-                      record.content.percentColumnsDamageLevel5?.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '損傷度Ⅳの柱本数/調査柱本数',
-                  percentColumnsLevel4ToLabel(
-                      record.content.percentColumnsDamageLevel4?.name),
-                  labelWidth: 180,
-                ),
+                // _buildRow(
+                //   context,
+                //   '損傷度Ⅴの柱本数/調査柱本数',
+                //   percentColumnsLevel5ToLabel(
+                //       record.content.percentColumnsDamageLevel5?.name),
+                //   labelWidth: 180,
+                // ),
+                // _buildRow(
+                //   context,
+                //   '損傷度Ⅳの柱本数/調査柱本数',
+                //   percentColumnsLevel4ToLabel(
+                //       record.content.percentColumnsDamageLevel4?.name),
+                //   labelWidth: 180,
+                // ),
                 SizedBox(
                   height: 10,
                 ),
@@ -164,7 +164,7 @@ class DangerSurveyFormPage extends StatelessWidget {
                   CupertinoButton.filled(
                     onPressed: () async {
                       await uploadAllImages(rebarViewModel: viewModel);
-                      inevestigatorSendRecord(rebarRecord: viewModel.rebarRecord);
+                     generalSendRecord(rebarRecord: viewModel.rebarRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),

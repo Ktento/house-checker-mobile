@@ -60,18 +60,18 @@ class _RebarSurveryState extends State<RebarSurvery> {
 
                     // --- 2. 構造躯体・周辺地盤等の危険度 ---
                     _buildSectionTitle('2. 隣接建築物・周辺地盤等及び構造躯体に関する危険度'),
-                    _buildRadioGroup(
-                      title: '損傷度Ⅲ以上の損傷部材の有無',
-                      controller: inputVM.hasBucklingController,
-                      options: [
-                        'A.無し',
-                        'B.あり',
-                      ],
-                      onImagePicked: (path) => viewModel.updateImageField(
-                          'hasSevereDamageMembersImages', [path]),
-                      savedImage: viewModel
-                          .rebarRecord?.content.hasSevereDamageMembersImages,
-                    ),
+                    // _buildRadioGroup(
+                    //   title: '損傷度Ⅲ以上の損傷部材の有無',
+                    //   controller: inputVM.hasBucklingController,
+                    //   options: [
+                    //     'A.無し',
+                    //     'B.あり',
+                    //   ],
+                    //   onImagePicked: (path) => viewModel.updateImageField(
+                    //       'hasSevereDamageMembersImages', [path]),
+                    //   savedImage: viewModel
+                    //       .rebarRecord?.content.hasSevereDamageMembersImages,
+                    // ),
 
                     _buildRadioGroup(
                       title: '隣接建築物・周辺地盤の破壊による危険',
@@ -101,33 +101,33 @@ class _RebarSurveryState extends State<RebarSurvery> {
                           viewModel.rebarRecord?.content.unevenSettlementImages,
                     ),
 
-                    _buildTextInputSection(
-                      label: '柱の被害',
-                      controller: inputVM.inspectedFloorsForColumnsController,
-                      placeholder: '➄➅の調査階数(被害最大の階)',
-                    ),
-                    _buildRadio(
-                      title: '損傷度Ⅴの柱本数/調査柱本数',
-                      inputVM: inputVM,
-                      controller1: inputVM.totalColumnsLevel5Controller,
-                      controller2: inputVM.surveyedColumnsLevel5Controller,
-                      level: 1,
-                      onImagePicked: (path) => viewModel.updateImageField(
-                          'percentColumnsDamageLevel5Images', [path]),
-                      savedImage: viewModel.rebarRecord?.content
-                          .percentColumnsDamageLevel5Images,
-                    ),
-                    _buildRadio(
-                      title: '損傷度Ⅳの柱本数/調査柱本数',
-                      inputVM: inputVM,
-                      controller1: inputVM.totalColumnsLevel4Controller,
-                      controller2: inputVM.surveyedColumnsLevel4Controller,
-                      level: 2,
-                      onImagePicked: (path) => viewModel.updateImageField(
-                          'percentColumnsDamageLevel4Images', [path]),
-                      savedImage: viewModel.rebarRecord?.content
-                          .percentColumnsDamageLevel4Images,
-                    ),
+                    // _buildTextInputSection(
+                    //   label: '柱の被害',
+                    //   controller: inputVM.inspectedFloorsForColumnsController,
+                    //   placeholder: '➄➅の調査階数(被害最大の階)',
+                    // ),
+                    // _buildRadio(
+                    //   title: '損傷度Ⅴの柱本数/調査柱本数',
+                    //   inputVM: inputVM,
+                    //   controller1: inputVM.totalColumnsLevel5Controller,
+                    //   controller2: inputVM.surveyedColumnsLevel5Controller,
+                    //   level: 1,
+                    //   onImagePicked: (path) => viewModel.updateImageField(
+                    //       'percentColumnsDamageLevel5Images', [path]),
+                    //   savedImage: viewModel.rebarRecord?.content
+                    //       .percentColumnsDamageLevel5Images,
+                    // ),
+                    // _buildRadio(
+                    //   title: '損傷度Ⅳの柱本数/調査柱本数',
+                    //   inputVM: inputVM,
+                    //   controller1: inputVM.totalColumnsLevel4Controller,
+                    //   controller2: inputVM.surveyedColumnsLevel4Controller,
+                    //   level: 2,
+                    //   onImagePicked: (path) => viewModel.updateImageField(
+                    //       'percentColumnsDamageLevel4Images', [path]),
+                    //   savedImage: viewModel.rebarRecord?.content
+                    //       .percentColumnsDamageLevel4Images,
+                    // ),
                     const SizedBox(height: 20),
 
                     // --- 3. 落下・転倒危険物の危険度 ---
@@ -288,34 +288,34 @@ class _RebarSurveryState extends State<RebarSurvery> {
                               inputVM.exteriorInspectionScoreController.text),
                           exteriorInspectionRemarks:
                               inputVM.exteriorInspectionRemarksController.text,
-                          hasSevereDamageMembers: stringToDamageLevel(
-                              inputVM.hasBucklingController.text),
+                          // hasSevereDamageMembers: stringToDamageLevel(
+                          //     inputVM.hasBucklingController.text),
                           adjacentBuildingRisk: stringToDamageLevel(
                               inputVM.adjacentBuildingRiskController.text),
                           groundFailureInclination: stringToDamageLevel(
                               inputVM.groundFailureInclinationController.text),
                           unevenSettlement: stringToDamageLevel(
                               inputVM.unevenSettlementController.text),
-                          inspectedFloorsForColumns: int.parse(
-                              inputVM.inspectedFloorsForColumnsController.text),
-                          totalColumnsLevel5: int.parse(
-                              inputVM.totalColumnsLevel5Controller.text),
-                          surveyedColumnsLevel5: int.tryParse(
-                              inputVM.surveyedColumnsLevel5Controller.text),
-                          percentColumnsLevel5: double.tryParse(
-                              inputVM.percentColumnsLevel5Controller.text),
-                          percentColumnsDamageLevel5: stringToDamageLevel(
-                              inputVM
-                                  .percentColumnsDamageLevel5Controller.text),
-                          totalColumnsLevel4: int.parse(
-                              inputVM.totalColumnsLevel4Controller.text),
-                          surveyedColumnsLevel4: int.tryParse(
-                              inputVM.surveyedColumnsLevel4Controller.text),
-                          percentColumnsLevel4: double.tryParse(
-                              inputVM.percentColumnsLevel4Controller.text),
-                          percentColumnsDamageLevel4: stringToDamageLevel(
-                              inputVM
-                                  .percentColumnsDamageLevel4Controller.text),
+                          // inspectedFloorsForColumns: int.parse(
+                          //     inputVM.inspectedFloorsForColumnsController.text),
+                          // totalColumnsLevel5: int.parse(
+                          //     inputVM.totalColumnsLevel5Controller.text),
+                          // surveyedColumnsLevel5: int.tryParse(
+                          //     inputVM.surveyedColumnsLevel5Controller.text),
+                          // percentColumnsLevel5: double.tryParse(
+                          //     inputVM.percentColumnsLevel5Controller.text),
+                          // percentColumnsDamageLevel5: stringToDamageLevel(
+                          //     inputVM
+                          //         .percentColumnsDamageLevel5Controller.text),
+                          // totalColumnsLevel4: int.parse(
+                          //     inputVM.totalColumnsLevel4Controller.text),
+                          // surveyedColumnsLevel4: int.tryParse(
+                          //     inputVM.surveyedColumnsLevel4Controller.text),
+                          // percentColumnsLevel4: double.tryParse(
+                          //     inputVM.percentColumnsLevel4Controller.text),
+                          // percentColumnsDamageLevel4: stringToDamageLevel(
+                          //     inputVM
+                          //         .percentColumnsDamageLevel4Controller.text),
                           windowFrame: stringToDamageLevel(
                               inputVM.windowFrameController.text),
                           exteriorMaterialMortarTileStone: stringToDamageLevel(

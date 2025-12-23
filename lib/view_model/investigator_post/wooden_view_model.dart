@@ -283,6 +283,7 @@ class WoodenViewModel extends ChangeNotifier {
     _recalculateScores();
     notifyListeners();
   }
+
   //木材建築物の総合スコアを更新する関数
   void updateOverallScore(OverallScore score) {
     if (_woodenRecord == null) return;
@@ -295,12 +296,12 @@ class WoodenViewModel extends ChangeNotifier {
   DamageLevel _calcOverallStructuralScore() {
     if (_woodenRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
-      _woodenRecord!.content.adjacentBuildingRisk,
-      _woodenRecord!.content.unevenSettlement,
-      _woodenRecord!.content.foundationDamage,
-      _woodenRecord!.content.firstFloorTilt,
-      _woodenRecord!.content.wallDamage,
-      _woodenRecord!.content.corrosionOrTermite
+      _woodenRecord!.content.adjacentBuildingRisk ?? DamageLevel.A,
+      _woodenRecord!.content.unevenSettlement ?? DamageLevel.A,
+      _woodenRecord!.content.foundationDamage ?? DamageLevel.A,
+      _woodenRecord!.content.firstFloorTilt ?? DamageLevel.A,
+      _woodenRecord!.content.wallDamage ?? DamageLevel.A,
+      _woodenRecord!.content.corrosionOrTermite ?? DamageLevel.A
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {
@@ -317,13 +318,13 @@ class WoodenViewModel extends ChangeNotifier {
     if (_woodenRecord == null) return DamageLevel.C;
 
     List<DamageLevel> levels = [
-      _woodenRecord!.content.roofTile,
-      _woodenRecord!.content.windowFrame,
-      _woodenRecord!.content.exteriorWet,
-      _woodenRecord!.content.exteriorDry,
-      _woodenRecord!.content.signageAndEquipment,
-      _woodenRecord!.content.outdoorStairs,
-      _woodenRecord!.content.others,
+      _woodenRecord!.content.roofTile ?? DamageLevel.A,
+      _woodenRecord!.content.windowFrame ?? DamageLevel.A,
+      _woodenRecord!.content.exteriorWet ?? DamageLevel.A,
+      _woodenRecord!.content.exteriorDry ?? DamageLevel.A,
+      _woodenRecord!.content.signageAndEquipment ?? DamageLevel.A,
+      _woodenRecord!.content.outdoorStairs ?? DamageLevel.A,
+      _woodenRecord!.content.others ?? DamageLevel.A,
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {

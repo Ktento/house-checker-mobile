@@ -833,49 +833,49 @@ mixin _$WoodenContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
       throw _privateConstructorUsedError; //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
-  DamageLevel get adjacentBuildingRisk => throw _privateConstructorUsedError;
+  DamageLevel? get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths> get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError; //構造躯体の不同沈下
-  DamageLevel get unevenSettlement => throw _privateConstructorUsedError;
+  DamageLevel? get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths> get unevenSettlementImages =>
       throw _privateConstructorUsedError; //基礎の被害
-  DamageLevel get foundationDamage => throw _privateConstructorUsedError;
+  DamageLevel? get foundationDamage => throw _privateConstructorUsedError;
   List<ImagePaths> get foundationDamageImages =>
       throw _privateConstructorUsedError; //建築物の一回の傾斜
-  DamageLevel get firstFloorTilt => throw _privateConstructorUsedError;
+  DamageLevel? get firstFloorTilt => throw _privateConstructorUsedError;
   List<ImagePaths> get firstFloorTiltImages =>
       throw _privateConstructorUsedError; //壁の被害
-  DamageLevel get wallDamage => throw _privateConstructorUsedError;
+  DamageLevel? get wallDamage => throw _privateConstructorUsedError;
   List<ImagePaths> get wallDamageImages =>
       throw _privateConstructorUsedError; //腐食・蟻害の有無
-  DamageLevel get corrosionOrTermite => throw _privateConstructorUsedError;
+  DamageLevel? get corrosionOrTermite => throw _privateConstructorUsedError;
   List<ImagePaths> get corrosionOrTermiteImages =>
       throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
 //瓦
-  DamageLevel get roofTile => throw _privateConstructorUsedError;
+  DamageLevel? get roofTile => throw _privateConstructorUsedError;
   List<ImagePaths> get roofTileImages =>
       throw _privateConstructorUsedError; //窓枠・窓ガラス
-  DamageLevel get windowFrame => throw _privateConstructorUsedError;
+  DamageLevel? get windowFrame => throw _privateConstructorUsedError;
   List<ImagePaths> get windowFrameImages =>
       throw _privateConstructorUsedError; //外装材　湿式
-  DamageLevel get exteriorWet => throw _privateConstructorUsedError;
+  DamageLevel? get exteriorWet => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorWetImages =>
       throw _privateConstructorUsedError; //外装材　乾式
-  DamageLevel get exteriorDry => throw _privateConstructorUsedError;
+  DamageLevel? get exteriorDry => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorDryImages =>
       throw _privateConstructorUsedError; //看板・機器類
-  DamageLevel get signageAndEquipment => throw _privateConstructorUsedError;
+  DamageLevel? get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths> get signageAndEquipmentImages =>
       throw _privateConstructorUsedError; //その他
-  DamageLevel get outdoorStairs => throw _privateConstructorUsedError;
+  DamageLevel? get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths> get outdoorStairsImages =>
       throw _privateConstructorUsedError;
-  DamageLevel get others => throw _privateConstructorUsedError;
+  DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError;
-  DamageLevel get overallStructuralScore => throw _privateConstructorUsedError;
-  DamageLevel get overallFallingObjectScore =>
+  DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
+  DamageLevel? get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
   /// Serializes this WoodenContent to a JSON map.
@@ -897,36 +897,36 @@ abstract class $WoodenContentCopyWith<$Res> {
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel adjacentBuildingRisk,
+      DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel unevenSettlement,
+      DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel foundationDamage,
+      DamageLevel? foundationDamage,
       List<ImagePaths> foundationDamageImages,
-      DamageLevel firstFloorTilt,
+      DamageLevel? firstFloorTilt,
       List<ImagePaths> firstFloorTiltImages,
-      DamageLevel wallDamage,
+      DamageLevel? wallDamage,
       List<ImagePaths> wallDamageImages,
-      DamageLevel corrosionOrTermite,
+      DamageLevel? corrosionOrTermite,
       List<ImagePaths> corrosionOrTermiteImages,
-      DamageLevel roofTile,
+      DamageLevel? roofTile,
       List<ImagePaths> roofTileImages,
-      DamageLevel windowFrame,
+      DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel exteriorWet,
+      DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel exteriorDry,
+      DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel signageAndEquipment,
+      DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel outdoorStairs,
+      DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel others,
+      DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
-      DamageLevel overallStructuralScore,
-      DamageLevel overallFallingObjectScore});
+      DamageLevel? overallStructuralScore,
+      DamageLevel? overallFallingObjectScore});
 }
 
 /// @nodoc
@@ -946,36 +946,36 @@ class _$WoodenContentCopyWithImpl<$Res, $Val extends WoodenContent>
   $Res call({
     Object? exteriorInspectionScore = null,
     Object? exteriorInspectionRemarks = freezed,
-    Object? adjacentBuildingRisk = null,
+    Object? adjacentBuildingRisk = freezed,
     Object? adjacentBuildingRiskImages = null,
-    Object? unevenSettlement = null,
+    Object? unevenSettlement = freezed,
     Object? unevenSettlementImages = null,
-    Object? foundationDamage = null,
+    Object? foundationDamage = freezed,
     Object? foundationDamageImages = null,
-    Object? firstFloorTilt = null,
+    Object? firstFloorTilt = freezed,
     Object? firstFloorTiltImages = null,
-    Object? wallDamage = null,
+    Object? wallDamage = freezed,
     Object? wallDamageImages = null,
-    Object? corrosionOrTermite = null,
+    Object? corrosionOrTermite = freezed,
     Object? corrosionOrTermiteImages = null,
-    Object? roofTile = null,
+    Object? roofTile = freezed,
     Object? roofTileImages = null,
-    Object? windowFrame = null,
+    Object? windowFrame = freezed,
     Object? windowFrameImages = null,
-    Object? exteriorWet = null,
+    Object? exteriorWet = freezed,
     Object? exteriorWetImages = null,
-    Object? exteriorDry = null,
+    Object? exteriorDry = freezed,
     Object? exteriorDryImages = null,
-    Object? signageAndEquipment = null,
+    Object? signageAndEquipment = freezed,
     Object? signageAndEquipmentImages = null,
-    Object? outdoorStairs = null,
+    Object? outdoorStairs = freezed,
     Object? outdoorStairsImages = null,
-    Object? others = null,
+    Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
     Object? overallExteriorScore = null,
-    Object? overallStructuralScore = null,
-    Object? overallFallingObjectScore = null,
+    Object? overallStructuralScore = freezed,
+    Object? overallFallingObjectScore = freezed,
   }) {
     return _then(_value.copyWith(
       exteriorInspectionScore: null == exteriorInspectionScore
@@ -986,106 +986,106 @@ class _$WoodenContentCopyWithImpl<$Res, $Val extends WoodenContent>
           ? _value.exteriorInspectionRemarks
           : exteriorInspectionRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      adjacentBuildingRisk: null == adjacentBuildingRisk
+      adjacentBuildingRisk: freezed == adjacentBuildingRisk
           ? _value.adjacentBuildingRisk
           : adjacentBuildingRisk // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       adjacentBuildingRiskImages: null == adjacentBuildingRiskImages
           ? _value.adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      unevenSettlement: null == unevenSettlement
+      unevenSettlement: freezed == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       unevenSettlementImages: null == unevenSettlementImages
           ? _value.unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      foundationDamage: null == foundationDamage
+      foundationDamage: freezed == foundationDamage
           ? _value.foundationDamage
           : foundationDamage // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       foundationDamageImages: null == foundationDamageImages
           ? _value.foundationDamageImages
           : foundationDamageImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      firstFloorTilt: null == firstFloorTilt
+      firstFloorTilt: freezed == firstFloorTilt
           ? _value.firstFloorTilt
           : firstFloorTilt // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       firstFloorTiltImages: null == firstFloorTiltImages
           ? _value.firstFloorTiltImages
           : firstFloorTiltImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      wallDamage: null == wallDamage
+      wallDamage: freezed == wallDamage
           ? _value.wallDamage
           : wallDamage // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       wallDamageImages: null == wallDamageImages
           ? _value.wallDamageImages
           : wallDamageImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      corrosionOrTermite: null == corrosionOrTermite
+      corrosionOrTermite: freezed == corrosionOrTermite
           ? _value.corrosionOrTermite
           : corrosionOrTermite // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       corrosionOrTermiteImages: null == corrosionOrTermiteImages
           ? _value.corrosionOrTermiteImages
           : corrosionOrTermiteImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      roofTile: null == roofTile
+      roofTile: freezed == roofTile
           ? _value.roofTile
           : roofTile // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       roofTileImages: null == roofTileImages
           ? _value.roofTileImages
           : roofTileImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      windowFrame: null == windowFrame
+      windowFrame: freezed == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       windowFrameImages: null == windowFrameImages
           ? _value.windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorWet: null == exteriorWet
+      exteriorWet: freezed == exteriorWet
           ? _value.exteriorWet
           : exteriorWet // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorWetImages: null == exteriorWetImages
           ? _value.exteriorWetImages
           : exteriorWetImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorDry: null == exteriorDry
+      exteriorDry: freezed == exteriorDry
           ? _value.exteriorDry
           : exteriorDry // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorDryImages: null == exteriorDryImages
           ? _value.exteriorDryImages
           : exteriorDryImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      signageAndEquipment: null == signageAndEquipment
+      signageAndEquipment: freezed == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       signageAndEquipmentImages: null == signageAndEquipmentImages
           ? _value.signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      outdoorStairs: null == outdoorStairs
+      outdoorStairs: freezed == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       outdoorStairsImages: null == outdoorStairsImages
           ? _value.outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      others: null == others
+      others: freezed == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       othersImages: null == othersImages
           ? _value.othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
@@ -1098,14 +1098,14 @@ class _$WoodenContentCopyWithImpl<$Res, $Val extends WoodenContent>
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
               as String,
-      overallStructuralScore: null == overallStructuralScore
+      overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallFallingObjectScore: null == overallFallingObjectScore
+              as DamageLevel?,
+      overallFallingObjectScore: freezed == overallFallingObjectScore
           ? _value.overallFallingObjectScore
           : overallFallingObjectScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
     ) as $Val);
   }
 }
@@ -1121,36 +1121,36 @@ abstract class _$$WoodenContentImplCopyWith<$Res>
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel adjacentBuildingRisk,
+      DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel unevenSettlement,
+      DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel foundationDamage,
+      DamageLevel? foundationDamage,
       List<ImagePaths> foundationDamageImages,
-      DamageLevel firstFloorTilt,
+      DamageLevel? firstFloorTilt,
       List<ImagePaths> firstFloorTiltImages,
-      DamageLevel wallDamage,
+      DamageLevel? wallDamage,
       List<ImagePaths> wallDamageImages,
-      DamageLevel corrosionOrTermite,
+      DamageLevel? corrosionOrTermite,
       List<ImagePaths> corrosionOrTermiteImages,
-      DamageLevel roofTile,
+      DamageLevel? roofTile,
       List<ImagePaths> roofTileImages,
-      DamageLevel windowFrame,
+      DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel exteriorWet,
+      DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel exteriorDry,
+      DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel signageAndEquipment,
+      DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel outdoorStairs,
+      DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel others,
+      DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
-      DamageLevel overallStructuralScore,
-      DamageLevel overallFallingObjectScore});
+      DamageLevel? overallStructuralScore,
+      DamageLevel? overallFallingObjectScore});
 }
 
 /// @nodoc
@@ -1168,36 +1168,36 @@ class __$$WoodenContentImplCopyWithImpl<$Res>
   $Res call({
     Object? exteriorInspectionScore = null,
     Object? exteriorInspectionRemarks = freezed,
-    Object? adjacentBuildingRisk = null,
+    Object? adjacentBuildingRisk = freezed,
     Object? adjacentBuildingRiskImages = null,
-    Object? unevenSettlement = null,
+    Object? unevenSettlement = freezed,
     Object? unevenSettlementImages = null,
-    Object? foundationDamage = null,
+    Object? foundationDamage = freezed,
     Object? foundationDamageImages = null,
-    Object? firstFloorTilt = null,
+    Object? firstFloorTilt = freezed,
     Object? firstFloorTiltImages = null,
-    Object? wallDamage = null,
+    Object? wallDamage = freezed,
     Object? wallDamageImages = null,
-    Object? corrosionOrTermite = null,
+    Object? corrosionOrTermite = freezed,
     Object? corrosionOrTermiteImages = null,
-    Object? roofTile = null,
+    Object? roofTile = freezed,
     Object? roofTileImages = null,
-    Object? windowFrame = null,
+    Object? windowFrame = freezed,
     Object? windowFrameImages = null,
-    Object? exteriorWet = null,
+    Object? exteriorWet = freezed,
     Object? exteriorWetImages = null,
-    Object? exteriorDry = null,
+    Object? exteriorDry = freezed,
     Object? exteriorDryImages = null,
-    Object? signageAndEquipment = null,
+    Object? signageAndEquipment = freezed,
     Object? signageAndEquipmentImages = null,
-    Object? outdoorStairs = null,
+    Object? outdoorStairs = freezed,
     Object? outdoorStairsImages = null,
-    Object? others = null,
+    Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
     Object? overallExteriorScore = null,
-    Object? overallStructuralScore = null,
-    Object? overallFallingObjectScore = null,
+    Object? overallStructuralScore = freezed,
+    Object? overallFallingObjectScore = freezed,
   }) {
     return _then(_$WoodenContentImpl(
       exteriorInspectionScore: null == exteriorInspectionScore
@@ -1208,106 +1208,106 @@ class __$$WoodenContentImplCopyWithImpl<$Res>
           ? _value.exteriorInspectionRemarks
           : exteriorInspectionRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      adjacentBuildingRisk: null == adjacentBuildingRisk
+      adjacentBuildingRisk: freezed == adjacentBuildingRisk
           ? _value.adjacentBuildingRisk
           : adjacentBuildingRisk // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       adjacentBuildingRiskImages: null == adjacentBuildingRiskImages
           ? _value._adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      unevenSettlement: null == unevenSettlement
+      unevenSettlement: freezed == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       unevenSettlementImages: null == unevenSettlementImages
           ? _value._unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      foundationDamage: null == foundationDamage
+      foundationDamage: freezed == foundationDamage
           ? _value.foundationDamage
           : foundationDamage // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       foundationDamageImages: null == foundationDamageImages
           ? _value._foundationDamageImages
           : foundationDamageImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      firstFloorTilt: null == firstFloorTilt
+      firstFloorTilt: freezed == firstFloorTilt
           ? _value.firstFloorTilt
           : firstFloorTilt // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       firstFloorTiltImages: null == firstFloorTiltImages
           ? _value._firstFloorTiltImages
           : firstFloorTiltImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      wallDamage: null == wallDamage
+      wallDamage: freezed == wallDamage
           ? _value.wallDamage
           : wallDamage // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       wallDamageImages: null == wallDamageImages
           ? _value._wallDamageImages
           : wallDamageImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      corrosionOrTermite: null == corrosionOrTermite
+      corrosionOrTermite: freezed == corrosionOrTermite
           ? _value.corrosionOrTermite
           : corrosionOrTermite // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       corrosionOrTermiteImages: null == corrosionOrTermiteImages
           ? _value._corrosionOrTermiteImages
           : corrosionOrTermiteImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      roofTile: null == roofTile
+      roofTile: freezed == roofTile
           ? _value.roofTile
           : roofTile // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       roofTileImages: null == roofTileImages
           ? _value._roofTileImages
           : roofTileImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      windowFrame: null == windowFrame
+      windowFrame: freezed == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       windowFrameImages: null == windowFrameImages
           ? _value._windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorWet: null == exteriorWet
+      exteriorWet: freezed == exteriorWet
           ? _value.exteriorWet
           : exteriorWet // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorWetImages: null == exteriorWetImages
           ? _value._exteriorWetImages
           : exteriorWetImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorDry: null == exteriorDry
+      exteriorDry: freezed == exteriorDry
           ? _value.exteriorDry
           : exteriorDry // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorDryImages: null == exteriorDryImages
           ? _value._exteriorDryImages
           : exteriorDryImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      signageAndEquipment: null == signageAndEquipment
+      signageAndEquipment: freezed == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       signageAndEquipmentImages: null == signageAndEquipmentImages
           ? _value._signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      outdoorStairs: null == outdoorStairs
+      outdoorStairs: freezed == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       outdoorStairsImages: null == outdoorStairsImages
           ? _value._outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      others: null == others
+      others: freezed == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       othersImages: null == othersImages
           ? _value._othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
@@ -1320,14 +1320,14 @@ class __$$WoodenContentImplCopyWithImpl<$Res>
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
               as String,
-      overallStructuralScore: null == overallStructuralScore
+      overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallFallingObjectScore: null == overallFallingObjectScore
+              as DamageLevel?,
+      overallFallingObjectScore: freezed == overallFallingObjectScore
           ? _value.overallFallingObjectScore
           : overallFallingObjectScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
     ));
   }
 }
@@ -1391,7 +1391,7 @@ class _$WoodenContentImpl implements _WoodenContent {
   final String? exteriorInspectionRemarks;
 //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   @override
-  final DamageLevel adjacentBuildingRisk;
+  final DamageLevel? adjacentBuildingRisk;
   final List<ImagePaths> _adjacentBuildingRiskImages;
   @override
   @JsonKey()
@@ -1404,7 +1404,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //構造躯体の不同沈下
   @override
-  final DamageLevel unevenSettlement;
+  final DamageLevel? unevenSettlement;
   final List<ImagePaths> _unevenSettlementImages;
   @override
   @JsonKey()
@@ -1417,7 +1417,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //基礎の被害
   @override
-  final DamageLevel foundationDamage;
+  final DamageLevel? foundationDamage;
   final List<ImagePaths> _foundationDamageImages;
   @override
   @JsonKey()
@@ -1430,7 +1430,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //建築物の一回の傾斜
   @override
-  final DamageLevel firstFloorTilt;
+  final DamageLevel? firstFloorTilt;
   final List<ImagePaths> _firstFloorTiltImages;
   @override
   @JsonKey()
@@ -1443,7 +1443,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //壁の被害
   @override
-  final DamageLevel wallDamage;
+  final DamageLevel? wallDamage;
   final List<ImagePaths> _wallDamageImages;
   @override
   @JsonKey()
@@ -1456,7 +1456,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //腐食・蟻害の有無
   @override
-  final DamageLevel corrosionOrTermite;
+  final DamageLevel? corrosionOrTermite;
   final List<ImagePaths> _corrosionOrTermiteImages;
   @override
   @JsonKey()
@@ -1470,7 +1470,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 //落下危険物・転倒危険物に関する危険度
 //瓦
   @override
-  final DamageLevel roofTile;
+  final DamageLevel? roofTile;
   final List<ImagePaths> _roofTileImages;
   @override
   @JsonKey()
@@ -1482,7 +1482,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //窓枠・窓ガラス
   @override
-  final DamageLevel windowFrame;
+  final DamageLevel? windowFrame;
   final List<ImagePaths> _windowFrameImages;
   @override
   @JsonKey()
@@ -1495,7 +1495,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //外装材　湿式
   @override
-  final DamageLevel exteriorWet;
+  final DamageLevel? exteriorWet;
   final List<ImagePaths> _exteriorWetImages;
   @override
   @JsonKey()
@@ -1508,7 +1508,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //外装材　乾式
   @override
-  final DamageLevel exteriorDry;
+  final DamageLevel? exteriorDry;
   final List<ImagePaths> _exteriorDryImages;
   @override
   @JsonKey()
@@ -1521,7 +1521,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //看板・機器類
   @override
-  final DamageLevel signageAndEquipment;
+  final DamageLevel? signageAndEquipment;
   final List<ImagePaths> _signageAndEquipmentImages;
   @override
   @JsonKey()
@@ -1534,7 +1534,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //その他
   @override
-  final DamageLevel outdoorStairs;
+  final DamageLevel? outdoorStairs;
   final List<ImagePaths> _outdoorStairsImages;
   @override
   @JsonKey()
@@ -1546,7 +1546,7 @@ class _$WoodenContentImpl implements _WoodenContent {
   }
 
   @override
-  final DamageLevel others;
+  final DamageLevel? others;
   final List<ImagePaths> _othersImages;
   @override
   @JsonKey()
@@ -1561,9 +1561,9 @@ class _$WoodenContentImpl implements _WoodenContent {
   @override
   final String overallExteriorScore;
   @override
-  final DamageLevel overallStructuralScore;
+  final DamageLevel? overallStructuralScore;
   @override
-  final DamageLevel overallFallingObjectScore;
+  final DamageLevel? overallFallingObjectScore;
 
   @override
   String toString() {
@@ -1692,36 +1692,36 @@ abstract class _WoodenContent implements WoodenContent {
   const factory _WoodenContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
-          required final DamageLevel adjacentBuildingRisk,
+          required final DamageLevel? adjacentBuildingRisk,
           final List<ImagePaths> adjacentBuildingRiskImages,
-          required final DamageLevel unevenSettlement,
+          required final DamageLevel? unevenSettlement,
           final List<ImagePaths> unevenSettlementImages,
-          required final DamageLevel foundationDamage,
+          required final DamageLevel? foundationDamage,
           final List<ImagePaths> foundationDamageImages,
-          required final DamageLevel firstFloorTilt,
+          required final DamageLevel? firstFloorTilt,
           final List<ImagePaths> firstFloorTiltImages,
-          required final DamageLevel wallDamage,
+          required final DamageLevel? wallDamage,
           final List<ImagePaths> wallDamageImages,
-          required final DamageLevel corrosionOrTermite,
+          required final DamageLevel? corrosionOrTermite,
           final List<ImagePaths> corrosionOrTermiteImages,
-          required final DamageLevel roofTile,
+          required final DamageLevel? roofTile,
           final List<ImagePaths> roofTileImages,
-          required final DamageLevel windowFrame,
+          required final DamageLevel? windowFrame,
           final List<ImagePaths> windowFrameImages,
-          required final DamageLevel exteriorWet,
+          required final DamageLevel? exteriorWet,
           final List<ImagePaths> exteriorWetImages,
-          required final DamageLevel exteriorDry,
+          required final DamageLevel? exteriorDry,
           final List<ImagePaths> exteriorDryImages,
-          required final DamageLevel signageAndEquipment,
+          required final DamageLevel? signageAndEquipment,
           final List<ImagePaths> signageAndEquipmentImages,
-          required final DamageLevel outdoorStairs,
+          required final DamageLevel? outdoorStairs,
           final List<ImagePaths> outdoorStairsImages,
-          required final DamageLevel others,
+          required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
-          required final DamageLevel overallStructuralScore,
-          required final DamageLevel overallFallingObjectScore}) =
+          required final DamageLevel? overallStructuralScore,
+          required final DamageLevel? overallFallingObjectScore}) =
       _$WoodenContentImpl;
 
   factory _WoodenContent.fromJson(Map<String, dynamic> json) =
@@ -1732,56 +1732,56 @@ abstract class _WoodenContent implements WoodenContent {
   @override
   String? get exteriorInspectionRemarks; //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   @override
-  DamageLevel get adjacentBuildingRisk;
+  DamageLevel? get adjacentBuildingRisk;
   @override
   List<ImagePaths> get adjacentBuildingRiskImages; //構造躯体の不同沈下
   @override
-  DamageLevel get unevenSettlement;
+  DamageLevel? get unevenSettlement;
   @override
   List<ImagePaths> get unevenSettlementImages; //基礎の被害
   @override
-  DamageLevel get foundationDamage;
+  DamageLevel? get foundationDamage;
   @override
   List<ImagePaths> get foundationDamageImages; //建築物の一回の傾斜
   @override
-  DamageLevel get firstFloorTilt;
+  DamageLevel? get firstFloorTilt;
   @override
   List<ImagePaths> get firstFloorTiltImages; //壁の被害
   @override
-  DamageLevel get wallDamage;
+  DamageLevel? get wallDamage;
   @override
   List<ImagePaths> get wallDamageImages; //腐食・蟻害の有無
   @override
-  DamageLevel get corrosionOrTermite;
+  DamageLevel? get corrosionOrTermite;
   @override
   List<ImagePaths> get corrosionOrTermiteImages; //落下危険物・転倒危険物に関する危険度
 //瓦
   @override
-  DamageLevel get roofTile;
+  DamageLevel? get roofTile;
   @override
   List<ImagePaths> get roofTileImages; //窓枠・窓ガラス
   @override
-  DamageLevel get windowFrame;
+  DamageLevel? get windowFrame;
   @override
   List<ImagePaths> get windowFrameImages; //外装材　湿式
   @override
-  DamageLevel get exteriorWet;
+  DamageLevel? get exteriorWet;
   @override
   List<ImagePaths> get exteriorWetImages; //外装材　乾式
   @override
-  DamageLevel get exteriorDry;
+  DamageLevel? get exteriorDry;
   @override
   List<ImagePaths> get exteriorDryImages; //看板・機器類
   @override
-  DamageLevel get signageAndEquipment;
+  DamageLevel? get signageAndEquipment;
   @override
   List<ImagePaths> get signageAndEquipmentImages; //その他
   @override
-  DamageLevel get outdoorStairs;
+  DamageLevel? get outdoorStairs;
   @override
   List<ImagePaths> get outdoorStairsImages;
   @override
-  DamageLevel get others;
+  DamageLevel? get others;
   @override
   List<ImagePaths> get othersImages;
   @override
@@ -1789,9 +1789,9 @@ abstract class _WoodenContent implements WoodenContent {
   @override
   String get overallExteriorScore;
   @override
-  DamageLevel get overallStructuralScore;
+  DamageLevel? get overallStructuralScore;
   @override
-  DamageLevel get overallFallingObjectScore;
+  DamageLevel? get overallFallingObjectScore;
 
   /// Create a copy of WoodenContent
   /// with the given fields replaced by the non-null parameter values.
@@ -1811,58 +1811,58 @@ mixin _$SteelFrameContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
       throw _privateConstructorUsedError; //隣接建築物・周辺地盤等及び構造躯体に関する危険度
-  DamageLevel get adjacentBuildingRisk => throw _privateConstructorUsedError;
+  DamageLevel? get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths> get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError; //不同沈下による建築物全体の傾斜
-  DamageLevel get unevenSettlement => throw _privateConstructorUsedError;
+  DamageLevel? get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths> get unevenSettlementImages =>
       throw _privateConstructorUsedError; //傾斜を生じた階の上の階数が1階以下
-  DamageLevel get upperFloorLe1 => throw _privateConstructorUsedError;
+  DamageLevel? get upperFloorLe1 => throw _privateConstructorUsedError;
   List<ImagePaths> get upperFloorLe1Images =>
       throw _privateConstructorUsedError; //傾斜を生じた階の上の階数が2階以下
-  DamageLevel get upperFloorLe2 => throw _privateConstructorUsedError;
+  DamageLevel? get upperFloorLe2 => throw _privateConstructorUsedError;
   List<ImagePaths> get upperFloorLe2Images =>
       throw _privateConstructorUsedError; //部材の座屈の有無
-  DamageLevel get hasBuckling => throw _privateConstructorUsedError;
+  DamageLevel? get hasBuckling => throw _privateConstructorUsedError;
   List<ImagePaths> get hasBucklingImages =>
       throw _privateConstructorUsedError; //筋違の破断率
-  DamageLevel get bracingBreakRate => throw _privateConstructorUsedError;
+  DamageLevel? get bracingBreakRate => throw _privateConstructorUsedError;
   List<ImagePaths> get bracingBreakRateImages =>
       throw _privateConstructorUsedError; //柱梁接合部および継手の破壊
-  DamageLevel get jointFailure => throw _privateConstructorUsedError;
+  DamageLevel? get jointFailure => throw _privateConstructorUsedError;
   List<ImagePaths> get jointFailureImages =>
       throw _privateConstructorUsedError; //柱脚の破損
-  DamageLevel get columnBaseDamage => throw _privateConstructorUsedError;
+  DamageLevel? get columnBaseDamage => throw _privateConstructorUsedError;
   List<ImagePaths> get columnBaseDamageImages =>
       throw _privateConstructorUsedError; //腐食の有無
-  DamageLevel get corrosion => throw _privateConstructorUsedError;
+  DamageLevel? get corrosion => throw _privateConstructorUsedError;
   List<ImagePaths> get corrosionImages =>
       throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
 //屋根材
-  DamageLevel get roofingMaterial => throw _privateConstructorUsedError;
+  DamageLevel? get roofingMaterial => throw _privateConstructorUsedError;
   List<ImagePaths> get roofingMaterialImages =>
       throw _privateConstructorUsedError; //窓枠・窓ガラス
-  DamageLevel get windowFrame => throw _privateConstructorUsedError;
+  DamageLevel? get windowFrame => throw _privateConstructorUsedError;
   List<ImagePaths> get windowFrameImages =>
       throw _privateConstructorUsedError; //外装材　湿式
-  DamageLevel get exteriorWet => throw _privateConstructorUsedError;
+  DamageLevel? get exteriorWet => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorWetImages =>
       throw _privateConstructorUsedError; //外装材　乾式
-  DamageLevel get exteriorDry => throw _privateConstructorUsedError;
+  DamageLevel? get exteriorDry => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorDryImages =>
       throw _privateConstructorUsedError; //看板・機器類
-  DamageLevel get signageAndEquipment => throw _privateConstructorUsedError;
+  DamageLevel? get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths> get signageAndEquipmentImages =>
       throw _privateConstructorUsedError; //屋外階段
-  DamageLevel get outdoorStairs => throw _privateConstructorUsedError;
+  DamageLevel? get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths> get outdoorStairsImages =>
       throw _privateConstructorUsedError; //その他
-  DamageLevel get others => throw _privateConstructorUsedError;
+  DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError;
-  DamageLevel get overallStructuralScore => throw _privateConstructorUsedError;
-  DamageLevel get overallFallingObjectScore =>
+  DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
+  DamageLevel? get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
   /// Serializes this SteelFrameContent to a JSON map.
@@ -1884,42 +1884,42 @@ abstract class $SteelFrameContentCopyWith<$Res> {
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel adjacentBuildingRisk,
+      DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel unevenSettlement,
+      DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel upperFloorLe1,
+      DamageLevel? upperFloorLe1,
       List<ImagePaths> upperFloorLe1Images,
-      DamageLevel upperFloorLe2,
+      DamageLevel? upperFloorLe2,
       List<ImagePaths> upperFloorLe2Images,
-      DamageLevel hasBuckling,
+      DamageLevel? hasBuckling,
       List<ImagePaths> hasBucklingImages,
-      DamageLevel bracingBreakRate,
+      DamageLevel? bracingBreakRate,
       List<ImagePaths> bracingBreakRateImages,
-      DamageLevel jointFailure,
+      DamageLevel? jointFailure,
       List<ImagePaths> jointFailureImages,
-      DamageLevel columnBaseDamage,
+      DamageLevel? columnBaseDamage,
       List<ImagePaths> columnBaseDamageImages,
-      DamageLevel corrosion,
+      DamageLevel? corrosion,
       List<ImagePaths> corrosionImages,
-      DamageLevel roofingMaterial,
+      DamageLevel? roofingMaterial,
       List<ImagePaths> roofingMaterialImages,
-      DamageLevel windowFrame,
+      DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel exteriorWet,
+      DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel exteriorDry,
+      DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel signageAndEquipment,
+      DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel outdoorStairs,
+      DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel others,
+      DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
-      DamageLevel overallStructuralScore,
-      DamageLevel overallFallingObjectScore});
+      DamageLevel? overallStructuralScore,
+      DamageLevel? overallFallingObjectScore});
 }
 
 /// @nodoc
@@ -1939,42 +1939,42 @@ class _$SteelFrameContentCopyWithImpl<$Res, $Val extends SteelFrameContent>
   $Res call({
     Object? exteriorInspectionScore = null,
     Object? exteriorInspectionRemarks = freezed,
-    Object? adjacentBuildingRisk = null,
+    Object? adjacentBuildingRisk = freezed,
     Object? adjacentBuildingRiskImages = null,
-    Object? unevenSettlement = null,
+    Object? unevenSettlement = freezed,
     Object? unevenSettlementImages = null,
-    Object? upperFloorLe1 = null,
+    Object? upperFloorLe1 = freezed,
     Object? upperFloorLe1Images = null,
-    Object? upperFloorLe2 = null,
+    Object? upperFloorLe2 = freezed,
     Object? upperFloorLe2Images = null,
-    Object? hasBuckling = null,
+    Object? hasBuckling = freezed,
     Object? hasBucklingImages = null,
-    Object? bracingBreakRate = null,
+    Object? bracingBreakRate = freezed,
     Object? bracingBreakRateImages = null,
-    Object? jointFailure = null,
+    Object? jointFailure = freezed,
     Object? jointFailureImages = null,
-    Object? columnBaseDamage = null,
+    Object? columnBaseDamage = freezed,
     Object? columnBaseDamageImages = null,
-    Object? corrosion = null,
+    Object? corrosion = freezed,
     Object? corrosionImages = null,
-    Object? roofingMaterial = null,
+    Object? roofingMaterial = freezed,
     Object? roofingMaterialImages = null,
-    Object? windowFrame = null,
+    Object? windowFrame = freezed,
     Object? windowFrameImages = null,
-    Object? exteriorWet = null,
+    Object? exteriorWet = freezed,
     Object? exteriorWetImages = null,
-    Object? exteriorDry = null,
+    Object? exteriorDry = freezed,
     Object? exteriorDryImages = null,
-    Object? signageAndEquipment = null,
+    Object? signageAndEquipment = freezed,
     Object? signageAndEquipmentImages = null,
-    Object? outdoorStairs = null,
+    Object? outdoorStairs = freezed,
     Object? outdoorStairsImages = null,
-    Object? others = null,
+    Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
     Object? overallExteriorScore = null,
-    Object? overallStructuralScore = null,
-    Object? overallFallingObjectScore = null,
+    Object? overallStructuralScore = freezed,
+    Object? overallFallingObjectScore = freezed,
   }) {
     return _then(_value.copyWith(
       exteriorInspectionScore: null == exteriorInspectionScore
@@ -1985,130 +1985,130 @@ class _$SteelFrameContentCopyWithImpl<$Res, $Val extends SteelFrameContent>
           ? _value.exteriorInspectionRemarks
           : exteriorInspectionRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      adjacentBuildingRisk: null == adjacentBuildingRisk
+      adjacentBuildingRisk: freezed == adjacentBuildingRisk
           ? _value.adjacentBuildingRisk
           : adjacentBuildingRisk // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       adjacentBuildingRiskImages: null == adjacentBuildingRiskImages
           ? _value.adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      unevenSettlement: null == unevenSettlement
+      unevenSettlement: freezed == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       unevenSettlementImages: null == unevenSettlementImages
           ? _value.unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      upperFloorLe1: null == upperFloorLe1
+      upperFloorLe1: freezed == upperFloorLe1
           ? _value.upperFloorLe1
           : upperFloorLe1 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       upperFloorLe1Images: null == upperFloorLe1Images
           ? _value.upperFloorLe1Images
           : upperFloorLe1Images // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      upperFloorLe2: null == upperFloorLe2
+      upperFloorLe2: freezed == upperFloorLe2
           ? _value.upperFloorLe2
           : upperFloorLe2 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       upperFloorLe2Images: null == upperFloorLe2Images
           ? _value.upperFloorLe2Images
           : upperFloorLe2Images // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      hasBuckling: null == hasBuckling
+      hasBuckling: freezed == hasBuckling
           ? _value.hasBuckling
           : hasBuckling // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       hasBucklingImages: null == hasBucklingImages
           ? _value.hasBucklingImages
           : hasBucklingImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      bracingBreakRate: null == bracingBreakRate
+      bracingBreakRate: freezed == bracingBreakRate
           ? _value.bracingBreakRate
           : bracingBreakRate // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       bracingBreakRateImages: null == bracingBreakRateImages
           ? _value.bracingBreakRateImages
           : bracingBreakRateImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      jointFailure: null == jointFailure
+      jointFailure: freezed == jointFailure
           ? _value.jointFailure
           : jointFailure // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       jointFailureImages: null == jointFailureImages
           ? _value.jointFailureImages
           : jointFailureImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      columnBaseDamage: null == columnBaseDamage
+      columnBaseDamage: freezed == columnBaseDamage
           ? _value.columnBaseDamage
           : columnBaseDamage // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       columnBaseDamageImages: null == columnBaseDamageImages
           ? _value.columnBaseDamageImages
           : columnBaseDamageImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      corrosion: null == corrosion
+      corrosion: freezed == corrosion
           ? _value.corrosion
           : corrosion // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       corrosionImages: null == corrosionImages
           ? _value.corrosionImages
           : corrosionImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      roofingMaterial: null == roofingMaterial
+      roofingMaterial: freezed == roofingMaterial
           ? _value.roofingMaterial
           : roofingMaterial // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       roofingMaterialImages: null == roofingMaterialImages
           ? _value.roofingMaterialImages
           : roofingMaterialImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      windowFrame: null == windowFrame
+      windowFrame: freezed == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       windowFrameImages: null == windowFrameImages
           ? _value.windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorWet: null == exteriorWet
+      exteriorWet: freezed == exteriorWet
           ? _value.exteriorWet
           : exteriorWet // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorWetImages: null == exteriorWetImages
           ? _value.exteriorWetImages
           : exteriorWetImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorDry: null == exteriorDry
+      exteriorDry: freezed == exteriorDry
           ? _value.exteriorDry
           : exteriorDry // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorDryImages: null == exteriorDryImages
           ? _value.exteriorDryImages
           : exteriorDryImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      signageAndEquipment: null == signageAndEquipment
+      signageAndEquipment: freezed == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       signageAndEquipmentImages: null == signageAndEquipmentImages
           ? _value.signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      outdoorStairs: null == outdoorStairs
+      outdoorStairs: freezed == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       outdoorStairsImages: null == outdoorStairsImages
           ? _value.outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      others: null == others
+      others: freezed == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       othersImages: null == othersImages
           ? _value.othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
@@ -2121,14 +2121,14 @@ class _$SteelFrameContentCopyWithImpl<$Res, $Val extends SteelFrameContent>
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
               as String,
-      overallStructuralScore: null == overallStructuralScore
+      overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallFallingObjectScore: null == overallFallingObjectScore
+              as DamageLevel?,
+      overallFallingObjectScore: freezed == overallFallingObjectScore
           ? _value.overallFallingObjectScore
           : overallFallingObjectScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
     ) as $Val);
   }
 }
@@ -2144,42 +2144,42 @@ abstract class _$$SteelFrameContentImplCopyWith<$Res>
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel adjacentBuildingRisk,
+      DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel unevenSettlement,
+      DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel upperFloorLe1,
+      DamageLevel? upperFloorLe1,
       List<ImagePaths> upperFloorLe1Images,
-      DamageLevel upperFloorLe2,
+      DamageLevel? upperFloorLe2,
       List<ImagePaths> upperFloorLe2Images,
-      DamageLevel hasBuckling,
+      DamageLevel? hasBuckling,
       List<ImagePaths> hasBucklingImages,
-      DamageLevel bracingBreakRate,
+      DamageLevel? bracingBreakRate,
       List<ImagePaths> bracingBreakRateImages,
-      DamageLevel jointFailure,
+      DamageLevel? jointFailure,
       List<ImagePaths> jointFailureImages,
-      DamageLevel columnBaseDamage,
+      DamageLevel? columnBaseDamage,
       List<ImagePaths> columnBaseDamageImages,
-      DamageLevel corrosion,
+      DamageLevel? corrosion,
       List<ImagePaths> corrosionImages,
-      DamageLevel roofingMaterial,
+      DamageLevel? roofingMaterial,
       List<ImagePaths> roofingMaterialImages,
-      DamageLevel windowFrame,
+      DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel exteriorWet,
+      DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel exteriorDry,
+      DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel signageAndEquipment,
+      DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel outdoorStairs,
+      DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel others,
+      DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
-      DamageLevel overallStructuralScore,
-      DamageLevel overallFallingObjectScore});
+      DamageLevel? overallStructuralScore,
+      DamageLevel? overallFallingObjectScore});
 }
 
 /// @nodoc
@@ -2197,42 +2197,42 @@ class __$$SteelFrameContentImplCopyWithImpl<$Res>
   $Res call({
     Object? exteriorInspectionScore = null,
     Object? exteriorInspectionRemarks = freezed,
-    Object? adjacentBuildingRisk = null,
+    Object? adjacentBuildingRisk = freezed,
     Object? adjacentBuildingRiskImages = null,
-    Object? unevenSettlement = null,
+    Object? unevenSettlement = freezed,
     Object? unevenSettlementImages = null,
-    Object? upperFloorLe1 = null,
+    Object? upperFloorLe1 = freezed,
     Object? upperFloorLe1Images = null,
-    Object? upperFloorLe2 = null,
+    Object? upperFloorLe2 = freezed,
     Object? upperFloorLe2Images = null,
-    Object? hasBuckling = null,
+    Object? hasBuckling = freezed,
     Object? hasBucklingImages = null,
-    Object? bracingBreakRate = null,
+    Object? bracingBreakRate = freezed,
     Object? bracingBreakRateImages = null,
-    Object? jointFailure = null,
+    Object? jointFailure = freezed,
     Object? jointFailureImages = null,
-    Object? columnBaseDamage = null,
+    Object? columnBaseDamage = freezed,
     Object? columnBaseDamageImages = null,
-    Object? corrosion = null,
+    Object? corrosion = freezed,
     Object? corrosionImages = null,
-    Object? roofingMaterial = null,
+    Object? roofingMaterial = freezed,
     Object? roofingMaterialImages = null,
-    Object? windowFrame = null,
+    Object? windowFrame = freezed,
     Object? windowFrameImages = null,
-    Object? exteriorWet = null,
+    Object? exteriorWet = freezed,
     Object? exteriorWetImages = null,
-    Object? exteriorDry = null,
+    Object? exteriorDry = freezed,
     Object? exteriorDryImages = null,
-    Object? signageAndEquipment = null,
+    Object? signageAndEquipment = freezed,
     Object? signageAndEquipmentImages = null,
-    Object? outdoorStairs = null,
+    Object? outdoorStairs = freezed,
     Object? outdoorStairsImages = null,
-    Object? others = null,
+    Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
     Object? overallExteriorScore = null,
-    Object? overallStructuralScore = null,
-    Object? overallFallingObjectScore = null,
+    Object? overallStructuralScore = freezed,
+    Object? overallFallingObjectScore = freezed,
   }) {
     return _then(_$SteelFrameContentImpl(
       exteriorInspectionScore: null == exteriorInspectionScore
@@ -2243,130 +2243,130 @@ class __$$SteelFrameContentImplCopyWithImpl<$Res>
           ? _value.exteriorInspectionRemarks
           : exteriorInspectionRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      adjacentBuildingRisk: null == adjacentBuildingRisk
+      adjacentBuildingRisk: freezed == adjacentBuildingRisk
           ? _value.adjacentBuildingRisk
           : adjacentBuildingRisk // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       adjacentBuildingRiskImages: null == adjacentBuildingRiskImages
           ? _value._adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      unevenSettlement: null == unevenSettlement
+      unevenSettlement: freezed == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       unevenSettlementImages: null == unevenSettlementImages
           ? _value._unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      upperFloorLe1: null == upperFloorLe1
+      upperFloorLe1: freezed == upperFloorLe1
           ? _value.upperFloorLe1
           : upperFloorLe1 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       upperFloorLe1Images: null == upperFloorLe1Images
           ? _value._upperFloorLe1Images
           : upperFloorLe1Images // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      upperFloorLe2: null == upperFloorLe2
+      upperFloorLe2: freezed == upperFloorLe2
           ? _value.upperFloorLe2
           : upperFloorLe2 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       upperFloorLe2Images: null == upperFloorLe2Images
           ? _value._upperFloorLe2Images
           : upperFloorLe2Images // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      hasBuckling: null == hasBuckling
+      hasBuckling: freezed == hasBuckling
           ? _value.hasBuckling
           : hasBuckling // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       hasBucklingImages: null == hasBucklingImages
           ? _value._hasBucklingImages
           : hasBucklingImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      bracingBreakRate: null == bracingBreakRate
+      bracingBreakRate: freezed == bracingBreakRate
           ? _value.bracingBreakRate
           : bracingBreakRate // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       bracingBreakRateImages: null == bracingBreakRateImages
           ? _value._bracingBreakRateImages
           : bracingBreakRateImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      jointFailure: null == jointFailure
+      jointFailure: freezed == jointFailure
           ? _value.jointFailure
           : jointFailure // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       jointFailureImages: null == jointFailureImages
           ? _value._jointFailureImages
           : jointFailureImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      columnBaseDamage: null == columnBaseDamage
+      columnBaseDamage: freezed == columnBaseDamage
           ? _value.columnBaseDamage
           : columnBaseDamage // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       columnBaseDamageImages: null == columnBaseDamageImages
           ? _value._columnBaseDamageImages
           : columnBaseDamageImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      corrosion: null == corrosion
+      corrosion: freezed == corrosion
           ? _value.corrosion
           : corrosion // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       corrosionImages: null == corrosionImages
           ? _value._corrosionImages
           : corrosionImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      roofingMaterial: null == roofingMaterial
+      roofingMaterial: freezed == roofingMaterial
           ? _value.roofingMaterial
           : roofingMaterial // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       roofingMaterialImages: null == roofingMaterialImages
           ? _value._roofingMaterialImages
           : roofingMaterialImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      windowFrame: null == windowFrame
+      windowFrame: freezed == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       windowFrameImages: null == windowFrameImages
           ? _value._windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorWet: null == exteriorWet
+      exteriorWet: freezed == exteriorWet
           ? _value.exteriorWet
           : exteriorWet // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorWetImages: null == exteriorWetImages
           ? _value._exteriorWetImages
           : exteriorWetImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorDry: null == exteriorDry
+      exteriorDry: freezed == exteriorDry
           ? _value.exteriorDry
           : exteriorDry // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorDryImages: null == exteriorDryImages
           ? _value._exteriorDryImages
           : exteriorDryImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      signageAndEquipment: null == signageAndEquipment
+      signageAndEquipment: freezed == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       signageAndEquipmentImages: null == signageAndEquipmentImages
           ? _value._signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      outdoorStairs: null == outdoorStairs
+      outdoorStairs: freezed == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       outdoorStairsImages: null == outdoorStairsImages
           ? _value._outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      others: null == others
+      others: freezed == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       othersImages: null == othersImages
           ? _value._othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
@@ -2379,14 +2379,14 @@ class __$$SteelFrameContentImplCopyWithImpl<$Res>
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
               as String,
-      overallStructuralScore: null == overallStructuralScore
+      overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallFallingObjectScore: null == overallFallingObjectScore
+              as DamageLevel?,
+      overallFallingObjectScore: freezed == overallFallingObjectScore
           ? _value.overallFallingObjectScore
           : overallFallingObjectScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
     ));
   }
 }
@@ -2460,7 +2460,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
   final String? exteriorInspectionRemarks;
 //隣接建築物・周辺地盤等及び構造躯体に関する危険度
   @override
-  final DamageLevel adjacentBuildingRisk;
+  final DamageLevel? adjacentBuildingRisk;
   final List<ImagePaths> _adjacentBuildingRiskImages;
   @override
   @JsonKey()
@@ -2473,7 +2473,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //不同沈下による建築物全体の傾斜
   @override
-  final DamageLevel unevenSettlement;
+  final DamageLevel? unevenSettlement;
   final List<ImagePaths> _unevenSettlementImages;
   @override
   @JsonKey()
@@ -2486,7 +2486,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //傾斜を生じた階の上の階数が1階以下
   @override
-  final DamageLevel upperFloorLe1;
+  final DamageLevel? upperFloorLe1;
   final List<ImagePaths> _upperFloorLe1Images;
   @override
   @JsonKey()
@@ -2499,7 +2499,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //傾斜を生じた階の上の階数が2階以下
   @override
-  final DamageLevel upperFloorLe2;
+  final DamageLevel? upperFloorLe2;
   final List<ImagePaths> _upperFloorLe2Images;
   @override
   @JsonKey()
@@ -2512,7 +2512,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //部材の座屈の有無
   @override
-  final DamageLevel hasBuckling;
+  final DamageLevel? hasBuckling;
   final List<ImagePaths> _hasBucklingImages;
   @override
   @JsonKey()
@@ -2525,7 +2525,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //筋違の破断率
   @override
-  final DamageLevel bracingBreakRate;
+  final DamageLevel? bracingBreakRate;
   final List<ImagePaths> _bracingBreakRateImages;
   @override
   @JsonKey()
@@ -2538,7 +2538,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //柱梁接合部および継手の破壊
   @override
-  final DamageLevel jointFailure;
+  final DamageLevel? jointFailure;
   final List<ImagePaths> _jointFailureImages;
   @override
   @JsonKey()
@@ -2551,7 +2551,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //柱脚の破損
   @override
-  final DamageLevel columnBaseDamage;
+  final DamageLevel? columnBaseDamage;
   final List<ImagePaths> _columnBaseDamageImages;
   @override
   @JsonKey()
@@ -2564,7 +2564,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //腐食の有無
   @override
-  final DamageLevel corrosion;
+  final DamageLevel? corrosion;
   final List<ImagePaths> _corrosionImages;
   @override
   @JsonKey()
@@ -2577,7 +2577,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 //落下危険物・転倒危険物に関する危険度
 //屋根材
   @override
-  final DamageLevel roofingMaterial;
+  final DamageLevel? roofingMaterial;
   final List<ImagePaths> _roofingMaterialImages;
   @override
   @JsonKey()
@@ -2590,7 +2590,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //窓枠・窓ガラス
   @override
-  final DamageLevel windowFrame;
+  final DamageLevel? windowFrame;
   final List<ImagePaths> _windowFrameImages;
   @override
   @JsonKey()
@@ -2603,7 +2603,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //外装材　湿式
   @override
-  final DamageLevel exteriorWet;
+  final DamageLevel? exteriorWet;
   final List<ImagePaths> _exteriorWetImages;
   @override
   @JsonKey()
@@ -2616,7 +2616,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //外装材　乾式
   @override
-  final DamageLevel exteriorDry;
+  final DamageLevel? exteriorDry;
   final List<ImagePaths> _exteriorDryImages;
   @override
   @JsonKey()
@@ -2629,7 +2629,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //看板・機器類
   @override
-  final DamageLevel signageAndEquipment;
+  final DamageLevel? signageAndEquipment;
   final List<ImagePaths> _signageAndEquipmentImages;
   @override
   @JsonKey()
@@ -2642,7 +2642,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //屋外階段
   @override
-  final DamageLevel outdoorStairs;
+  final DamageLevel? outdoorStairs;
   final List<ImagePaths> _outdoorStairsImages;
   @override
   @JsonKey()
@@ -2655,7 +2655,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //その他
   @override
-  final DamageLevel others;
+  final DamageLevel? others;
   final List<ImagePaths> _othersImages;
   @override
   @JsonKey()
@@ -2670,9 +2670,9 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
   @override
   final String overallExteriorScore;
   @override
-  final DamageLevel overallStructuralScore;
+  final DamageLevel? overallStructuralScore;
   @override
-  final DamageLevel overallFallingObjectScore;
+  final DamageLevel? overallFallingObjectScore;
 
   @override
   String toString() {
@@ -2814,42 +2814,42 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   const factory _SteelFrameContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
-          required final DamageLevel adjacentBuildingRisk,
+          required final DamageLevel? adjacentBuildingRisk,
           final List<ImagePaths> adjacentBuildingRiskImages,
-          required final DamageLevel unevenSettlement,
+          required final DamageLevel? unevenSettlement,
           final List<ImagePaths> unevenSettlementImages,
-          required final DamageLevel upperFloorLe1,
+          required final DamageLevel? upperFloorLe1,
           final List<ImagePaths> upperFloorLe1Images,
-          required final DamageLevel upperFloorLe2,
+          required final DamageLevel? upperFloorLe2,
           final List<ImagePaths> upperFloorLe2Images,
-          required final DamageLevel hasBuckling,
+          required final DamageLevel? hasBuckling,
           final List<ImagePaths> hasBucklingImages,
-          required final DamageLevel bracingBreakRate,
+          required final DamageLevel? bracingBreakRate,
           final List<ImagePaths> bracingBreakRateImages,
-          required final DamageLevel jointFailure,
+          required final DamageLevel? jointFailure,
           final List<ImagePaths> jointFailureImages,
-          required final DamageLevel columnBaseDamage,
+          required final DamageLevel? columnBaseDamage,
           final List<ImagePaths> columnBaseDamageImages,
-          required final DamageLevel corrosion,
+          required final DamageLevel? corrosion,
           final List<ImagePaths> corrosionImages,
-          required final DamageLevel roofingMaterial,
+          required final DamageLevel? roofingMaterial,
           final List<ImagePaths> roofingMaterialImages,
-          required final DamageLevel windowFrame,
+          required final DamageLevel? windowFrame,
           final List<ImagePaths> windowFrameImages,
-          required final DamageLevel exteriorWet,
+          required final DamageLevel? exteriorWet,
           final List<ImagePaths> exteriorWetImages,
-          required final DamageLevel exteriorDry,
+          required final DamageLevel? exteriorDry,
           final List<ImagePaths> exteriorDryImages,
-          required final DamageLevel signageAndEquipment,
+          required final DamageLevel? signageAndEquipment,
           final List<ImagePaths> signageAndEquipmentImages,
-          required final DamageLevel outdoorStairs,
+          required final DamageLevel? outdoorStairs,
           final List<ImagePaths> outdoorStairsImages,
-          required final DamageLevel others,
+          required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
-          required final DamageLevel overallStructuralScore,
-          required final DamageLevel overallFallingObjectScore}) =
+          required final DamageLevel? overallStructuralScore,
+          required final DamageLevel? overallFallingObjectScore}) =
       _$SteelFrameContentImpl;
 
   factory _SteelFrameContent.fromJson(Map<String, dynamic> json) =
@@ -2861,68 +2861,68 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   @override
   String? get exteriorInspectionRemarks; //隣接建築物・周辺地盤等及び構造躯体に関する危険度
   @override
-  DamageLevel get adjacentBuildingRisk;
+  DamageLevel? get adjacentBuildingRisk;
   @override
   List<ImagePaths> get adjacentBuildingRiskImages; //不同沈下による建築物全体の傾斜
   @override
-  DamageLevel get unevenSettlement;
+  DamageLevel? get unevenSettlement;
   @override
   List<ImagePaths> get unevenSettlementImages; //傾斜を生じた階の上の階数が1階以下
   @override
-  DamageLevel get upperFloorLe1;
+  DamageLevel? get upperFloorLe1;
   @override
   List<ImagePaths> get upperFloorLe1Images; //傾斜を生じた階の上の階数が2階以下
   @override
-  DamageLevel get upperFloorLe2;
+  DamageLevel? get upperFloorLe2;
   @override
   List<ImagePaths> get upperFloorLe2Images; //部材の座屈の有無
   @override
-  DamageLevel get hasBuckling;
+  DamageLevel? get hasBuckling;
   @override
   List<ImagePaths> get hasBucklingImages; //筋違の破断率
   @override
-  DamageLevel get bracingBreakRate;
+  DamageLevel? get bracingBreakRate;
   @override
   List<ImagePaths> get bracingBreakRateImages; //柱梁接合部および継手の破壊
   @override
-  DamageLevel get jointFailure;
+  DamageLevel? get jointFailure;
   @override
   List<ImagePaths> get jointFailureImages; //柱脚の破損
   @override
-  DamageLevel get columnBaseDamage;
+  DamageLevel? get columnBaseDamage;
   @override
   List<ImagePaths> get columnBaseDamageImages; //腐食の有無
   @override
-  DamageLevel get corrosion;
+  DamageLevel? get corrosion;
   @override
   List<ImagePaths> get corrosionImages; //落下危険物・転倒危険物に関する危険度
 //屋根材
   @override
-  DamageLevel get roofingMaterial;
+  DamageLevel? get roofingMaterial;
   @override
   List<ImagePaths> get roofingMaterialImages; //窓枠・窓ガラス
   @override
-  DamageLevel get windowFrame;
+  DamageLevel? get windowFrame;
   @override
   List<ImagePaths> get windowFrameImages; //外装材　湿式
   @override
-  DamageLevel get exteriorWet;
+  DamageLevel? get exteriorWet;
   @override
   List<ImagePaths> get exteriorWetImages; //外装材　乾式
   @override
-  DamageLevel get exteriorDry;
+  DamageLevel? get exteriorDry;
   @override
   List<ImagePaths> get exteriorDryImages; //看板・機器類
   @override
-  DamageLevel get signageAndEquipment;
+  DamageLevel? get signageAndEquipment;
   @override
   List<ImagePaths> get signageAndEquipmentImages; //屋外階段
   @override
-  DamageLevel get outdoorStairs;
+  DamageLevel? get outdoorStairs;
   @override
   List<ImagePaths> get outdoorStairsImages; //その他
   @override
-  DamageLevel get others;
+  DamageLevel? get others;
   @override
   List<ImagePaths> get othersImages;
   @override
@@ -2930,9 +2930,9 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   @override
   String get overallExteriorScore;
   @override
-  DamageLevel get overallStructuralScore;
+  DamageLevel? get overallStructuralScore;
   @override
-  DamageLevel get overallFallingObjectScore;
+  DamageLevel? get overallFallingObjectScore;
 
   /// Create a copy of SteelFrameContent
   /// with the given fields replaced by the non-null parameter values.
@@ -2952,17 +2952,17 @@ mixin _$RebarContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
       throw _privateConstructorUsedError; //損傷度Ⅲ以上の損傷部材の有無
-  DamageLevel get hasSevereDamageMembers => throw _privateConstructorUsedError;
+  DamageLevel? get hasSevereDamageMembers => throw _privateConstructorUsedError;
   List<ImagePaths> get hasSevereDamageMembersImages =>
       throw _privateConstructorUsedError; //隣接建築物・周辺地盤の破壊による危険
-  DamageLevel get adjacentBuildingRisk => throw _privateConstructorUsedError;
+  DamageLevel? get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths> get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError; //地盤破壊による建築物全体の沈下
-  DamageLevel get groundFailureInclination =>
+  DamageLevel? get groundFailureInclination =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get groundFailureInclinationImages =>
       throw _privateConstructorUsedError; //不同沈下による建築物全体の傾斜
-  DamageLevel get unevenSettlement => throw _privateConstructorUsedError;
+  DamageLevel? get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths> get unevenSettlementImages =>
       throw _privateConstructorUsedError; //柱の被害の調査階数
   int get inspectedFloorsForColumns =>
@@ -2973,7 +2973,7 @@ mixin _$RebarContent {
       throw _privateConstructorUsedError; //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率
   double get percentColumnsLevel5 =>
       throw _privateConstructorUsedError; //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
-  DamageLevel get percentColumnsDamageLevel5 =>
+  DamageLevel? get percentColumnsDamageLevel5 =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get percentColumnsDamageLevel5Images =>
       throw _privateConstructorUsedError; //損傷度Ⅴに関する調査率
@@ -2984,38 +2984,38 @@ mixin _$RebarContent {
       throw _privateConstructorUsedError; //損傷度Ⅳの調査柱本数のうち損傷度Ⅳの柱のパーセントの調査率
   double get percentColumnsLevel4 =>
       throw _privateConstructorUsedError; //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
-  DamageLevel get percentColumnsDamageLevel4 =>
+  DamageLevel? get percentColumnsDamageLevel4 =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get percentColumnsDamageLevel4Images =>
       throw _privateConstructorUsedError; //損傷度Ⅳに関する調査率
   double get surveyRateLevel4 =>
       throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
 //窓枠・窓ガラス
-  DamageLevel get windowFrame => throw _privateConstructorUsedError;
+  DamageLevel? get windowFrame => throw _privateConstructorUsedError;
   List<ImagePaths> get windowFrameImages =>
       throw _privateConstructorUsedError; //外装材（モルタル・タイル・石貼り等）
-  DamageLevel get exteriorMaterialMortarTileStone =>
+  DamageLevel? get exteriorMaterialMortarTileStone =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorMaterialMortarTileStoneImages =>
       throw _privateConstructorUsedError; //外装材（ALC板・PC板・金属・ブロック等）
-  DamageLevel get exteriorMaterialALCPCMetalBlock =>
+  DamageLevel? get exteriorMaterialALCPCMetalBlock =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorMaterialALCPCMetalBlockImages =>
       throw _privateConstructorUsedError; //看板・機器類
-  DamageLevel get signageAndEquipment => throw _privateConstructorUsedError;
+  DamageLevel? get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths> get signageAndEquipmentImages =>
       throw _privateConstructorUsedError; //屋外階段
-  DamageLevel get outdoorStairs => throw _privateConstructorUsedError;
+  DamageLevel? get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths> get outdoorStairsImages =>
       throw _privateConstructorUsedError; //その他
-  DamageLevel get others => throw _privateConstructorUsedError;
+  DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError; //判定(2)
-  DamageLevel get overallStructuralScore2 =>
+  DamageLevel? get overallStructuralScore2 =>
       throw _privateConstructorUsedError; //総合判定（調査番号2)
-  DamageLevel get overallStructuralScore => throw _privateConstructorUsedError;
-  DamageLevel get overallFallingObjectScore =>
+  DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
+  DamageLevel? get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
   /// Serializes this RebarContent to a JSON map.
@@ -3037,44 +3037,44 @@ abstract class $RebarContentCopyWith<$Res> {
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel hasSevereDamageMembers,
+      DamageLevel? hasSevereDamageMembers,
       List<ImagePaths> hasSevereDamageMembersImages,
-      DamageLevel adjacentBuildingRisk,
+      DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel groundFailureInclination,
+      DamageLevel? groundFailureInclination,
       List<ImagePaths> groundFailureInclinationImages,
-      DamageLevel unevenSettlement,
+      DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
       int inspectedFloorsForColumns,
       int totalColumnsLevel5,
       int surveyedColumnsLevel5,
       double percentColumnsLevel5,
-      DamageLevel percentColumnsDamageLevel5,
+      DamageLevel? percentColumnsDamageLevel5,
       List<ImagePaths> percentColumnsDamageLevel5Images,
       double surveyRateLevel5,
       int totalColumnsLevel4,
       int surveyedColumnsLevel4,
       double percentColumnsLevel4,
-      DamageLevel percentColumnsDamageLevel4,
+      DamageLevel? percentColumnsDamageLevel4,
       List<ImagePaths> percentColumnsDamageLevel4Images,
       double surveyRateLevel4,
-      DamageLevel windowFrame,
+      DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel exteriorMaterialMortarTileStone,
+      DamageLevel? exteriorMaterialMortarTileStone,
       List<ImagePaths> exteriorMaterialMortarTileStoneImages,
-      DamageLevel exteriorMaterialALCPCMetalBlock,
+      DamageLevel? exteriorMaterialALCPCMetalBlock,
       List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
-      DamageLevel signageAndEquipment,
+      DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel outdoorStairs,
+      DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel others,
+      DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
-      DamageLevel overallStructuralScore2,
-      DamageLevel overallStructuralScore,
-      DamageLevel overallFallingObjectScore});
+      DamageLevel? overallStructuralScore2,
+      DamageLevel? overallStructuralScore,
+      DamageLevel? overallFallingObjectScore});
 }
 
 /// @nodoc
@@ -3094,44 +3094,44 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
   $Res call({
     Object? exteriorInspectionScore = null,
     Object? exteriorInspectionRemarks = freezed,
-    Object? hasSevereDamageMembers = null,
+    Object? hasSevereDamageMembers = freezed,
     Object? hasSevereDamageMembersImages = null,
-    Object? adjacentBuildingRisk = null,
+    Object? adjacentBuildingRisk = freezed,
     Object? adjacentBuildingRiskImages = null,
-    Object? groundFailureInclination = null,
+    Object? groundFailureInclination = freezed,
     Object? groundFailureInclinationImages = null,
-    Object? unevenSettlement = null,
+    Object? unevenSettlement = freezed,
     Object? unevenSettlementImages = null,
     Object? inspectedFloorsForColumns = null,
     Object? totalColumnsLevel5 = null,
     Object? surveyedColumnsLevel5 = null,
     Object? percentColumnsLevel5 = null,
-    Object? percentColumnsDamageLevel5 = null,
+    Object? percentColumnsDamageLevel5 = freezed,
     Object? percentColumnsDamageLevel5Images = null,
     Object? surveyRateLevel5 = null,
     Object? totalColumnsLevel4 = null,
     Object? surveyedColumnsLevel4 = null,
     Object? percentColumnsLevel4 = null,
-    Object? percentColumnsDamageLevel4 = null,
+    Object? percentColumnsDamageLevel4 = freezed,
     Object? percentColumnsDamageLevel4Images = null,
     Object? surveyRateLevel4 = null,
-    Object? windowFrame = null,
+    Object? windowFrame = freezed,
     Object? windowFrameImages = null,
-    Object? exteriorMaterialMortarTileStone = null,
+    Object? exteriorMaterialMortarTileStone = freezed,
     Object? exteriorMaterialMortarTileStoneImages = null,
-    Object? exteriorMaterialALCPCMetalBlock = null,
+    Object? exteriorMaterialALCPCMetalBlock = freezed,
     Object? exteriorMaterialALCPCMetalBlockImages = null,
-    Object? signageAndEquipment = null,
+    Object? signageAndEquipment = freezed,
     Object? signageAndEquipmentImages = null,
-    Object? outdoorStairs = null,
+    Object? outdoorStairs = freezed,
     Object? outdoorStairsImages = null,
-    Object? others = null,
+    Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
     Object? overallExteriorScore = null,
-    Object? overallStructuralScore2 = null,
-    Object? overallStructuralScore = null,
-    Object? overallFallingObjectScore = null,
+    Object? overallStructuralScore2 = freezed,
+    Object? overallStructuralScore = freezed,
+    Object? overallFallingObjectScore = freezed,
   }) {
     return _then(_value.copyWith(
       exteriorInspectionScore: null == exteriorInspectionScore
@@ -3142,34 +3142,34 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
           ? _value.exteriorInspectionRemarks
           : exteriorInspectionRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      hasSevereDamageMembers: null == hasSevereDamageMembers
+      hasSevereDamageMembers: freezed == hasSevereDamageMembers
           ? _value.hasSevereDamageMembers
           : hasSevereDamageMembers // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       hasSevereDamageMembersImages: null == hasSevereDamageMembersImages
           ? _value.hasSevereDamageMembersImages
           : hasSevereDamageMembersImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      adjacentBuildingRisk: null == adjacentBuildingRisk
+      adjacentBuildingRisk: freezed == adjacentBuildingRisk
           ? _value.adjacentBuildingRisk
           : adjacentBuildingRisk // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       adjacentBuildingRiskImages: null == adjacentBuildingRiskImages
           ? _value.adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      groundFailureInclination: null == groundFailureInclination
+      groundFailureInclination: freezed == groundFailureInclination
           ? _value.groundFailureInclination
           : groundFailureInclination // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       groundFailureInclinationImages: null == groundFailureInclinationImages
           ? _value.groundFailureInclinationImages
           : groundFailureInclinationImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      unevenSettlement: null == unevenSettlement
+      unevenSettlement: freezed == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       unevenSettlementImages: null == unevenSettlementImages
           ? _value.unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
@@ -3190,10 +3190,10 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
           ? _value.percentColumnsLevel5
           : percentColumnsLevel5 // ignore: cast_nullable_to_non_nullable
               as double,
-      percentColumnsDamageLevel5: null == percentColumnsDamageLevel5
+      percentColumnsDamageLevel5: freezed == percentColumnsDamageLevel5
           ? _value.percentColumnsDamageLevel5
           : percentColumnsDamageLevel5 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       percentColumnsDamageLevel5Images: null == percentColumnsDamageLevel5Images
           ? _value.percentColumnsDamageLevel5Images
           : percentColumnsDamageLevel5Images // ignore: cast_nullable_to_non_nullable
@@ -3214,10 +3214,10 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
           ? _value.percentColumnsLevel4
           : percentColumnsLevel4 // ignore: cast_nullable_to_non_nullable
               as double,
-      percentColumnsDamageLevel4: null == percentColumnsDamageLevel4
+      percentColumnsDamageLevel4: freezed == percentColumnsDamageLevel4
           ? _value.percentColumnsDamageLevel4
           : percentColumnsDamageLevel4 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       percentColumnsDamageLevel4Images: null == percentColumnsDamageLevel4Images
           ? _value.percentColumnsDamageLevel4Images
           : percentColumnsDamageLevel4Images // ignore: cast_nullable_to_non_nullable
@@ -3226,52 +3226,54 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
           ? _value.surveyRateLevel4
           : surveyRateLevel4 // ignore: cast_nullable_to_non_nullable
               as double,
-      windowFrame: null == windowFrame
+      windowFrame: freezed == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       windowFrameImages: null == windowFrameImages
           ? _value.windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorMaterialMortarTileStone: null == exteriorMaterialMortarTileStone
+      exteriorMaterialMortarTileStone: freezed ==
+              exteriorMaterialMortarTileStone
           ? _value.exteriorMaterialMortarTileStone
           : exteriorMaterialMortarTileStone // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorMaterialMortarTileStoneImages: null ==
               exteriorMaterialMortarTileStoneImages
           ? _value.exteriorMaterialMortarTileStoneImages
           : exteriorMaterialMortarTileStoneImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorMaterialALCPCMetalBlock: null == exteriorMaterialALCPCMetalBlock
+      exteriorMaterialALCPCMetalBlock: freezed ==
+              exteriorMaterialALCPCMetalBlock
           ? _value.exteriorMaterialALCPCMetalBlock
           : exteriorMaterialALCPCMetalBlock // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorMaterialALCPCMetalBlockImages: null ==
               exteriorMaterialALCPCMetalBlockImages
           ? _value.exteriorMaterialALCPCMetalBlockImages
           : exteriorMaterialALCPCMetalBlockImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      signageAndEquipment: null == signageAndEquipment
+      signageAndEquipment: freezed == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       signageAndEquipmentImages: null == signageAndEquipmentImages
           ? _value.signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      outdoorStairs: null == outdoorStairs
+      outdoorStairs: freezed == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       outdoorStairsImages: null == outdoorStairsImages
           ? _value.outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      others: null == others
+      others: freezed == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       othersImages: null == othersImages
           ? _value.othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
@@ -3284,18 +3286,18 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
               as String,
-      overallStructuralScore2: null == overallStructuralScore2
+      overallStructuralScore2: freezed == overallStructuralScore2
           ? _value.overallStructuralScore2
           : overallStructuralScore2 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallStructuralScore: null == overallStructuralScore
+              as DamageLevel?,
+      overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallFallingObjectScore: null == overallFallingObjectScore
+              as DamageLevel?,
+      overallFallingObjectScore: freezed == overallFallingObjectScore
           ? _value.overallFallingObjectScore
           : overallFallingObjectScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
     ) as $Val);
   }
 }
@@ -3311,44 +3313,44 @@ abstract class _$$RebarContentImplCopyWith<$Res>
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel hasSevereDamageMembers,
+      DamageLevel? hasSevereDamageMembers,
       List<ImagePaths> hasSevereDamageMembersImages,
-      DamageLevel adjacentBuildingRisk,
+      DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel groundFailureInclination,
+      DamageLevel? groundFailureInclination,
       List<ImagePaths> groundFailureInclinationImages,
-      DamageLevel unevenSettlement,
+      DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
       int inspectedFloorsForColumns,
       int totalColumnsLevel5,
       int surveyedColumnsLevel5,
       double percentColumnsLevel5,
-      DamageLevel percentColumnsDamageLevel5,
+      DamageLevel? percentColumnsDamageLevel5,
       List<ImagePaths> percentColumnsDamageLevel5Images,
       double surveyRateLevel5,
       int totalColumnsLevel4,
       int surveyedColumnsLevel4,
       double percentColumnsLevel4,
-      DamageLevel percentColumnsDamageLevel4,
+      DamageLevel? percentColumnsDamageLevel4,
       List<ImagePaths> percentColumnsDamageLevel4Images,
       double surveyRateLevel4,
-      DamageLevel windowFrame,
+      DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel exteriorMaterialMortarTileStone,
+      DamageLevel? exteriorMaterialMortarTileStone,
       List<ImagePaths> exteriorMaterialMortarTileStoneImages,
-      DamageLevel exteriorMaterialALCPCMetalBlock,
+      DamageLevel? exteriorMaterialALCPCMetalBlock,
       List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
-      DamageLevel signageAndEquipment,
+      DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel outdoorStairs,
+      DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel others,
+      DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
-      DamageLevel overallStructuralScore2,
-      DamageLevel overallStructuralScore,
-      DamageLevel overallFallingObjectScore});
+      DamageLevel? overallStructuralScore2,
+      DamageLevel? overallStructuralScore,
+      DamageLevel? overallFallingObjectScore});
 }
 
 /// @nodoc
@@ -3366,44 +3368,44 @@ class __$$RebarContentImplCopyWithImpl<$Res>
   $Res call({
     Object? exteriorInspectionScore = null,
     Object? exteriorInspectionRemarks = freezed,
-    Object? hasSevereDamageMembers = null,
+    Object? hasSevereDamageMembers = freezed,
     Object? hasSevereDamageMembersImages = null,
-    Object? adjacentBuildingRisk = null,
+    Object? adjacentBuildingRisk = freezed,
     Object? adjacentBuildingRiskImages = null,
-    Object? groundFailureInclination = null,
+    Object? groundFailureInclination = freezed,
     Object? groundFailureInclinationImages = null,
-    Object? unevenSettlement = null,
+    Object? unevenSettlement = freezed,
     Object? unevenSettlementImages = null,
     Object? inspectedFloorsForColumns = null,
     Object? totalColumnsLevel5 = null,
     Object? surveyedColumnsLevel5 = null,
     Object? percentColumnsLevel5 = null,
-    Object? percentColumnsDamageLevel5 = null,
+    Object? percentColumnsDamageLevel5 = freezed,
     Object? percentColumnsDamageLevel5Images = null,
     Object? surveyRateLevel5 = null,
     Object? totalColumnsLevel4 = null,
     Object? surveyedColumnsLevel4 = null,
     Object? percentColumnsLevel4 = null,
-    Object? percentColumnsDamageLevel4 = null,
+    Object? percentColumnsDamageLevel4 = freezed,
     Object? percentColumnsDamageLevel4Images = null,
     Object? surveyRateLevel4 = null,
-    Object? windowFrame = null,
+    Object? windowFrame = freezed,
     Object? windowFrameImages = null,
-    Object? exteriorMaterialMortarTileStone = null,
+    Object? exteriorMaterialMortarTileStone = freezed,
     Object? exteriorMaterialMortarTileStoneImages = null,
-    Object? exteriorMaterialALCPCMetalBlock = null,
+    Object? exteriorMaterialALCPCMetalBlock = freezed,
     Object? exteriorMaterialALCPCMetalBlockImages = null,
-    Object? signageAndEquipment = null,
+    Object? signageAndEquipment = freezed,
     Object? signageAndEquipmentImages = null,
-    Object? outdoorStairs = null,
+    Object? outdoorStairs = freezed,
     Object? outdoorStairsImages = null,
-    Object? others = null,
+    Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
     Object? overallExteriorScore = null,
-    Object? overallStructuralScore2 = null,
-    Object? overallStructuralScore = null,
-    Object? overallFallingObjectScore = null,
+    Object? overallStructuralScore2 = freezed,
+    Object? overallStructuralScore = freezed,
+    Object? overallFallingObjectScore = freezed,
   }) {
     return _then(_$RebarContentImpl(
       exteriorInspectionScore: null == exteriorInspectionScore
@@ -3414,34 +3416,34 @@ class __$$RebarContentImplCopyWithImpl<$Res>
           ? _value.exteriorInspectionRemarks
           : exteriorInspectionRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      hasSevereDamageMembers: null == hasSevereDamageMembers
+      hasSevereDamageMembers: freezed == hasSevereDamageMembers
           ? _value.hasSevereDamageMembers
           : hasSevereDamageMembers // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       hasSevereDamageMembersImages: null == hasSevereDamageMembersImages
           ? _value._hasSevereDamageMembersImages
           : hasSevereDamageMembersImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      adjacentBuildingRisk: null == adjacentBuildingRisk
+      adjacentBuildingRisk: freezed == adjacentBuildingRisk
           ? _value.adjacentBuildingRisk
           : adjacentBuildingRisk // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       adjacentBuildingRiskImages: null == adjacentBuildingRiskImages
           ? _value._adjacentBuildingRiskImages
           : adjacentBuildingRiskImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      groundFailureInclination: null == groundFailureInclination
+      groundFailureInclination: freezed == groundFailureInclination
           ? _value.groundFailureInclination
           : groundFailureInclination // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       groundFailureInclinationImages: null == groundFailureInclinationImages
           ? _value._groundFailureInclinationImages
           : groundFailureInclinationImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      unevenSettlement: null == unevenSettlement
+      unevenSettlement: freezed == unevenSettlement
           ? _value.unevenSettlement
           : unevenSettlement // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       unevenSettlementImages: null == unevenSettlementImages
           ? _value._unevenSettlementImages
           : unevenSettlementImages // ignore: cast_nullable_to_non_nullable
@@ -3462,10 +3464,10 @@ class __$$RebarContentImplCopyWithImpl<$Res>
           ? _value.percentColumnsLevel5
           : percentColumnsLevel5 // ignore: cast_nullable_to_non_nullable
               as double,
-      percentColumnsDamageLevel5: null == percentColumnsDamageLevel5
+      percentColumnsDamageLevel5: freezed == percentColumnsDamageLevel5
           ? _value.percentColumnsDamageLevel5
           : percentColumnsDamageLevel5 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       percentColumnsDamageLevel5Images: null == percentColumnsDamageLevel5Images
           ? _value._percentColumnsDamageLevel5Images
           : percentColumnsDamageLevel5Images // ignore: cast_nullable_to_non_nullable
@@ -3486,10 +3488,10 @@ class __$$RebarContentImplCopyWithImpl<$Res>
           ? _value.percentColumnsLevel4
           : percentColumnsLevel4 // ignore: cast_nullable_to_non_nullable
               as double,
-      percentColumnsDamageLevel4: null == percentColumnsDamageLevel4
+      percentColumnsDamageLevel4: freezed == percentColumnsDamageLevel4
           ? _value.percentColumnsDamageLevel4
           : percentColumnsDamageLevel4 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       percentColumnsDamageLevel4Images: null == percentColumnsDamageLevel4Images
           ? _value._percentColumnsDamageLevel4Images
           : percentColumnsDamageLevel4Images // ignore: cast_nullable_to_non_nullable
@@ -3498,52 +3500,54 @@ class __$$RebarContentImplCopyWithImpl<$Res>
           ? _value.surveyRateLevel4
           : surveyRateLevel4 // ignore: cast_nullable_to_non_nullable
               as double,
-      windowFrame: null == windowFrame
+      windowFrame: freezed == windowFrame
           ? _value.windowFrame
           : windowFrame // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       windowFrameImages: null == windowFrameImages
           ? _value._windowFrameImages
           : windowFrameImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorMaterialMortarTileStone: null == exteriorMaterialMortarTileStone
+      exteriorMaterialMortarTileStone: freezed ==
+              exteriorMaterialMortarTileStone
           ? _value.exteriorMaterialMortarTileStone
           : exteriorMaterialMortarTileStone // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorMaterialMortarTileStoneImages: null ==
               exteriorMaterialMortarTileStoneImages
           ? _value._exteriorMaterialMortarTileStoneImages
           : exteriorMaterialMortarTileStoneImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      exteriorMaterialALCPCMetalBlock: null == exteriorMaterialALCPCMetalBlock
+      exteriorMaterialALCPCMetalBlock: freezed ==
+              exteriorMaterialALCPCMetalBlock
           ? _value.exteriorMaterialALCPCMetalBlock
           : exteriorMaterialALCPCMetalBlock // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       exteriorMaterialALCPCMetalBlockImages: null ==
               exteriorMaterialALCPCMetalBlockImages
           ? _value._exteriorMaterialALCPCMetalBlockImages
           : exteriorMaterialALCPCMetalBlockImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      signageAndEquipment: null == signageAndEquipment
+      signageAndEquipment: freezed == signageAndEquipment
           ? _value.signageAndEquipment
           : signageAndEquipment // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       signageAndEquipmentImages: null == signageAndEquipmentImages
           ? _value._signageAndEquipmentImages
           : signageAndEquipmentImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      outdoorStairs: null == outdoorStairs
+      outdoorStairs: freezed == outdoorStairs
           ? _value.outdoorStairs
           : outdoorStairs // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       outdoorStairsImages: null == outdoorStairsImages
           ? _value._outdoorStairsImages
           : outdoorStairsImages // ignore: cast_nullable_to_non_nullable
               as List<ImagePaths>,
-      others: null == others
+      others: freezed == others
           ? _value.others
           : others // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
       othersImages: null == othersImages
           ? _value._othersImages
           : othersImages // ignore: cast_nullable_to_non_nullable
@@ -3556,18 +3560,18 @@ class __$$RebarContentImplCopyWithImpl<$Res>
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
               as String,
-      overallStructuralScore2: null == overallStructuralScore2
+      overallStructuralScore2: freezed == overallStructuralScore2
           ? _value.overallStructuralScore2
           : overallStructuralScore2 // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallStructuralScore: null == overallStructuralScore
+              as DamageLevel?,
+      overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
-      overallFallingObjectScore: null == overallFallingObjectScore
+              as DamageLevel?,
+      overallFallingObjectScore: freezed == overallFallingObjectScore
           ? _value.overallFallingObjectScore
           : overallFallingObjectScore // ignore: cast_nullable_to_non_nullable
-              as DamageLevel,
+              as DamageLevel?,
     ));
   }
 }
@@ -3641,7 +3645,7 @@ class _$RebarContentImpl implements _RebarContent {
   final String? exteriorInspectionRemarks;
 //損傷度Ⅲ以上の損傷部材の有無
   @override
-  final DamageLevel hasSevereDamageMembers;
+  final DamageLevel? hasSevereDamageMembers;
   final List<ImagePaths> _hasSevereDamageMembersImages;
   @override
   @JsonKey()
@@ -3654,7 +3658,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //隣接建築物・周辺地盤の破壊による危険
   @override
-  final DamageLevel adjacentBuildingRisk;
+  final DamageLevel? adjacentBuildingRisk;
   final List<ImagePaths> _adjacentBuildingRiskImages;
   @override
   @JsonKey()
@@ -3667,7 +3671,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //地盤破壊による建築物全体の沈下
   @override
-  final DamageLevel groundFailureInclination;
+  final DamageLevel? groundFailureInclination;
   final List<ImagePaths> _groundFailureInclinationImages;
   @override
   @JsonKey()
@@ -3680,7 +3684,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //不同沈下による建築物全体の傾斜
   @override
-  final DamageLevel unevenSettlement;
+  final DamageLevel? unevenSettlement;
   final List<ImagePaths> _unevenSettlementImages;
   @override
   @JsonKey()
@@ -3706,7 +3710,7 @@ class _$RebarContentImpl implements _RebarContent {
   final double percentColumnsLevel5;
 //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
   @override
-  final DamageLevel percentColumnsDamageLevel5;
+  final DamageLevel? percentColumnsDamageLevel5;
   final List<ImagePaths> _percentColumnsDamageLevel5Images;
   @override
   @JsonKey()
@@ -3732,7 +3736,7 @@ class _$RebarContentImpl implements _RebarContent {
   final double percentColumnsLevel4;
 //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
   @override
-  final DamageLevel percentColumnsDamageLevel4;
+  final DamageLevel? percentColumnsDamageLevel4;
   final List<ImagePaths> _percentColumnsDamageLevel4Images;
   @override
   @JsonKey()
@@ -3749,7 +3753,7 @@ class _$RebarContentImpl implements _RebarContent {
 //落下危険物・転倒危険物に関する危険度
 //窓枠・窓ガラス
   @override
-  final DamageLevel windowFrame;
+  final DamageLevel? windowFrame;
   final List<ImagePaths> _windowFrameImages;
   @override
   @JsonKey()
@@ -3762,7 +3766,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //外装材（モルタル・タイル・石貼り等）
   @override
-  final DamageLevel exteriorMaterialMortarTileStone;
+  final DamageLevel? exteriorMaterialMortarTileStone;
   final List<ImagePaths> _exteriorMaterialMortarTileStoneImages;
   @override
   @JsonKey()
@@ -3775,7 +3779,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //外装材（ALC板・PC板・金属・ブロック等）
   @override
-  final DamageLevel exteriorMaterialALCPCMetalBlock;
+  final DamageLevel? exteriorMaterialALCPCMetalBlock;
   final List<ImagePaths> _exteriorMaterialALCPCMetalBlockImages;
   @override
   @JsonKey()
@@ -3788,7 +3792,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //看板・機器類
   @override
-  final DamageLevel signageAndEquipment;
+  final DamageLevel? signageAndEquipment;
   final List<ImagePaths> _signageAndEquipmentImages;
   @override
   @JsonKey()
@@ -3801,7 +3805,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //屋外階段
   @override
-  final DamageLevel outdoorStairs;
+  final DamageLevel? outdoorStairs;
   final List<ImagePaths> _outdoorStairsImages;
   @override
   @JsonKey()
@@ -3814,7 +3818,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //その他
   @override
-  final DamageLevel others;
+  final DamageLevel? others;
   final List<ImagePaths> _othersImages;
   @override
   @JsonKey()
@@ -3830,12 +3834,12 @@ class _$RebarContentImpl implements _RebarContent {
   final String overallExteriorScore;
 //判定(2)
   @override
-  final DamageLevel overallStructuralScore2;
+  final DamageLevel? overallStructuralScore2;
 //総合判定（調査番号2)
   @override
-  final DamageLevel overallStructuralScore;
+  final DamageLevel? overallStructuralScore;
   @override
-  final DamageLevel overallFallingObjectScore;
+  final DamageLevel? overallFallingObjectScore;
 
   @override
   String toString() {
@@ -3980,44 +3984,44 @@ abstract class _RebarContent implements RebarContent {
   const factory _RebarContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
-          required final DamageLevel hasSevereDamageMembers,
+          required final DamageLevel? hasSevereDamageMembers,
           final List<ImagePaths> hasSevereDamageMembersImages,
-          required final DamageLevel adjacentBuildingRisk,
+          required final DamageLevel? adjacentBuildingRisk,
           final List<ImagePaths> adjacentBuildingRiskImages,
-          required final DamageLevel groundFailureInclination,
+          required final DamageLevel? groundFailureInclination,
           final List<ImagePaths> groundFailureInclinationImages,
-          required final DamageLevel unevenSettlement,
+          required final DamageLevel? unevenSettlement,
           final List<ImagePaths> unevenSettlementImages,
           required final int inspectedFloorsForColumns,
           required final int totalColumnsLevel5,
           required final int surveyedColumnsLevel5,
           required final double percentColumnsLevel5,
-          required final DamageLevel percentColumnsDamageLevel5,
+          required final DamageLevel? percentColumnsDamageLevel5,
           final List<ImagePaths> percentColumnsDamageLevel5Images,
           required final double surveyRateLevel5,
           required final int totalColumnsLevel4,
           required final int surveyedColumnsLevel4,
           required final double percentColumnsLevel4,
-          required final DamageLevel percentColumnsDamageLevel4,
+          required final DamageLevel? percentColumnsDamageLevel4,
           final List<ImagePaths> percentColumnsDamageLevel4Images,
           required final double surveyRateLevel4,
-          required final DamageLevel windowFrame,
+          required final DamageLevel? windowFrame,
           final List<ImagePaths> windowFrameImages,
-          required final DamageLevel exteriorMaterialMortarTileStone,
+          required final DamageLevel? exteriorMaterialMortarTileStone,
           final List<ImagePaths> exteriorMaterialMortarTileStoneImages,
-          required final DamageLevel exteriorMaterialALCPCMetalBlock,
+          required final DamageLevel? exteriorMaterialALCPCMetalBlock,
           final List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
-          required final DamageLevel signageAndEquipment,
+          required final DamageLevel? signageAndEquipment,
           final List<ImagePaths> signageAndEquipmentImages,
-          required final DamageLevel outdoorStairs,
+          required final DamageLevel? outdoorStairs,
           final List<ImagePaths> outdoorStairsImages,
-          required final DamageLevel others,
+          required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
-          required final DamageLevel overallStructuralScore2,
-          required final DamageLevel overallStructuralScore,
-          required final DamageLevel overallFallingObjectScore}) =
+          required final DamageLevel? overallStructuralScore2,
+          required final DamageLevel? overallStructuralScore,
+          required final DamageLevel? overallFallingObjectScore}) =
       _$RebarContentImpl;
 
   factory _RebarContent.fromJson(Map<String, dynamic> json) =
@@ -4029,19 +4033,19 @@ abstract class _RebarContent implements RebarContent {
   @override
   String? get exteriorInspectionRemarks; //損傷度Ⅲ以上の損傷部材の有無
   @override
-  DamageLevel get hasSevereDamageMembers;
+  DamageLevel? get hasSevereDamageMembers;
   @override
   List<ImagePaths> get hasSevereDamageMembersImages; //隣接建築物・周辺地盤の破壊による危険
   @override
-  DamageLevel get adjacentBuildingRisk;
+  DamageLevel? get adjacentBuildingRisk;
   @override
   List<ImagePaths> get adjacentBuildingRiskImages; //地盤破壊による建築物全体の沈下
   @override
-  DamageLevel get groundFailureInclination;
+  DamageLevel? get groundFailureInclination;
   @override
   List<ImagePaths> get groundFailureInclinationImages; //不同沈下による建築物全体の傾斜
   @override
-  DamageLevel get unevenSettlement;
+  DamageLevel? get unevenSettlement;
   @override
   List<ImagePaths> get unevenSettlementImages; //柱の被害の調査階数
   @override
@@ -4054,7 +4058,7 @@ abstract class _RebarContent implements RebarContent {
   @override
   double get percentColumnsLevel5; //損傷度Ⅴの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
   @override
-  DamageLevel get percentColumnsDamageLevel5;
+  DamageLevel? get percentColumnsDamageLevel5;
   @override
   List<ImagePaths> get percentColumnsDamageLevel5Images; //損傷度Ⅴに関する調査率
   @override
@@ -4067,35 +4071,35 @@ abstract class _RebarContent implements RebarContent {
   @override
   double get percentColumnsLevel4; //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
   @override
-  DamageLevel get percentColumnsDamageLevel4;
+  DamageLevel? get percentColumnsDamageLevel4;
   @override
   List<ImagePaths> get percentColumnsDamageLevel4Images; //損傷度Ⅳに関する調査率
   @override
   double get surveyRateLevel4; //落下危険物・転倒危険物に関する危険度
 //窓枠・窓ガラス
   @override
-  DamageLevel get windowFrame;
+  DamageLevel? get windowFrame;
   @override
   List<ImagePaths> get windowFrameImages; //外装材（モルタル・タイル・石貼り等）
   @override
-  DamageLevel get exteriorMaterialMortarTileStone;
+  DamageLevel? get exteriorMaterialMortarTileStone;
   @override
   List<ImagePaths>
       get exteriorMaterialMortarTileStoneImages; //外装材（ALC板・PC板・金属・ブロック等）
   @override
-  DamageLevel get exteriorMaterialALCPCMetalBlock;
+  DamageLevel? get exteriorMaterialALCPCMetalBlock;
   @override
   List<ImagePaths> get exteriorMaterialALCPCMetalBlockImages; //看板・機器類
   @override
-  DamageLevel get signageAndEquipment;
+  DamageLevel? get signageAndEquipment;
   @override
   List<ImagePaths> get signageAndEquipmentImages; //屋外階段
   @override
-  DamageLevel get outdoorStairs;
+  DamageLevel? get outdoorStairs;
   @override
   List<ImagePaths> get outdoorStairsImages; //その他
   @override
-  DamageLevel get others;
+  DamageLevel? get others;
   @override
   List<ImagePaths> get othersImages;
   @override
@@ -4103,11 +4107,11 @@ abstract class _RebarContent implements RebarContent {
   @override
   String get overallExteriorScore; //判定(2)
   @override
-  DamageLevel get overallStructuralScore2; //総合判定（調査番号2)
+  DamageLevel? get overallStructuralScore2; //総合判定（調査番号2)
   @override
-  DamageLevel get overallStructuralScore;
+  DamageLevel? get overallStructuralScore;
   @override
-  DamageLevel get overallFallingObjectScore;
+  DamageLevel? get overallFallingObjectScore;
 
   /// Create a copy of RebarContent
   /// with the given fields replaced by the non-null parameter values.
