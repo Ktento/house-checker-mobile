@@ -72,41 +72,42 @@ class DangerSurveyFormPage extends StatelessWidget {
                   context,
                   '損傷度Ⅲ以上の損傷部材の有無',
                   hasSevereDamageMembersToLabel(
-                      record.content.hasSevereDamageMembers.name),
+                      record.content.hasSevereDamageMembers?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '隣接建築物・周辺の地盤の破壊による危険度',
                   adjacentBuildingRiskToLabel(
-                      record.content.adjacentBuildingRisk.name),
+                      record.content.adjacentBuildingRisk?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '地盤破壊による建築物全体の沈下',
                   groundFailureInclinationToLabel(
-                      record.content.groundFailureInclination.name),
+                      record.content.groundFailureInclination?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '不同沈下による建築物全体の傾斜',
-                  unevenSettlementToLabel(record.content.unevenSettlement.name),
+                  unevenSettlementToLabel(
+                      record.content.unevenSettlement?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '損傷度Ⅴの柱本数/調査柱本数',
                   percentColumnsLevel5ToLabel(
-                      record.content.percentColumnsDamageLevel5.name),
+                      record.content.percentColumnsDamageLevel5?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '損傷度Ⅳの柱本数/調査柱本数',
                   percentColumnsLevel4ToLabel(
-                      record.content.percentColumnsDamageLevel4.name),
+                      record.content.percentColumnsDamageLevel4?.name),
                   labelWidth: 180,
                 ),
                 SizedBox(
@@ -118,36 +119,36 @@ class DangerSurveyFormPage extends StatelessWidget {
                         fontSize: 17,
                         color: const Color.fromARGB(255, 140, 140, 246))),
                 _buildRow(context, '窓枠・窓ガラス',
-                    windowFrameToLabel(record.content.windowFrame.name)),
+                    windowFrameToLabel(record.content.windowFrame?.name)),
                 _buildRow(
                     context,
                     '外装材(モルタル・タイル・石貼り等)',
                     exteriorMaterialMortarTileStoneToLabel(
-                        record.content.exteriorMaterialMortarTileStone.name)),
+                        record.content.exteriorMaterialMortarTileStone?.name)),
                 _buildRow(
                     context,
                     '外装材(ALC板・PC板・金属・ブロック等)',
                     exteriorMaterialALCPCMetalBlockToLabel(
-                        record.content.exteriorMaterialALCPCMetalBlock.name)),
+                        record.content.exteriorMaterialALCPCMetalBlock?.name)),
                 _buildRow(
                     context,
                     '看板・機器類',
                     signageAndEquipmentToLabel(
-                        record.content.signageAndEquipment.name)),
+                        record.content.signageAndEquipment?.name)),
                 _buildRow(context, '屋外階段',
-                    outdoorStairsToLabel(record.content.outdoorStairs.name)),
+                    outdoorStairsToLabel(record.content.outdoorStairs?.name)),
                 _buildRow(
-                    context, 'その他', othersToLabel(record.content.others.name)),
+                    context, 'その他', othersToLabel(record.content.others?.name)),
               ]),
               _buildSection(context, '危険度評価', [
                 _buildRow(context, '一見して危険と判断される',
                     record.content.overallExteriorScore,
                     labelWidth: 180),
                 _buildRow(context, '隣接建築物・周辺の地盤等及び構造躯体',
-                    record.content.overallStructuralScore.name,
+                    record.content.overallStructuralScore?.name ?? "未入力",
                     labelWidth: 180),
                 _buildRow(context, '落下危険物・転倒危険物に関する危険度',
-                    record.content.overallFallingObjectScore.name,
+                    record.content.overallFallingObjectScore?.name ?? "未入力",
                     labelWidth: 180),
               ]),
               _buildSection(context, '総合判定', [
