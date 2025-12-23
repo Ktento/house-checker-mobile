@@ -201,7 +201,7 @@ class RebarResearchUnit extends StatelessWidget {
                     child: CupertinoButton.filled(
                       onPressed: () {
                         viewModel.updateUnit(
-                          buildingtype: "S",
+                          buildingtype: "R",
                           number: inputVM.numberController.text,
                           date: inputVM.selectedDate,
                           surveyCount:
