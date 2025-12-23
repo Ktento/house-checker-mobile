@@ -19,7 +19,7 @@ void inevestigatorSendRecord(
   }
   try {
     final jsonBody = {
-      'investigator': record.toJson(),
+      'investigator_post': record.toJson(),
     };
     print('送信する record:');
     printLong(jsonBody);
@@ -58,8 +58,12 @@ void generalSendRecord(
     return;
   }
   try {
+    const postUsername = 'house_checker_general';
     final jsonBody = {
-      'general': record.toJson(),
+      'general_post': {
+        'postusername': postUsername,
+        ...record.toJson(),
+      }
     };
     print('送信する record:');
     printLong(jsonBody);
