@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import '../../../../../view_model/investigator_post/investigation_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../../../models/investigator_model.dart';
 import '../../../../../view_model/Form_view_model.dart';
