@@ -201,11 +201,12 @@ class SteelFrameViewModel extends ChangeNotifier {
     if (_steelFrameRecord == null) return;
     final updatedUnit = _steelFrameRecord!.unit.copyWith(
       buildingtype: buildingtype ?? _steelFrameRecord!.unit.buildingtype,
-      currentPosition: currentPosition ?? _steelFrameRecord!.unit.currentPosition,
+      currentPosition:
+          currentPosition ?? _steelFrameRecord!.unit.currentPosition,
       surveyCount: surveyCount ?? _steelFrameRecord!.unit.surveyCount,
       investigator: investigator ?? _steelFrameRecord!.unit.investigator,
-      investigatorPrefecture:
-          investigatorPrefecture ?? _steelFrameRecord!.unit.investigatorPrefecture,
+      investigatorPrefecture: investigatorPrefecture ??
+          _steelFrameRecord!.unit.investigatorPrefecture,
       investigatorNumber:
           investigatorNumber ?? _steelFrameRecord!.unit.investigatorNumber,
     );
@@ -229,7 +230,8 @@ class SteelFrameViewModel extends ChangeNotifier {
 
     final updatedOverview = _steelFrameRecord!.overview.copyWith(
       buildingName: buildingName ?? _steelFrameRecord!.overview.buildingName,
-      buildingNumber: buildingNumber ?? _steelFrameRecord!.overview.buildingNumber,
+      buildingNumber:
+          buildingNumber ?? _steelFrameRecord!.overview.buildingNumber,
       address: address ?? _steelFrameRecord!.overview.address,
       mapNumber: mapNumber ?? _steelFrameRecord!.overview.mapNumber,
       buildingUse: buildingUse ?? _steelFrameRecord!.overview.buildingUse,
@@ -274,8 +276,8 @@ class SteelFrameViewModel extends ChangeNotifier {
           _steelFrameRecord!.content.exteriorInspectionScore,
       exteriorInspectionRemarks: exteriorInspectionRemarks ??
           _steelFrameRecord!.content.exteriorInspectionRemarks,
-      adjacentBuildingRisk:
-          adjacentBuildingRisk ?? _steelFrameRecord!.content.adjacentBuildingRisk,
+      adjacentBuildingRisk: adjacentBuildingRisk ??
+          _steelFrameRecord!.content.adjacentBuildingRisk,
       unevenSettlement:
           unevenSettlement ?? _steelFrameRecord!.content.unevenSettlement,
       upperFloorLe1: upperFloorLe1 ?? _steelFrameRecord!.content.upperFloorLe1,
@@ -287,7 +289,8 @@ class SteelFrameViewModel extends ChangeNotifier {
       columnBaseDamage:
           columnBaseDamage ?? _steelFrameRecord!.content.columnBaseDamage,
       corrosion: corrosion ?? _steelFrameRecord!.content.corrosion,
-      roofingMaterial: roofingMaterial ?? _steelFrameRecord!.content.roofingMaterial,
+      roofingMaterial:
+          roofingMaterial ?? _steelFrameRecord!.content.roofingMaterial,
       windowFrame: windowFrame ?? _steelFrameRecord!.content.windowFrame,
       exteriorWet: exteriorWet ?? _steelFrameRecord!.content.exteriorWet,
       exteriorDry: exteriorDry ?? _steelFrameRecord!.content.exteriorDry,
@@ -296,8 +299,8 @@ class SteelFrameViewModel extends ChangeNotifier {
       outdoorStairs: outdoorStairs ?? _steelFrameRecord!.content.outdoorStairs,
       others: others ?? _steelFrameRecord!.content.others,
       otherRemarks: otherRemarks ?? _steelFrameRecord!.content.otherRemarks,
-      overallExteriorScore:
-          overallExteriorScore ?? _steelFrameRecord!.content.overallExteriorScore,
+      overallExteriorScore: overallExteriorScore ??
+          _steelFrameRecord!.content.overallExteriorScore,
       overallStructuralScore: overallStructuralScore ??
           _steelFrameRecord!.content.overallStructuralScore,
       overallFallingObjectScore: overallFallingObjectScore ??
@@ -321,15 +324,15 @@ class SteelFrameViewModel extends ChangeNotifier {
   DamageLevel _calcOverallStructuralScore() {
     if (_steelFrameRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
-      _steelFrameRecord!.content.adjacentBuildingRisk,
-      _steelFrameRecord!.content.unevenSettlement,
-      _steelFrameRecord!.content.upperFloorLe1,
-      _steelFrameRecord!.content.upperFloorLe2,
-      _steelFrameRecord!.content.hasBuckling,
-      _steelFrameRecord!.content.bracingBreakRate,
-      _steelFrameRecord!.content.jointFailure,
-      _steelFrameRecord!.content.columnBaseDamage,
-      _steelFrameRecord!.content.corrosion,
+      _steelFrameRecord!.content.adjacentBuildingRisk ?? DamageLevel.A,
+      _steelFrameRecord!.content.unevenSettlement ?? DamageLevel.A,
+      _steelFrameRecord!.content.upperFloorLe1 ?? DamageLevel.A,
+      _steelFrameRecord!.content.upperFloorLe2 ?? DamageLevel.A,
+      _steelFrameRecord!.content.hasBuckling ?? DamageLevel.A,
+      _steelFrameRecord!.content.bracingBreakRate ?? DamageLevel.A,
+      _steelFrameRecord!.content.jointFailure ?? DamageLevel.A,
+      _steelFrameRecord!.content.columnBaseDamage ?? DamageLevel.A,
+      _steelFrameRecord!.content.corrosion ?? DamageLevel.A,
     ];
     final cCount = levels.where((e) => e == DamageLevel.C).length;
     final bCount = levels.where((e) => e == DamageLevel.B).length;
@@ -350,13 +353,13 @@ class SteelFrameViewModel extends ChangeNotifier {
     if (_steelFrameRecord == null) return DamageLevel.C;
 
     List<DamageLevel> levels = [
-      _steelFrameRecord!.content.roofingMaterial,
-      _steelFrameRecord!.content.windowFrame,
-      _steelFrameRecord!.content.exteriorWet,
-      _steelFrameRecord!.content.exteriorDry,
-      _steelFrameRecord!.content.signageAndEquipment,
-      _steelFrameRecord!.content.outdoorStairs,
-      _steelFrameRecord!.content.others,
+      _steelFrameRecord!.content.roofingMaterial ?? DamageLevel.A,
+      _steelFrameRecord!.content.windowFrame ?? DamageLevel.A,
+      _steelFrameRecord!.content.exteriorWet ?? DamageLevel.A,
+      _steelFrameRecord!.content.exteriorDry ?? DamageLevel.A,
+      _steelFrameRecord!.content.signageAndEquipment ?? DamageLevel.A,
+      _steelFrameRecord!.content.outdoorStairs ?? DamageLevel.A,
+      _steelFrameRecord!.content.others ?? DamageLevel.A,
     ];
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
     if (levels.contains(DamageLevel.C)) {

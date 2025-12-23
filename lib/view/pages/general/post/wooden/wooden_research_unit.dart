@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../../../../models/investigator_model.dart';
-import '../../../../../view_model/Form_view_model.dart';
-import './wooden_building_overview.dart';
-import '../../../../../view_model/location_view_model.dart';
-import '../../../../../view_model/investigator_post/wooden_view_model.dart';
+import '../../../../../../models/investigator_model.dart';
+import '../../../../../../view_model/Form_view_model.dart';
+import 'wooden_building_overview.dart';
+import '../../../../../../view_model/location_view_model.dart';
+import '../../../../../../view_model/investigator_post/wooden_view_model.dart';
 
 class WoodenResearchUnit extends StatelessWidget {
   const WoodenResearchUnit({super.key});

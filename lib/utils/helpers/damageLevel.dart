@@ -1,11 +1,12 @@
 import '../../models/investigator_model.dart';
 
-DamageLevel stringToDamageLevel(String value) {
+DamageLevel? stringToDamageLevel(String? value) {
+  if (value == null || value.isEmpty) return null;
   if (value.startsWith('A')) return DamageLevel.A;
   if (value.startsWith('B')) return DamageLevel.B;
   if (value.startsWith('C')) return DamageLevel.C;
-  if (value == "DamageLevel.A" || value.isEmpty) return DamageLevel.A;
-  throw Exception('Invalid DamageLevel string: $value');
+  if (value == "DamageLevel.A") return DamageLevel.A;
+  return null;
 }
 
 int parseExteriorScore(String value) {
@@ -15,7 +16,7 @@ int parseExteriorScore(String value) {
 }
 
 // 隣接建築物・周辺地盤の危険
-String adjacentBuildingRiskToLabel(String level) {
+String adjacentBuildingRiskToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.危険無し';
@@ -24,12 +25,12 @@ String adjacentBuildingRiskToLabel(String level) {
     case "C":
       return 'C.危険あり';
     default:
-      return 'A.危険無し';
+      return '未入力';
   }
 }
 
 // 構造躯体の不同沈下
-String unevenSettlementToLabel(String level) {
+String unevenSettlementToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.無し又は軽微';
@@ -38,12 +39,12 @@ String unevenSettlementToLabel(String level) {
     case "C":
       return 'C.小屋組みの破壊、床全体の沈下';
     default:
-      return 'A.無し又は軽微';
+      return '未入力';
   }
 }
 
 // 基礎の被害
-String foundationDamageToLabel(String level) {
+String foundationDamageToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.無被害';
@@ -52,12 +53,12 @@ String foundationDamageToLabel(String level) {
     case "C":
       return 'C.著しい(被害あり)';
     default:
-      return 'A.無被害';
+      return '未入力';
   }
 }
 
 // 建築物の1階の傾斜
-String firstFloorTiltToLabel(String level) {
+String firstFloorTiltToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.1/60以下';
@@ -66,12 +67,12 @@ String firstFloorTiltToLabel(String level) {
     case "C":
       return 'C.1/20超';
     default:
-      return 'A.1/60以下';
+      return '未入力';
   }
 }
 
 // 壁の被害
-String wallDamageToLabel(String level) {
+String wallDamageToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.軽微なひび割れ';
@@ -80,12 +81,12 @@ String wallDamageToLabel(String level) {
     case "C":
       return 'C.落下の危険有り';
     default:
-      return 'A.軽微なひび割れ';
+      return '未入力';
   }
 }
 
 // 腐食・蟻害の有無
-String corrosionOrTermiteToLabel(String level) {
+String corrosionOrTermiteToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無し';
@@ -94,12 +95,12 @@ String corrosionOrTermiteToLabel(String level) {
     case "C":
       return 'C.著しい断面欠損';
     default:
-      return 'A.ほとんど無し';
+      return '未入力';
   }
 }
 
 // 瓦・屋根や看板類
-String roofTileToLabel(String level) {
+String roofTileToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無被害';
@@ -108,12 +109,12 @@ String roofTileToLabel(String level) {
     case "C":
       return 'C.全面的にずれ、破損';
     default:
-      return 'A.ほとんど無被害';
+      return '未入力';
   }
 }
 
 // 窓枠・窓ガラス
-String windowFrameToLabel(String level) {
+String windowFrameToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無被害';
@@ -122,12 +123,12 @@ String windowFrameToLabel(String level) {
     case "C":
       return 'C.落下の危険有';
     default:
-      return 'A.ほとんど無被害';
+      return '未入力';
   }
 }
 
 // 外装材（湿式）
-String exteriorWetToLabel(String level) {
+String exteriorWetToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無被害';
@@ -136,12 +137,12 @@ String exteriorWetToLabel(String level) {
     case "C":
       return 'C.顕著なひび割れ、剥離';
     default:
-      return 'A.ほとんど無被害';
+      return '未入力';
   }
 }
 
 // 外装材（乾式）
-String exteriorDryToLabel(String level) {
+String exteriorDryToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.目地の亀裂程度';
@@ -150,12 +151,12 @@ String exteriorDryToLabel(String level) {
     case "C":
       return 'C.顕著な目地ずれ、板破損';
     default:
-      return 'A.目地の亀裂程度';
+      return '未入力';
   }
 }
 
 // 看板・機器類
-String signageAndEquipmentToLabel(String level) {
+String signageAndEquipmentToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.傾斜無し';
@@ -164,12 +165,12 @@ String signageAndEquipmentToLabel(String level) {
     case "C":
       return 'C.落下の危険有り';
     default:
-      return 'A.傾斜無し';
+      return '未入力';
   }
 }
 
 // 屋外階段
-String outdoorStairsToLabel(String level) {
+String outdoorStairsToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.傾斜なし';
@@ -178,12 +179,12 @@ String outdoorStairsToLabel(String level) {
     case "C":
       return 'C.明瞭な傾斜';
     default:
-      return 'A.傾斜なし';
+      return '未入力';
   }
 }
 
 // その他
-String othersToLabel(String level) {
+String othersToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.安全';
@@ -192,7 +193,7 @@ String othersToLabel(String level) {
     case "C":
       return 'C.危険';
     default:
-      return 'A.安全';
+      return '未入力';
   }
 }
 
@@ -214,7 +215,7 @@ String exteriorInspectionScoreToLabel(String value) {
   }
 }
 
-String upperFloorLe1ToLabel(String level) {
+String upperFloorLe1ToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.1/100以下';
@@ -223,11 +224,11 @@ String upperFloorLe1ToLabel(String level) {
     case "C":
       return 'C.1/30超';
     default:
-      return 'A.1/100以下';
+      return '未入力';
   }
 }
 
-String upperFloorLe2ToLabel(String level) {
+String upperFloorLe2ToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.1/200以下';
@@ -236,11 +237,11 @@ String upperFloorLe2ToLabel(String level) {
     case "C":
       return 'C.1/50超';
     default:
-      return 'A.1/200以下';
+      return '未入力';
   }
 }
 
-String hasBucklingToLabel(String level) {
+String hasBucklingToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.無し';
@@ -249,11 +250,11 @@ String hasBucklingToLabel(String level) {
     case "C":
       return 'C.全体座屈あるいは著しい局部座屈';
     default:
-      return 'A.無し';
+      return '未入力';
   }
 }
 
-String bracingBreakRateToLabel(String level) {
+String bracingBreakRateToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.20%以下';
@@ -262,11 +263,11 @@ String bracingBreakRateToLabel(String level) {
     case "C":
       return 'C.50%超';
     default:
-      return 'A.20%以下';
+      return '未入力';
   }
 }
 
-String jointFailureToLabel(String level) {
+String jointFailureToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.無し';
@@ -275,11 +276,11 @@ String jointFailureToLabel(String level) {
     case "C":
       return 'C.20%以上の破断';
     default:
-      return 'A.無し';
+      return '未入力';
   }
 }
 
-String columnBaseDamageToLabel(String level) {
+String columnBaseDamageToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.無し';
@@ -288,11 +289,11 @@ String columnBaseDamageToLabel(String level) {
     case "C":
       return 'C.著しい';
     default:
-      return 'A.無し';
+      return '未入力';
   }
 }
 
-String corrosionToLabel(String level) {
+String corrosionToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無し';
@@ -301,11 +302,11 @@ String corrosionToLabel(String level) {
     case "C":
       return 'C.孔所が各所に見られる';
     default:
-      return 'A.ほとんど無し';
+      return '未入力';
   }
 }
 
-String roofOrSignboardRiskToLabel(String level) {
+String roofOrSignboardRiskToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無被害';
@@ -314,24 +315,24 @@ String roofOrSignboardRiskToLabel(String level) {
     case "C":
       return 'C.全面的にずれ、破損';
     default:
-      return 'A.ほとんど無被害';
+      return '未入力';
   }
 }
 
 // 損傷度Ⅲ以上の損傷部材の有無
-String hasSevereDamageMembersToLabel(String level) {
+String hasSevereDamageMembersToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.無し';
     case "B":
       return 'B.あり';
     default:
-      return 'A.無し';
+      return '未入力';
   }
 }
 
 // 地盤破壊による建物全体の傾斜
-String groundFailureInclinationToLabel(String level) {
+String groundFailureInclinationToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.0.2m以下';
@@ -340,12 +341,12 @@ String groundFailureInclinationToLabel(String level) {
     case "C":
       return 'C.1.0m超';
     default:
-      return 'A.0.2m以下';
+      return '未入力';
   }
 }
 
 // 損傷度Ⅴの柱本数
-String percentColumnsLevel5ToLabel(String level) {
+String percentColumnsLevel5ToLabel(String? level) {
   switch (level) {
     case "A":
       return "A.1%以下";
@@ -354,12 +355,12 @@ String percentColumnsLevel5ToLabel(String level) {
     case "C":
       return "C.10%超";
     default:
-      return "A.1%以下";
+      return '未入力';
   }
 }
 
 // 損傷度Ⅳの柱本数
-String percentColumnsLevel4ToLabel(String level) {
+String percentColumnsLevel4ToLabel(String? level) {
   switch (level) {
     case "A":
       return "A.10%以下";
@@ -368,12 +369,12 @@ String percentColumnsLevel4ToLabel(String level) {
     case "C":
       return "C.20%超";
     default:
-      return "A.10%以下";
+      return '未入力';
   }
 }
 
 // 外装材(モルタル・タイル・石貼り等)
-String exteriorMaterialMortarTileStoneToLabel(String level) {
+String exteriorMaterialMortarTileStoneToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.ほとんど無被害';
@@ -382,12 +383,12 @@ String exteriorMaterialMortarTileStoneToLabel(String level) {
     case "C":
       return 'C.顕著なひび割れ、剥離';
     default:
-      return 'A.ほとんど無被害';
+      return '未入力';
   }
 }
 
 // 外装材(ALC板・PC板・金属・ブロック等)
-String exteriorMaterialALCPCMetalBlockToLabel(String level) {
+String exteriorMaterialALCPCMetalBlockToLabel(String? level) {
   switch (level) {
     case "A":
       return 'A.目地の亀裂程度';
@@ -396,6 +397,6 @@ String exteriorMaterialALCPCMetalBlockToLabel(String level) {
     case "C":
       return 'C.顕著な目地ずれ、板破損';
     default:
-      return 'A.目地の亀裂程度';
+      return '未入力';
   }
 }

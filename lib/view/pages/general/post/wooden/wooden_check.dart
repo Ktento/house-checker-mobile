@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
-import 'package:house_check_mobile/view_model/investigator_post/rebar_view_model.dart';
-import '../../../../../models/investigator_model.dart';
+import 'package:house_check_mobile/view_model/investigator_post/wooden_view_model.dart';
+import '../../../../../../models/investigator_model.dart';
+import '../../../../../../utils/services/DB/send_record.dart';
 import 'package:provider/provider.dart';
-import '../../../../../utils/helpers/damageLevel.dart';
-import '../../../../../utils/services/DB/image_upload.dart';
-import '../../../../../utils/services/DB/send_record.dart';
+import '../../../../../../utils/helpers/damageLevel.dart';
+import '../../../../../../utils/services/DB/image_upload.dart';
 
 class DangerSurveyFormPage extends StatelessWidget {
   const DangerSurveyFormPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<RebarViewModel>();
-    RebarRecord record = viewModel.rebarRecord!;
+    final viewModel = context.watch<WoodenViewModel>();
+    // final inputVM = context.read<FormViewModel>();
+    WoodenRecord record = viewModel.woodenRecord!;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('応急危険度 判定調査表'),
@@ -56,8 +57,7 @@ class DangerSurveyFormPage extends StatelessWidget {
                 _buildRow(
                   context,
                   '内容',
-                  exteriorInspectionScoreToLabel(
-                      record.content.overallExteriorScore.toString()),
+                  record.content.exteriorInspectionScore.toString(),
                   labelWidth: 180,
                 ),
                 SizedBox(
@@ -70,13 +70,6 @@ class DangerSurveyFormPage extends StatelessWidget {
                         color: const Color.fromARGB(255, 140, 140, 246))),
                 _buildRow(
                   context,
-                  '損傷度Ⅲ以上の損傷部材の有無',
-                  hasSevereDamageMembersToLabel(
-                      record.content.hasSevereDamageMembers?.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
                   '隣接建築物・周辺の地盤の破壊による危険度',
                   adjacentBuildingRiskToLabel(
                       record.content.adjacentBuildingRisk?.name),
@@ -84,30 +77,35 @@ class DangerSurveyFormPage extends StatelessWidget {
                 ),
                 _buildRow(
                   context,
-                  '地盤破壊による建築物全体の沈下',
-                  groundFailureInclinationToLabel(
-                      record.content.groundFailureInclination?.name),
-                  labelWidth: 180,
-                ),
-                _buildRow(
-                  context,
-                  '不同沈下による建築物全体の傾斜',
+                  '構造躯体の不同沈下',
                   unevenSettlementToLabel(
                       record.content.unevenSettlement?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
-                  '損傷度Ⅴの柱本数/調査柱本数',
-                  percentColumnsLevel5ToLabel(
-                      record.content.percentColumnsDamageLevel5?.name),
+                  '基礎の被害',
+                  foundationDamageToLabel(
+                      record.content.foundationDamage?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
-                  '損傷度Ⅳの柱本数/調査柱本数',
-                  percentColumnsLevel4ToLabel(
-                      record.content.percentColumnsDamageLevel4?.name),
+                  '建築物の1階の傾斜',
+                  firstFloorTiltToLabel(record.content.firstFloorTilt?.name),
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  context,
+                  '壁の被害',
+                  wallDamageToLabel(record.content.wallDamage?.name),
+                  labelWidth: 180,
+                ),
+                _buildRow(
+                  context,
+                  '腐食・蟻害の有無',
+                  corrosionOrTermiteToLabel(
+                      record.content.corrosionOrTermite?.name),
                   labelWidth: 180,
                 ),
                 SizedBox(
@@ -118,18 +116,14 @@ class DangerSurveyFormPage extends StatelessWidget {
                         inherit: false,
                         fontSize: 17,
                         color: const Color.fromARGB(255, 140, 140, 246))),
+                _buildRow(context, '瓦',
+                    roofTileToLabel(record.content.roofTile?.name)),
                 _buildRow(context, '窓枠・窓ガラス',
                     windowFrameToLabel(record.content.windowFrame?.name)),
-                _buildRow(
-                    context,
-                    '外装材(モルタル・タイル・石貼り等)',
-                    exteriorMaterialMortarTileStoneToLabel(
-                        record.content.exteriorMaterialMortarTileStone?.name)),
-                _buildRow(
-                    context,
-                    '外装材(ALC板・PC板・金属・ブロック等)',
-                    exteriorMaterialALCPCMetalBlockToLabel(
-                        record.content.exteriorMaterialALCPCMetalBlock?.name)),
+                _buildRow(context, '外装材（湿式）',
+                    exteriorWetToLabel(record.content.exteriorWet?.name)),
+                _buildRow(context, '外装材（乾式）',
+                    exteriorDryToLabel(record.content.exteriorDry?.name)),
                 _buildRow(
                     context,
                     '看板・機器類',
@@ -163,8 +157,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   CupertinoButton.filled(
                     onPressed: () async {
-                      await uploadAllImages(rebarViewModel: viewModel);
-                      inevestigatorSendRecord(rebarRecord: viewModel.rebarRecord);
+                      await uploadAllImages(woodenViewModel: viewModel);
+                      generalSendRecord(woodenRecord: viewModel.woodenRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),

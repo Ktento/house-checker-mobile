@@ -72,38 +72,40 @@ class DangerSurveyFormPage extends StatelessWidget {
                   context,
                   '隣接建築物・周辺の地盤の破壊による危険度',
                   adjacentBuildingRiskToLabel(
-                      record.content.adjacentBuildingRisk.name),
+                      record.content.adjacentBuildingRisk?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '構造躯体の不同沈下',
-                  unevenSettlementToLabel(record.content.unevenSettlement.name),
+                  unevenSettlementToLabel(
+                      record.content.unevenSettlement?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '基礎の被害',
-                  foundationDamageToLabel(record.content.foundationDamage.name),
+                  foundationDamageToLabel(
+                      record.content.foundationDamage?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '建築物の1階の傾斜',
-                  firstFloorTiltToLabel(record.content.firstFloorTilt.name),
+                  firstFloorTiltToLabel(record.content.firstFloorTilt?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '壁の被害',
-                  wallDamageToLabel(record.content.wallDamage.name),
+                  wallDamageToLabel(record.content.wallDamage?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
                   context,
                   '腐食・蟻害の有無',
                   corrosionOrTermiteToLabel(
-                      record.content.corrosionOrTermite.name),
+                      record.content.corrosionOrTermite?.name),
                   labelWidth: 180,
                 ),
                 SizedBox(
@@ -115,32 +117,32 @@ class DangerSurveyFormPage extends StatelessWidget {
                         fontSize: 17,
                         color: const Color.fromARGB(255, 140, 140, 246))),
                 _buildRow(context, '瓦',
-                    roofTileToLabel(record.content.roofTile.name)),
+                    roofTileToLabel(record.content.roofTile?.name)),
                 _buildRow(context, '窓枠・窓ガラス',
-                    windowFrameToLabel(record.content.windowFrame.name)),
+                    windowFrameToLabel(record.content.windowFrame?.name)),
                 _buildRow(context, '外装材（湿式）',
-                    exteriorWetToLabel(record.content.exteriorWet.name)),
+                    exteriorWetToLabel(record.content.exteriorWet?.name)),
                 _buildRow(context, '外装材（乾式）',
-                    exteriorDryToLabel(record.content.exteriorDry.name)),
+                    exteriorDryToLabel(record.content.exteriorDry?.name)),
                 _buildRow(
                     context,
                     '看板・機器類',
                     signageAndEquipmentToLabel(
-                        record.content.signageAndEquipment.name)),
+                        record.content.signageAndEquipment?.name)),
                 _buildRow(context, '屋外階段',
-                    outdoorStairsToLabel(record.content.outdoorStairs.name)),
+                    outdoorStairsToLabel(record.content.outdoorStairs?.name)),
                 _buildRow(
-                    context, 'その他', othersToLabel(record.content.others.name)),
+                    context, 'その他', othersToLabel(record.content.others?.name)),
               ]),
               _buildSection(context, '危険度評価', [
                 _buildRow(context, '一見して危険と判断される',
                     record.content.overallExteriorScore,
                     labelWidth: 180),
                 _buildRow(context, '隣接建築物・周辺の地盤等及び構造躯体',
-                    record.content.overallStructuralScore.name,
+                    record.content.overallStructuralScore?.name ?? "未入力",
                     labelWidth: 180),
                 _buildRow(context, '落下危険物・転倒危険物に関する危険度',
-                    record.content.overallFallingObjectScore.name,
+                    record.content.overallFallingObjectScore?.name ?? "未入力",
                     labelWidth: 180),
               ]),
               _buildSection(context, '総合判定', [
@@ -156,7 +158,7 @@ class DangerSurveyFormPage extends StatelessWidget {
                   CupertinoButton.filled(
                     onPressed: () async {
                       await uploadAllImages(woodenViewModel: viewModel);
-                      sendRecord(woodenRecord: viewModel.woodenRecord);
+                      inevestigatorSendRecord(woodenRecord: viewModel.woodenRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),

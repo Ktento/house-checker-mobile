@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
         Navigator.push(
           context,
           CupertinoPageRoute(
-            builder: (context) => const General_HomePage(),
+            builder: (context) => const GeneralHomePage(),
           ),
         );
       },
