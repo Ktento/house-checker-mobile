@@ -80,7 +80,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                 _buildRow(
                   context,
                   '構造躯体の不同沈下による建築物全体の傾斜',
-                  unevenSettlementToLabel(record.content.unevenSettlement?.name),
+                  unevenSettlementToLabel(
+                      record.content.unevenSettlement?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
@@ -104,7 +105,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                 _buildRow(
                   context,
                   '筋違の破断率',
-                  bracingBreakRateToLabel(record.content.bracingBreakRate?.name),
+                  bracingBreakRateToLabel(
+                      record.content.bracingBreakRate?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
@@ -116,7 +118,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                 _buildRow(
                   context,
                   '柱脚の破損',
-                  columnBaseDamageToLabel(record.content.columnBaseDamage?.name),
+                  columnBaseDamageToLabel(
+                      record.content.columnBaseDamage?.name),
                   labelWidth: 180,
                 ),
                 _buildRow(
@@ -159,10 +162,10 @@ class DangerSurveyFormPage extends StatelessWidget {
                     record.content.overallExteriorScore,
                     labelWidth: 180),
                 _buildRow(context, '隣接建築物・周辺の地盤等及び構造躯体',
-                    record.content.overallStructuralScore?.name??"未入力",
+                    record.content.overallStructuralScore?.name ?? "未入力",
                     labelWidth: 180),
                 _buildRow(context, '落下危険物・転倒危険物に関する危険度',
-                    record.content.overallFallingObjectScore?.name??"未入力",
+                    record.content.overallFallingObjectScore?.name ?? "未入力",
                     labelWidth: 180),
               ]),
               _buildSection(context, '総合判定', [
@@ -178,7 +181,8 @@ class DangerSurveyFormPage extends StatelessWidget {
                   CupertinoButton.filled(
                     onPressed: () async {
                       await uploadAllImages(steelFrameViewModel: viewModel);
-                      sendRecord(steelFrameRecord: viewModel.steelFrameRecord);
+                      inevestigatorSendRecord(
+                          steelFrameRecord: viewModel.steelFrameRecord);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),
