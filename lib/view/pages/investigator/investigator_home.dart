@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'investigator_info.dart';
+import 'investigator_task.dart';
 import 'investigator_map.dart';
 import 'investigator_post.dart';
 import 'investigator_total.dart';
@@ -37,7 +37,7 @@ class InvestigatorHomePage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.exclamationmark_triangle),
-            label: '被害情報',
+            label: '未判定リスト',
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.chart_bar),
@@ -64,9 +64,9 @@ class InvestigatorHomePage extends StatelessWidget {
           case 2:
             return const CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
-                middle: Text('被害情報'),
+                middle: Text('未判定リスト'),
               ),
-              child: SafeArea(child: InvestigatorInfo()),
+              child: SafeArea(child: InvestigatorTask()),
             );
           case 3:
             return const CupertinoPageScaffold(
