@@ -7,7 +7,8 @@ import '../../../../../utils/helpers/damageLevel.dart';
 import '../../../../../utils/services/DB/image_upload.dart';
 
 class DangerSurveyFormPage extends StatelessWidget {
-  const DangerSurveyFormPage({super.key});
+  final String? uuid;
+  const DangerSurveyFormPage({super.key, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +159,13 @@ class DangerSurveyFormPage extends StatelessWidget {
                   CupertinoButton.filled(
                     onPressed: () async {
                       await uploadAllImages(woodenViewModel: viewModel);
-                      inevestigatorSendRecord(woodenRecord: viewModel.woodenRecord);
+                      if (uuid != null) {
+                        inevestigatorUpdateRecord(
+                            woodenRecord: viewModel.woodenRecord, uuid: uuid!);
+                      } else {
+                        inevestigatorSendRecord(
+                            woodenRecord: viewModel.woodenRecord);
+                      }
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: const Text('送信'),

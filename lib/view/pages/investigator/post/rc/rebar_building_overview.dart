@@ -9,7 +9,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class RebarBuildingOverview extends StatelessWidget {
-  const RebarBuildingOverview({super.key});
+  final String? uuid;
+  const RebarBuildingOverview({super.key, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +121,7 @@ class RebarBuildingOverview extends StatelessWidget {
                             'プレキャストコンクリート造',
                             'ブロック造',
                             '鉄骨鉄筋コンクリート造'
-                            '混合構造',
+                                '混合構造',
                           ],
                         ),
                       ],
@@ -204,7 +205,7 @@ class RebarBuildingOverview extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: RebarSurvery(),
+                              child: RebarSurvery(uuid: uuid),
                             ),
                           ),
                         );

@@ -9,7 +9,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class SteelFrameBuildingOverview extends StatelessWidget {
-  const SteelFrameBuildingOverview({super.key});
+  final String? uuid;
+  const SteelFrameBuildingOverview({super.key, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +204,7 @@ class SteelFrameBuildingOverview extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: SteelFrameSurvery(),
+                              child: SteelFrameSurvery(uuid:uuid),
                             ),
                           ),
                         );

@@ -9,7 +9,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class WoodenBuildingOverview extends StatelessWidget {
-  const WoodenBuildingOverview({super.key});
+  final String? uuid;
+  const WoodenBuildingOverview({super.key, required this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +204,7 @@ class WoodenBuildingOverview extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: WoodenSurvery(),
+                              child: WoodenSurvery(uuid: uuid),
                             ),
                           ),
                         );
