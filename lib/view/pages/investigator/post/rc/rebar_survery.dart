@@ -8,7 +8,8 @@ import '../../../../wigets/image_pickere.dart';
 import '../../../../../models/investigator_model.dart';
 
 class RebarSurvery extends StatefulWidget {
-  const RebarSurvery({super.key});
+  final String? uuid;
+  const RebarSurvery({super.key, this.uuid});
 
   @override
   State<RebarSurvery> createState() => _RebarSurveryState();
@@ -343,7 +344,7 @@ class _RebarSurveryState extends State<RebarSurvery> {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: DangerSurveyFormPage(),
+                              child: DangerSurveyFormPage(uuid: widget.uuid),
                             ),
                           ),
                         );

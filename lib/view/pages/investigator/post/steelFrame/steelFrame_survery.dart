@@ -8,7 +8,8 @@ import '../../../../wigets/image_pickere.dart';
 import '../../../../../models/investigator_model.dart';
 
 class SteelFrameSurvery extends StatelessWidget {
-  const SteelFrameSurvery({super.key});
+  final String? uuid;
+  const SteelFrameSurvery({super.key, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +73,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.1/300以下', 'B.1/300～1/100', 'C.1/100超'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('unevenSettlementImages', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.unevenSettlementImages,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.unevenSettlementImages,
                     ),
 
                     _buildRadioGroup(
@@ -82,8 +83,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.1/100以下', 'B.1/100～1/30', 'C.1/30超'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('upperFloorLe1Images', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.upperFloorLe1Images,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.upperFloorLe1Images,
                     ),
                     _buildRadioGroup(
                       title: '傾斜を生じた階の上の階数が2階以下の場合',
@@ -91,8 +92,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.1/200以下', 'B.1/200～1/50', 'C.1/50超'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('upperFloorLe2Images', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.upperFloorLe2Images,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.upperFloorLe2Images,
                     ),
 
                     _buildRadioGroup(
@@ -110,8 +111,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.20%以下', 'B.20%～50%', 'C.50%超'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('bracingBreakRateImages', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.bracingBreakRateImages,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.bracingBreakRateImages,
                     ),
                     _buildRadioGroup(
                       title: '柱梁接合部および継手の破壊',
@@ -119,8 +120,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.無し', 'B.一部破断あるいは亀裂', 'C.20%以上の破断'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('jointFailureImages', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.jointFailureImages,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.jointFailureImages,
                     ),
 
                     _buildRadioGroup(
@@ -129,8 +130,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.無し', 'B.部分的', 'C.著しい'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('columnBaseDamageImages', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.columnBaseDamageImages,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.columnBaseDamageImages,
                     ),
 
                     _buildRadioGroup(
@@ -154,8 +155,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('roofingMaterialImages', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.roofingMaterialImages,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.roofingMaterialImages,
                     ),
 
                     _buildRadioGroup(
@@ -204,8 +205,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.傾斜なし', 'B.わずかな傾斜', 'C.明瞭な傾斜'],
                       onImagePicked: (path) => viewModel
                           .updateImageField('outdoorStairsImages', [path]),
-                      savedImage:
-                          viewModel.steelFrameRecord?.content.outdoorStairsImages,
+                      savedImage: viewModel
+                          .steelFrameRecord?.content.outdoorStairsImages,
                     ),
 
                     _buildRadioGroup(
@@ -214,7 +215,8 @@ class SteelFrameSurvery extends StatelessWidget {
                       options: ['A.安全', 'B.要注意', 'C.危険'],
                       onImagePicked: (path) =>
                           viewModel.updateImageField('othersImages', [path]),
-                      savedImage: viewModel.steelFrameRecord?.content.othersImages,
+                      savedImage:
+                          viewModel.steelFrameRecord?.content.othersImages,
                     ),
 
                     _buildTextInputSection(
@@ -312,7 +314,7 @@ class SteelFrameSurvery extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: DangerSurveyFormPage(),
+                              child: DangerSurveyFormPage(uuid: uuid),
                             ),
                           ),
                         );

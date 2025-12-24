@@ -8,7 +8,8 @@ import '../../../../wigets/image_pickere.dart';
 import '../../../../../models/investigator_model.dart';
 
 class WoodenSurvery extends StatelessWidget {
-  const WoodenSurvery({super.key});
+  final String? uuid;
+  const WoodenSurvery({super.key, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -282,7 +283,7 @@ class WoodenSurvery extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: DangerSurveyFormPage(),
+                              child: DangerSurveyFormPage(uuid: uuid),
                             ),
                           ),
                         );
