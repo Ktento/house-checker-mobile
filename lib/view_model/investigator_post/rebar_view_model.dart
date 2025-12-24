@@ -405,6 +405,20 @@ class RebarViewModel extends ChangeNotifier {
 
 //鉄筋建築物家屋の危険度を算出する関数
   OverallScore _calcOverallScore(RebarContent content) {
+    final hasMissingData = [
+      content.hasSevereDamageMembers,
+      content.adjacentBuildingRisk,
+      content.groundFailureInclination,
+      content.unevenSettlement,
+      content.percentColumnsDamageLevel4,
+      content.percentColumnsDamageLevel5,
+      content.windowFrame,
+      content.exteriorMaterialMortarTileStone,
+      content.exteriorMaterialALCPCMetalBlock,
+      content.signageAndEquipment,
+      content.outdoorStairs,
+      content.others,
+    ].any((e) => e == null);
     //１の外観調査の点数がついている場合は赤
     if (content.exteriorInspectionScore != 5) {
       return OverallScore.red;
@@ -413,13 +427,25 @@ class RebarViewModel extends ChangeNotifier {
       //２と３のどちらかがレベルCだった場合危険度は赤
     } else if (content.overallStructuralScore == DamageLevel.C ||
         content.overallFallingObjectScore == DamageLevel.C) {
-      return OverallScore.red;
+      if (hasMissingData) {
+        return OverallScore.uRed;
+      } else {
+        return OverallScore.red;
+      }
       //２と３のどちらかがレベルBだった場合、危険度は黄色
     } else if (content.overallStructuralScore == DamageLevel.B ||
         content.overallFallingObjectScore == DamageLevel.B) {
-      return OverallScore.yellow;
+      if (hasMissingData) {
+        return OverallScore.uYellow;
+      } else {
+        return OverallScore.yellow;
+      }
     } else {
-      return OverallScore.green;
+      if (hasMissingData) {
+        return OverallScore.uGreen;
+      } else {
+        return OverallScore.green;
+      }
     }
   }
 }

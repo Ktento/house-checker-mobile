@@ -338,6 +338,22 @@ class WoodenViewModel extends ChangeNotifier {
 
   //家屋危険度を算出する関数
   OverallScore _calcOverallScore(WoodenContent content) {
+    final hasMissingData = [
+      content.adjacentBuildingRisk,
+      content.unevenSettlement,
+      content.foundationDamage,
+      content.firstFloorTilt,
+      content.wallDamage,
+      content.corrosionOrTermite,
+      content.roofTile,
+      content.windowFrame,
+      content.exteriorWet,
+      content.exteriorDry,
+      content.signageAndEquipment,
+      content.outdoorStairs,
+      content.others,
+    ].any((e) => e == null);
+
     //１の外観調査の点数がついている場合は赤
     if (content.exteriorInspectionScore != 5) {
       return OverallScore.red;
@@ -346,13 +362,25 @@ class WoodenViewModel extends ChangeNotifier {
       //２と３のどちらかがレベルCだった場合危険度は赤
     } else if (content.overallStructuralScore == DamageLevel.C ||
         content.overallFallingObjectScore == DamageLevel.C) {
-      return OverallScore.red;
+      if (hasMissingData) {
+        return OverallScore.uRed;
+      } else {
+        return OverallScore.red;
+      }
       //２と３のどちらかがレベルBだった場合、危険度は黄色
     } else if (content.overallStructuralScore == DamageLevel.B ||
         content.overallFallingObjectScore == DamageLevel.B) {
-      return OverallScore.yellow;
+      if (hasMissingData) {
+        return OverallScore.uYellow;
+      } else {
+        return OverallScore.yellow;
+      }
     } else {
-      return OverallScore.green;
+      if (hasMissingData) {
+        return OverallScore.uGreen;
+      } else {
+        return OverallScore.green;
+      }
     }
   }
 }
