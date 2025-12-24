@@ -60,7 +60,7 @@ void inevestigatorUpdateRecord(
   }
   try {
     final jsonBody = {
-      'update_unit': {
+      'update_post': {
         'uuid': uuid,
         ...record.toJson(),
       }
