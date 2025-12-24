@@ -520,6 +520,9 @@ const _$OverallScoreEnumMap = {
   OverallScore.red: 'red',
   OverallScore.yellow: 'yellow',
   OverallScore.green: 'green',
+  OverallScore.uRed: 'uRed',
+  OverallScore.uYellow: 'uYellow',
+  OverallScore.uGreen: 'uGreen',
 };
 
 _$SteelFrameRecordImpl _$$SteelFrameRecordImplFromJson(

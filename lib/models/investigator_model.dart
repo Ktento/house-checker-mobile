@@ -12,7 +12,7 @@ enum DamageLevel {
   C,
 }
 
-enum OverallScore { red, yellow, green }
+enum OverallScore { red, yellow, green, uRed, uYellow, uGreen }
 
 Map<String, dynamic> latLngToJson(LatLng latLng) {
   return {'latitude': latLng.latitude, 'longitude': latLng.longitude};
