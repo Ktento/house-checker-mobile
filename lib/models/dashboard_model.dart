@@ -87,3 +87,21 @@ class DailyCheckCount with _$DailyCheckCount {
   factory DailyCheckCount.fromJson(Map<String, dynamic> json) =>
       _$DailyCheckCountFromJson(json);
 }
+
+@freezed
+class Tasks with _$Tasks {
+  const factory Tasks({
+    required String uuid,
+    required String postusername,
+    required DateTime date,
+    required String buildingtype,
+    required String address,
+    required double latitude,
+    required double longitude,
+    @Default('') String buildingName,
+    required String buildingUse,
+    @Default('') String overallScore,
+  }) = _Tasks;
+
+  factory Tasks.fromJson(Map<String, dynamic> json) => _$TasksFromJson(json);
+}

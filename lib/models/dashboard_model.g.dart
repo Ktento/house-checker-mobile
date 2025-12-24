@@ -111,3 +111,30 @@ Map<String, dynamic> _$$DailyCheckCountImplToJson(
       'totalbuilding': instance.totalBuilding,
       'checkcomplete': instance.checkComplete,
     };
+
+_$TasksImpl _$$TasksImplFromJson(Map<String, dynamic> json) => _$TasksImpl(
+      uuid: json['uuid'] as String,
+      postusername: json['postusername'] as String,
+      date: DateTime.parse(json['date'] as String),
+      buildingtype: json['buildingtype'] as String,
+      address: json['address'] as String,
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
+      buildingName: json['buildingName'] as String? ?? '',
+      buildingUse: json['buildingUse'] as String,
+      overallScore: json['overallScore'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$TasksImplToJson(_$TasksImpl instance) =>
+    <String, dynamic>{
+      'uuid': instance.uuid,
+      'postusername': instance.postusername,
+      'date': instance.date.toIso8601String(),
+      'buildingtype': instance.buildingtype,
+      'address': instance.address,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'buildingName': instance.buildingName,
+      'buildingUse': instance.buildingUse,
+      'overallScore': instance.overallScore,
+    };
