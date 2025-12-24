@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -72,48 +74,56 @@ class WoodenContent with _$WoodenContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? adjacentBuildingRisk,
     @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
     //構造躯体の不同沈下
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? unevenSettlement,
     @Default([]) List<ImagePaths> unevenSettlementImages,
     //基礎の被害
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? foundationDamage,
     @Default([]) List<ImagePaths> foundationDamageImages,
     //建築物の一回の傾斜
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? firstFloorTilt,
     @Default([]) List<ImagePaths> firstFloorTiltImages,
     //壁の被害
-    required DamageLevel? wallDamage,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? wallDamage,
     @Default([]) List<ImagePaths> wallDamageImages,
     //腐食・蟻害の有無
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? corrosionOrTermite,
     @Default([]) List<ImagePaths> corrosionOrTermiteImages,
 
     //落下危険物・転倒危険物に関する危険度
     //瓦
-    required DamageLevel? roofTile,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? roofTile,
     @Default([]) List<ImagePaths> roofTileImages,
     //窓枠・窓ガラス
-    required DamageLevel? windowFrame,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? windowFrame,
     @Default([]) List<ImagePaths> windowFrameImages,
     //外装材　湿式
-    required DamageLevel? exteriorWet,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? exteriorWet,
     @Default([]) List<ImagePaths> exteriorWetImages,
     //外装材　乾式
-    required DamageLevel? exteriorDry,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? exteriorDry,
     @Default([]) List<ImagePaths> exteriorDryImages,
     //看板・機器類
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? signageAndEquipment,
     @Default([]) List<ImagePaths> signageAndEquipmentImages,
     //その他
-    required DamageLevel? outdoorStairs,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? outdoorStairs,
     @Default([]) List<ImagePaths> outdoorStairsImages,
-    required DamageLevel? others,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore,
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallFallingObjectScore,
   }) = _WoodenContent;
 
@@ -128,58 +138,66 @@ class SteelFrameContent with _$SteelFrameContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     //隣接建築物・周辺地盤等及び構造躯体に関する危険度
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? adjacentBuildingRisk,
     @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
     //不同沈下による建築物全体の傾斜
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? unevenSettlement,
     @Default([]) List<ImagePaths> unevenSettlementImages,
     //傾斜を生じた階の上の階数が1階以下
-    required DamageLevel? upperFloorLe1,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? upperFloorLe1,
     @Default([]) List<ImagePaths> upperFloorLe1Images,
     //傾斜を生じた階の上の階数が2階以下
-    required DamageLevel? upperFloorLe2,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? upperFloorLe2,
     @Default([]) List<ImagePaths> upperFloorLe2Images,
     //部材の座屈の有無
-    required DamageLevel? hasBuckling,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? hasBuckling,
     @Default([]) List<ImagePaths> hasBucklingImages,
     //筋違の破断率
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? bracingBreakRate,
     @Default([]) List<ImagePaths> bracingBreakRateImages,
     //柱梁接合部および継手の破壊
-    required DamageLevel? jointFailure,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? jointFailure,
     @Default([]) List<ImagePaths> jointFailureImages,
     //柱脚の破損
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? columnBaseDamage,
     @Default([]) List<ImagePaths> columnBaseDamageImages,
     //腐食の有無
-    required DamageLevel? corrosion,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? corrosion,
     @Default([]) List<ImagePaths> corrosionImages,
 
     //落下危険物・転倒危険物に関する危険度
     //屋根材
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? roofingMaterial,
     @Default([]) List<ImagePaths> roofingMaterialImages,
     //窓枠・窓ガラス
-    required DamageLevel? windowFrame,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? windowFrame,
     @Default([]) List<ImagePaths> windowFrameImages,
     //外装材　湿式
-    required DamageLevel? exteriorWet,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? exteriorWet,
     @Default([]) List<ImagePaths> exteriorWetImages,
     //外装材　乾式
-    required DamageLevel? exteriorDry,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? exteriorDry,
     @Default([]) List<ImagePaths> exteriorDryImages,
     //看板・機器類
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? signageAndEquipment,
     @Default([]) List<ImagePaths> signageAndEquipmentImages,
     //屋外階段
-    required DamageLevel? outdoorStairs,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? outdoorStairs,
     @Default([]) List<ImagePaths> outdoorStairsImages,
     //その他
-    required DamageLevel? others,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore,
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallFallingObjectScore,
   }) = _SteelFrameContent;
 
@@ -194,15 +212,19 @@ class RebarContent with _$RebarContent {
     required int exteriorInspectionScore,
     String? exteriorInspectionRemarks,
     //損傷度Ⅲ以上の損傷部材の有無
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? hasSevereDamageMembers,
     @Default([]) List<ImagePaths> hasSevereDamageMembersImages,
     //隣接建築物・周辺地盤の破壊による危険
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? adjacentBuildingRisk,
     @Default([]) List<ImagePaths> adjacentBuildingRiskImages,
     //地盤破壊による建築物全体の沈下
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? groundFailureInclination,
     @Default([]) List<ImagePaths> groundFailureInclinationImages,
     //不同沈下による建築物全体の傾斜
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? unevenSettlement,
     @Default([]) List<ImagePaths> unevenSettlementImages,
 
@@ -229,6 +251,7 @@ class RebarContent with _$RebarContent {
     //損傷度Ⅳの調査柱本数のうち損傷度Ⅳの柱のパーセントの調査率
     required double percentColumnsLevel4,
     //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? percentColumnsDamageLevel4,
     @Default([]) List<ImagePaths> percentColumnsDamageLevel4Images,
     //損傷度Ⅳに関する調査率
@@ -236,29 +259,35 @@ class RebarContent with _$RebarContent {
 
     //落下危険物・転倒危険物に関する危険度
     //窓枠・窓ガラス
-    required DamageLevel? windowFrame,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? windowFrame,
     @Default([]) List<ImagePaths> windowFrameImages,
     //外装材（モルタル・タイル・石貼り等）
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? exteriorMaterialMortarTileStone,
     @Default([]) List<ImagePaths> exteriorMaterialMortarTileStoneImages,
     //外装材（ALC板・PC板・金属・ブロック等）
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? exteriorMaterialALCPCMetalBlock,
     @Default([]) List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
     //看板・機器類
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? signageAndEquipment,
     @Default([]) List<ImagePaths> signageAndEquipmentImages,
     //屋外階段
-    required DamageLevel? outdoorStairs,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? outdoorStairs,
     @Default([]) List<ImagePaths> outdoorStairsImages,
     //その他
-    required DamageLevel? others,
+    @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
     required String overallExteriorScore,
     //判定(2)
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore2,
     //総合判定（調査番号2)
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore,
+    @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallFallingObjectScore,
   }) = _RebarContent;
 
@@ -477,4 +506,10 @@ class RebarRecord with _$RebarRecord {
         ),
         overallScore: OverallScore.green,
       );
+}
+
+DamageLevel? damageLevelFromJson(dynamic json) {
+  if (json == null) return null;
+  if (json is String && json.isEmpty) return null;
+  return DamageLevel.values.byName(json);
 }

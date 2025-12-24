@@ -81,90 +81,80 @@ _$WoodenContentImpl _$$WoodenContentImplFromJson(Map<String, dynamic> json) =>
     _$WoodenContentImpl(
       exteriorInspectionScore: (json['exteriorInspectionScore'] as num).toInt(),
       exteriorInspectionRemarks: json['exteriorInspectionRemarks'] as String?,
-      adjacentBuildingRisk: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['adjacentBuildingRisk']),
+      adjacentBuildingRisk: damageLevelFromJson(json['adjacentBuildingRisk']),
       adjacentBuildingRiskImages:
           (json['adjacentBuildingRiskImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      unevenSettlement:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['unevenSettlement']),
+      unevenSettlement: damageLevelFromJson(json['unevenSettlement']),
       unevenSettlementImages: (json['unevenSettlementImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      foundationDamage:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['foundationDamage']),
+      foundationDamage: damageLevelFromJson(json['foundationDamage']),
       foundationDamageImages: (json['foundationDamageImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      firstFloorTilt:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['firstFloorTilt']),
+      firstFloorTilt: damageLevelFromJson(json['firstFloorTilt']),
       firstFloorTiltImages: (json['firstFloorTiltImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      wallDamage: $enumDecodeNullable(_$DamageLevelEnumMap, json['wallDamage']),
+      wallDamage: damageLevelFromJson(json['wallDamage']),
       wallDamageImages: (json['wallDamageImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      corrosionOrTermite:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['corrosionOrTermite']),
+      corrosionOrTermite: damageLevelFromJson(json['corrosionOrTermite']),
       corrosionOrTermiteImages:
           (json['corrosionOrTermiteImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      roofTile: $enumDecodeNullable(_$DamageLevelEnumMap, json['roofTile']),
+      roofTile: damageLevelFromJson(json['roofTile']),
       roofTileImages: (json['roofTileImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      windowFrame:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['windowFrame']),
+      windowFrame: damageLevelFromJson(json['windowFrame']),
       windowFrameImages: (json['windowFrameImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      exteriorWet:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['exteriorWet']),
+      exteriorWet: damageLevelFromJson(json['exteriorWet']),
       exteriorWetImages: (json['exteriorWetImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      exteriorDry:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['exteriorDry']),
+      exteriorDry: damageLevelFromJson(json['exteriorDry']),
       exteriorDryImages: (json['exteriorDryImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      signageAndEquipment: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['signageAndEquipment']),
+      signageAndEquipment: damageLevelFromJson(json['signageAndEquipment']),
       signageAndEquipmentImages:
           (json['signageAndEquipmentImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      outdoorStairs:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['outdoorStairs']),
+      outdoorStairs: damageLevelFromJson(json['outdoorStairs']),
       outdoorStairsImages: (json['outdoorStairsImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      others: $enumDecodeNullable(_$DamageLevelEnumMap, json['others']),
+      others: damageLevelFromJson(json['others']),
       othersImages: (json['othersImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       otherRemarks: json['otherRemarks'] as String?,
       overallExteriorScore: json['overallExteriorScore'] as String,
-      overallStructuralScore: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallStructuralScore']),
-      overallFallingObjectScore: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallFallingObjectScore']),
+      overallStructuralScore:
+          damageLevelFromJson(json['overallStructuralScore']),
+      overallFallingObjectScore:
+          damageLevelFromJson(json['overallFallingObjectScore']),
     );
 
 Map<String, dynamic> _$$WoodenContentImplToJson(_$WoodenContentImpl instance) =>
@@ -217,108 +207,94 @@ _$SteelFrameContentImpl _$$SteelFrameContentImplFromJson(
     _$SteelFrameContentImpl(
       exteriorInspectionScore: (json['exteriorInspectionScore'] as num).toInt(),
       exteriorInspectionRemarks: json['exteriorInspectionRemarks'] as String?,
-      adjacentBuildingRisk: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['adjacentBuildingRisk']),
+      adjacentBuildingRisk: damageLevelFromJson(json['adjacentBuildingRisk']),
       adjacentBuildingRiskImages:
           (json['adjacentBuildingRiskImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      unevenSettlement:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['unevenSettlement']),
+      unevenSettlement: damageLevelFromJson(json['unevenSettlement']),
       unevenSettlementImages: (json['unevenSettlementImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      upperFloorLe1:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['upperFloorLe1']),
+      upperFloorLe1: damageLevelFromJson(json['upperFloorLe1']),
       upperFloorLe1Images: (json['upperFloorLe1Images'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      upperFloorLe2:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['upperFloorLe2']),
+      upperFloorLe2: damageLevelFromJson(json['upperFloorLe2']),
       upperFloorLe2Images: (json['upperFloorLe2Images'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      hasBuckling:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['hasBuckling']),
+      hasBuckling: damageLevelFromJson(json['hasBuckling']),
       hasBucklingImages: (json['hasBucklingImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      bracingBreakRate:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['bracingBreakRate']),
+      bracingBreakRate: damageLevelFromJson(json['bracingBreakRate']),
       bracingBreakRateImages: (json['bracingBreakRateImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      jointFailure:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['jointFailure']),
+      jointFailure: damageLevelFromJson(json['jointFailure']),
       jointFailureImages: (json['jointFailureImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      columnBaseDamage:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['columnBaseDamage']),
+      columnBaseDamage: damageLevelFromJson(json['columnBaseDamage']),
       columnBaseDamageImages: (json['columnBaseDamageImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      corrosion: $enumDecodeNullable(_$DamageLevelEnumMap, json['corrosion']),
+      corrosion: damageLevelFromJson(json['corrosion']),
       corrosionImages: (json['corrosionImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      roofingMaterial:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['roofingMaterial']),
+      roofingMaterial: damageLevelFromJson(json['roofingMaterial']),
       roofingMaterialImages: (json['roofingMaterialImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      windowFrame:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['windowFrame']),
+      windowFrame: damageLevelFromJson(json['windowFrame']),
       windowFrameImages: (json['windowFrameImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      exteriorWet:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['exteriorWet']),
+      exteriorWet: damageLevelFromJson(json['exteriorWet']),
       exteriorWetImages: (json['exteriorWetImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      exteriorDry:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['exteriorDry']),
+      exteriorDry: damageLevelFromJson(json['exteriorDry']),
       exteriorDryImages: (json['exteriorDryImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      signageAndEquipment: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['signageAndEquipment']),
+      signageAndEquipment: damageLevelFromJson(json['signageAndEquipment']),
       signageAndEquipmentImages:
           (json['signageAndEquipmentImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      outdoorStairs:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['outdoorStairs']),
+      outdoorStairs: damageLevelFromJson(json['outdoorStairs']),
       outdoorStairsImages: (json['outdoorStairsImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      others: $enumDecodeNullable(_$DamageLevelEnumMap, json['others']),
+      others: damageLevelFromJson(json['others']),
       othersImages: (json['othersImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       otherRemarks: json['otherRemarks'] as String?,
       overallExteriorScore: json['overallExteriorScore'] as String,
-      overallStructuralScore: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallStructuralScore']),
-      overallFallingObjectScore: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallFallingObjectScore']),
+      overallStructuralScore:
+          damageLevelFromJson(json['overallStructuralScore']),
+      overallFallingObjectScore:
+          damageLevelFromJson(json['overallFallingObjectScore']),
     );
 
 Map<String, dynamic> _$$SteelFrameContentImplToJson(
@@ -371,29 +347,27 @@ _$RebarContentImpl _$$RebarContentImplFromJson(Map<String, dynamic> json) =>
     _$RebarContentImpl(
       exteriorInspectionScore: (json['exteriorInspectionScore'] as num).toInt(),
       exteriorInspectionRemarks: json['exteriorInspectionRemarks'] as String?,
-      hasSevereDamageMembers: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['hasSevereDamageMembers']),
+      hasSevereDamageMembers:
+          damageLevelFromJson(json['hasSevereDamageMembers']),
       hasSevereDamageMembersImages:
           (json['hasSevereDamageMembersImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      adjacentBuildingRisk: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['adjacentBuildingRisk']),
+      adjacentBuildingRisk: damageLevelFromJson(json['adjacentBuildingRisk']),
       adjacentBuildingRiskImages:
           (json['adjacentBuildingRiskImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      groundFailureInclination: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['groundFailureInclination']),
+      groundFailureInclination:
+          damageLevelFromJson(json['groundFailureInclination']),
       groundFailureInclinationImages:
           (json['groundFailureInclinationImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      unevenSettlement:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['unevenSettlement']),
+      unevenSettlement: damageLevelFromJson(json['unevenSettlement']),
       unevenSettlementImages: (json['unevenSettlementImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -414,60 +388,57 @@ _$RebarContentImpl _$$RebarContentImplFromJson(Map<String, dynamic> json) =>
       totalColumnsLevel4: (json['totalColumnsLevel4'] as num).toInt(),
       surveyedColumnsLevel4: (json['surveyedColumnsLevel4'] as num).toInt(),
       percentColumnsLevel4: (json['percentColumnsLevel4'] as num).toDouble(),
-      percentColumnsDamageLevel4: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['percentColumnsDamageLevel4']),
+      percentColumnsDamageLevel4:
+          damageLevelFromJson(json['percentColumnsDamageLevel4']),
       percentColumnsDamageLevel4Images:
           (json['percentColumnsDamageLevel4Images'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
       surveyRateLevel4: (json['surveyRateLevel4'] as num).toDouble(),
-      windowFrame:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['windowFrame']),
+      windowFrame: damageLevelFromJson(json['windowFrame']),
       windowFrameImages: (json['windowFrameImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      exteriorMaterialMortarTileStone: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['exteriorMaterialMortarTileStone']),
+      exteriorMaterialMortarTileStone:
+          damageLevelFromJson(json['exteriorMaterialMortarTileStone']),
       exteriorMaterialMortarTileStoneImages:
           (json['exteriorMaterialMortarTileStoneImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      exteriorMaterialALCPCMetalBlock: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['exteriorMaterialALCPCMetalBlock']),
+      exteriorMaterialALCPCMetalBlock:
+          damageLevelFromJson(json['exteriorMaterialALCPCMetalBlock']),
       exteriorMaterialALCPCMetalBlockImages:
           (json['exteriorMaterialALCPCMetalBlockImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      signageAndEquipment: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['signageAndEquipment']),
+      signageAndEquipment: damageLevelFromJson(json['signageAndEquipment']),
       signageAndEquipmentImages:
           (json['signageAndEquipmentImages'] as List<dynamic>?)
                   ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
                   .toList() ??
               const [],
-      outdoorStairs:
-          $enumDecodeNullable(_$DamageLevelEnumMap, json['outdoorStairs']),
+      outdoorStairs: damageLevelFromJson(json['outdoorStairs']),
       outdoorStairsImages: (json['outdoorStairsImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      others: $enumDecodeNullable(_$DamageLevelEnumMap, json['others']),
+      others: damageLevelFromJson(json['others']),
       othersImages: (json['othersImages'] as List<dynamic>?)
               ?.map((e) => ImagePaths.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       otherRemarks: json['otherRemarks'] as String?,
       overallExteriorScore: json['overallExteriorScore'] as String,
-      overallStructuralScore2: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallStructuralScore2']),
-      overallStructuralScore: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallStructuralScore']),
-      overallFallingObjectScore: $enumDecodeNullable(
-          _$DamageLevelEnumMap, json['overallFallingObjectScore']),
+      overallStructuralScore2:
+          damageLevelFromJson(json['overallStructuralScore2']),
+      overallStructuralScore:
+          damageLevelFromJson(json['overallStructuralScore']),
+      overallFallingObjectScore:
+          damageLevelFromJson(json['overallFallingObjectScore']),
     );
 
 Map<String, dynamic> _$$RebarContentImplToJson(_$RebarContentImpl instance) =>

@@ -833,48 +833,63 @@ mixin _$WoodenContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
       throw _privateConstructorUsedError; //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths> get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError; //構造躯体の不同沈下
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths> get unevenSettlementImages =>
       throw _privateConstructorUsedError; //基礎の被害
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get foundationDamage => throw _privateConstructorUsedError;
   List<ImagePaths> get foundationDamageImages =>
       throw _privateConstructorUsedError; //建築物の一回の傾斜
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get firstFloorTilt => throw _privateConstructorUsedError;
   List<ImagePaths> get firstFloorTiltImages =>
       throw _privateConstructorUsedError; //壁の被害
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get wallDamage => throw _privateConstructorUsedError;
   List<ImagePaths> get wallDamageImages =>
       throw _privateConstructorUsedError; //腐食・蟻害の有無
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get corrosionOrTermite => throw _privateConstructorUsedError;
   List<ImagePaths> get corrosionOrTermiteImages =>
       throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
 //瓦
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get roofTile => throw _privateConstructorUsedError;
   List<ImagePaths> get roofTileImages =>
       throw _privateConstructorUsedError; //窓枠・窓ガラス
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get windowFrame => throw _privateConstructorUsedError;
   List<ImagePaths> get windowFrameImages =>
       throw _privateConstructorUsedError; //外装材　湿式
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorWet => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorWetImages =>
       throw _privateConstructorUsedError; //外装材　乾式
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorDry => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorDryImages =>
       throw _privateConstructorUsedError; //看板・機器類
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths> get signageAndEquipmentImages =>
       throw _privateConstructorUsedError; //その他
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths> get outdoorStairsImages =>
       throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
@@ -897,35 +912,37 @@ abstract class $WoodenContentCopyWith<$Res> {
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel? adjacentBuildingRisk,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel? unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel? foundationDamage,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? foundationDamage,
       List<ImagePaths> foundationDamageImages,
-      DamageLevel? firstFloorTilt,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? firstFloorTilt,
       List<ImagePaths> firstFloorTiltImages,
-      DamageLevel? wallDamage,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? wallDamage,
       List<ImagePaths> wallDamageImages,
-      DamageLevel? corrosionOrTermite,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? corrosionOrTermite,
       List<ImagePaths> corrosionOrTermiteImages,
-      DamageLevel? roofTile,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? roofTile,
       List<ImagePaths> roofTileImages,
-      DamageLevel? windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel? exteriorWet,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel? exteriorDry,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel? signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel? outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel? others,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallFallingObjectScore});
 }
 
@@ -1121,35 +1138,37 @@ abstract class _$$WoodenContentImplCopyWith<$Res>
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel? adjacentBuildingRisk,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel? unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel? foundationDamage,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? foundationDamage,
       List<ImagePaths> foundationDamageImages,
-      DamageLevel? firstFloorTilt,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? firstFloorTilt,
       List<ImagePaths> firstFloorTiltImages,
-      DamageLevel? wallDamage,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? wallDamage,
       List<ImagePaths> wallDamageImages,
-      DamageLevel? corrosionOrTermite,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? corrosionOrTermite,
       List<ImagePaths> corrosionOrTermiteImages,
-      DamageLevel? roofTile,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? roofTile,
       List<ImagePaths> roofTileImages,
-      DamageLevel? windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel? exteriorWet,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel? exteriorDry,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel? signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel? outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel? others,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallFallingObjectScore});
 }
 
@@ -1338,35 +1357,38 @@ class _$WoodenContentImpl implements _WoodenContent {
   const _$WoodenContentImpl(
       {required this.exteriorInspectionScore,
       this.exteriorInspectionRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.adjacentBuildingRisk,
       final List<ImagePaths> adjacentBuildingRiskImages = const [],
-      required this.unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) required this.unevenSettlement,
       final List<ImagePaths> unevenSettlementImages = const [],
-      required this.foundationDamage,
+      @JsonKey(fromJson: damageLevelFromJson) required this.foundationDamage,
       final List<ImagePaths> foundationDamageImages = const [],
-      required this.firstFloorTilt,
+      @JsonKey(fromJson: damageLevelFromJson) required this.firstFloorTilt,
       final List<ImagePaths> firstFloorTiltImages = const [],
-      required this.wallDamage,
+      @JsonKey(fromJson: damageLevelFromJson) required this.wallDamage,
       final List<ImagePaths> wallDamageImages = const [],
-      required this.corrosionOrTermite,
+      @JsonKey(fromJson: damageLevelFromJson) required this.corrosionOrTermite,
       final List<ImagePaths> corrosionOrTermiteImages = const [],
-      required this.roofTile,
+      @JsonKey(fromJson: damageLevelFromJson) required this.roofTile,
       final List<ImagePaths> roofTileImages = const [],
-      required this.windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) required this.windowFrame,
       final List<ImagePaths> windowFrameImages = const [],
-      required this.exteriorWet,
+      @JsonKey(fromJson: damageLevelFromJson) required this.exteriorWet,
       final List<ImagePaths> exteriorWetImages = const [],
-      required this.exteriorDry,
+      @JsonKey(fromJson: damageLevelFromJson) required this.exteriorDry,
       final List<ImagePaths> exteriorDryImages = const [],
-      required this.signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) required this.signageAndEquipment,
       final List<ImagePaths> signageAndEquipmentImages = const [],
-      required this.outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) required this.outdoorStairs,
       final List<ImagePaths> outdoorStairsImages = const [],
-      required this.others,
+      @JsonKey(fromJson: damageLevelFromJson) required this.others,
       final List<ImagePaths> othersImages = const [],
       this.otherRemarks,
       required this.overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallFallingObjectScore})
       : _adjacentBuildingRiskImages = adjacentBuildingRiskImages,
         _unevenSettlementImages = unevenSettlementImages,
@@ -1391,6 +1413,7 @@ class _$WoodenContentImpl implements _WoodenContent {
   final String? exteriorInspectionRemarks;
 //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? adjacentBuildingRisk;
   final List<ImagePaths> _adjacentBuildingRiskImages;
   @override
@@ -1404,6 +1427,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //構造躯体の不同沈下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? unevenSettlement;
   final List<ImagePaths> _unevenSettlementImages;
   @override
@@ -1417,6 +1441,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //基礎の被害
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? foundationDamage;
   final List<ImagePaths> _foundationDamageImages;
   @override
@@ -1430,6 +1455,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //建築物の一回の傾斜
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? firstFloorTilt;
   final List<ImagePaths> _firstFloorTiltImages;
   @override
@@ -1443,6 +1469,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //壁の被害
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? wallDamage;
   final List<ImagePaths> _wallDamageImages;
   @override
@@ -1456,6 +1483,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //腐食・蟻害の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? corrosionOrTermite;
   final List<ImagePaths> _corrosionOrTermiteImages;
   @override
@@ -1470,6 +1498,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 //落下危険物・転倒危険物に関する危険度
 //瓦
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? roofTile;
   final List<ImagePaths> _roofTileImages;
   @override
@@ -1482,6 +1511,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //窓枠・窓ガラス
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? windowFrame;
   final List<ImagePaths> _windowFrameImages;
   @override
@@ -1495,6 +1525,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //外装材　湿式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? exteriorWet;
   final List<ImagePaths> _exteriorWetImages;
   @override
@@ -1508,6 +1539,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //外装材　乾式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? exteriorDry;
   final List<ImagePaths> _exteriorDryImages;
   @override
@@ -1521,6 +1553,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //看板・機器類
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? signageAndEquipment;
   final List<ImagePaths> _signageAndEquipmentImages;
   @override
@@ -1534,6 +1567,7 @@ class _$WoodenContentImpl implements _WoodenContent {
 
 //その他
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? outdoorStairs;
   final List<ImagePaths> _outdoorStairsImages;
   @override
@@ -1546,6 +1580,7 @@ class _$WoodenContentImpl implements _WoodenContent {
   }
 
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? others;
   final List<ImagePaths> _othersImages;
   @override
@@ -1561,8 +1596,10 @@ class _$WoodenContentImpl implements _WoodenContent {
   @override
   final String overallExteriorScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallStructuralScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallFallingObjectScore;
 
   @override
@@ -1692,35 +1729,50 @@ abstract class _WoodenContent implements WoodenContent {
   const factory _WoodenContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? adjacentBuildingRisk,
           final List<ImagePaths> adjacentBuildingRiskImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? unevenSettlement,
           final List<ImagePaths> unevenSettlementImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? foundationDamage,
           final List<ImagePaths> foundationDamageImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? firstFloorTilt,
           final List<ImagePaths> firstFloorTiltImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? wallDamage,
           final List<ImagePaths> wallDamageImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? corrosionOrTermite,
           final List<ImagePaths> corrosionOrTermiteImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? roofTile,
           final List<ImagePaths> roofTileImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? windowFrame,
           final List<ImagePaths> windowFrameImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? exteriorWet,
           final List<ImagePaths> exteriorWetImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? exteriorDry,
           final List<ImagePaths> exteriorDryImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? signageAndEquipment,
           final List<ImagePaths> signageAndEquipmentImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? outdoorStairs,
           final List<ImagePaths> outdoorStairsImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallFallingObjectScore}) =
       _$WoodenContentImpl;
 
@@ -1732,55 +1784,68 @@ abstract class _WoodenContent implements WoodenContent {
   @override
   String? get exteriorInspectionRemarks; //隣接建築物・周辺地盤等及び構造躯体にかんする危険度
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get adjacentBuildingRisk;
   @override
   List<ImagePaths> get adjacentBuildingRiskImages; //構造躯体の不同沈下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get unevenSettlement;
   @override
   List<ImagePaths> get unevenSettlementImages; //基礎の被害
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get foundationDamage;
   @override
   List<ImagePaths> get foundationDamageImages; //建築物の一回の傾斜
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get firstFloorTilt;
   @override
   List<ImagePaths> get firstFloorTiltImages; //壁の被害
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get wallDamage;
   @override
   List<ImagePaths> get wallDamageImages; //腐食・蟻害の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get corrosionOrTermite;
   @override
   List<ImagePaths> get corrosionOrTermiteImages; //落下危険物・転倒危険物に関する危険度
 //瓦
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get roofTile;
   @override
   List<ImagePaths> get roofTileImages; //窓枠・窓ガラス
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get windowFrame;
   @override
   List<ImagePaths> get windowFrameImages; //外装材　湿式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorWet;
   @override
   List<ImagePaths> get exteriorWetImages; //外装材　乾式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorDry;
   @override
   List<ImagePaths> get exteriorDryImages; //看板・機器類
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get signageAndEquipment;
   @override
   List<ImagePaths> get signageAndEquipmentImages; //その他
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get outdoorStairs;
   @override
   List<ImagePaths> get outdoorStairsImages;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get others;
   @override
   List<ImagePaths> get othersImages;
@@ -1789,8 +1854,10 @@ abstract class _WoodenContent implements WoodenContent {
   @override
   String get overallExteriorScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallFallingObjectScore;
 
   /// Create a copy of WoodenContent
@@ -1811,57 +1878,75 @@ mixin _$SteelFrameContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
       throw _privateConstructorUsedError; //隣接建築物・周辺地盤等及び構造躯体に関する危険度
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths> get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError; //不同沈下による建築物全体の傾斜
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths> get unevenSettlementImages =>
       throw _privateConstructorUsedError; //傾斜を生じた階の上の階数が1階以下
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get upperFloorLe1 => throw _privateConstructorUsedError;
   List<ImagePaths> get upperFloorLe1Images =>
       throw _privateConstructorUsedError; //傾斜を生じた階の上の階数が2階以下
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get upperFloorLe2 => throw _privateConstructorUsedError;
   List<ImagePaths> get upperFloorLe2Images =>
       throw _privateConstructorUsedError; //部材の座屈の有無
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get hasBuckling => throw _privateConstructorUsedError;
   List<ImagePaths> get hasBucklingImages =>
       throw _privateConstructorUsedError; //筋違の破断率
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get bracingBreakRate => throw _privateConstructorUsedError;
   List<ImagePaths> get bracingBreakRateImages =>
       throw _privateConstructorUsedError; //柱梁接合部および継手の破壊
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get jointFailure => throw _privateConstructorUsedError;
   List<ImagePaths> get jointFailureImages =>
       throw _privateConstructorUsedError; //柱脚の破損
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get columnBaseDamage => throw _privateConstructorUsedError;
   List<ImagePaths> get columnBaseDamageImages =>
       throw _privateConstructorUsedError; //腐食の有無
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get corrosion => throw _privateConstructorUsedError;
   List<ImagePaths> get corrosionImages =>
       throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
 //屋根材
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get roofingMaterial => throw _privateConstructorUsedError;
   List<ImagePaths> get roofingMaterialImages =>
       throw _privateConstructorUsedError; //窓枠・窓ガラス
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get windowFrame => throw _privateConstructorUsedError;
   List<ImagePaths> get windowFrameImages =>
       throw _privateConstructorUsedError; //外装材　湿式
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorWet => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorWetImages =>
       throw _privateConstructorUsedError; //外装材　乾式
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorDry => throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorDryImages =>
       throw _privateConstructorUsedError; //看板・機器類
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths> get signageAndEquipmentImages =>
       throw _privateConstructorUsedError; //屋外階段
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths> get outdoorStairsImages =>
       throw _privateConstructorUsedError; //その他
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
@@ -1884,41 +1969,43 @@ abstract class $SteelFrameContentCopyWith<$Res> {
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel? adjacentBuildingRisk,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel? unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel? upperFloorLe1,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? upperFloorLe1,
       List<ImagePaths> upperFloorLe1Images,
-      DamageLevel? upperFloorLe2,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? upperFloorLe2,
       List<ImagePaths> upperFloorLe2Images,
-      DamageLevel? hasBuckling,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? hasBuckling,
       List<ImagePaths> hasBucklingImages,
-      DamageLevel? bracingBreakRate,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? bracingBreakRate,
       List<ImagePaths> bracingBreakRateImages,
-      DamageLevel? jointFailure,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? jointFailure,
       List<ImagePaths> jointFailureImages,
-      DamageLevel? columnBaseDamage,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? columnBaseDamage,
       List<ImagePaths> columnBaseDamageImages,
-      DamageLevel? corrosion,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? corrosion,
       List<ImagePaths> corrosionImages,
-      DamageLevel? roofingMaterial,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? roofingMaterial,
       List<ImagePaths> roofingMaterialImages,
-      DamageLevel? windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel? exteriorWet,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel? exteriorDry,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel? signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel? outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel? others,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallFallingObjectScore});
 }
 
@@ -2144,41 +2231,43 @@ abstract class _$$SteelFrameContentImplCopyWith<$Res>
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
-      DamageLevel? adjacentBuildingRisk,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
-      DamageLevel? unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
-      DamageLevel? upperFloorLe1,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? upperFloorLe1,
       List<ImagePaths> upperFloorLe1Images,
-      DamageLevel? upperFloorLe2,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? upperFloorLe2,
       List<ImagePaths> upperFloorLe2Images,
-      DamageLevel? hasBuckling,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? hasBuckling,
       List<ImagePaths> hasBucklingImages,
-      DamageLevel? bracingBreakRate,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? bracingBreakRate,
       List<ImagePaths> bracingBreakRateImages,
-      DamageLevel? jointFailure,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? jointFailure,
       List<ImagePaths> jointFailureImages,
-      DamageLevel? columnBaseDamage,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? columnBaseDamage,
       List<ImagePaths> columnBaseDamageImages,
-      DamageLevel? corrosion,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? corrosion,
       List<ImagePaths> corrosionImages,
-      DamageLevel? roofingMaterial,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? roofingMaterial,
       List<ImagePaths> roofingMaterialImages,
-      DamageLevel? windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
-      DamageLevel? exteriorWet,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorWet,
       List<ImagePaths> exteriorWetImages,
-      DamageLevel? exteriorDry,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? exteriorDry,
       List<ImagePaths> exteriorDryImages,
-      DamageLevel? signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel? outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel? others,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallFallingObjectScore});
 }
 
@@ -2397,41 +2486,44 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
   const _$SteelFrameContentImpl(
       {required this.exteriorInspectionScore,
       this.exteriorInspectionRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.adjacentBuildingRisk,
       final List<ImagePaths> adjacentBuildingRiskImages = const [],
-      required this.unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) required this.unevenSettlement,
       final List<ImagePaths> unevenSettlementImages = const [],
-      required this.upperFloorLe1,
+      @JsonKey(fromJson: damageLevelFromJson) required this.upperFloorLe1,
       final List<ImagePaths> upperFloorLe1Images = const [],
-      required this.upperFloorLe2,
+      @JsonKey(fromJson: damageLevelFromJson) required this.upperFloorLe2,
       final List<ImagePaths> upperFloorLe2Images = const [],
-      required this.hasBuckling,
+      @JsonKey(fromJson: damageLevelFromJson) required this.hasBuckling,
       final List<ImagePaths> hasBucklingImages = const [],
-      required this.bracingBreakRate,
+      @JsonKey(fromJson: damageLevelFromJson) required this.bracingBreakRate,
       final List<ImagePaths> bracingBreakRateImages = const [],
-      required this.jointFailure,
+      @JsonKey(fromJson: damageLevelFromJson) required this.jointFailure,
       final List<ImagePaths> jointFailureImages = const [],
-      required this.columnBaseDamage,
+      @JsonKey(fromJson: damageLevelFromJson) required this.columnBaseDamage,
       final List<ImagePaths> columnBaseDamageImages = const [],
-      required this.corrosion,
+      @JsonKey(fromJson: damageLevelFromJson) required this.corrosion,
       final List<ImagePaths> corrosionImages = const [],
-      required this.roofingMaterial,
+      @JsonKey(fromJson: damageLevelFromJson) required this.roofingMaterial,
       final List<ImagePaths> roofingMaterialImages = const [],
-      required this.windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) required this.windowFrame,
       final List<ImagePaths> windowFrameImages = const [],
-      required this.exteriorWet,
+      @JsonKey(fromJson: damageLevelFromJson) required this.exteriorWet,
       final List<ImagePaths> exteriorWetImages = const [],
-      required this.exteriorDry,
+      @JsonKey(fromJson: damageLevelFromJson) required this.exteriorDry,
       final List<ImagePaths> exteriorDryImages = const [],
-      required this.signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) required this.signageAndEquipment,
       final List<ImagePaths> signageAndEquipmentImages = const [],
-      required this.outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) required this.outdoorStairs,
       final List<ImagePaths> outdoorStairsImages = const [],
-      required this.others,
+      @JsonKey(fromJson: damageLevelFromJson) required this.others,
       final List<ImagePaths> othersImages = const [],
       this.otherRemarks,
       required this.overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallFallingObjectScore})
       : _adjacentBuildingRiskImages = adjacentBuildingRiskImages,
         _unevenSettlementImages = unevenSettlementImages,
@@ -2460,6 +2552,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
   final String? exteriorInspectionRemarks;
 //隣接建築物・周辺地盤等及び構造躯体に関する危険度
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? adjacentBuildingRisk;
   final List<ImagePaths> _adjacentBuildingRiskImages;
   @override
@@ -2473,6 +2566,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //不同沈下による建築物全体の傾斜
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? unevenSettlement;
   final List<ImagePaths> _unevenSettlementImages;
   @override
@@ -2486,6 +2580,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //傾斜を生じた階の上の階数が1階以下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? upperFloorLe1;
   final List<ImagePaths> _upperFloorLe1Images;
   @override
@@ -2499,6 +2594,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //傾斜を生じた階の上の階数が2階以下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? upperFloorLe2;
   final List<ImagePaths> _upperFloorLe2Images;
   @override
@@ -2512,6 +2608,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //部材の座屈の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? hasBuckling;
   final List<ImagePaths> _hasBucklingImages;
   @override
@@ -2525,6 +2622,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //筋違の破断率
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? bracingBreakRate;
   final List<ImagePaths> _bracingBreakRateImages;
   @override
@@ -2538,6 +2636,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //柱梁接合部および継手の破壊
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? jointFailure;
   final List<ImagePaths> _jointFailureImages;
   @override
@@ -2551,6 +2650,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //柱脚の破損
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? columnBaseDamage;
   final List<ImagePaths> _columnBaseDamageImages;
   @override
@@ -2564,6 +2664,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //腐食の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? corrosion;
   final List<ImagePaths> _corrosionImages;
   @override
@@ -2577,6 +2678,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 //落下危険物・転倒危険物に関する危険度
 //屋根材
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? roofingMaterial;
   final List<ImagePaths> _roofingMaterialImages;
   @override
@@ -2590,6 +2692,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //窓枠・窓ガラス
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? windowFrame;
   final List<ImagePaths> _windowFrameImages;
   @override
@@ -2603,6 +2706,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //外装材　湿式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? exteriorWet;
   final List<ImagePaths> _exteriorWetImages;
   @override
@@ -2616,6 +2720,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //外装材　乾式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? exteriorDry;
   final List<ImagePaths> _exteriorDryImages;
   @override
@@ -2629,6 +2734,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //看板・機器類
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? signageAndEquipment;
   final List<ImagePaths> _signageAndEquipmentImages;
   @override
@@ -2642,6 +2748,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //屋外階段
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? outdoorStairs;
   final List<ImagePaths> _outdoorStairsImages;
   @override
@@ -2655,6 +2762,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
 
 //その他
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? others;
   final List<ImagePaths> _othersImages;
   @override
@@ -2670,8 +2778,10 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
   @override
   final String overallExteriorScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallStructuralScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallFallingObjectScore;
 
   @override
@@ -2814,41 +2924,59 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   const factory _SteelFrameContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? adjacentBuildingRisk,
           final List<ImagePaths> adjacentBuildingRiskImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? unevenSettlement,
           final List<ImagePaths> unevenSettlementImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? upperFloorLe1,
           final List<ImagePaths> upperFloorLe1Images,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? upperFloorLe2,
           final List<ImagePaths> upperFloorLe2Images,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? hasBuckling,
           final List<ImagePaths> hasBucklingImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? bracingBreakRate,
           final List<ImagePaths> bracingBreakRateImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? jointFailure,
           final List<ImagePaths> jointFailureImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? columnBaseDamage,
           final List<ImagePaths> columnBaseDamageImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? corrosion,
           final List<ImagePaths> corrosionImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? roofingMaterial,
           final List<ImagePaths> roofingMaterialImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? windowFrame,
           final List<ImagePaths> windowFrameImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? exteriorWet,
           final List<ImagePaths> exteriorWetImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? exteriorDry,
           final List<ImagePaths> exteriorDryImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? signageAndEquipment,
           final List<ImagePaths> signageAndEquipmentImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? outdoorStairs,
           final List<ImagePaths> outdoorStairsImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallFallingObjectScore}) =
       _$SteelFrameContentImpl;
 
@@ -2861,67 +2989,83 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   @override
   String? get exteriorInspectionRemarks; //隣接建築物・周辺地盤等及び構造躯体に関する危険度
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get adjacentBuildingRisk;
   @override
   List<ImagePaths> get adjacentBuildingRiskImages; //不同沈下による建築物全体の傾斜
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get unevenSettlement;
   @override
   List<ImagePaths> get unevenSettlementImages; //傾斜を生じた階の上の階数が1階以下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get upperFloorLe1;
   @override
   List<ImagePaths> get upperFloorLe1Images; //傾斜を生じた階の上の階数が2階以下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get upperFloorLe2;
   @override
   List<ImagePaths> get upperFloorLe2Images; //部材の座屈の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get hasBuckling;
   @override
   List<ImagePaths> get hasBucklingImages; //筋違の破断率
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get bracingBreakRate;
   @override
   List<ImagePaths> get bracingBreakRateImages; //柱梁接合部および継手の破壊
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get jointFailure;
   @override
   List<ImagePaths> get jointFailureImages; //柱脚の破損
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get columnBaseDamage;
   @override
   List<ImagePaths> get columnBaseDamageImages; //腐食の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get corrosion;
   @override
   List<ImagePaths> get corrosionImages; //落下危険物・転倒危険物に関する危険度
 //屋根材
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get roofingMaterial;
   @override
   List<ImagePaths> get roofingMaterialImages; //窓枠・窓ガラス
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get windowFrame;
   @override
   List<ImagePaths> get windowFrameImages; //外装材　湿式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorWet;
   @override
   List<ImagePaths> get exteriorWetImages; //外装材　乾式
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorDry;
   @override
   List<ImagePaths> get exteriorDryImages; //看板・機器類
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get signageAndEquipment;
   @override
   List<ImagePaths> get signageAndEquipmentImages; //屋外階段
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get outdoorStairs;
   @override
   List<ImagePaths> get outdoorStairsImages; //その他
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get others;
   @override
   List<ImagePaths> get othersImages;
@@ -2930,8 +3074,10 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   @override
   String get overallExteriorScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallFallingObjectScore;
 
   /// Create a copy of SteelFrameContent
@@ -2952,16 +3098,20 @@ mixin _$RebarContent {
   int get exteriorInspectionScore => throw _privateConstructorUsedError;
   String? get exteriorInspectionRemarks =>
       throw _privateConstructorUsedError; //損傷度Ⅲ以上の損傷部材の有無
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get hasSevereDamageMembers => throw _privateConstructorUsedError;
   List<ImagePaths> get hasSevereDamageMembersImages =>
       throw _privateConstructorUsedError; //隣接建築物・周辺地盤の破壊による危険
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get adjacentBuildingRisk => throw _privateConstructorUsedError;
   List<ImagePaths> get adjacentBuildingRiskImages =>
       throw _privateConstructorUsedError; //地盤破壊による建築物全体の沈下
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get groundFailureInclination =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get groundFailureInclinationImages =>
       throw _privateConstructorUsedError; //不同沈下による建築物全体の傾斜
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get unevenSettlement => throw _privateConstructorUsedError;
   List<ImagePaths> get unevenSettlementImages =>
       throw _privateConstructorUsedError; //柱の被害の調査階数
@@ -2984,6 +3134,7 @@ mixin _$RebarContent {
       throw _privateConstructorUsedError; //損傷度Ⅳの調査柱本数のうち損傷度Ⅳの柱のパーセントの調査率
   double get percentColumnsLevel4 =>
       throw _privateConstructorUsedError; //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get percentColumnsDamageLevel4 =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get percentColumnsDamageLevel4Images =>
@@ -2991,30 +3142,39 @@ mixin _$RebarContent {
   double get surveyRateLevel4 =>
       throw _privateConstructorUsedError; //落下危険物・転倒危険物に関する危険度
 //窓枠・窓ガラス
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get windowFrame => throw _privateConstructorUsedError;
   List<ImagePaths> get windowFrameImages =>
       throw _privateConstructorUsedError; //外装材（モルタル・タイル・石貼り等）
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorMaterialMortarTileStone =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorMaterialMortarTileStoneImages =>
       throw _privateConstructorUsedError; //外装材（ALC板・PC板・金属・ブロック等）
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorMaterialALCPCMetalBlock =>
       throw _privateConstructorUsedError;
   List<ImagePaths> get exteriorMaterialALCPCMetalBlockImages =>
       throw _privateConstructorUsedError; //看板・機器類
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get signageAndEquipment => throw _privateConstructorUsedError;
   List<ImagePaths> get signageAndEquipmentImages =>
       throw _privateConstructorUsedError; //屋外階段
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get outdoorStairs => throw _privateConstructorUsedError;
   List<ImagePaths> get outdoorStairsImages =>
       throw _privateConstructorUsedError; //その他
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
   String get overallExteriorScore => throw _privateConstructorUsedError; //判定(2)
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore2 =>
       throw _privateConstructorUsedError; //総合判定（調査番号2)
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallFallingObjectScore =>
       throw _privateConstructorUsedError;
 
@@ -3037,13 +3197,15 @@ abstract class $RebarContentCopyWith<$Res> {
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? hasSevereDamageMembers,
       List<ImagePaths> hasSevereDamageMembersImages,
-      DamageLevel? adjacentBuildingRisk,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? groundFailureInclination,
       List<ImagePaths> groundFailureInclinationImages,
-      DamageLevel? unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
       int inspectedFloorsForColumns,
       int totalColumnsLevel5,
@@ -3055,25 +3217,31 @@ abstract class $RebarContentCopyWith<$Res> {
       int totalColumnsLevel4,
       int surveyedColumnsLevel4,
       double percentColumnsLevel4,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? percentColumnsDamageLevel4,
       List<ImagePaths> percentColumnsDamageLevel4Images,
       double surveyRateLevel4,
-      DamageLevel? windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? exteriorMaterialMortarTileStone,
       List<ImagePaths> exteriorMaterialMortarTileStoneImages,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? exteriorMaterialALCPCMetalBlock,
       List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
-      DamageLevel? signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel? outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel? others,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore2,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallFallingObjectScore});
 }
 
@@ -3313,13 +3481,15 @@ abstract class _$$RebarContentImplCopyWith<$Res>
   $Res call(
       {int exteriorInspectionScore,
       String? exteriorInspectionRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? hasSevereDamageMembers,
       List<ImagePaths> hasSevereDamageMembersImages,
-      DamageLevel? adjacentBuildingRisk,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? adjacentBuildingRisk,
       List<ImagePaths> adjacentBuildingRiskImages,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? groundFailureInclination,
       List<ImagePaths> groundFailureInclinationImages,
-      DamageLevel? unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? unevenSettlement,
       List<ImagePaths> unevenSettlementImages,
       int inspectedFloorsForColumns,
       int totalColumnsLevel5,
@@ -3331,25 +3501,31 @@ abstract class _$$RebarContentImplCopyWith<$Res>
       int totalColumnsLevel4,
       int surveyedColumnsLevel4,
       double percentColumnsLevel4,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? percentColumnsDamageLevel4,
       List<ImagePaths> percentColumnsDamageLevel4Images,
       double surveyRateLevel4,
-      DamageLevel? windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? windowFrame,
       List<ImagePaths> windowFrameImages,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? exteriorMaterialMortarTileStone,
       List<ImagePaths> exteriorMaterialMortarTileStoneImages,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? exteriorMaterialALCPCMetalBlock,
       List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
-      DamageLevel? signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? signageAndEquipment,
       List<ImagePaths> signageAndEquipmentImages,
-      DamageLevel? outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? outdoorStairs,
       List<ImagePaths> outdoorStairsImages,
-      DamageLevel? others,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
       String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore2,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallFallingObjectScore});
 }
 
@@ -3582,13 +3758,16 @@ class _$RebarContentImpl implements _RebarContent {
   const _$RebarContentImpl(
       {required this.exteriorInspectionScore,
       this.exteriorInspectionRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.hasSevereDamageMembers,
       final List<ImagePaths> hasSevereDamageMembersImages = const [],
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.adjacentBuildingRisk,
       final List<ImagePaths> adjacentBuildingRiskImages = const [],
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.groundFailureInclination,
       final List<ImagePaths> groundFailureInclinationImages = const [],
-      required this.unevenSettlement,
+      @JsonKey(fromJson: damageLevelFromJson) required this.unevenSettlement,
       final List<ImagePaths> unevenSettlementImages = const [],
       required this.inspectedFloorsForColumns,
       required this.totalColumnsLevel5,
@@ -3600,25 +3779,31 @@ class _$RebarContentImpl implements _RebarContent {
       required this.totalColumnsLevel4,
       required this.surveyedColumnsLevel4,
       required this.percentColumnsLevel4,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.percentColumnsDamageLevel4,
       final List<ImagePaths> percentColumnsDamageLevel4Images = const [],
       required this.surveyRateLevel4,
-      required this.windowFrame,
+      @JsonKey(fromJson: damageLevelFromJson) required this.windowFrame,
       final List<ImagePaths> windowFrameImages = const [],
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.exteriorMaterialMortarTileStone,
       final List<ImagePaths> exteriorMaterialMortarTileStoneImages = const [],
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.exteriorMaterialALCPCMetalBlock,
       final List<ImagePaths> exteriorMaterialALCPCMetalBlockImages = const [],
-      required this.signageAndEquipment,
+      @JsonKey(fromJson: damageLevelFromJson) required this.signageAndEquipment,
       final List<ImagePaths> signageAndEquipmentImages = const [],
-      required this.outdoorStairs,
+      @JsonKey(fromJson: damageLevelFromJson) required this.outdoorStairs,
       final List<ImagePaths> outdoorStairsImages = const [],
-      required this.others,
+      @JsonKey(fromJson: damageLevelFromJson) required this.others,
       final List<ImagePaths> othersImages = const [],
       this.otherRemarks,
       required this.overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore2,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallFallingObjectScore})
       : _hasSevereDamageMembersImages = hasSevereDamageMembersImages,
         _adjacentBuildingRiskImages = adjacentBuildingRiskImages,
@@ -3645,6 +3830,7 @@ class _$RebarContentImpl implements _RebarContent {
   final String? exteriorInspectionRemarks;
 //損傷度Ⅲ以上の損傷部材の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? hasSevereDamageMembers;
   final List<ImagePaths> _hasSevereDamageMembersImages;
   @override
@@ -3658,6 +3844,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //隣接建築物・周辺地盤の破壊による危険
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? adjacentBuildingRisk;
   final List<ImagePaths> _adjacentBuildingRiskImages;
   @override
@@ -3671,6 +3858,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //地盤破壊による建築物全体の沈下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? groundFailureInclination;
   final List<ImagePaths> _groundFailureInclinationImages;
   @override
@@ -3684,6 +3872,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //不同沈下による建築物全体の傾斜
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? unevenSettlement;
   final List<ImagePaths> _unevenSettlementImages;
   @override
@@ -3736,6 +3925,7 @@ class _$RebarContentImpl implements _RebarContent {
   final double percentColumnsLevel4;
 //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? percentColumnsDamageLevel4;
   final List<ImagePaths> _percentColumnsDamageLevel4Images;
   @override
@@ -3753,6 +3943,7 @@ class _$RebarContentImpl implements _RebarContent {
 //落下危険物・転倒危険物に関する危険度
 //窓枠・窓ガラス
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? windowFrame;
   final List<ImagePaths> _windowFrameImages;
   @override
@@ -3766,6 +3957,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //外装材（モルタル・タイル・石貼り等）
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? exteriorMaterialMortarTileStone;
   final List<ImagePaths> _exteriorMaterialMortarTileStoneImages;
   @override
@@ -3779,6 +3971,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //外装材（ALC板・PC板・金属・ブロック等）
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? exteriorMaterialALCPCMetalBlock;
   final List<ImagePaths> _exteriorMaterialALCPCMetalBlockImages;
   @override
@@ -3792,6 +3985,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //看板・機器類
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? signageAndEquipment;
   final List<ImagePaths> _signageAndEquipmentImages;
   @override
@@ -3805,6 +3999,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //屋外階段
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? outdoorStairs;
   final List<ImagePaths> _outdoorStairsImages;
   @override
@@ -3818,6 +4013,7 @@ class _$RebarContentImpl implements _RebarContent {
 
 //その他
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? others;
   final List<ImagePaths> _othersImages;
   @override
@@ -3834,11 +4030,14 @@ class _$RebarContentImpl implements _RebarContent {
   final String overallExteriorScore;
 //判定(2)
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallStructuralScore2;
 //総合判定（調査番号2)
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallStructuralScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallFallingObjectScore;
 
   @override
@@ -3984,12 +4183,16 @@ abstract class _RebarContent implements RebarContent {
   const factory _RebarContent(
           {required final int exteriorInspectionScore,
           final String? exteriorInspectionRemarks,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? hasSevereDamageMembers,
           final List<ImagePaths> hasSevereDamageMembersImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? adjacentBuildingRisk,
           final List<ImagePaths> adjacentBuildingRiskImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? groundFailureInclination,
           final List<ImagePaths> groundFailureInclinationImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? unevenSettlement,
           final List<ImagePaths> unevenSettlementImages,
           required final int inspectedFloorsForColumns,
@@ -4002,25 +4205,35 @@ abstract class _RebarContent implements RebarContent {
           required final int totalColumnsLevel4,
           required final int surveyedColumnsLevel4,
           required final double percentColumnsLevel4,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? percentColumnsDamageLevel4,
           final List<ImagePaths> percentColumnsDamageLevel4Images,
           required final double surveyRateLevel4,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? windowFrame,
           final List<ImagePaths> windowFrameImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? exteriorMaterialMortarTileStone,
           final List<ImagePaths> exteriorMaterialMortarTileStoneImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? exteriorMaterialALCPCMetalBlock,
           final List<ImagePaths> exteriorMaterialALCPCMetalBlockImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? signageAndEquipment,
           final List<ImagePaths> signageAndEquipmentImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? outdoorStairs,
           final List<ImagePaths> outdoorStairsImages,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
           required final String overallExteriorScore,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore2,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore,
+          @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallFallingObjectScore}) =
       _$RebarContentImpl;
 
@@ -4033,18 +4246,22 @@ abstract class _RebarContent implements RebarContent {
   @override
   String? get exteriorInspectionRemarks; //損傷度Ⅲ以上の損傷部材の有無
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get hasSevereDamageMembers;
   @override
   List<ImagePaths> get hasSevereDamageMembersImages; //隣接建築物・周辺地盤の破壊による危険
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get adjacentBuildingRisk;
   @override
   List<ImagePaths> get adjacentBuildingRiskImages; //地盤破壊による建築物全体の沈下
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get groundFailureInclination;
   @override
   List<ImagePaths> get groundFailureInclinationImages; //不同沈下による建築物全体の傾斜
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get unevenSettlement;
   @override
   List<ImagePaths> get unevenSettlementImages; //柱の被害の調査階数
@@ -4071,6 +4288,7 @@ abstract class _RebarContent implements RebarContent {
   @override
   double get percentColumnsLevel4; //損傷度Ⅳの調査柱本数のうち損傷度Ⅴの柱のパーセントの調査率のダメージレベル
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get percentColumnsDamageLevel4;
   @override
   List<ImagePaths> get percentColumnsDamageLevel4Images; //損傷度Ⅳに関する調査率
@@ -4078,27 +4296,33 @@ abstract class _RebarContent implements RebarContent {
   double get surveyRateLevel4; //落下危険物・転倒危険物に関する危険度
 //窓枠・窓ガラス
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get windowFrame;
   @override
   List<ImagePaths> get windowFrameImages; //外装材（モルタル・タイル・石貼り等）
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorMaterialMortarTileStone;
   @override
   List<ImagePaths>
       get exteriorMaterialMortarTileStoneImages; //外装材（ALC板・PC板・金属・ブロック等）
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get exteriorMaterialALCPCMetalBlock;
   @override
   List<ImagePaths> get exteriorMaterialALCPCMetalBlockImages; //看板・機器類
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get signageAndEquipment;
   @override
   List<ImagePaths> get signageAndEquipmentImages; //屋外階段
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get outdoorStairs;
   @override
   List<ImagePaths> get outdoorStairsImages; //その他
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get others;
   @override
   List<ImagePaths> get othersImages;
@@ -4107,10 +4331,13 @@ abstract class _RebarContent implements RebarContent {
   @override
   String get overallExteriorScore; //判定(2)
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore2; //総合判定（調査番号2)
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore;
   @override
+  @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallFallingObjectScore;
 
   /// Create a copy of RebarContent
