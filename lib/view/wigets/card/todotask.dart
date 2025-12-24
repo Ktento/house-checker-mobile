@@ -40,7 +40,6 @@ class TODOTasks extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   String uuid = data[index].uuid;
-                  String name = data[index].buildingName;
                   String username = data[index].postusername;
                   String buildingtype = data[index].buildingtype;
                   String buildingUse = data[index].buildingUse;
@@ -77,9 +76,7 @@ class TODOTasks extends StatelessWidget {
                                       CupertinoPageRoute(
                                         builder: (context) =>
                                             SteelFrameResearchUnit(
-                                          record: record,
-                                          uuid:uuid
-                                        ),
+                                                record: record, uuid: uuid),
                                       ),
                                     );
                                   } else if (buildingtype == "W") {
@@ -158,9 +155,15 @@ Color scoreToColor(String score) {
   switch (score) {
     case 'red':
       return CupertinoColors.systemRed;
+    case 'uRed':
+      return CupertinoColors.systemRed;
     case 'yellow':
       return CupertinoColors.systemYellow;
+    case 'uYellow':
+      return CupertinoColors.systemYellow;
     case 'green':
+      return CupertinoColors.systemGreen;
+    case 'uGreen':
       return CupertinoColors.systemGreen;
     default:
       return CupertinoColors.systemGrey;
