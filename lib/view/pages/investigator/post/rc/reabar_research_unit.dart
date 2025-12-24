@@ -8,7 +8,9 @@ import 'rebar_building_overview.dart';
 import '../../../../../view_model/location_view_model.dart';
 
 class RebarResearchUnit extends StatelessWidget {
-  const RebarResearchUnit({super.key});
+  final String? uuid;
+  final RebarRecord? record;
+  const RebarResearchUnit({super.key, this.record, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class RebarResearchUnit extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) {
             final post = RebarViewModel();
-            post.setRecord(RebarRecord.empty());
+            post.setRecord(record ?? RebarRecord.empty());
             return post;
           },
         ),
@@ -228,7 +230,7 @@ class RebarResearchUnit extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<LocationViewModel>()),
                               ],
-                              child: RebarBuildingOverview(),
+                              child: RebarBuildingOverview(uuid: uuid),
                             ),
                           ),
                         );
