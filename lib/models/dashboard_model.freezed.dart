@@ -1379,3 +1379,369 @@ abstract class _DailyCheckCount implements DailyCheckCount {
   _$$DailyCheckCountImplCopyWith<_$DailyCheckCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+Tasks _$TasksFromJson(Map<String, dynamic> json) {
+  return _Tasks.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Tasks {
+  String get uuid => throw _privateConstructorUsedError;
+  String get postusername => throw _privateConstructorUsedError;
+  DateTime get date => throw _privateConstructorUsedError;
+  String get buildingtype => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  double get latitude => throw _privateConstructorUsedError;
+  double get longitude => throw _privateConstructorUsedError;
+  String get buildingName => throw _privateConstructorUsedError;
+  String get buildingUse => throw _privateConstructorUsedError;
+  String get overallScore => throw _privateConstructorUsedError;
+
+  /// Serializes this Tasks to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Tasks
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TasksCopyWith<Tasks> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TasksCopyWith<$Res> {
+  factory $TasksCopyWith(Tasks value, $Res Function(Tasks) then) =
+      _$TasksCopyWithImpl<$Res, Tasks>;
+  @useResult
+  $Res call(
+      {String uuid,
+      String postusername,
+      DateTime date,
+      String buildingtype,
+      String address,
+      double latitude,
+      double longitude,
+      String buildingName,
+      String buildingUse,
+      String overallScore});
+}
+
+/// @nodoc
+class _$TasksCopyWithImpl<$Res, $Val extends Tasks>
+    implements $TasksCopyWith<$Res> {
+  _$TasksCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Tasks
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uuid = null,
+    Object? postusername = null,
+    Object? date = null,
+    Object? buildingtype = null,
+    Object? address = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? buildingName = null,
+    Object? buildingUse = null,
+    Object? overallScore = null,
+  }) {
+    return _then(_value.copyWith(
+      uuid: null == uuid
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      postusername: null == postusername
+          ? _value.postusername
+          : postusername // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      buildingtype: null == buildingtype
+          ? _value.buildingtype
+          : buildingtype // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      buildingName: null == buildingName
+          ? _value.buildingName
+          : buildingName // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildingUse: null == buildingUse
+          ? _value.buildingUse
+          : buildingUse // ignore: cast_nullable_to_non_nullable
+              as String,
+      overallScore: null == overallScore
+          ? _value.overallScore
+          : overallScore // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TasksImplCopyWith<$Res> implements $TasksCopyWith<$Res> {
+  factory _$$TasksImplCopyWith(
+          _$TasksImpl value, $Res Function(_$TasksImpl) then) =
+      __$$TasksImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String uuid,
+      String postusername,
+      DateTime date,
+      String buildingtype,
+      String address,
+      double latitude,
+      double longitude,
+      String buildingName,
+      String buildingUse,
+      String overallScore});
+}
+
+/// @nodoc
+class __$$TasksImplCopyWithImpl<$Res>
+    extends _$TasksCopyWithImpl<$Res, _$TasksImpl>
+    implements _$$TasksImplCopyWith<$Res> {
+  __$$TasksImplCopyWithImpl(
+      _$TasksImpl _value, $Res Function(_$TasksImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Tasks
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uuid = null,
+    Object? postusername = null,
+    Object? date = null,
+    Object? buildingtype = null,
+    Object? address = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? buildingName = null,
+    Object? buildingUse = null,
+    Object? overallScore = null,
+  }) {
+    return _then(_$TasksImpl(
+      uuid: null == uuid
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      postusername: null == postusername
+          ? _value.postusername
+          : postusername // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      buildingtype: null == buildingtype
+          ? _value.buildingtype
+          : buildingtype // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      buildingName: null == buildingName
+          ? _value.buildingName
+          : buildingName // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildingUse: null == buildingUse
+          ? _value.buildingUse
+          : buildingUse // ignore: cast_nullable_to_non_nullable
+              as String,
+      overallScore: null == overallScore
+          ? _value.overallScore
+          : overallScore // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
+  const _$TasksImpl(
+      {required this.uuid,
+      required this.postusername,
+      required this.date,
+      required this.buildingtype,
+      required this.address,
+      required this.latitude,
+      required this.longitude,
+      this.buildingName = '',
+      required this.buildingUse,
+      this.overallScore = ''});
+
+  factory _$TasksImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TasksImplFromJson(json);
+
+  @override
+  final String uuid;
+  @override
+  final String postusername;
+  @override
+  final DateTime date;
+  @override
+  final String buildingtype;
+  @override
+  final String address;
+  @override
+  final double latitude;
+  @override
+  final double longitude;
+  @override
+  @JsonKey()
+  final String buildingName;
+  @override
+  final String buildingUse;
+  @override
+  @JsonKey()
+  final String overallScore;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Tasks(uuid: $uuid, postusername: $postusername, date: $date, buildingtype: $buildingtype, address: $address, latitude: $latitude, longitude: $longitude, buildingName: $buildingName, buildingUse: $buildingUse, overallScore: $overallScore)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Tasks'))
+      ..add(DiagnosticsProperty('uuid', uuid))
+      ..add(DiagnosticsProperty('postusername', postusername))
+      ..add(DiagnosticsProperty('date', date))
+      ..add(DiagnosticsProperty('buildingtype', buildingtype))
+      ..add(DiagnosticsProperty('address', address))
+      ..add(DiagnosticsProperty('latitude', latitude))
+      ..add(DiagnosticsProperty('longitude', longitude))
+      ..add(DiagnosticsProperty('buildingName', buildingName))
+      ..add(DiagnosticsProperty('buildingUse', buildingUse))
+      ..add(DiagnosticsProperty('overallScore', overallScore));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TasksImpl &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.postusername, postusername) ||
+                other.postusername == postusername) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.buildingtype, buildingtype) ||
+                other.buildingtype == buildingtype) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.buildingName, buildingName) ||
+                other.buildingName == buildingName) &&
+            (identical(other.buildingUse, buildingUse) ||
+                other.buildingUse == buildingUse) &&
+            (identical(other.overallScore, overallScore) ||
+                other.overallScore == overallScore));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      uuid,
+      postusername,
+      date,
+      buildingtype,
+      address,
+      latitude,
+      longitude,
+      buildingName,
+      buildingUse,
+      overallScore);
+
+  /// Create a copy of Tasks
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TasksImplCopyWith<_$TasksImpl> get copyWith =>
+      __$$TasksImplCopyWithImpl<_$TasksImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TasksImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Tasks implements Tasks {
+  const factory _Tasks(
+      {required final String uuid,
+      required final String postusername,
+      required final DateTime date,
+      required final String buildingtype,
+      required final String address,
+      required final double latitude,
+      required final double longitude,
+      final String buildingName,
+      required final String buildingUse,
+      final String overallScore}) = _$TasksImpl;
+
+  factory _Tasks.fromJson(Map<String, dynamic> json) = _$TasksImpl.fromJson;
+
+  @override
+  String get uuid;
+  @override
+  String get postusername;
+  @override
+  DateTime get date;
+  @override
+  String get buildingtype;
+  @override
+  String get address;
+  @override
+  double get latitude;
+  @override
+  double get longitude;
+  @override
+  String get buildingName;
+  @override
+  String get buildingUse;
+  @override
+  String get overallScore;
+
+  /// Create a copy of Tasks
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TasksImplCopyWith<_$TasksImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
