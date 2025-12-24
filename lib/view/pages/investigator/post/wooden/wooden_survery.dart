@@ -350,9 +350,18 @@ class WoodenSurvery extends StatelessWidget {
   }) {
     final String? path;
     // 初期値が空の場合の安全策
-    if (controller.text.isEmpty && options.isNotEmpty) {
-      // 必要であれば初期値を設定。ここではユーザーの選択を待つため何もしない、またはデフォルト値をセット
-      // controller.text = options.first;
+    switch (controller.text) {
+      case "DamageLevel.A":
+        controller.text = options[0];
+        break;
+      case "DamageLevel.B":
+        controller.text = options[1];
+        break;
+      case "DamageLevel.C":
+        controller.text = options[2];
+        break;
+      default:
+        break;
     }
     if (savedImage != null && savedImage.isNotEmpty) {
       path = savedImage[0].localPath;
