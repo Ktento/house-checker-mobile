@@ -2,12 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 import '../models/dashboard_model.dart';
 import '../utils/services/DB/get_dashboarddata.dart';
+import '../utils/services/DB/get_tasks.dart';
 
 class DashboardViewModel extends ChangeNotifier {
   DashboardData? _dashboardData;
   DashboardData? get dashboardData => _dashboardData;
+  List<Tasks> _tasks = [];
+  List<Tasks> get tasks => _tasks;
 
   DashboardViewModel() {
+    setTasks();
     setDashboardData();
   }
 
@@ -27,6 +31,14 @@ class DashboardViewModel extends ChangeNotifier {
     final value = await getDashboardData();
     if (value != null) {
       _dashboardData = value;
+      notifyListeners();
+    }
+  }
+
+  Future<void> setTasks() async {
+    final value = await getTasks();
+    if (value.isNotEmpty) {
+      _tasks = value;
       notifyListeners();
     }
   }
