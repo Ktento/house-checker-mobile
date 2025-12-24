@@ -8,7 +8,9 @@ import 'steelFrame_building_overview.dart';
 import '../../../../../view_model/location_view_model.dart';
 
 class SteelFrameResearchUnit extends StatelessWidget {
-  const SteelFrameResearchUnit({super.key});
+  final String? uuid;
+  final SteelFrameRecord? record;
+  const SteelFrameResearchUnit({super.key, this.record, this.uuid});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class SteelFrameResearchUnit extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) {
             final post = SteelFrameViewModel();
-            post.setRecord(SteelFrameRecord.empty());
+            post.setRecord(record ?? SteelFrameRecord.empty());
             return post;
           },
         ),
@@ -228,7 +230,7 @@ class SteelFrameResearchUnit extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<LocationViewModel>()),
                               ],
-                              child: SteelFrameBuildingOverview(),
+                              child: SteelFrameBuildingOverview(uuid:uuid),
                             ),
                           ),
                         );

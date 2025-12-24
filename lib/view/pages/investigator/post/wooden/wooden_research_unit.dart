@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +10,13 @@ import '../../../../../view_model/location_view_model.dart';
 import '../../../../../view_model/investigator_post/wooden_view_model.dart';
 
 class WoodenResearchUnit extends StatelessWidget {
-  const WoodenResearchUnit({super.key});
+  final WoodenRecord? record;
+  final String? uuid;
+  const WoodenResearchUnit({
+    super.key,
+    this.record,
+    this.uuid,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +26,7 @@ class WoodenResearchUnit extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) {
             final post = WoodenViewModel();
-            post.setRecord(WoodenRecord.empty());
+            post.setRecord(record ?? WoodenRecord.empty());
             return post;
           },
         ),
@@ -228,7 +236,7 @@ class WoodenResearchUnit extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<LocationViewModel>()),
                               ],
-                              child: WoodenBuildingOverview(),
+                              child: WoodenBuildingOverview(uuid: uuid),
                             ),
                           ),
                         );
