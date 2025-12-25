@@ -15,7 +15,6 @@ Future<List<Tasks>> getTasks() async {
 
       List<dynamic> data = jsonResponse['data'];
       final List<Tasks> results = data.map((e) => Tasks.fromJson(e)).toList();
-
       return results;
     } else {
       throw Exception('取得失敗: ${response.statusCode} ${response.body}');
@@ -32,7 +31,7 @@ Future<List<Tasks>> getCompletedTasks() async {
       'mode': 'checkcomplete_list',
     });
     final response = await http.get(url);
-    print(response.body);
+    // print(response.body);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
 
