@@ -29,7 +29,7 @@ Future<List<Tasks>> getTasks() async {
 Future<List<Tasks>> getCompletedTasks() async {
   try {
     final url = Uri.https('script.google.com', dotenv.env['httpgas']!, {
-      'mode': 'chekcomplete_list',
+      'mode': 'checkcomplete_list',
     });
     final response = await http.get(url);
     print(response.body);
