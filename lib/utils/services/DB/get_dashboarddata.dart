@@ -15,7 +15,7 @@ Future<DashboardData?> getDashboardData() async {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      print('取得成功(getDashboardData): ${response.body}');
+      // print('取得成功(getDashboardData): ${response.body}');
       final jsonResponse = jsonDecode(response.body);
       final Map<String, dynamic> dataJson =
           jsonResponse['data'] as Map<String, dynamic>;

@@ -10,11 +10,10 @@ Future<WoodenRecord?> getWoodenRecord(String uuid) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
-
+      print(jsonResponse);
       final Map<String, dynamic> data =
           jsonResponse['data'] as Map<String, dynamic>;
       final WoodenRecord results = WoodenRecord.fromJson(data);
-
       return results;
     } else {
       throw Exception('取得失敗: ${response.statusCode} ${response.body}');
