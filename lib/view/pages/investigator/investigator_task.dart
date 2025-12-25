@@ -15,7 +15,7 @@ class InvestigatorTask extends StatelessWidget {
         Expanded(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: TODOTasks(data: viewModel.tasks),
+          child: TODOTasks(viewModel: viewModel),
         )),
       ],
     ));
