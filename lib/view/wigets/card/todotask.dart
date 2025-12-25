@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../models/dashboard_model.dart';
+import 'package:house_check_mobile/view_model/dashboard_view_model.dart';
 import '../../../utils/services/DB/get_record.dart';
 import '../../../view/pages/investigator/post/rc/reabar_research_unit.dart';
 import '../../../view/pages/investigator/post/wooden/wooden_research_unit.dart';
@@ -7,28 +7,49 @@ import '../../../view/pages/investigator/post/steelFrame/steelFrame_research_uni
 import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
 
-class TODOTasks extends StatelessWidget {
-  final List<Tasks> data;
-  TODOTasks({super.key, required this.data});
+class TODOTasks extends StatefulWidget {
+  final DashboardViewModel viewModel;
+  TODOTasks({super.key, required this.viewModel});
+
+  @override
+  State<TODOTasks> createState() => _TODOTasksState();
+}
+
+class _TODOTasksState extends State<TODOTasks> {
+  bool isScreenA = true;
 
   @override
   Widget build(BuildContext context) {
+    final data =
+        isScreenA ? widget.viewModel.tasks : widget.viewModel.completedtasks;
     return Padding(
       padding: const EdgeInsets.only(left: 12, top: 3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(children: [
-            Text(
-              '合計',
-              style: TextStyle(
-                color: CupertinoColors.black,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: SizedBox(
+              width: double.infinity,
+              child: CupertinoSegmentedControl<bool>(
+                groupValue: isScreenA,
+                onValueChanged: (value) {
+                  setState(() => isScreenA = value);
+                },
+                children: const {
+                  true: SizedBox(
+                    height: 36,
+                    child: Center(child: Text('未判定')),
+                  ),
+                  false: SizedBox(
+                    height: 36,
+                    child: Center(child: Text('判定済み')),
+                  ),
+                },
               ),
             ),
-          ]),
+          ),
           SizedBox(height: 10),
           Expanded(
             child: CupertinoScrollbar(
