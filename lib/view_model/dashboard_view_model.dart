@@ -9,9 +9,12 @@ class DashboardViewModel extends ChangeNotifier {
   DashboardData? get dashboardData => _dashboardData;
   List<Tasks> _tasks = [];
   List<Tasks> get tasks => _tasks;
+  List<Tasks> _completedTasks = [];
+  List<Tasks> get completedtasks => _completedTasks;
 
   DashboardViewModel() {
     setTasks();
+    setCompletedTasks();
     setDashboardData();
   }
 
@@ -39,6 +42,14 @@ class DashboardViewModel extends ChangeNotifier {
     final value = await getTasks();
     if (value.isNotEmpty) {
       _tasks = value;
+      notifyListeners();
+    }
+  }
+
+  Future<void> setCompletedTasks() async {
+    final value = await getCompletedTasks();
+    if (value.isNotEmpty) {
+      _completedTasks = value;
       notifyListeners();
     }
   }
