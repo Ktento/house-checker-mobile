@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void inevestigatorSendRecord(
+Future<void> inevestigatorSendRecord(
     {WoodenRecord? woodenRecord,
     SteelFrameRecord? steelFrameRecord,
     RebarRecord? rebarRecord}) async {
@@ -43,7 +43,7 @@ void inevestigatorSendRecord(
   }
 }
 
-void inevestigatorUpdateRecord(
+Future<void> inevestigatorUpdateRecord(
     {WoodenRecord? woodenRecord,
     SteelFrameRecord? steelFrameRecord,
     RebarRecord? rebarRecord,
@@ -87,7 +87,7 @@ void inevestigatorUpdateRecord(
   }
 }
 
-void generalSendRecord(
+Future<void> generalSendRecord(
     {WoodenRecord? woodenRecord,
     SteelFrameRecord? steelFrameRecord,
     RebarRecord? rebarRecord}) async {
