@@ -15,7 +15,7 @@ class WoodenSurvery extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<WoodenViewModel>();
     final inputVM = context.read<FormViewModel>();
-
+    
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.systemGroupedBackground,
       navigationBar: const CupertinoNavigationBar(
@@ -283,7 +283,7 @@ class WoodenSurvery extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: DangerSurveyFormPage(uuid: uuid),
+                              child: WoodenDangerSurveyFormPage(uuid: uuid),
                             ),
                           ),
                         );
