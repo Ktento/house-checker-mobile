@@ -314,7 +314,7 @@ class SteelFrameSurvery extends StatelessWidget {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: DangerSurveyFormPage(uuid: uuid),
+                              child: SteelFrameDangerSurveyFormPage(uuid: uuid),
                             ),
                           ),
                         );

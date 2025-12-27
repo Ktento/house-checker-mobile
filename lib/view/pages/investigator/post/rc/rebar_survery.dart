@@ -282,7 +282,6 @@ class _RebarSurveryState extends State<RebarSurvery> {
                           'otherRemarksController':
                               inputVM.otherRemarksController,
                         };
-
                         // データ更新ロジック
                         viewModel.updateContent(
                           exteriorInspectionScore: parseExteriorScore(
@@ -344,7 +343,8 @@ class _RebarSurveryState extends State<RebarSurvery> {
                                 ChangeNotifierProvider.value(
                                     value: context.read<FormViewModel>()),
                               ],
-                              child: DangerSurveyFormPage(uuid: widget.uuid),
+                              child:
+                                  RebarDangerSurveyFormPage(uuid: widget.uuid),
                             ),
                           ),
                         );
