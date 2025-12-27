@@ -13,6 +13,8 @@ class SteelFrameViewModel extends ChangeNotifier {
     if (_steelFrameRecord == null) return;
     //調査項目2,3の危険度を算出
     final updatedContent = _steelFrameRecord!.content.copyWith(
+      //外観調査の危険度算出
+      overallExteriorScore: _calcoverallExteriorScore(),
       //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
       overallStructuralScore: _calcOverallStructuralScore(),
       //落下危険物に関する危険度の算出
@@ -266,7 +268,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     DamageLevel? outdoorStairs,
     DamageLevel? others,
     String? otherRemarks,
-    String? overallExteriorScore,
+    DamageLevel? overallExteriorScore,
     DamageLevel? overallStructuralScore,
     DamageLevel? overallFallingObjectScore,
   }) {
@@ -319,6 +321,17 @@ class SteelFrameViewModel extends ChangeNotifier {
 
     _steelFrameRecord = _steelFrameRecord!.copyWith(overallScore: score);
     notifyListeners();
+  }
+
+//外観調査の総合スコアの判定
+  DamageLevel _calcoverallExteriorScore() {
+    if (_steelFrameRecord == null) return DamageLevel.C;
+    //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
+    if (_steelFrameRecord!.content.exteriorInspectionScore != 5) {
+      return DamageLevel.C;
+    } else {
+      return DamageLevel.A;
+    }
   }
 
 //鉄筋建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定

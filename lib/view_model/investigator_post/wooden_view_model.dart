@@ -12,6 +12,8 @@ class WoodenViewModel extends ChangeNotifier {
     if (_woodenRecord == null) return;
     //調査項目2,3の危険度を算出
     final updatedContent = _woodenRecord!.content.copyWith(
+      //外観調査の危険度の算出
+      overallExteriorScore: _calcoverallExteriorScore(),
       //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
       overallStructuralScore: _calcOverallStructuralScore(),
       //落下危険物に関する危険度の算出
@@ -242,7 +244,7 @@ class WoodenViewModel extends ChangeNotifier {
     DamageLevel? outdoorStairs,
     DamageLevel? others,
     String? otherRemarks,
-    String? overallExteriorScore,
+    DamageLevel? overallExteriorScore,
     DamageLevel? overallStructuralScore,
     DamageLevel? overallFallingObjectScore,
   }) {
@@ -292,7 +294,6 @@ class WoodenViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
   DamageLevel _calcOverallStructuralScore() {
     if (_woodenRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
@@ -308,6 +309,17 @@ class WoodenViewModel extends ChangeNotifier {
       return DamageLevel.C;
     } else if (levels.contains(DamageLevel.B)) {
       return DamageLevel.B;
+    } else {
+      return DamageLevel.A;
+    }
+  }
+
+  //外観調査の総合スコアの判定
+  DamageLevel _calcoverallExteriorScore() {
+    if (_woodenRecord == null) return DamageLevel.C;
+    //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
+    if (_woodenRecord!.content.exteriorInspectionScore != 5) {
+      return DamageLevel.C;
     } else {
       return DamageLevel.A;
     }

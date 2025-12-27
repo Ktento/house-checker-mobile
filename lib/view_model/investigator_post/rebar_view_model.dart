@@ -12,6 +12,8 @@ class RebarViewModel extends ChangeNotifier {
     if (_rebarRecord == null) return;
     //調査項目2,3の危険度を算出
     final updatedContent = _rebarRecord!.content.copyWith(
+      //外観調査の危険度算出
+      overallExteriorScore: _calcoverallExteriorScore(),
       //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
       overallStructuralScore2: _calcOverallStructuralScore2(),
       overallStructuralScore: _calcOverallStructuralScore(),
@@ -263,7 +265,7 @@ class RebarViewModel extends ChangeNotifier {
     DamageLevel? outdoorStairs,
     DamageLevel? others,
     String? otherRemarks,
-    String? overallExteriorScore,
+    DamageLevel? overallExteriorScore,
     DamageLevel? overallStructuralScore2,
     DamageLevel? overallStructuralScore,
     DamageLevel? overallFallingObjectScore,
@@ -361,6 +363,17 @@ class RebarViewModel extends ChangeNotifier {
     } else {
       print("エラー(_calcOverallStructuralScore2):DamageLevelが指定されていません");
       return DamageLevel.C;
+    }
+  }
+
+//外観調査の総合スコアの判定
+  DamageLevel _calcoverallExteriorScore() {
+    if (_rebarRecord == null) return DamageLevel.C;
+    //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
+    if (_rebarRecord!.content.exteriorInspectionScore != 5) {
+      return DamageLevel.C;
+    } else {
+      return DamageLevel.A;
     }
   }
 
