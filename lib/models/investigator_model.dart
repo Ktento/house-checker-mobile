@@ -120,7 +120,8 @@ class WoodenContent with _$WoodenContent {
     @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
-    required String overallExteriorScore,
+    @JsonKey(fromJson: damageLevelFromJson)
+    required DamageLevel? overallExteriorScore,
     @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore,
     @JsonKey(fromJson: damageLevelFromJson)
@@ -194,7 +195,8 @@ class SteelFrameContent with _$SteelFrameContent {
     @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
-    required String overallExteriorScore,
+    @JsonKey(fromJson: damageLevelFromJson)
+    required DamageLevel? overallExteriorScore,
     @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore,
     @JsonKey(fromJson: damageLevelFromJson)
@@ -280,7 +282,8 @@ class RebarContent with _$RebarContent {
     @JsonKey(fromJson: damageLevelFromJson) required DamageLevel? others,
     @Default([]) List<ImagePaths> othersImages,
     String? otherRemarks,
-    required String overallExteriorScore,
+    @JsonKey(fromJson: damageLevelFromJson)
+    required DamageLevel? overallExteriorScore,
     //判定(2)
     @JsonKey(fromJson: damageLevelFromJson)
     required DamageLevel? overallStructuralScore2,
@@ -356,7 +359,7 @@ class WoodenRecord with _$WoodenRecord {
           outdoorStairsImages: [],
           others: null,
           othersImages: [],
-          overallExteriorScore: "",
+          overallExteriorScore: null,
           overallStructuralScore: null,
           overallFallingObjectScore: null,
         ),
@@ -423,7 +426,7 @@ class SteelFrameRecord with _$SteelFrameRecord {
           outdoorStairsImages: [],
           others: null,
           othersImages: [],
-          overallExteriorScore: "",
+          overallExteriorScore: null,
           overallStructuralScore: null,
           overallFallingObjectScore: null,
         ),
@@ -499,7 +502,7 @@ class RebarRecord with _$RebarRecord {
           outdoorStairsImages: [],
           others: null,
           othersImages: [],
-          overallExteriorScore: "",
+          overallExteriorScore: null,
           overallStructuralScore2: null,
           overallStructuralScore: null,
           overallFallingObjectScore: null,

@@ -886,7 +886,8 @@ mixin _$WoodenContent {
   DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
-  String get overallExteriorScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
+  DamageLevel? get overallExteriorScore => throw _privateConstructorUsedError;
   @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
   @JsonKey(fromJson: damageLevelFromJson)
@@ -939,7 +940,7 @@ abstract class $WoodenContentCopyWith<$Res> {
       @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
-      String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
       @JsonKey(fromJson: damageLevelFromJson)
@@ -990,7 +991,7 @@ class _$WoodenContentCopyWithImpl<$Res, $Val extends WoodenContent>
     Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
-    Object? overallExteriorScore = null,
+    Object? overallExteriorScore = freezed,
     Object? overallStructuralScore = freezed,
     Object? overallFallingObjectScore = freezed,
   }) {
@@ -1111,10 +1112,10 @@ class _$WoodenContentCopyWithImpl<$Res, $Val extends WoodenContent>
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      overallExteriorScore: null == overallExteriorScore
+      overallExteriorScore: freezed == overallExteriorScore
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DamageLevel?,
       overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
@@ -1165,7 +1166,7 @@ abstract class _$$WoodenContentImplCopyWith<$Res>
       @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
-      String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
       @JsonKey(fromJson: damageLevelFromJson)
@@ -1214,7 +1215,7 @@ class __$$WoodenContentImplCopyWithImpl<$Res>
     Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
-    Object? overallExteriorScore = null,
+    Object? overallExteriorScore = freezed,
     Object? overallStructuralScore = freezed,
     Object? overallFallingObjectScore = freezed,
   }) {
@@ -1335,10 +1336,10 @@ class __$$WoodenContentImplCopyWithImpl<$Res>
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      overallExteriorScore: null == overallExteriorScore
+      overallExteriorScore: freezed == overallExteriorScore
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DamageLevel?,
       overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
@@ -1385,6 +1386,7 @@ class _$WoodenContentImpl implements _WoodenContent {
       @JsonKey(fromJson: damageLevelFromJson) required this.others,
       final List<ImagePaths> othersImages = const [],
       this.otherRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore,
@@ -1594,7 +1596,8 @@ class _$WoodenContentImpl implements _WoodenContent {
   @override
   final String? otherRemarks;
   @override
-  final String overallExteriorScore;
+  @JsonKey(fromJson: damageLevelFromJson)
+  final DamageLevel? overallExteriorScore;
   @override
   @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallStructuralScore;
@@ -1769,7 +1772,8 @@ abstract class _WoodenContent implements WoodenContent {
           required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
-          required final String overallExteriorScore,
+          @JsonKey(fromJson: damageLevelFromJson)
+          required final DamageLevel? overallExteriorScore,
           @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore,
           @JsonKey(fromJson: damageLevelFromJson)
@@ -1852,7 +1856,8 @@ abstract class _WoodenContent implements WoodenContent {
   @override
   String? get otherRemarks;
   @override
-  String get overallExteriorScore;
+  @JsonKey(fromJson: damageLevelFromJson)
+  DamageLevel? get overallExteriorScore;
   @override
   @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore;
@@ -1943,7 +1948,8 @@ mixin _$SteelFrameContent {
   DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
-  String get overallExteriorScore => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: damageLevelFromJson)
+  DamageLevel? get overallExteriorScore => throw _privateConstructorUsedError;
   @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore => throw _privateConstructorUsedError;
   @JsonKey(fromJson: damageLevelFromJson)
@@ -2002,7 +2008,7 @@ abstract class $SteelFrameContentCopyWith<$Res> {
       @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
-      String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
       @JsonKey(fromJson: damageLevelFromJson)
@@ -2059,7 +2065,7 @@ class _$SteelFrameContentCopyWithImpl<$Res, $Val extends SteelFrameContent>
     Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
-    Object? overallExteriorScore = null,
+    Object? overallExteriorScore = freezed,
     Object? overallStructuralScore = freezed,
     Object? overallFallingObjectScore = freezed,
   }) {
@@ -2204,10 +2210,10 @@ class _$SteelFrameContentCopyWithImpl<$Res, $Val extends SteelFrameContent>
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      overallExteriorScore: null == overallExteriorScore
+      overallExteriorScore: freezed == overallExteriorScore
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DamageLevel?,
       overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
@@ -2264,7 +2270,7 @@ abstract class _$$SteelFrameContentImplCopyWith<$Res>
       @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
-      String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore,
       @JsonKey(fromJson: damageLevelFromJson)
@@ -2319,7 +2325,7 @@ class __$$SteelFrameContentImplCopyWithImpl<$Res>
     Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
-    Object? overallExteriorScore = null,
+    Object? overallExteriorScore = freezed,
     Object? overallStructuralScore = freezed,
     Object? overallFallingObjectScore = freezed,
   }) {
@@ -2464,10 +2470,10 @@ class __$$SteelFrameContentImplCopyWithImpl<$Res>
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      overallExteriorScore: null == overallExteriorScore
+      overallExteriorScore: freezed == overallExteriorScore
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DamageLevel?,
       overallStructuralScore: freezed == overallStructuralScore
           ? _value.overallStructuralScore
           : overallStructuralScore // ignore: cast_nullable_to_non_nullable
@@ -2520,6 +2526,7 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
       @JsonKey(fromJson: damageLevelFromJson) required this.others,
       final List<ImagePaths> othersImages = const [],
       this.otherRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore,
@@ -2776,7 +2783,8 @@ class _$SteelFrameContentImpl implements _SteelFrameContent {
   @override
   final String? otherRemarks;
   @override
-  final String overallExteriorScore;
+  @JsonKey(fromJson: damageLevelFromJson)
+  final DamageLevel? overallExteriorScore;
   @override
   @JsonKey(fromJson: damageLevelFromJson)
   final DamageLevel? overallStructuralScore;
@@ -2973,7 +2981,8 @@ abstract class _SteelFrameContent implements SteelFrameContent {
           required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
-          required final String overallExteriorScore,
+          @JsonKey(fromJson: damageLevelFromJson)
+          required final DamageLevel? overallExteriorScore,
           @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore,
           @JsonKey(fromJson: damageLevelFromJson)
@@ -3072,7 +3081,8 @@ abstract class _SteelFrameContent implements SteelFrameContent {
   @override
   String? get otherRemarks;
   @override
-  String get overallExteriorScore;
+  @JsonKey(fromJson: damageLevelFromJson)
+  DamageLevel? get overallExteriorScore;
   @override
   @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore;
@@ -3168,7 +3178,9 @@ mixin _$RebarContent {
   DamageLevel? get others => throw _privateConstructorUsedError;
   List<ImagePaths> get othersImages => throw _privateConstructorUsedError;
   String? get otherRemarks => throw _privateConstructorUsedError;
-  String get overallExteriorScore => throw _privateConstructorUsedError; //判定(2)
+  @JsonKey(fromJson: damageLevelFromJson)
+  DamageLevel? get overallExteriorScore =>
+      throw _privateConstructorUsedError; //判定(2)
   @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore2 =>
       throw _privateConstructorUsedError; //総合判定（調査番号2)
@@ -3236,7 +3248,7 @@ abstract class $RebarContentCopyWith<$Res> {
       @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
-      String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore2,
       @JsonKey(fromJson: damageLevelFromJson)
@@ -3296,7 +3308,7 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
     Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
-    Object? overallExteriorScore = null,
+    Object? overallExteriorScore = freezed,
     Object? overallStructuralScore2 = freezed,
     Object? overallStructuralScore = freezed,
     Object? overallFallingObjectScore = freezed,
@@ -3450,10 +3462,10 @@ class _$RebarContentCopyWithImpl<$Res, $Val extends RebarContent>
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      overallExteriorScore: null == overallExteriorScore
+      overallExteriorScore: freezed == overallExteriorScore
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DamageLevel?,
       overallStructuralScore2: freezed == overallStructuralScore2
           ? _value.overallStructuralScore2
           : overallStructuralScore2 // ignore: cast_nullable_to_non_nullable
@@ -3520,7 +3532,7 @@ abstract class _$$RebarContentImplCopyWith<$Res>
       @JsonKey(fromJson: damageLevelFromJson) DamageLevel? others,
       List<ImagePaths> othersImages,
       String? otherRemarks,
-      String overallExteriorScore,
+      @JsonKey(fromJson: damageLevelFromJson) DamageLevel? overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       DamageLevel? overallStructuralScore2,
       @JsonKey(fromJson: damageLevelFromJson)
@@ -3578,7 +3590,7 @@ class __$$RebarContentImplCopyWithImpl<$Res>
     Object? others = freezed,
     Object? othersImages = null,
     Object? otherRemarks = freezed,
-    Object? overallExteriorScore = null,
+    Object? overallExteriorScore = freezed,
     Object? overallStructuralScore2 = freezed,
     Object? overallStructuralScore = freezed,
     Object? overallFallingObjectScore = freezed,
@@ -3732,10 +3744,10 @@ class __$$RebarContentImplCopyWithImpl<$Res>
           ? _value.otherRemarks
           : otherRemarks // ignore: cast_nullable_to_non_nullable
               as String?,
-      overallExteriorScore: null == overallExteriorScore
+      overallExteriorScore: freezed == overallExteriorScore
           ? _value.overallExteriorScore
           : overallExteriorScore // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DamageLevel?,
       overallStructuralScore2: freezed == overallStructuralScore2
           ? _value.overallStructuralScore2
           : overallStructuralScore2 // ignore: cast_nullable_to_non_nullable
@@ -3798,6 +3810,7 @@ class _$RebarContentImpl implements _RebarContent {
       @JsonKey(fromJson: damageLevelFromJson) required this.others,
       final List<ImagePaths> othersImages = const [],
       this.otherRemarks,
+      @JsonKey(fromJson: damageLevelFromJson)
       required this.overallExteriorScore,
       @JsonKey(fromJson: damageLevelFromJson)
       required this.overallStructuralScore2,
@@ -4027,7 +4040,8 @@ class _$RebarContentImpl implements _RebarContent {
   @override
   final String? otherRemarks;
   @override
-  final String overallExteriorScore;
+  @JsonKey(fromJson: damageLevelFromJson)
+  final DamageLevel? overallExteriorScore;
 //判定(2)
   @override
   @JsonKey(fromJson: damageLevelFromJson)
@@ -4228,7 +4242,8 @@ abstract class _RebarContent implements RebarContent {
           required final DamageLevel? others,
           final List<ImagePaths> othersImages,
           final String? otherRemarks,
-          required final String overallExteriorScore,
+          @JsonKey(fromJson: damageLevelFromJson)
+          required final DamageLevel? overallExteriorScore,
           @JsonKey(fromJson: damageLevelFromJson)
           required final DamageLevel? overallStructuralScore2,
           @JsonKey(fromJson: damageLevelFromJson)
@@ -4329,7 +4344,8 @@ abstract class _RebarContent implements RebarContent {
   @override
   String? get otherRemarks;
   @override
-  String get overallExteriorScore; //判定(2)
+  @JsonKey(fromJson: damageLevelFromJson)
+  DamageLevel? get overallExteriorScore; //判定(2)
   @override
   @JsonKey(fromJson: damageLevelFromJson)
   DamageLevel? get overallStructuralScore2; //総合判定（調査番号2)
