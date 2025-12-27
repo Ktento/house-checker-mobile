@@ -142,7 +142,7 @@ class DangerSurveyFormPage extends StatelessWidget {
               ]),
               _buildSection(context, '危険度評価', [
                 _buildRow(context, '一見して危険と判断される',
-                    record.content.overallExteriorScore,
+                    record.content.overallExteriorScore?.name ?? "未入力",
                     labelWidth: 180),
                 _buildRow(context, '隣接建築物・周辺の地盤等及び構造躯体',
                     record.content.overallStructuralScore?.name ?? "未入力",
