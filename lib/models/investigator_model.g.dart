@@ -150,7 +150,7 @@ _$WoodenContentImpl _$$WoodenContentImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       otherRemarks: json['otherRemarks'] as String?,
-      overallExteriorScore: json['overallExteriorScore'] as String,
+      overallExteriorScore: damageLevelFromJson(json['overallExteriorScore']),
       overallStructuralScore:
           damageLevelFromJson(json['overallStructuralScore']),
       overallFallingObjectScore:
@@ -189,7 +189,8 @@ Map<String, dynamic> _$$WoodenContentImplToJson(_$WoodenContentImpl instance) =>
       'others': _$DamageLevelEnumMap[instance.others],
       'othersImages': instance.othersImages,
       'otherRemarks': instance.otherRemarks,
-      'overallExteriorScore': instance.overallExteriorScore,
+      'overallExteriorScore':
+          _$DamageLevelEnumMap[instance.overallExteriorScore],
       'overallStructuralScore':
           _$DamageLevelEnumMap[instance.overallStructuralScore],
       'overallFallingObjectScore':
@@ -290,7 +291,7 @@ _$SteelFrameContentImpl _$$SteelFrameContentImplFromJson(
               .toList() ??
           const [],
       otherRemarks: json['otherRemarks'] as String?,
-      overallExteriorScore: json['overallExteriorScore'] as String,
+      overallExteriorScore: damageLevelFromJson(json['overallExteriorScore']),
       overallStructuralScore:
           damageLevelFromJson(json['overallStructuralScore']),
       overallFallingObjectScore:
@@ -336,7 +337,8 @@ Map<String, dynamic> _$$SteelFrameContentImplToJson(
       'others': _$DamageLevelEnumMap[instance.others],
       'othersImages': instance.othersImages,
       'otherRemarks': instance.otherRemarks,
-      'overallExteriorScore': instance.overallExteriorScore,
+      'overallExteriorScore':
+          _$DamageLevelEnumMap[instance.overallExteriorScore],
       'overallStructuralScore':
           _$DamageLevelEnumMap[instance.overallStructuralScore],
       'overallFallingObjectScore':
@@ -432,7 +434,7 @@ _$RebarContentImpl _$$RebarContentImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       otherRemarks: json['otherRemarks'] as String?,
-      overallExteriorScore: json['overallExteriorScore'] as String,
+      overallExteriorScore: damageLevelFromJson(json['overallExteriorScore']),
       overallStructuralScore2:
           damageLevelFromJson(json['overallStructuralScore2']),
       overallStructuralScore:
@@ -490,7 +492,8 @@ Map<String, dynamic> _$$RebarContentImplToJson(_$RebarContentImpl instance) =>
       'others': _$DamageLevelEnumMap[instance.others],
       'othersImages': instance.othersImages,
       'otherRemarks': instance.otherRemarks,
-      'overallExteriorScore': instance.overallExteriorScore,
+      'overallExteriorScore':
+          _$DamageLevelEnumMap[instance.overallExteriorScore],
       'overallStructuralScore2':
           _$DamageLevelEnumMap[instance.overallStructuralScore2],
       'overallStructuralScore':
