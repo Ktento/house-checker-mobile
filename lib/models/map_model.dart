@@ -29,7 +29,7 @@ class MarkerData with _$MarkerData {
           (json['latitude'] as num).toDouble(),
           (json['longitude'] as num).toDouble(),
         ),
-        overallScore: json['overallscore']?.toString() ?? '',
+        overallScore: json['overallScore']?.toString() ?? '',
       );
 }
 
