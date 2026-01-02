@@ -17,11 +17,10 @@ Future<List<MarkerData>> getMarkers(LatLng now) async {
     print(response.body);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
-
       List<dynamic> data = jsonResponse['data'];
       final List<MarkerData> results =
           data.map((e) => MarkerData.fromJson(e)).toList();
-
+      print(results);
       return results;
     } else {
       throw Exception('送信失敗: ${response.statusCode} ${response.body}');
