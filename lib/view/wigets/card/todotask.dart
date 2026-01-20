@@ -84,8 +84,18 @@ class _TODOTasksState extends State<TODOTasks> {
                                     Navigator.push(
                                       context,
                                       CupertinoPageRoute(
-                                        builder: (context) =>
-                                            RebarResearchUnit(record: record),
+                                        builder: (_) => MultiProvider(
+                                          providers: [
+                                            ChangeNotifierProvider.value(
+                                              value: context
+                                                  .read<LocationViewModel>(),
+                                            ),
+                                          ],
+                                          child: RebarResearchUnit(
+                                            record: record,
+                                            uuid: uuid,
+                                          ),
+                                        ),
                                       ),
                                     );
                                   } else if (buildingtype == "S") {
@@ -95,13 +105,21 @@ class _TODOTasksState extends State<TODOTasks> {
                                     Navigator.push(
                                       context,
                                       CupertinoPageRoute(
-                                        builder: (context) =>
-                                            SteelFrameResearchUnit(
-                                                record: record, uuid: uuid),
+                                        builder: (_) => MultiProvider(
+                                          providers: [
+                                            ChangeNotifierProvider.value(
+                                              value: context
+                                                  .read<LocationViewModel>(),
+                                            ),
+                                          ],
+                                          child: SteelFrameResearchUnit(
+                                            record: record,
+                                            uuid: uuid,
+                                          ),
+                                        ),
                                       ),
                                     );
                                   } else if (buildingtype == "W") {
-                                    print(buildingtype);
                                     final record = await getWoodenRecord(uuid);
                                     if (record == null) return;
                                     Navigator.push(
