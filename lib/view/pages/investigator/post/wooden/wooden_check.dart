@@ -216,13 +216,13 @@ class _WoodenDangerSurveyFormPageState
                                       onPressed: () {
                                         // ダイアログを閉じる
                                         Navigator.pop(context);
-                                        // 画面遷移（前の画面に戻る、または一覧へ）
-                                        Navigator.pushReplacement(
+                                        Navigator.pushAndRemoveUntil(
                                           context,
                                           CupertinoPageRoute(
-                                            builder: (context) =>
+                                            builder: (_) =>
                                                 const InvestigatorHomePage(),
                                           ),
+                                          (route) => false,
                                         );
                                       },
                                     ),
