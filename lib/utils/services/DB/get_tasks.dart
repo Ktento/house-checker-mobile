@@ -6,7 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<List<Tasks>> getTasks() async {
   try {
     final url = Uri.https('script.google.com', dotenv.env['httpgas']!, {
-      'mode': 'generalpost_list',
+      'mode': 'checkwaiting_list',
     });
     final response = await http.get(url);
     // print(response.body);
