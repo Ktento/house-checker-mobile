@@ -28,7 +28,7 @@ mixin _$InvestigationUnit {
   List<String> get investigatorPrefecture => throw _privateConstructorUsedError;
   List<String> get investigatorNumber => throw _privateConstructorUsedError;
   @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-  LatLng get currentPosition => throw _privateConstructorUsedError;
+  LatLng? get position => throw _privateConstructorUsedError;
 
   /// Serializes this InvestigationUnit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $InvestigationUnitCopyWith<$Res> {
       List<String> investigatorPrefecture,
       List<String> investigatorNumber,
       @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-      LatLng currentPosition});
+      LatLng? position});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$InvestigationUnitCopyWithImpl<$Res, $Val extends InvestigationUnit>
     Object? investigator = null,
     Object? investigatorPrefecture = null,
     Object? investigatorNumber = null,
-    Object? currentPosition = null,
+    Object? position = freezed,
   }) {
     return _then(_value.copyWith(
       buildingtype: null == buildingtype
@@ -111,10 +111,10 @@ class _$InvestigationUnitCopyWithImpl<$Res, $Val extends InvestigationUnit>
           ? _value.investigatorNumber
           : investigatorNumber // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      currentPosition: null == currentPosition
-          ? _value.currentPosition
-          : currentPosition // ignore: cast_nullable_to_non_nullable
-              as LatLng,
+      position: freezed == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ) as $Val);
   }
 }
@@ -136,7 +136,7 @@ abstract class _$$InvestigationUnitImplCopyWith<$Res>
       List<String> investigatorPrefecture,
       List<String> investigatorNumber,
       @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-      LatLng currentPosition});
+      LatLng? position});
 }
 
 /// @nodoc
@@ -159,7 +159,7 @@ class __$$InvestigationUnitImplCopyWithImpl<$Res>
     Object? investigator = null,
     Object? investigatorPrefecture = null,
     Object? investigatorNumber = null,
-    Object? currentPosition = null,
+    Object? position = freezed,
   }) {
     return _then(_$InvestigationUnitImpl(
       buildingtype: null == buildingtype
@@ -190,10 +190,10 @@ class __$$InvestigationUnitImplCopyWithImpl<$Res>
           ? _value._investigatorNumber
           : investigatorNumber // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      currentPosition: null == currentPosition
-          ? _value.currentPosition
-          : currentPosition // ignore: cast_nullable_to_non_nullable
-              as LatLng,
+      position: freezed == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ));
   }
 }
@@ -209,8 +209,7 @@ class _$InvestigationUnitImpl implements _InvestigationUnit {
       required final List<String> investigator,
       required final List<String> investigatorPrefecture,
       required final List<String> investigatorNumber,
-      @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-      required this.currentPosition})
+      @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson) this.position})
       : _investigator = investigator,
         _investigatorPrefecture = investigatorPrefecture,
         _investigatorNumber = investigatorNumber;
@@ -254,11 +253,11 @@ class _$InvestigationUnitImpl implements _InvestigationUnit {
 
   @override
   @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-  final LatLng currentPosition;
+  final LatLng? position;
 
   @override
   String toString() {
-    return 'InvestigationUnit(buildingtype: $buildingtype, number: $number, date: $date, surveyCount: $surveyCount, investigator: $investigator, investigatorPrefecture: $investigatorPrefecture, investigatorNumber: $investigatorNumber, currentPosition: $currentPosition)';
+    return 'InvestigationUnit(buildingtype: $buildingtype, number: $number, date: $date, surveyCount: $surveyCount, investigator: $investigator, investigatorPrefecture: $investigatorPrefecture, investigatorNumber: $investigatorNumber, position: $position)';
   }
 
   @override
@@ -278,8 +277,8 @@ class _$InvestigationUnitImpl implements _InvestigationUnit {
                 other._investigatorPrefecture, _investigatorPrefecture) &&
             const DeepCollectionEquality()
                 .equals(other._investigatorNumber, _investigatorNumber) &&
-            (identical(other.currentPosition, currentPosition) ||
-                other.currentPosition == currentPosition));
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -293,7 +292,7 @@ class _$InvestigationUnitImpl implements _InvestigationUnit {
       const DeepCollectionEquality().hash(_investigator),
       const DeepCollectionEquality().hash(_investigatorPrefecture),
       const DeepCollectionEquality().hash(_investigatorNumber),
-      currentPosition);
+      position);
 
   /// Create a copy of InvestigationUnit
   /// with the given fields replaced by the non-null parameter values.
@@ -322,7 +321,7 @@ abstract class _InvestigationUnit implements InvestigationUnit {
       required final List<String> investigatorPrefecture,
       required final List<String> investigatorNumber,
       @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-      required final LatLng currentPosition}) = _$InvestigationUnitImpl;
+      final LatLng? position}) = _$InvestigationUnitImpl;
 
   factory _InvestigationUnit.fromJson(Map<String, dynamic> json) =
       _$InvestigationUnitImpl.fromJson;
@@ -343,7 +342,7 @@ abstract class _InvestigationUnit implements InvestigationUnit {
   List<String> get investigatorNumber;
   @override
   @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-  LatLng get currentPosition;
+  LatLng? get position;
 
   /// Create a copy of InvestigationUnit
   /// with the given fields replaced by the non-null parameter values.

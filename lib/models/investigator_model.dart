@@ -14,11 +14,13 @@ enum DamageLevel {
 
 enum OverallScore { red, yellow, green, uRed, uYellow, uGreen }
 
-Map<String, dynamic> latLngToJson(LatLng latLng) {
+Map<String, dynamic>? latLngToJson(LatLng? latLng) {
+  if (latLng == null) return null;
   return {'latitude': latLng.latitude, 'longitude': latLng.longitude};
 }
 
-LatLng latLngFromJson(Map<String, dynamic> json) {
+LatLng? latLngFromJson(Map<String, dynamic>? json) {
+  if (json == null) return null;
   return LatLng(json['latitude'] as double, json['longitude'] as double);
 }
 
@@ -33,7 +35,7 @@ class InvestigationUnit with _$InvestigationUnit {
     required List<String> investigatorPrefecture,
     required List<String> investigatorNumber,
     @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-    required LatLng currentPosition,
+    LatLng? position,
   }) = _InvestigationUnit;
 
   factory InvestigationUnit.fromJson(Map<String, dynamic> json) =>
@@ -315,7 +317,7 @@ class WoodenRecord with _$WoodenRecord {
           buildingtype: "",
           number: "",
           date: DateTime.now(),
-          currentPosition: LatLng(0, 0),
+          position: null,
           surveyCount: 0,
           investigator: [],
           investigatorPrefecture: [],
@@ -384,7 +386,7 @@ class SteelFrameRecord with _$SteelFrameRecord {
           buildingtype: "",
           number: "",
           date: DateTime.now(),
-          currentPosition: LatLng(0, 0),
+          position: null,
           surveyCount: 0,
           investigator: [],
           investigatorPrefecture: [],
@@ -451,7 +453,7 @@ class RebarRecord with _$RebarRecord {
           buildingtype: "",
           number: "",
           date: DateTime.now(),
-          currentPosition: LatLng(0, 0),
+          position: null,
           surveyCount: 0,
           investigator: [],
           investigatorPrefecture: [],
