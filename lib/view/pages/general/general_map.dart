@@ -77,96 +77,9 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
                   userAgentPackageName: 'com.example.app',
                 ),
                 if (markerbutton) ...[
-                  // 危険度評価　赤のマーカー
-                  MarkerLayer(
-                    markers: mapViewModel.redBuildingMarkers.map((latlng) {
-                      return Marker(
-                        point: latlng,
-                        width: 30,
-                        height: 30,
-                        child: GestureDetector(
-                          onTap: () async {
-                            final googleMapsUrl = Uri.parse(
-                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                            if (await canLaunchUrl(googleMapsUrl)) {
-                              await launchUrl(googleMapsUrl,
-                                  mode: LaunchMode.externalApplication);
-                            } else {
-                              print('Could not launch Google Maps');
-                            }
-
-                            print('タップされました: $latlng');
-                          },
-                          child: const Icon(
-                            CupertinoIcons.circle_fill,
-                            color: CupertinoColors.systemGreen,
-                            size: 30,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  // 危険度評価　黄色のマーカー
-                  MarkerLayer(
-                    markers: mapViewModel.yellowBuildingMarkers.map((latlng) {
-                      return Marker(
-                        point: latlng,
-                        width: 30,
-                        height: 30,
-                        child: GestureDetector(
-                          onTap: () async {
-                            final googleMapsUrl = Uri.parse(
-                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                            if (await canLaunchUrl(googleMapsUrl)) {
-                              await launchUrl(googleMapsUrl,
-                                  mode: LaunchMode.platformDefault);
-                            } else {
-                              print('Could not launch Google Maps');
-                            }
-
-                            print('タップされました: $latlng');
-                          },
-                          child: const Icon(
-                            CupertinoIcons.circle_fill,
-                            color: CupertinoColors.systemGreen,
-                            size: 30,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  // 危険度評価　緑のマーカー
-                  MarkerLayer(
-                    markers: mapViewModel.greenBuildingMarkers.map((latlng) {
-                      return Marker(
-                        point: latlng,
-                        width: 30,
-                        height: 30,
-                        child: GestureDetector(
-                          onTap: () async {
-                            final googleMapsUrl = Uri.parse(
-                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                            if (await canLaunchUrl(googleMapsUrl)) {
-                              await launchUrl(googleMapsUrl,
-                                  mode: LaunchMode.externalApplication);
-                            } else {
-                              print('Could not launch Google Maps');
-                            }
-
-                            print('タップされました: $latlng');
-                          },
-                          child: const Icon(
-                            CupertinoIcons.circle_fill,
-                            color: CupertinoColors.systemGreen,
-                            size: 30,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
                   // 判定待ちのマーカー
                   MarkerLayer(
-                    markers: mapViewModel.waitingBuildingMarkers.map((latlng) {
+                    markers: mapViewModel.allMarkers.map((latlng) {
                       return Marker(
                         point: latlng,
                         width: 30,
@@ -186,7 +99,7 @@ class _GeneralMapState extends State<GeneralMap> with TickerProviderStateMixin {
                           },
                           child: const Icon(
                             CupertinoIcons.circle_fill,
-                            color: CupertinoColors.systemGreen,
+                            color: CupertinoColors.systemGrey,
                             size: 30,
                           ),
                         ),
