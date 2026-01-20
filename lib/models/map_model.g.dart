@@ -8,6 +8,10 @@ part of 'map_model.dart';
 
 _$MapStateImpl _$$MapStateImplFromJson(Map<String, dynamic> json) =>
     _$MapStateImpl(
+      allMarkers: (json['allMarkers'] as List<dynamic>?)
+              ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       redBuildingMarkers: (json['redBuildingMarkers'] as List<dynamic>?)
               ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -20,7 +24,22 @@ _$MapStateImpl _$$MapStateImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      waitingBuildingMarkers: (json['waitingBuildingMarkers'] as List<dynamic>?)
+      waitingRedBuildingMarkers:
+          (json['waitingRedBuildingMarkers'] as List<dynamic>?)
+                  ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              const [],
+      waitingYellowBuildingMarkers:
+          (json['waitingYellowBuildingMarkers'] as List<dynamic>?)
+                  ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              const [],
+      waitingGreenBuildingMarkers:
+          (json['waitingGreenBuildingMarkers'] as List<dynamic>?)
+                  ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              const [],
+      otherMarkers: (json['otherMarkers'] as List<dynamic>?)
               ?.map((e) => LatLng.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -28,10 +47,14 @@ _$MapStateImpl _$$MapStateImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$MapStateImplToJson(_$MapStateImpl instance) =>
     <String, dynamic>{
+      'allMarkers': instance.allMarkers,
       'redBuildingMarkers': instance.redBuildingMarkers,
       'yellowBuildingMarkers': instance.yellowBuildingMarkers,
       'greenBuildingMarkers': instance.greenBuildingMarkers,
-      'waitingBuildingMarkers': instance.waitingBuildingMarkers,
+      'waitingRedBuildingMarkers': instance.waitingRedBuildingMarkers,
+      'waitingYellowBuildingMarkers': instance.waitingYellowBuildingMarkers,
+      'waitingGreenBuildingMarkers': instance.waitingGreenBuildingMarkers,
+      'otherMarkers': instance.otherMarkers,
     };
 
 _$MarkerDataImpl _$$MarkerDataImplFromJson(Map<String, dynamic> json) =>

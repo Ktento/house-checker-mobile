@@ -7,10 +7,14 @@ part 'map_model.g.dart';
 @freezed
 class MapState with _$MapState {
   const factory MapState({
+    @Default([]) List<LatLng> allMarkers,
     @Default([]) List<LatLng> redBuildingMarkers,
     @Default([]) List<LatLng> yellowBuildingMarkers,
     @Default([]) List<LatLng> greenBuildingMarkers,
-    @Default([]) List<LatLng> waitingBuildingMarkers,
+    @Default([]) List<LatLng> waitingRedBuildingMarkers,
+    @Default([]) List<LatLng> waitingYellowBuildingMarkers,
+    @Default([]) List<LatLng> waitingGreenBuildingMarkers,
+    @Default([]) List<LatLng> otherMarkers,
   }) = _MapState;
 
   factory MapState.fromJson(Map<String, dynamic> json) =>
