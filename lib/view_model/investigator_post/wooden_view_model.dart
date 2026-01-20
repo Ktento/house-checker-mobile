@@ -162,11 +162,11 @@ class WoodenViewModel extends ChangeNotifier {
   }
 
   //現在位置を更新する関数
-  void updateCurrentPosition(LatLng newPosition) {
+  void updateposition(LatLng newPosition) {
     if (_woodenRecord == null) return;
 
     _woodenRecord = _woodenRecord!.copyWith(
-      unit: _woodenRecord!.unit.copyWith(currentPosition: newPosition),
+      unit: _woodenRecord!.unit.copyWith(position: newPosition),
     );
 
     notifyListeners();
@@ -181,11 +181,11 @@ class WoodenViewModel extends ChangeNotifier {
       List<String>? investigator,
       List<String>? investigatorPrefecture,
       List<String>? investigatorNumber,
-      LatLng? currentPosition}) {
+      LatLng? position}) {
     if (_woodenRecord == null) return;
     final updatedUnit = _woodenRecord!.unit.copyWith(
       buildingtype: buildingtype ?? _woodenRecord!.unit.buildingtype,
-      currentPosition: currentPosition ?? _woodenRecord!.unit.currentPosition,
+      position: position ?? _woodenRecord!.unit.position,
       surveyCount: surveyCount ?? _woodenRecord!.unit.surveyCount,
       investigator: investigator ?? _woodenRecord!.unit.investigator,
       investigatorPrefecture:

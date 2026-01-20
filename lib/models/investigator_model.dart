@@ -33,7 +33,7 @@ class InvestigationUnit with _$InvestigationUnit {
     required List<String> investigatorPrefecture,
     required List<String> investigatorNumber,
     @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-    required LatLng currentPosition,
+    required LatLng position,
   }) = _InvestigationUnit;
 
   factory InvestigationUnit.fromJson(Map<String, dynamic> json) =>
@@ -315,7 +315,7 @@ class WoodenRecord with _$WoodenRecord {
           buildingtype: "",
           number: "",
           date: DateTime.now(),
-          currentPosition: LatLng(0, 0),
+          position: LatLng(0, 0),
           surveyCount: 0,
           investigator: [],
           investigatorPrefecture: [],
@@ -384,7 +384,7 @@ class SteelFrameRecord with _$SteelFrameRecord {
           buildingtype: "",
           number: "",
           date: DateTime.now(),
-          currentPosition: LatLng(0, 0),
+          position: LatLng(0, 0),
           surveyCount: 0,
           investigator: [],
           investigatorPrefecture: [],
@@ -451,7 +451,7 @@ class RebarRecord with _$RebarRecord {
           buildingtype: "",
           number: "",
           date: DateTime.now(),
-          currentPosition: LatLng(0, 0),
+          position: LatLng(0, 0),
           surveyCount: 0,
           investigator: [],
           investigatorPrefecture: [],

@@ -22,8 +22,7 @@ _$InvestigationUnitImpl _$$InvestigationUnitImplFromJson(
       investigatorNumber: (json['investigatorNumber'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      currentPosition:
-          latLngFromJson(json['currentPosition'] as Map<String, dynamic>),
+      position: latLngFromJson(json['position'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$InvestigationUnitImplToJson(
@@ -36,7 +35,7 @@ Map<String, dynamic> _$$InvestigationUnitImplToJson(
       'investigator': instance.investigator,
       'investigatorPrefecture': instance.investigatorPrefecture,
       'investigatorNumber': instance.investigatorNumber,
-      'currentPosition': latLngToJson(instance.currentPosition),
+      'position': latLngToJson(instance.position),
     };
 
 _$BuildingOverviewImpl _$$BuildingOverviewImplFromJson(

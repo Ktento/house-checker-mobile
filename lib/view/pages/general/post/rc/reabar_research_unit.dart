@@ -213,7 +213,7 @@ class RebarResearchUnit extends StatelessWidget {
                           investigatorNumber: [
                             inputVM.investigatorNumberController.text
                           ],
-                          currentPosition: locationViewModel.currentPosition,
+                          position: locationViewModel.currentPosition,
                         );
 
                         Navigator.push(
