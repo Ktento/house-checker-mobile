@@ -6,7 +6,8 @@ class RebarViewModel extends ChangeNotifier {
   RebarRecord? _rebarRecord;
 
   RebarRecord? get rebarRecord => _rebarRecord;
-
+  InvestigationUnit? get unit => _rebarRecord?.unit;
+  LatLng? get position => _rebarRecord?.unit.position;
   //すべてのスコアを計算
   void _recalculateScores() {
     if (_rebarRecord == null) return;
@@ -168,11 +169,11 @@ class RebarViewModel extends ChangeNotifier {
   }
 
   //現在位置を更新する関数
-  void updateCurrentPosition(LatLng newPosition) {
+  void updateposition(LatLng newPosition) {
     if (_rebarRecord == null) return;
 
     _rebarRecord = _rebarRecord!.copyWith(
-      unit: _rebarRecord!.unit.copyWith(currentPosition: newPosition),
+      unit: _rebarRecord!.unit.copyWith(position: newPosition),
     );
 
     notifyListeners();
@@ -187,11 +188,11 @@ class RebarViewModel extends ChangeNotifier {
       List<String>? investigator,
       List<String>? investigatorPrefecture,
       List<String>? investigatorNumber,
-      LatLng? currentPosition}) {
+      LatLng? position}) {
     if (_rebarRecord == null) return;
     final updatedUnit = _rebarRecord!.unit.copyWith(
       buildingtype: buildingtype ?? _rebarRecord!.unit.buildingtype,
-      currentPosition: currentPosition ?? _rebarRecord!.unit.currentPosition,
+      position: position ?? _rebarRecord!.unit.position,
       surveyCount: surveyCount ?? _rebarRecord!.unit.surveyCount,
       investigator: investigator ?? _rebarRecord!.unit.investigator,
       investigatorPrefecture:

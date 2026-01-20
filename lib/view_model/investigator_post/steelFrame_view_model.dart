@@ -7,7 +7,8 @@ class SteelFrameViewModel extends ChangeNotifier {
   SteelFrameRecord? _steelFrameRecord;
 
   SteelFrameRecord? get steelFrameRecord => _steelFrameRecord;
-
+  InvestigationUnit? get unit => _steelFrameRecord?.unit;
+  LatLng? get position => _steelFrameRecord?.unit.position;
   //すべてのスコアを計算
   void _recalculateScores() {
     if (_steelFrameRecord == null) return;
@@ -181,11 +182,11 @@ class SteelFrameViewModel extends ChangeNotifier {
   }
 
   //現在位置を更新する関数
-  void updateCurrentPosition(LatLng newPosition) {
+  void updateposition(LatLng newPosition) {
     if (_steelFrameRecord == null) return;
 
     _steelFrameRecord = _steelFrameRecord!.copyWith(
-      unit: _steelFrameRecord!.unit.copyWith(currentPosition: newPosition),
+      unit: _steelFrameRecord!.unit.copyWith(position: newPosition),
     );
 
     notifyListeners();
@@ -200,12 +201,12 @@ class SteelFrameViewModel extends ChangeNotifier {
       List<String>? investigator,
       List<String>? investigatorPrefecture,
       List<String>? investigatorNumber,
-      LatLng? currentPosition}) {
+      LatLng? position}) {
     if (_steelFrameRecord == null) return;
     final updatedUnit = _steelFrameRecord!.unit.copyWith(
       buildingtype: buildingtype ?? _steelFrameRecord!.unit.buildingtype,
-      currentPosition:
-          currentPosition ?? _steelFrameRecord!.unit.currentPosition,
+      position:
+          position ?? _steelFrameRecord!.unit.position,
       surveyCount: surveyCount ?? _steelFrameRecord!.unit.surveyCount,
       investigator: investigator ?? _steelFrameRecord!.unit.investigator,
       investigatorPrefecture: investigatorPrefecture ??
