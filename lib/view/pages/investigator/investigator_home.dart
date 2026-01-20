@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
 import '../../../view_model/map_view_model.dart';
 import '../../../view_model/dashboard_view_model.dart';
+import '../../home.dart';
 
 class InvestigatorHomePage extends StatelessWidget {
   const InvestigatorHomePage({super.key});
@@ -48,29 +49,81 @@ class InvestigatorHomePage extends StatelessWidget {
       tabBuilder: (BuildContext context, int index) {
         switch (index) {
           case 0:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('マップ'),
               ),
               child: SafeArea(child: InvestigatorMap()),
             );
           case 1:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('判定作業'),
               ),
               child: SafeArea(child: InvestigatorPost()),
             );
           case 2:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('未判定リスト'),
               ),
               child: SafeArea(child: InvestigatorTask()),
             );
           case 3:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('集計情報'),
               ),
               child: SafeArea(child: InvestigatorTotal()),
