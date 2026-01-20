@@ -61,6 +61,7 @@ class _TODOTasksState extends State<TODOTasks> {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   String uuid = data[index].uuid;
+                  int generalpostflag = data[index].generalpostflag;
                   String username = data[index].postusername;
                   String buildingtype = data[index].buildingtype;
                   String buildingUse = data[index].buildingUse;
@@ -143,13 +144,19 @@ class _TODOTasksState extends State<TODOTasks> {
                                 },
                                 child: Row(
                                   children: [
-                                    Text(
-                                      buildingUse,
-                                      style: TextStyle(
-                                        color: CupertinoColors.white,
-                                        fontSize: 15,
+                                    if (generalpostflag == 1)
+                                      Icon(CupertinoIcons.person_fill,
+                                          color: CupertinoColors.white)
+                                    else
+                                      // Icon(CupertinoIcons.square,
+                                      //     color: CupertinoColors.white),
+                                      Text(
+                                        buildingUse,
+                                        style: TextStyle(
+                                          color: CupertinoColors.white,
+                                          fontSize: 15,
+                                        ),
                                       ),
-                                    ),
                                     SizedBox(width: 10),
                                     Text(
                                       buildingtypeToName(buildingtype),
