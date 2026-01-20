@@ -20,7 +20,6 @@ class WoodenResearchUnit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locationViewModel = context.watch<LocationViewModel>();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -221,7 +220,7 @@ class WoodenResearchUnit extends StatelessWidget {
                           investigatorNumber: [
                             inputVM.investigatorNumberController.text
                           ],
-                          currentPosition: locationViewModel.currentPosition,
+                          // currentPosition: locationViewModel.currentPosition,
                         );
 
                         Navigator.push(

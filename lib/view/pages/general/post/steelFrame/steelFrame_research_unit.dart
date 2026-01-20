@@ -12,7 +12,6 @@ class SteelFrameResearchUnit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locationViewModel = context.watch<LocationViewModel>();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -213,7 +212,6 @@ class SteelFrameResearchUnit extends StatelessWidget {
                           investigatorNumber: [
                             inputVM.investigatorNumberController.text
                           ],
-                          currentPosition: locationViewModel.currentPosition,
                         );
 
                         Navigator.push(
