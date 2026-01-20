@@ -1,44 +1,67 @@
 import 'package:flutter/foundation.dart';
-import 'package:house_check_mobile/view/wigets/card/total.dart';
 import '../models/map_model.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapViewModel extends ChangeNotifier {
   MapState _mapState = const MapState();
-
+  List<LatLng> get allMarkers => _mapState.allMarkers;
   List<LatLng> get redBuildingMarkers => _mapState.redBuildingMarkers;
   List<LatLng> get yellowBuildingMarkers => _mapState.yellowBuildingMarkers;
   List<LatLng> get greenBuildingMarkers => _mapState.greenBuildingMarkers;
-  List<LatLng> get waitingBuildingMarkers => _mapState.waitingBuildingMarkers;
+  List<LatLng> get waitingRedBuildingMarkers =>
+      _mapState.waitingRedBuildingMarkers;
+  List<LatLng> get waitingYellowBuildingMarkers =>
+      _mapState.waitingYellowBuildingMarkers;
+  List<LatLng> get waitingGreenBuildingMarkers =>
+      _mapState.waitingGreenBuildingMarkers;
+  List<LatLng> get otherMarkers => _mapState.otherMarkers;
 
   //MarkerDataの配列をすべてマーカーに追加
   void addMarkerAll(List<MarkerData> markers) {
     //ListからMarkerDataを取り出し
     for (var marker in markers) {
-      //赤の場合
-      if (marker.overallScore == "red") {
-        _mapState = _mapState.copyWith(redBuildingMarkers: [
-          ..._mapState.redBuildingMarkers,
-          marker.position
-        ]);
-        //黄色の場合
-      } else if (marker.overallScore == "yellow") {
-        _mapState = _mapState.copyWith(yellowBuildingMarkers: [
-          ..._mapState.yellowBuildingMarkers,
-          marker.position
-        ]);
-        //緑の場合
-      } else if (marker.overallScore == "green") {
-        _mapState = _mapState.copyWith(greenBuildingMarkers: [
-          ..._mapState.greenBuildingMarkers,
-          marker.position
-        ]);
-        //それ以外(未完了の場合)
-      } else {
-        _mapState = _mapState.copyWith(waitingBuildingMarkers: [
-          ..._mapState.waitingBuildingMarkers,
-          marker.position
-        ]);
+      _mapState = _mapState
+          .copyWith(allMarkers: [..._mapState.allMarkers, marker.position]);
+      switch (marker.overallScore) {
+        case "red":
+          _mapState = _mapState.copyWith(redBuildingMarkers: [
+            ..._mapState.redBuildingMarkers,
+            marker.position
+          ]);
+          break;
+        case "yellow":
+          _mapState = _mapState.copyWith(yellowBuildingMarkers: [
+            ..._mapState.yellowBuildingMarkers,
+            marker.position
+          ]);
+          break;
+        case "green":
+          _mapState = _mapState.copyWith(greenBuildingMarkers: [
+            ..._mapState.greenBuildingMarkers,
+            marker.position
+          ]);
+          break;
+        case "uRed":
+          _mapState = _mapState.copyWith(waitingRedBuildingMarkers: [
+            ..._mapState.waitingRedBuildingMarkers,
+            marker.position
+          ]);
+          break;
+        case "uYellow":
+          _mapState = _mapState.copyWith(waitingYellowBuildingMarkers: [
+            ..._mapState.waitingYellowBuildingMarkers,
+            marker.position
+          ]);
+          break;
+        case "uGreen":
+          _mapState = _mapState.copyWith(waitingGreenBuildingMarkers: [
+            ..._mapState.waitingGreenBuildingMarkers,
+            marker.position
+          ]);
+          break;
+        default:
+          _mapState = _mapState.copyWith(
+              otherMarkers: [..._mapState.otherMarkers, marker.position]);
       }
     }
 
@@ -51,7 +74,10 @@ class MapViewModel extends ChangeNotifier {
       redBuildingMarkers: [],
       yellowBuildingMarkers: [],
       greenBuildingMarkers: [],
-      waitingBuildingMarkers: [],
+      waitingRedBuildingMarkers: [],
+      waitingYellowBuildingMarkers: [],
+      waitingGreenBuildingMarkers: [],
+      otherMarkers: [],
     );
 
     notifyListeners();
