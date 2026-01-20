@@ -92,6 +92,7 @@ class DailyCheckCount with _$DailyCheckCount {
 class Tasks with _$Tasks {
   const factory Tasks({
     required String uuid,
+    required int generalpostflag,
     required String postusername,
     required DateTime date,
     required String buildingtype,

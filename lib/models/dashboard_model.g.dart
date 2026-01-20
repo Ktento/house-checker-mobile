@@ -114,6 +114,7 @@ Map<String, dynamic> _$$DailyCheckCountImplToJson(
 
 _$TasksImpl _$$TasksImplFromJson(Map<String, dynamic> json) => _$TasksImpl(
       uuid: json['uuid'] as String,
+      generalpostflag: (json['generalpostflag'] as num).toInt(),
       postusername: json['postusername'] as String,
       date: DateTime.parse(json['date'] as String),
       buildingtype: json['buildingtype'] as String,
@@ -128,6 +129,7 @@ _$TasksImpl _$$TasksImplFromJson(Map<String, dynamic> json) => _$TasksImpl(
 Map<String, dynamic> _$$TasksImplToJson(_$TasksImpl instance) =>
     <String, dynamic>{
       'uuid': instance.uuid,
+      'generalpostflag': instance.generalpostflag,
       'postusername': instance.postusername,
       'date': instance.date.toIso8601String(),
       'buildingtype': instance.buildingtype,

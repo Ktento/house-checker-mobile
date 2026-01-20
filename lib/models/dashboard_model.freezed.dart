@@ -1387,6 +1387,7 @@ Tasks _$TasksFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Tasks {
   String get uuid => throw _privateConstructorUsedError;
+  int get generalpostflag => throw _privateConstructorUsedError;
   String get postusername => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get buildingtype => throw _privateConstructorUsedError;
@@ -1413,6 +1414,7 @@ abstract class $TasksCopyWith<$Res> {
   @useResult
   $Res call(
       {String uuid,
+      int generalpostflag,
       String postusername,
       DateTime date,
       String buildingtype,
@@ -1440,6 +1442,7 @@ class _$TasksCopyWithImpl<$Res, $Val extends Tasks>
   @override
   $Res call({
     Object? uuid = null,
+    Object? generalpostflag = null,
     Object? postusername = null,
     Object? date = null,
     Object? buildingtype = null,
@@ -1455,6 +1458,10 @@ class _$TasksCopyWithImpl<$Res, $Val extends Tasks>
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
+      generalpostflag: null == generalpostflag
+          ? _value.generalpostflag
+          : generalpostflag // ignore: cast_nullable_to_non_nullable
+              as int,
       postusername: null == postusername
           ? _value.postusername
           : postusername // ignore: cast_nullable_to_non_nullable
@@ -1504,6 +1511,7 @@ abstract class _$$TasksImplCopyWith<$Res> implements $TasksCopyWith<$Res> {
   @useResult
   $Res call(
       {String uuid,
+      int generalpostflag,
       String postusername,
       DateTime date,
       String buildingtype,
@@ -1529,6 +1537,7 @@ class __$$TasksImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uuid = null,
+    Object? generalpostflag = null,
     Object? postusername = null,
     Object? date = null,
     Object? buildingtype = null,
@@ -1544,6 +1553,10 @@ class __$$TasksImplCopyWithImpl<$Res>
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
+      generalpostflag: null == generalpostflag
+          ? _value.generalpostflag
+          : generalpostflag // ignore: cast_nullable_to_non_nullable
+              as int,
       postusername: null == postusername
           ? _value.postusername
           : postusername // ignore: cast_nullable_to_non_nullable
@@ -1589,6 +1602,7 @@ class __$$TasksImplCopyWithImpl<$Res>
 class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
   const _$TasksImpl(
       {required this.uuid,
+      required this.generalpostflag,
       required this.postusername,
       required this.date,
       required this.buildingtype,
@@ -1604,6 +1618,8 @@ class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
 
   @override
   final String uuid;
+  @override
+  final int generalpostflag;
   @override
   final String postusername;
   @override
@@ -1627,7 +1643,7 @@ class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Tasks(uuid: $uuid, postusername: $postusername, date: $date, buildingtype: $buildingtype, address: $address, latitude: $latitude, longitude: $longitude, buildingName: $buildingName, buildingUse: $buildingUse, overallScore: $overallScore)';
+    return 'Tasks(uuid: $uuid, generalpostflag: $generalpostflag, postusername: $postusername, date: $date, buildingtype: $buildingtype, address: $address, latitude: $latitude, longitude: $longitude, buildingName: $buildingName, buildingUse: $buildingUse, overallScore: $overallScore)';
   }
 
   @override
@@ -1636,6 +1652,7 @@ class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
     properties
       ..add(DiagnosticsProperty('type', 'Tasks'))
       ..add(DiagnosticsProperty('uuid', uuid))
+      ..add(DiagnosticsProperty('generalpostflag', generalpostflag))
       ..add(DiagnosticsProperty('postusername', postusername))
       ..add(DiagnosticsProperty('date', date))
       ..add(DiagnosticsProperty('buildingtype', buildingtype))
@@ -1653,6 +1670,8 @@ class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
         (other.runtimeType == runtimeType &&
             other is _$TasksImpl &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.generalpostflag, generalpostflag) ||
+                other.generalpostflag == generalpostflag) &&
             (identical(other.postusername, postusername) ||
                 other.postusername == postusername) &&
             (identical(other.date, date) || other.date == date) &&
@@ -1676,6 +1695,7 @@ class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
   int get hashCode => Object.hash(
       runtimeType,
       uuid,
+      generalpostflag,
       postusername,
       date,
       buildingtype,
@@ -1705,6 +1725,7 @@ class _$TasksImpl with DiagnosticableTreeMixin implements _Tasks {
 abstract class _Tasks implements Tasks {
   const factory _Tasks(
       {required final String uuid,
+      required final int generalpostflag,
       required final String postusername,
       required final DateTime date,
       required final String buildingtype,
@@ -1719,6 +1740,8 @@ abstract class _Tasks implements Tasks {
 
   @override
   String get uuid;
+  @override
+  int get generalpostflag;
   @override
   String get postusername;
   @override
