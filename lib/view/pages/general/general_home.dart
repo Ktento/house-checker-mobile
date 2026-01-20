@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
 import '../../../view_model/map_view_model.dart';
 import '../../../view_model/dashboard_view_model.dart';
+import '../../home.dart';
 
 class GeneralHomePage extends StatelessWidget {
   const GeneralHomePage({super.key});
@@ -44,22 +45,61 @@ class GeneralHomePage extends StatelessWidget {
       tabBuilder: (BuildContext context, int index) {
         switch (index) {
           case 0:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('マップ'),
               ),
               child: SafeArea(child: GeneralMap()),
             );
           case 1:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('判定作業'),
               ),
               child: SafeArea(child: GeneralPost()),
             );
           case 2:
-            return const CupertinoPageScaffold(
+            return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 middle: Text('集計情報'),
               ),
               child: SafeArea(child: GeneralTotal()),
