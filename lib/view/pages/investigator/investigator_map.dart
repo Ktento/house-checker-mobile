@@ -165,34 +165,34 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                     }).toList(),
                   ),
                   // 判定待ちのマーカー
-                  MarkerLayer(
-                    markers: mapViewModel.waitingBuildingMarkers.map((latlng) {
-                      return Marker(
-                        point: latlng,
-                        width: 30,
-                        height: 30,
-                        child: GestureDetector(
-                          onTap: () async {
-                            final googleMapsUrl = Uri.parse(
-                                'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
-                            if (await canLaunchUrl(googleMapsUrl)) {
-                              await launchUrl(googleMapsUrl,
-                                  mode: LaunchMode.externalApplication);
-                            } else {
-                              print('Could not launch Google Maps');
-                            }
+                  // MarkerLayer(
+                  //   markers: mapViewModel.waitingBuildingMarkers.map((latlng) {
+                  //     return Marker(
+                  //       point: latlng,
+                  //       width: 30,
+                  //       height: 30,
+                  //       child: GestureDetector(
+                  //         onTap: () async {
+                  //           final googleMapsUrl = Uri.parse(
+                  //               'https://www.google.com/maps/search/?api=1&query=${latlng.latitude},${latlng.longitude}');
+                  //           if (await canLaunchUrl(googleMapsUrl)) {
+                  //             await launchUrl(googleMapsUrl,
+                  //                 mode: LaunchMode.externalApplication);
+                  //           } else {
+                  //             print('Could not launch Google Maps');
+                  //           }
 
-                            print('タップされました: $latlng');
-                          },
-                          child: const Icon(
-                            CupertinoIcons.clock_fill,
-                            color: CupertinoColors.systemGrey,
-                            size: 30,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
+                  //           print('タップされました: $latlng');
+                  //         },
+                  //         child: const Icon(
+                  //           CupertinoIcons.clock_fill,
+                  //           color: CupertinoColors.systemGrey,
+                  //           size: 30,
+                  //         ),
+                  //       ),
+                  //     );
+                  //   }).toList(),
+                  // ),
                 ],
                 //現在位置マーカー
                 MarkerLayer(
@@ -249,7 +249,6 @@ class _InvestigatorMapState extends State<InvestigatorMap>
                               !markerbutton) return;
                           final points = await getMarkers(
                               locationViewModel.currentPosition!);
-
                           mapViewModel.clearMarker();
                           mapViewModel.addMarkerAll(points);
                         }),
