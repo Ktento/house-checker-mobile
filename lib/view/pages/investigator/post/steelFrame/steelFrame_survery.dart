@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
 import 'steelFrame_check.dart';
-import '../../../../wigets/image_pickere.dart';
-import '../../../../../models/investigator_model.dart';
+import '../../../../wigets/radiobutton.dart';
 
 class SteelFrameSurvery extends StatelessWidget {
   final String? uuid;
@@ -32,7 +31,7 @@ class SteelFrameSurvery extends StatelessWidget {
                     // --- 1. 一見して危険と判断される ---
                     _buildSectionTitle('1. 一見して危険と判断される'),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '外観調査点数',
                       controller: inputVM.exteriorInspectionScoreController,
                       options: [
@@ -57,7 +56,7 @@ class SteelFrameSurvery extends StatelessWidget {
                     // --- 2. 構造躯体・周辺地盤等の危険度 ---
                     _buildSectionTitle('2. 構造躯体・周辺地盤等の危険度'),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '隣接建築物・周辺地盤の破壊による危険',
                       controller: inputVM.adjacentBuildingRiskController,
                       options: ['A.危険無し', 'B.不明確', 'C.危険あり'],
@@ -67,7 +66,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.adjacentBuildingRiskImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '不同沈下による建築物全体の傾斜',
                       controller: inputVM.unevenSettlementController,
                       options: ['A.1/300以下', 'B.1/300～1/100', 'C.1/100超'],
@@ -77,7 +76,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.unevenSettlementImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '傾斜を生じた階の上の階数が1階以下の場合',
                       controller: inputVM.upperFloorLe1Controller,
                       options: ['A.1/100以下', 'B.1/100～1/30', 'C.1/30超'],
@@ -86,7 +85,7 @@ class SteelFrameSurvery extends StatelessWidget {
                       savedImage: viewModel
                           .steelFrameRecord?.content.upperFloorLe1Images,
                     ),
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '傾斜を生じた階の上の階数が2階以下の場合',
                       controller: inputVM.upperFloorLe2Controller,
                       options: ['A.1/200以下', 'B.1/200～1/50', 'C.1/50超'],
@@ -96,7 +95,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.upperFloorLe2Images,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '部材の座屈の有無',
                       controller: inputVM.hasBucklingController,
                       options: ['A.無し', 'B.局部座屈あり', 'C.全体座屈あるいは著しい局部座屈'],
@@ -105,7 +104,7 @@ class SteelFrameSurvery extends StatelessWidget {
                       savedImage:
                           viewModel.steelFrameRecord?.content.hasBucklingImages,
                     ),
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '筋違の破断率',
                       controller: inputVM.bracingBreakRateController,
                       options: ['A.20%以下', 'B.20%～50%', 'C.50%超'],
@@ -114,7 +113,7 @@ class SteelFrameSurvery extends StatelessWidget {
                       savedImage: viewModel
                           .steelFrameRecord?.content.bracingBreakRateImages,
                     ),
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '柱梁接合部および継手の破壊',
                       controller: inputVM.jointFailureController,
                       options: ['A.無し', 'B.一部破断あるいは亀裂', 'C.20%以上の破断'],
@@ -124,7 +123,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.jointFailureImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '柱脚の破損',
                       controller: inputVM.columnBaseDamageController,
                       options: ['A.無し', 'B.部分的', 'C.著しい'],
@@ -134,7 +133,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.columnBaseDamageImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '腐食の有無',
                       controller: inputVM.corrosionController,
                       options: ['A.ほとんど無し', 'B.各所に著しい錆', 'C.孔所が各所に見られる'],
@@ -149,7 +148,7 @@ class SteelFrameSurvery extends StatelessWidget {
                     // --- 3. 落下・転倒危険物の危険度 ---
                     _buildSectionTitle('3. 落下・転倒危険物の危険度'),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '屋根材',
                       controller: inputVM.roofOrSignboardRiskController,
                       options: ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
@@ -159,7 +158,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.roofingMaterialImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '窓枠・ガラス',
                       controller: inputVM.windowFrameController,
                       options: ['A.ほとんど無被害', 'B.歪み、ひび割れ', 'C.落下の危険有'],
@@ -169,7 +168,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           viewModel.steelFrameRecord?.content.windowFrameImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '外装材(湿式)',
                       controller: inputVM.exteriorWetController,
                       options: ['A.ほとんど無被害', 'B.部分的なひび割れ、隙間', 'C.顕著なひび割れ、剥離'],
@@ -179,7 +178,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           viewModel.steelFrameRecord?.content.exteriorWetImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '外装材(乾式)',
                       controller: inputVM.exteriorDryController,
                       options: ['A.目地の亀裂程度', 'B.板に隙間がみられる', 'C.顕著な目地ずれ、板破損'],
@@ -189,7 +188,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           viewModel.steelFrameRecord?.content.exteriorDryImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '看板・機器',
                       controller: inputVM.signageAndEquipmentController,
                       options: ['A.傾斜無し', 'B.わずかな傾斜', 'C.落下の危険有り'],
@@ -199,7 +198,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.signageAndEquipmentImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '屋外階段',
                       controller: inputVM.outdoorStairsController,
                       options: ['A.傾斜なし', 'B.わずかな傾斜', 'C.明瞭な傾斜'],
@@ -209,7 +208,7 @@ class SteelFrameSurvery extends StatelessWidget {
                           .steelFrameRecord?.content.outdoorStairsImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: 'その他',
                       controller: inputVM.othersController,
                       options: ['A.安全', 'B.要注意', 'C.危険'],
@@ -368,91 +367,6 @@ class SteelFrameSurvery extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  // --- ラジオボタンスタイル（選択肢常時表示） ---
-  Widget _buildRadioGroup({
-    required String title,
-    required TextEditingController controller,
-    required List<String> options,
-    Function(String path)? onImagePicked,
-    final List<ImagePaths>? savedImage,
-  }) {
-    final String? path;
-    // 初期値が空の場合の安全策
-    if (controller.text.isEmpty && options.isNotEmpty) {
-      // 必要であれば初期値を設定。ここではユーザーの選択を待つため何もしない、またはデフォルト値をセット
-      // controller.text = options.first;
-    }
-    if (savedImage != null && savedImage.isNotEmpty) {
-      path = savedImage[0].localPath;
-    } else {
-      path = null;
-    }
-
-    return CupertinoFormSection.insetGrouped(
-      // ヘッダー部分に「質問タイトル」と「カメラボタン」を配置
-      header: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(child: Text(title, style: const TextStyle(fontSize: 15))),
-          if (onImagePicked != null)
-            ImagePickerButton(
-              onImagePicked: (file) {
-                if (file != null) {
-                  onImagePicked(file.path);
-                }
-              },
-              //モデルに保存された画像があればその保存先を渡し表示
-              imagePath: path,
-            ),
-        ],
-      ),
-      children: options.map((option) {
-        return ValueListenableBuilder<TextEditingValue>(
-          valueListenable: controller,
-          builder: (context, value, child) {
-            // 文字列比較で選択状態を判定
-            final isSelected = value.text == option ||
-                (value.text.isNotEmpty &&
-                    option.startsWith(value.text.substring(0, 1)));
-
-            return GestureDetector(
-              onTap: () {
-                controller.text = option;
-              },
-              behavior: HitTestBehavior.opaque, // 行全体をタップ可能にする
-              child: CupertinoFormRow(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                child: Row(
-                  children: [
-                    // 選択肢テキスト
-                    Expanded(
-                      child: Text(
-                        option,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: isSelected
-                              ? CupertinoColors.activeBlue
-                              : CupertinoColors.label,
-                          fontWeight:
-                              isSelected ? FontWeight.w600 : FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                    // チェックマーク
-                    if (isSelected)
-                      const Icon(CupertinoIcons.checkmark,
-                          color: CupertinoColors.activeBlue, size: 20),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      }).toList(),
     );
   }
 }

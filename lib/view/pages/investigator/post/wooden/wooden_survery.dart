@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../../../view_model/Form_view_model.dart';
 import '../../../../../utils/helpers/damageLevel.dart';
 import './wooden_check.dart';
-import '../../../../wigets/image_pickere.dart';
-import '../../../../../models/investigator_model.dart';
+import '../../../../wigets/radiobutton.dart';
 
 class WoodenSurvery extends StatelessWidget {
   final String? uuid;
@@ -15,7 +14,7 @@ class WoodenSurvery extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<WoodenViewModel>();
     final inputVM = context.read<FormViewModel>();
-    
+
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.systemGroupedBackground,
       navigationBar: const CupertinoNavigationBar(
@@ -32,7 +31,7 @@ class WoodenSurvery extends StatelessWidget {
                     // --- 1. 一見して危険と判断される ---
                     _buildSectionTitle('1. 一見して危険と判断される'),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '外観調査点数',
                       controller: inputVM.exteriorInspectionScoreController,
                       options: [
@@ -57,7 +56,7 @@ class WoodenSurvery extends StatelessWidget {
                     // --- 2. 構造躯体・周辺地盤等の危険度 ---
                     _buildSectionTitle('2. 構造躯体・周辺地盤等の危険度'),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '隣接建築物・地盤',
                       controller: inputVM.adjacentBuildingRiskController,
                       options: ['A.危険無し', 'B.不明確', 'C.危険あり'],
@@ -67,7 +66,7 @@ class WoodenSurvery extends StatelessWidget {
                           .woodenRecord?.content.adjacentBuildingRiskImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '不同沈下',
                       controller: inputVM.unevenSettlementController,
                       options: [
@@ -81,7 +80,7 @@ class WoodenSurvery extends StatelessWidget {
                           .woodenRecord?.content.unevenSettlementImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '基礎の被害',
                       controller: inputVM.foundationDamageController,
                       options: ['A.無被害', 'B.部分的', 'C.著しい(被害あり)'],
@@ -91,7 +90,7 @@ class WoodenSurvery extends StatelessWidget {
                           .woodenRecord?.content.foundationDamageImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '1階の傾斜',
                       controller: inputVM.firstFloorTiltController,
                       options: ['A.1/60以下', 'B.1/60～1/20', 'C.1/20超'],
@@ -101,7 +100,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.firstFloorTiltImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '壁の被害',
                       controller: inputVM.wallDamageController,
                       options: ['A.軽微なひび割れ', 'B.大きな亀裂、剥離', 'C.落下の危険有り'],
@@ -111,7 +110,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.wallDamageImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '腐食・蟻害',
                       controller: inputVM.corrosionOrTermiteController,
                       options: ['A.ほとんど無し', 'B.一部の断面欠損', 'C.著しい断面欠損'],
@@ -126,7 +125,7 @@ class WoodenSurvery extends StatelessWidget {
                     // --- 3. 落下・転倒危険物の危険度 ---
                     _buildSectionTitle('3. 落下・転倒危険物の危険度'),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '瓦',
                       controller: inputVM.roofOrSignboardRiskController,
                       options: ['A.ほとんど無被害', 'B.著しいずれ', 'C.全面的にずれ、破損'],
@@ -136,7 +135,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.roofTileImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '窓枠・ガラス',
                       controller: inputVM.windowFrameController,
                       options: ['A.ほとんど無被害', 'B.歪み、ひび割れ', 'C.落下の危険有'],
@@ -146,7 +145,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.windowFrameImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '外装材(湿式)',
                       controller: inputVM.exteriorWetController,
                       options: ['A.ほとんど無被害', 'B.部分的なひび割れ、隙間', 'C.顕著なひび割れ、剥離'],
@@ -156,7 +155,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.exteriorWetImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '外装材(乾式)',
                       controller: inputVM.exteriorDryController,
                       options: ['A.目地の亀裂程度', 'B.板に隙間がみられる', 'C.顕著な目地ずれ、板破損'],
@@ -166,7 +165,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.exteriorDryImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '看板・機器',
                       controller: inputVM.signageAndEquipmentController,
                       options: ['A.傾斜無し', 'B.わずかな傾斜', 'C.落下の危険有り'],
@@ -176,7 +175,7 @@ class WoodenSurvery extends StatelessWidget {
                           .woodenRecord?.content.signageAndEquipmentImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: '屋外階段',
                       controller: inputVM.outdoorStairsController,
                       options: ['A.傾斜なし', 'B.わずかな傾斜', 'C.明瞭な傾斜'],
@@ -186,7 +185,7 @@ class WoodenSurvery extends StatelessWidget {
                           viewModel.woodenRecord?.content.outdoorStairsImages,
                     ),
 
-                    _buildRadioGroup(
+                    buildRadioGroup(
                       title: 'その他',
                       controller: inputVM.othersController,
                       options: ['A.安全', 'B.要注意', 'C.危険'],
@@ -337,100 +336,6 @@ class WoodenSurvery extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  // --- ラジオボタンスタイル（選択肢常時表示） ---
-  Widget _buildRadioGroup({
-    required String title,
-    required TextEditingController controller,
-    required List<String> options,
-    Function(String path)? onImagePicked,
-    final List<ImagePaths>? savedImage,
-  }) {
-    final String? path;
-    // 初期値が空の場合の安全策
-    switch (controller.text) {
-      case "DamageLevel.A":
-        controller.text = options[0];
-        break;
-      case "DamageLevel.B":
-        controller.text = options[1];
-        break;
-      case "DamageLevel.C":
-        controller.text = options[2];
-        break;
-      default:
-        break;
-    }
-    if (savedImage != null && savedImage.isNotEmpty) {
-      path = savedImage[0].localPath;
-    } else {
-      path = null;
-    }
-
-    return CupertinoFormSection.insetGrouped(
-      // ヘッダー部分に「質問タイトル」と「カメラボタン」を配置
-      header: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(child: Text(title, style: const TextStyle(fontSize: 15))),
-          if (onImagePicked != null)
-            ImagePickerButton(
-              onImagePicked: (file) {
-                if (file != null) {
-                  onImagePicked(file.path);
-                }
-              },
-              //モデルに保存された画像があればその保存先を渡し表示
-              imagePath: path,
-            ),
-        ],
-      ),
-      children: options.map((option) {
-        return ValueListenableBuilder<TextEditingValue>(
-          valueListenable: controller,
-          builder: (context, value, child) {
-            // 文字列比較で選択状態を判定
-            final isSelected = value.text == option ||
-                (value.text.isNotEmpty &&
-                    option.startsWith(value.text.substring(0, 1)));
-
-            return GestureDetector(
-              onTap: () {
-                controller.text = option;
-              },
-              behavior: HitTestBehavior.opaque, // 行全体をタップ可能にする
-              child: CupertinoFormRow(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                child: Row(
-                  children: [
-                    // 選択肢テキスト
-                    Expanded(
-                      child: Text(
-                        option,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: isSelected
-                              ? CupertinoColors.activeBlue
-                              : CupertinoColors.label,
-                          fontWeight:
-                              isSelected ? FontWeight.w600 : FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                    // チェックマーク
-                    if (isSelected)
-                      const Icon(CupertinoIcons.checkmark,
-                          color: CupertinoColors.activeBlue, size: 20),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      }).toList(),
     );
   }
 }
