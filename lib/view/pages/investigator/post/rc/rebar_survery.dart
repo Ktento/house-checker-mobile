@@ -237,51 +237,6 @@ class _RebarSurveryState extends State<RebarSurvery> {
                       padding: EdgeInsets.zero,
                       borderRadius: BorderRadius.circular(12),
                       onPressed: () {
-                        final Map<String, TextEditingController> controllers = {
-                          'exteriorInspectionScoreController':
-                              inputVM.exteriorInspectionScoreController,
-                          'exteriorInspectionRemarksController':
-                              inputVM.exteriorInspectionRemarksController,
-                          'hasBucklingController':
-                              inputVM.hasBucklingController,
-                          'adjacentBuildingRiskController':
-                              inputVM.adjacentBuildingRiskController,
-                          'groundFailureInclinationController':
-                              inputVM.groundFailureInclinationController,
-                          'unevenSettlementController':
-                              inputVM.unevenSettlementController,
-                          'inspectedFloorsForColumnsController':
-                              inputVM.inspectedFloorsForColumnsController,
-                          'totalColumnsLevel5Controller':
-                              inputVM.totalColumnsLevel5Controller,
-                          'surveyedColumnsLevel5Controller':
-                              inputVM.surveyedColumnsLevel5Controller,
-                          'percentColumnsLevel5Controller':
-                              inputVM.percentColumnsLevel5Controller,
-                          'percentColumnsDamageLevel5Controller':
-                              inputVM.percentColumnsDamageLevel5Controller,
-                          'totalColumnsLevel4Controller':
-                              inputVM.totalColumnsLevel4Controller,
-                          'surveyedColumnsLevel4Controller':
-                              inputVM.surveyedColumnsLevel4Controller,
-                          'percentColumnsLevel4Controller':
-                              inputVM.percentColumnsLevel4Controller,
-                          'percentColumnsDamageLevel4Controller':
-                              inputVM.percentColumnsDamageLevel4Controller,
-                          'windowFrameController':
-                              inputVM.windowFrameController,
-                          'exteriorMaterialMortarTileStoneController':
-                              inputVM.exteriorMaterialMortarTileStoneController,
-                          'exteriorMaterialALCPCMetalBlockController':
-                              inputVM.exteriorMaterialALCPCMetalBlockController,
-                          'signageAndEquipmentController':
-                              inputVM.signageAndEquipmentController,
-                          'outdoorStairsController':
-                              inputVM.outdoorStairsController,
-                          'othersController': inputVM.othersController,
-                          'otherRemarksController':
-                              inputVM.otherRemarksController,
-                        };
                         // データ更新ロジック
                         viewModel.updateContent(
                           exteriorInspectionScore: parseExteriorScore(
@@ -409,18 +364,19 @@ class _RebarSurveryState extends State<RebarSurvery> {
     Function(String path)? onImagePicked,
     final List<ImagePaths>? savedImage,
   }) {
-    final String? path;
-    // 初期値が空の場合の安全策
-    if (controller.text.isEmpty && options.isNotEmpty) {
-      // 必要であれば初期値を設定。ここではユーザーの選択を待つため何もしない、またはデフォルト値をセット
-      // controller.text = options.first;
-    }
+    String? path;
+    String? firebaseUrl;
     if (savedImage != null && savedImage.isNotEmpty) {
-      path = savedImage[0].localPath;
-    } else {
-      path = null;
+      final image = savedImage[0];
+      // firebaseUrlがある場合は firebaseUrl変数に入れる
+      if (image.firebaseUrl.isNotEmpty) {
+        firebaseUrl = image.firebaseUrl;
+      }
+      // そうでなければ path (localPath) に入れる
+      else {
+        path = image.localPath;
+      }
     }
-
     return CupertinoFormSection.insetGrouped(
       // ヘッダー部分に「質問タイトル」と「カメラボタン」を配置
       header: Row(
@@ -436,6 +392,7 @@ class _RebarSurveryState extends State<RebarSurvery> {
               },
               //モデルに保存された画像があればその保存先を渡し表示
               imagePath: path,
+              firebaseUrl: firebaseUrl,
             ),
         ],
       ),
