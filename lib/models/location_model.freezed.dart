@@ -176,3 +176,149 @@ abstract class _LocationState implements LocationState {
   _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SelectedLocation {
+  String? get address => throw _privateConstructorUsedError;
+  LatLng? get latLng => throw _privateConstructorUsedError;
+
+  /// Create a copy of SelectedLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SelectedLocationCopyWith<SelectedLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SelectedLocationCopyWith<$Res> {
+  factory $SelectedLocationCopyWith(
+          SelectedLocation value, $Res Function(SelectedLocation) then) =
+      _$SelectedLocationCopyWithImpl<$Res, SelectedLocation>;
+  @useResult
+  $Res call({String? address, LatLng? latLng});
+}
+
+/// @nodoc
+class _$SelectedLocationCopyWithImpl<$Res, $Val extends SelectedLocation>
+    implements $SelectedLocationCopyWith<$Res> {
+  _$SelectedLocationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SelectedLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? address = freezed,
+    Object? latLng = freezed,
+  }) {
+    return _then(_value.copyWith(
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latLng: freezed == latLng
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SelectedLocationImplCopyWith<$Res>
+    implements $SelectedLocationCopyWith<$Res> {
+  factory _$$SelectedLocationImplCopyWith(_$SelectedLocationImpl value,
+          $Res Function(_$SelectedLocationImpl) then) =
+      __$$SelectedLocationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? address, LatLng? latLng});
+}
+
+/// @nodoc
+class __$$SelectedLocationImplCopyWithImpl<$Res>
+    extends _$SelectedLocationCopyWithImpl<$Res, _$SelectedLocationImpl>
+    implements _$$SelectedLocationImplCopyWith<$Res> {
+  __$$SelectedLocationImplCopyWithImpl(_$SelectedLocationImpl _value,
+      $Res Function(_$SelectedLocationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SelectedLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? address = freezed,
+    Object? latLng = freezed,
+  }) {
+    return _then(_$SelectedLocationImpl(
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latLng: freezed == latLng
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectedLocationImpl implements _SelectedLocation {
+  const _$SelectedLocationImpl({this.address, this.latLng});
+
+  @override
+  final String? address;
+  @override
+  final LatLng? latLng;
+
+  @override
+  String toString() {
+    return 'SelectedLocation(address: $address, latLng: $latLng)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectedLocationImpl &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.latLng, latLng) || other.latLng == latLng));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, address, latLng);
+
+  /// Create a copy of SelectedLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectedLocationImplCopyWith<_$SelectedLocationImpl> get copyWith =>
+      __$$SelectedLocationImplCopyWithImpl<_$SelectedLocationImpl>(
+          this, _$identity);
+}
+
+abstract class _SelectedLocation implements SelectedLocation {
+  const factory _SelectedLocation(
+      {final String? address, final LatLng? latLng}) = _$SelectedLocationImpl;
+
+  @override
+  String? get address;
+  @override
+  LatLng? get latLng;
+
+  /// Create a copy of SelectedLocation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectedLocationImplCopyWith<_$SelectedLocationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

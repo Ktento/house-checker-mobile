@@ -11,3 +11,11 @@ class LocationState with _$LocationState {
     String? address,
   }) = _LocationState;
 }
+
+@freezed
+class SelectedLocation with _$SelectedLocation {
+  const factory SelectedLocation({
+    String? address,
+    LatLng? latLng,
+  }) = _SelectedLocation;
+}
