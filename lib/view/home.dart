@@ -9,32 +9,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("災害対策支援アプリケーション",
-                style: TextStyle(
-                  color: CupertinoColors.black,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                )),
-            SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                generalModeCard(context),
-                SizedBox(width: 50),
-                investigatorModeCard(context),
-              ],
-            ),
-            SizedBox(height: 40),
-            Text("モードを選択してください",
-                style: TextStyle(
-                  color: CupertinoColors.black,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                )),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("災害対策支援アプリケーション",
+                  style: TextStyle(
+                    color: CupertinoColors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  )),
+              SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(child: generalModeCard(context)),
+                  SizedBox(width: 10),
+                  Expanded(child: investigatorModeCard(context)),
+                ],
+              ),
+              SizedBox(height: 40),
+              Text("モードを選択してください",
+                  style: TextStyle(
+                    color: CupertinoColors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ],
+          ),
         ),
       ),
     );
@@ -71,9 +74,9 @@ class HomePage extends StatelessWidget {
           child: Column(children: [
             SizedBox(height: 30),
             Text(
-              "通常",
+              "一般",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 15,
               ),
             ),
             SizedBox(height: 5),
@@ -123,7 +126,7 @@ class HomePage extends StatelessWidget {
             Text(
               "応急危険度判定士",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 15,
               ),
             ),
             SizedBox(height: 5),
