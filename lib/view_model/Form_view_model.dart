@@ -53,6 +53,7 @@ class FormViewModel extends ChangeNotifier {
   // 柱の被害調査（階数）
   final TextEditingController inspectedFloorsForColumnsController;
   // 損傷度Ⅴ
+
   final TextEditingController totalColumnsLevel5Controller;
   final TextEditingController surveyedColumnsLevel5Controller;
   final TextEditingController percentColumnsLevel5Controller;
@@ -69,17 +70,22 @@ class FormViewModel extends ChangeNotifier {
   final TextEditingController exteriorMaterialALCPCMetalBlockController;
   // その他
   final TextEditingController overallStructuralScore2Controller;
-
+  // 損傷度IV（レベル4）に該当する柱の割合に基づいて、建物全体の被害区分（A, B, C）を自動判定する関数
   DamageLevel? calc4DamageLevel() {
+    //調査した柱の数と損傷度4の柱の数
     int damagedPillar = int.tryParse(totalColumnsLevel4Controller.text) ?? 0;
     int total = int.tryParse(surveyedColumnsLevel4Controller.text) ?? 0;
     late double percent;
     if (damagedPillar < total) {
+      //割合に変換
       percent = (damagedPillar / total) * 100;
+      //10%超
       if (percent > 10) {
         return DamageLevel.C;
+        //1%~10%
       } else if (percent > 1) {
         return DamageLevel.B;
+        //1%以下
       } else {
         return DamageLevel.A;
       }
@@ -88,16 +94,22 @@ class FormViewModel extends ChangeNotifier {
     }
   }
 
+  // 損傷度Ⅴ（レベル5）に該当する柱の割合に基づいて、建物全体の被害区分（A, B, C）を自動判定する関数
   DamageLevel? calc5DamageLevel() {
+    //調査した柱の総数と損傷度5の柱の数
     int damagedPillar = int.tryParse(totalColumnsLevel5Controller.text) ?? 0;
     int total = int.tryParse(surveyedColumnsLevel5Controller.text) ?? 0;
     late double percent;
     if (damagedPillar < total) {
+      //割合に変換
       percent = (damagedPillar / total) * 100;
+      //20%超
       if (percent > 20) {
         return DamageLevel.C;
+        //10%～20%
       } else if (percent > 10) {
         return DamageLevel.B;
+        //10%以下
       } else {
         return DamageLevel.A;
       }
@@ -161,7 +173,7 @@ class FormViewModel extends ChangeNotifier {
     "沖縄県",
   ];
   List<String> get prefectures => _prefectures;
-
+  //FormViewModel クラスのコンストラクタ（初期化処理）
   FormViewModel(
       {WoodenRecord? woodenRecord,
       SteelFrameRecord? SteelFrameRecord,
@@ -370,20 +382,22 @@ class FormViewModel extends ChangeNotifier {
           .indexOf(SteelFrameRecord!.unit.investigatorPrefecture[0]);
     }
   }
-
+  //都道府県の選択処理
   void setSelectedPrefecture(int index) {
     selectedPrefectureIndex = index;
     investigatorPrefectureController.text = _prefectures[index];
+    //画面更新
     notifyListeners();
   }
 
   String get selectedPrefecture => _prefectures[selectedPrefectureIndex];
-
+  //日付の選択処理
   void setSelectedDate(DateTime newDate) {
     selectedDate = newDate;
     notifyListeners();
   }
 
+  //メモリの解放
   @override
   void dispose() {
     buildingtypeController.dispose();

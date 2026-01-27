@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:house_check_mobile/view/pages/investigator/post/wooden/wooden_research_unit.dart';
 import '../../models/investigator_model.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -88,6 +87,7 @@ class WoodenViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+//画像の端末保存先URLとfirebaseの保存先URLの更新
   void updateImageFieldFirebase(
       String fieldName, List<String> localUrls, List<String> uploadUrls) {
     if (_woodenRecord == null) {
@@ -352,6 +352,7 @@ class WoodenViewModel extends ChangeNotifier {
 
   //家屋危険度を算出する関数
   OverallScore _calcOverallScore(WoodenContent content) {
+    //欠損データ
     final hasMissingData = [
       content.adjacentBuildingRisk,
       content.unevenSettlement,
@@ -376,6 +377,7 @@ class WoodenViewModel extends ChangeNotifier {
       //２と３のどちらかがレベルCだった場合危険度は赤
     } else if (content.overallStructuralScore == DamageLevel.C ||
         content.overallFallingObjectScore == DamageLevel.C) {
+      //欠損データが存在する場合は仮評価
       if (hasMissingData) {
         return OverallScore.uRed;
       } else {

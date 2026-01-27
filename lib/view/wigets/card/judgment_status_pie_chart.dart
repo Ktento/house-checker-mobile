@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../../models/dashboard_model.dart';
 
+//判定状況身長のwidget
 class PieChartStatus extends StatelessWidget {
   final DashboardData data;
   const PieChartStatus({super.key, required this.data});
@@ -17,7 +18,7 @@ class PieChartStatus extends StatelessWidget {
     final sections = <PieChartSectionData>[
       PieChartSectionData(
         value: data.checksituationRatio.noValue,
-        color: Color.fromARGB(255, 3, 3, 236),
+        color: CupertinoColors.systemPurple,
         title: '${data.checksituationRatio.noValue}%',
         titleStyle: TextStyle(
           fontSize: getFontSize(data.checksituationRatio.noValue),
@@ -100,11 +101,11 @@ class PieChartStatus extends StatelessWidget {
                   Row(
                     children: [
                       Icon(CupertinoIcons.circle_filled,
-                          color: CupertinoColors.activeBlue, size: 14),
+                          color: CupertinoColors.systemRed, size: 14),
                       Text(
-                        '判定なし',
+                        '危険',
                         style: TextStyle(
-                          color: CupertinoColors.activeBlue,
+                          color: CupertinoColors.systemRed,
                           fontSize: 14,
                         ),
                       ),
@@ -113,9 +114,21 @@ class PieChartStatus extends StatelessWidget {
                   SizedBox(height: 3),
                   Row(children: [
                     Icon(CupertinoIcons.circle_filled,
+                        color: CupertinoColors.systemYellow, size: 14),
+                    Text(
+                      '要注意',
+                      style: TextStyle(
+                        color: CupertinoColors.systemYellow,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ]),
+                  SizedBox(height: 3),
+                  Row(children: [
+                    Icon(CupertinoIcons.circle_filled,
                         color: CupertinoColors.activeGreen, size: 14),
                     Text(
-                      '判定完了',
+                      '安全',
                       style: TextStyle(
                         color: CupertinoColors.activeGreen,
                         fontSize: 14,
@@ -125,23 +138,11 @@ class PieChartStatus extends StatelessWidget {
                   SizedBox(height: 3),
                   Row(children: [
                     Icon(CupertinoIcons.circle_filled,
-                        color: CupertinoColors.systemRed, size: 14),
-                    Text(
-                      '危険建物',
-                      style: TextStyle(
-                        color: CupertinoColors.systemRed,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ]),
-                  SizedBox(height: 3),
-                  Row(children: [
-                    Icon(CupertinoIcons.circle_filled,
-                        color: CupertinoColors.systemYellow, size: 14),
+                        color: CupertinoColors.systemPurple, size: 14),
                     Text(
                       '判定待ち',
                       style: TextStyle(
-                        color: CupertinoColors.systemYellow,
+                        color: CupertinoColors.systemPurple,
                         fontSize: 14,
                       ),
                     ),

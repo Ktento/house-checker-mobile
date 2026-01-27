@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import '../../../models/dashboard_model.dart';
 
+//地域別統計のwidget
 class RegionalStatistics extends StatelessWidget {
   final DashboardData data;
   RegionalStatistics({super.key, required this.data});

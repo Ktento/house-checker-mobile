@@ -3,11 +3,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+//各建築物の調査内容をGASに送信する関数
 Future<void> inevestigatorSendRecord(
-    {WoodenRecord? woodenRecord,
-    SteelFrameRecord? steelFrameRecord,
-    RebarRecord? rebarRecord}) async {
+    {WoodenRecord? woodenRecord, //木造
+    SteelFrameRecord? steelFrameRecord, //鉄骨
+    RebarRecord? rebarRecord //鉄筋
+    }) async {
   final record;
+  //各建築物の調査内容をrecordに保持
   if (woodenRecord != null) {
     record = woodenRecord;
   } else if (steelFrameRecord != null) {
@@ -17,7 +20,9 @@ Future<void> inevestigatorSendRecord(
   } else {
     return;
   }
+
   try {
+    //調査内容をJson変換し送信する
     final jsonBody = {
       'investigator_post': record.toJson(),
     };
@@ -43,6 +48,8 @@ Future<void> inevestigatorSendRecord(
   }
 }
 
+//既に存在する調査内容をUUIDを元に編集
+//UUIDから更新するGASの調査内容を特定し、関数が受け取る調査内容をすべてGASに反映する。
 Future<void> inevestigatorUpdateRecord(
     {WoodenRecord? woodenRecord,
     SteelFrameRecord? steelFrameRecord,
@@ -87,6 +94,7 @@ Future<void> inevestigatorUpdateRecord(
   }
 }
 
+//一般ユーザ用の調査内容送信関数
 Future<void> generalSendRecord(
     {WoodenRecord? woodenRecord,
     SteelFrameRecord? steelFrameRecord,
@@ -131,6 +139,7 @@ Future<void> generalSendRecord(
   }
 }
 
+//デバック用のprint関数。改行が自動でされる
 void printLong(Object obj) {
   final text = const JsonEncoder.withIndent('  ').convert(obj);
   const chunkSize = 800;

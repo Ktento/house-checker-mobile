@@ -7,6 +7,7 @@ import '../../../models/dashboard_model.dart';
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+//GASから集計画面表示に必要な情報を取得する関数
 Future<DashboardData?> getDashboardData() async {
   try {
     final url = Uri.https('script.google.com', dotenv.env['httpgas']!, {
@@ -17,6 +18,7 @@ Future<DashboardData?> getDashboardData() async {
     if (response.statusCode == 200) {
       // print('取得成功(getDashboardData): ${response.body}');
       final jsonResponse = jsonDecode(response.body);
+      //JsonをDashboardData型に変換
       final Map<String, dynamic> dataJson =
           jsonResponse['data'] as Map<String, dynamic>;
       return DashboardData.fromJson(dataJson);

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+//判定士作業状況のwidget
 class WorkStatus extends StatelessWidget {
   const WorkStatus({super.key});
 

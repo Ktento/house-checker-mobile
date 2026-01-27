@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+//未判定の調査内容を取得する関数
 Future<List<Tasks>> getTasks() async {
   try {
     final url = Uri.https('script.google.com', dotenv.env['httpgas']!, {
@@ -24,7 +25,7 @@ Future<List<Tasks>> getTasks() async {
     return [];
   }
 }
-
+//判定済みの調査内容を取得する関数
 Future<List<Tasks>> getCompletedTasks() async {
   try {
     final url = Uri.https('script.google.com', dotenv.env['httpgas']!, {

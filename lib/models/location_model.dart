@@ -12,6 +12,7 @@ class LocationState with _$LocationState {
   }) = _LocationState;
 }
 
+//地図モーダル専用クラス
 @freezed
 class SelectedLocation with _$SelectedLocation {
   const factory SelectedLocation({

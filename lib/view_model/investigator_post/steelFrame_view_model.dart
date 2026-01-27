@@ -97,6 +97,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+//画像の端末保存先URLとfirebaseの保存先URLの更新
   void updateImageFieldFirebase(
       String fieldName, List<String> localUrls, List<String> uploadUrls) {
     if (_steelFrameRecord == null) {
@@ -172,7 +173,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //鉄筋建築物のレコードを初期化する関数
+  //鉄骨建築物のレコードを初期化する関数
   void setRecord(SteelFrameRecord record) {
     //初期化
     _steelFrameRecord = record;
@@ -205,8 +206,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     if (_steelFrameRecord == null) return;
     final updatedUnit = _steelFrameRecord!.unit.copyWith(
       buildingtype: buildingtype ?? _steelFrameRecord!.unit.buildingtype,
-      position:
-          position ?? _steelFrameRecord!.unit.position,
+      position: position ?? _steelFrameRecord!.unit.position,
       surveyCount: surveyCount ?? _steelFrameRecord!.unit.surveyCount,
       investigator: investigator ?? _steelFrameRecord!.unit.investigator,
       investigatorPrefecture: investigatorPrefecture ??
@@ -248,7 +248,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //鉄筋建築物のContentの一部を更新するメソッド
+  //鉄骨建築物のContentの一部を更新するメソッド
   void updateContent({
     int? exteriorInspectionScore,
     String? exteriorInspectionRemarks,
@@ -316,7 +316,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //鉄筋建築物の総合スコアを更新する関数
+  //鉄骨建築物の総合スコアを更新する関数
   void updateOverallScore(OverallScore score) {
     if (_steelFrameRecord == null) return;
 
@@ -335,7 +335,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     }
   }
 
-//鉄筋建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
+//鉄骨建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
   DamageLevel _calcOverallStructuralScore() {
     if (_steelFrameRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
@@ -363,7 +363,7 @@ class SteelFrameViewModel extends ChangeNotifier {
     }
   }
 
-  //鉄筋建築物の落下危険物・転倒危険物に関する危険度の総合スコアの判定
+  //鉄骨建築物の落下危険物・転倒危険物に関する危険度の総合スコアの判定
   DamageLevel _calcOverallFallingObjectScore() {
     if (_steelFrameRecord == null) return DamageLevel.C;
 
@@ -386,8 +386,9 @@ class SteelFrameViewModel extends ChangeNotifier {
     }
   }
 
-//鉄筋建築物家屋の危険度を算出する関数
+//鉄骨建築物家屋の危険度を算出する関数
   OverallScore _calcOverallScore(SteelFrameContent content) {
+    //欠損データの確認
     final hasMissingData = [
       content.adjacentBuildingRisk,
       content.unevenSettlement,
@@ -415,6 +416,7 @@ class SteelFrameViewModel extends ChangeNotifier {
       //２と３のどちらかがレベルCだった場合危険度は赤
     } else if (content.overallStructuralScore == DamageLevel.C ||
         content.overallFallingObjectScore == DamageLevel.C) {
+      //欠損データが存在する場合は仮評価
       if (hasMissingData) {
         return OverallScore.uRed;
       } else {

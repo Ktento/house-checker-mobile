@@ -4,16 +4,17 @@ import 'package:latlong2/latlong.dart';
 part 'map_model.freezed.dart';
 part 'map_model.g.dart';
 
+//各建築物の緯度経度
 @freezed
 class MapState with _$MapState {
   const factory MapState({
-    @Default([]) List<LatLng> allMarkers,
-    @Default([]) List<LatLng> redBuildingMarkers,
-    @Default([]) List<LatLng> yellowBuildingMarkers,
-    @Default([]) List<LatLng> greenBuildingMarkers,
-    @Default([]) List<LatLng> waitingRedBuildingMarkers,
-    @Default([]) List<LatLng> waitingYellowBuildingMarkers,
-    @Default([]) List<LatLng> waitingGreenBuildingMarkers,
+    @Default([]) List<LatLng> allMarkers,//すべての建築物
+    @Default([]) List<LatLng> redBuildingMarkers,//赤評価の建築物
+    @Default([]) List<LatLng> yellowBuildingMarkers,//黄色評価の建築物
+    @Default([]) List<LatLng> greenBuildingMarkers,//緑評価の建築物
+    @Default([]) List<LatLng> waitingRedBuildingMarkers,//赤(仮判定)の建築物
+    @Default([]) List<LatLng> waitingYellowBuildingMarkers,//黄色(仮判定)の建築物
+    @Default([]) List<LatLng> waitingGreenBuildingMarkers,//緑(仮判定)の建築物
     @Default([]) List<LatLng> otherMarkers,
   }) = _MapState;
 

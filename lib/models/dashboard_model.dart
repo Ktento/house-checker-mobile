@@ -77,6 +77,7 @@ class RegionAnalysis with _$RegionAnalysis {
       _$RegionAnalysisFromJson(json);
 }
 
+//日別実績推移
 @freezed
 class DailyCheckCount with _$DailyCheckCount {
   const factory DailyCheckCount({
@@ -88,6 +89,7 @@ class DailyCheckCount with _$DailyCheckCount {
       _$DailyCheckCountFromJson(json);
 }
 
+//未判定リスト
 @freezed
 class Tasks with _$Tasks {
   const factory Tasks({

@@ -15,8 +15,9 @@ class RebarViewModel extends ChangeNotifier {
     final updatedContent = _rebarRecord!.content.copyWith(
       //外観調査の危険度算出
       overallExteriorScore: _calcoverallExteriorScore(),
+      //判定(2)スコア算出
+      overallStructuralScore2: _judgement2(),
       //隣接建築物・周辺地盤等及び構造躯体に関する危険度の算出
-      overallStructuralScore2: _calcOverallStructuralScore2(),
       overallStructuralScore: _calcOverallStructuralScore(),
       //落下危険物に関する危険度の算出
       overallFallingObjectScore: _calcOverallFallingObjectScore(),
@@ -91,6 +92,7 @@ class RebarViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  //画像の端末保存先URLとfirebaseの保存先URLの更新
   void updateImageFieldFirebase(
       String fieldName, List<String> localUrls, List<String> uploadUrls) {
     if (_rebarRecord == null) {
@@ -341,8 +343,8 @@ class RebarViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-//鉄筋建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
-  DamageLevel _calcOverallStructuralScore2() {
+  //判定(2)の評価
+  DamageLevel _judgement2() {
     if (_rebarRecord == null) return DamageLevel.C;
     List<DamageLevel> levels = [
       _rebarRecord!.content.adjacentBuildingRisk ?? DamageLevel.A,
@@ -362,12 +364,12 @@ class RebarViewModel extends ChangeNotifier {
     } else if (aCount == 5) {
       return DamageLevel.A;
     } else {
-      print("エラー(_calcOverallStructuralScore2):DamageLevelが指定されていません");
+      print("エラー(_judgement2):DamageLevelが指定されていません");
       return DamageLevel.C;
     }
   }
 
-//外観調査の総合スコアの判定
+  //外観調査の総合スコアの判定
   DamageLevel _calcoverallExteriorScore() {
     if (_rebarRecord == null) return DamageLevel.C;
     //C評価が一つでもあればC、B評価が一つでもあればB、全てAならA
@@ -378,17 +380,19 @@ class RebarViewModel extends ChangeNotifier {
     }
   }
 
+  //鉄筋建築物の隣接建築物・周辺地盤等及び構造躯体に関する危険度の総合スコアの判定
   DamageLevel _calcOverallStructuralScore() {
     if (_rebarRecord == null) return DamageLevel.C;
+    //判定(1) 損傷度Ⅲ以上の損傷部材の有無(A or B)
     final level1 = _rebarRecord!.content.hasSevereDamageMembers;
+    //判定(2)
     final level2 = _rebarRecord!.content.overallStructuralScore2;
-    //C評価が1つ又はBが4以上あればC
+
+    //level1とlevel2で大きな法の危険度で評価をする
     if (level1 == DamageLevel.C || level2 == DamageLevel.C) {
       return DamageLevel.C;
-      //B評価が3つ以内ならB
     } else if (level1 == DamageLevel.B || level2 == DamageLevel.B) {
       return DamageLevel.B;
-      //すべてA評価の場合A
     } else {
       return DamageLevel.A;
     }
@@ -419,6 +423,7 @@ class RebarViewModel extends ChangeNotifier {
 
 //鉄筋建築物家屋の危険度を算出する関数
   OverallScore _calcOverallScore(RebarContent content) {
+    //欠損データの確認
     final hasMissingData = [
       content.hasSevereDamageMembers,
       content.adjacentBuildingRisk,
@@ -441,6 +446,7 @@ class RebarViewModel extends ChangeNotifier {
       //２と３のどちらかがレベルCだった場合危険度は赤
     } else if (content.overallStructuralScore == DamageLevel.C ||
         content.overallFallingObjectScore == DamageLevel.C) {
+      //欠損データが存在する場合は仮評価を行う
       if (hasMissingData) {
         return OverallScore.uRed;
       } else {

@@ -6,6 +6,7 @@ import 'package:house_check_mobile/view_model/investigator_post/wooden_view_mode
 import 'dart:io';
 import 'package:path/path.dart' as p;
 
+//各建築物のviewmodelを受け取り画像データをfirebaseにアップロードする関数
 Future<void> uploadAllImages(
     {WoodenViewModel? woodenViewModel,
     SteelFrameViewModel? steelFrameViewModel,
@@ -29,11 +30,14 @@ Future<void> uploadAllImages(
       "outdoorStairsImages": content.outdoorStairsImages,
       "othersImages": content.othersImages,
     };
-
+    //画像保存先を取り出す
     for (var entry in fields.entries) {
       final images = entry.value;
+      //画像が入っていたら
       if (images.isNotEmpty) {
+        //firebaseにアップロードし保存先URLを保存
         final uploadUrls = await uploadImages(images);
+        //端末の画像保存先とfirebaseの保存先二つをviewmodelに保存
         final localUrls =
             images.map<String>((ImagePaths i) => i.localPath).toList();
         woodenViewModel.updateImageFieldFirebase(
@@ -112,6 +116,7 @@ Future<void> uploadAllImages(
   }
 }
 
+//端末の画像保存先を受け取りその画像をすべてfirebaseに保存する関数
 Future<List<String>> uploadImages(List<ImagePaths>? images) async {
   if (images == null) return [];
 
@@ -131,6 +136,7 @@ Future<List<String>> uploadImages(List<ImagePaths>? images) async {
   return updated;
 }
 
+//端末の画像保存先を受け取りfirebaseに保存する関数
 Future<String?> sendImage(String path) async {
   final filePath = path;
   try {

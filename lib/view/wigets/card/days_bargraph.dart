@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'dart:math';
 import '../../../models/dashboard_model.dart';
 
+//日別実績推移のWidget
 class DaysBarGraph extends StatefulWidget {
   final DashboardData data;
   DaysBarGraph({super.key, required this.data});

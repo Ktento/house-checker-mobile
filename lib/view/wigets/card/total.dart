@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import '../../../models/dashboard_model.dart';
 
+
+//総建物数のwidget
 class BuildingCt extends StatelessWidget {
   final DashboardData data;
   const BuildingCt({super.key, required this.data});
@@ -54,6 +56,7 @@ class BuildingCt extends StatelessWidget {
   }
 }
 
+//判定完了済みのwidget
 class EndBuildingCt extends StatelessWidget {
   final DashboardData data;
   const EndBuildingCt({super.key, required this.data});
@@ -108,6 +111,7 @@ class EndBuildingCt extends StatelessWidget {
   }
 }
 
+//危険建築物のwidget
 class RiskBuildingCt extends StatelessWidget {
   final DashboardData data;
   const RiskBuildingCt({super.key, required this.data});
@@ -161,6 +165,7 @@ class RiskBuildingCt extends StatelessWidget {
   }
 }
 
+//判定待ちのwidget
 class WaitingBuildingCt extends StatelessWidget {
   final DashboardData data;
   const WaitingBuildingCt({super.key, required this.data});
@@ -185,7 +190,7 @@ class WaitingBuildingCt extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(CupertinoIcons.time_solid,
-                  color: CupertinoColors.systemYellow),
+                  color: CupertinoColors.systemPurple),
               SizedBox(width: 6),
               Column(children: [
                 Text(

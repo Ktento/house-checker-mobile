@@ -7,6 +7,8 @@ import '../../../view/pages/investigator/post/steelFrame/steelFrame_research_uni
 import 'package:provider/provider.dart';
 import '../../../view_model/location_view_model.dart';
 
+
+//未判定リストタブのwidget
 class TODOTasks extends StatefulWidget {
   final DashboardViewModel viewModel;
   TODOTasks({super.key, required this.viewModel});

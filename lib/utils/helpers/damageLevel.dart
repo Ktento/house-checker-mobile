@@ -1,5 +1,6 @@
 import '../../models/investigator_model.dart';
 
+//StringのDamageLevelを変換
 DamageLevel? stringToDamageLevel(String? value) {
   if (value == null || value.isEmpty) return null;
   if (value.startsWith('A')) return DamageLevel.A;
@@ -9,6 +10,7 @@ DamageLevel? stringToDamageLevel(String? value) {
   return null;
 }
 
+//外観調査のStringの値を変換
 int parseExteriorScore(String value) {
   if (value.isEmpty) return 5;
   final firstChar = value.trim().substring(0, 1);

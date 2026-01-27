@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../models/percent_model.dart';
 import '../../../models/dashboard_model.dart';
 
+//判定進捗率のwidget
 class ProgressRate extends StatefulWidget {
   final DashboardData? data;
   const ProgressRate({super.key, this.data});

@@ -6,24 +6,30 @@ import 'package:latlong2/latlong.dart';
 part 'investigator_model.freezed.dart';
 part 'investigator_model.g.dart';
 
+//判定する際のレベル
 enum DamageLevel {
   A,
   B,
   C,
 }
 
+//総合評価のレベル
 enum OverallScore { red, yellow, green, uRed, uYellow, uGreen }
 
+//LatlngをJsonに変換
 Map<String, dynamic>? latLngToJson(LatLng? latLng) {
   if (latLng == null) return null;
   return {'latitude': latLng.latitude, 'longitude': latLng.longitude};
 }
 
+//Jsonからlatlngに変換
 LatLng? latLngFromJson(Map<String, dynamic>? json) {
   if (json == null) return null;
   return LatLng(json['latitude'] as double, json['longitude'] as double);
 }
 
+//調査単位の項目
+//木造・鉄骨・鉄筋で共通
 @freezed
 class InvestigationUnit with _$InvestigationUnit {
   const factory InvestigationUnit({
@@ -34,14 +40,15 @@ class InvestigationUnit with _$InvestigationUnit {
     required List<String> investigator,
     required List<String> investigatorPrefecture,
     required List<String> investigatorNumber,
-    @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson)
-    LatLng? position,
+    @JsonKey(fromJson: latLngFromJson, toJson: latLngToJson) LatLng? position,
   }) = _InvestigationUnit;
 
   factory InvestigationUnit.fromJson(Map<String, dynamic> json) =>
       _$InvestigationUnitFromJson(json);
 }
 
+//建築物概要の項目
+//木造・鉄骨・鉄筋で共通
 @freezed
 class BuildingOverview with _$BuildingOverview {
   const factory BuildingOverview({
@@ -59,6 +66,7 @@ class BuildingOverview with _$BuildingOverview {
       _$BuildingOverviewFromJson(json);
 }
 
+//画像を保存するClass
 @freezed
 class ImagePaths with _$ImagePaths {
   const factory ImagePaths({
@@ -70,6 +78,7 @@ class ImagePaths with _$ImagePaths {
       _$ImagePathsFromJson(json);
 }
 
+//木造建築物の調査内容
 @freezed
 class WoodenContent with _$WoodenContent {
   const factory WoodenContent({
@@ -134,6 +143,7 @@ class WoodenContent with _$WoodenContent {
       _$WoodenContentFromJson(json);
 }
 
+//鉄骨の調査内容
 @freezed
 class SteelFrameContent with _$SteelFrameContent {
   const factory SteelFrameContent({
@@ -209,6 +219,7 @@ class SteelFrameContent with _$SteelFrameContent {
       _$SteelFrameContentFromJson(json);
 }
 
+//鉄筋の調査内容
 @freezed
 class RebarContent with _$RebarContent {
   const factory RebarContent({
@@ -300,6 +311,8 @@ class RebarContent with _$RebarContent {
       _$RebarContentFromJson(json);
 }
 
+//木造建築物の調査レコード
+//調査単位+建築物概要+木造建築物の調査内容+総合評価
 @freezed
 class WoodenRecord with _$WoodenRecord {
   const factory WoodenRecord({
@@ -311,7 +324,7 @@ class WoodenRecord with _$WoodenRecord {
 
   factory WoodenRecord.fromJson(Map<String, dynamic> json) =>
       _$WoodenRecordFromJson(json);
-
+  //初期化の際は空文字やからの配列で初期化
   factory WoodenRecord.empty() => WoodenRecord(
         unit: InvestigationUnit(
           buildingtype: "",
@@ -369,6 +382,8 @@ class WoodenRecord with _$WoodenRecord {
       );
 }
 
+//鉄骨建築物の調査レコード
+//調査単位+建築物概要+鉄骨建築物の調査内容+総合評価
 @freezed
 class SteelFrameRecord with _$SteelFrameRecord {
   const factory SteelFrameRecord({
@@ -436,6 +451,8 @@ class SteelFrameRecord with _$SteelFrameRecord {
       );
 }
 
+//鉄筋建築物の調査レコード
+//調査単位+建築物概要+鉄筋建築物の調査内容+総合評価
 @freezed
 class RebarRecord with _$RebarRecord {
   const factory RebarRecord({

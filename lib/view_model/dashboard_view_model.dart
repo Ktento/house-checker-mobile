@@ -5,6 +5,7 @@ import '../utils/services/DB/get_dashboarddata.dart';
 import '../utils/services/DB/get_tasks.dart';
 
 class DashboardViewModel extends ChangeNotifier {
+  //使用するデータの定義
   DashboardData? _dashboardData;
   DashboardData? get dashboardData => _dashboardData;
   List<Tasks> _tasks = [];
@@ -12,13 +13,16 @@ class DashboardViewModel extends ChangeNotifier {
   List<Tasks> _completedTasks = [];
   List<Tasks> get completedtasks => _completedTasks;
 
+  //コンストラクタ（初期化処理）
   DashboardViewModel() {
     setTasks();
     setCompletedTasks();
     setDashboardData();
   }
 
+  //集計画面の表示に必要なデータを取得
   Future<void> setDashboardData() async {
+    //取得できるまでのデータ表示
     _dashboardData = DashboardData(
       workercount: {},
       checksituation: const CheckSituation(noValue: 0),
@@ -29,23 +33,28 @@ class DashboardViewModel extends ChangeNotifier {
       },
       regionanalysis: {},
     );
+    //画面更新
     notifyListeners();
 
     final value = await getDashboardData();
     if (value != null) {
       _dashboardData = value;
+      //画面更新
       notifyListeners();
     }
   }
 
+  //未判定リストのデータを取得
   Future<void> setTasks() async {
     final value = await getTasks();
     if (value.isNotEmpty) {
       _tasks = value;
+      //画面更新
       notifyListeners();
     }
   }
 
+  //完了済みの調査内容を取得
   Future<void> setCompletedTasks() async {
     final value = await getCompletedTasks();
     if (value.isNotEmpty) {
