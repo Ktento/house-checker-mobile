@@ -1,34 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'dart:math';
+import '../../../models/dashboard_model.dart';
 
+//日別実績推移のWidget
 class DaysBarGraph extends StatefulWidget {
-  const DaysBarGraph({super.key});
+  final DashboardData data;
+  DaysBarGraph({super.key, required this.data});
 
   @override
   State<DaysBarGraph> createState() => _DaysBarGraphState();
 }
 
 class _DaysBarGraphState extends State<DaysBarGraph> {
-  Map<String, List<int>> buildingSum = {
-    '11/07': [123, 60],
-    '11/08': [150, 80],
-    '11/09': [190, 170],
-    '11/10': [200, 180],
-    '11/11': [210, 190],
-    '11/12': [220, 200],
-    '11/13': [225, 220],
-    '11/14': [230, 230],
-  };
-
   @override
   Widget build(BuildContext context) {
+    final Map<String, DailyCheckCount> buildingSum = widget.data.dateAnalysis;
     // 最後の日の値の最大値を取得
-    List<int> lastDayValues = buildingSum.values.last;
-    int lastMax = lastDayValues.reduce(max);
-
+    final lastDay = widget.data.dateAnalysis.values.last;
+    final int lastMax =
+        [lastDay.totalBuilding, lastDay.checkComplete].reduce(max);
     // 50の倍数に切り上げ
-    double yAxisMax = ((lastMax / 50).ceil()) * 50;
+    final double yAxisMax = ((lastMax / 10).ceil()) * 10;
 
     return Container(
         width: 516,
@@ -86,15 +79,14 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
                         barRods: [
                           BarChartRodData(
                             fromY: 0,
-                            toY: entry.value[0].toDouble(),
+                            toY: entry.value.totalBuilding.toDouble(),
                             width: 15,
                             borderRadius: BorderRadius.zero,
                             color: CupertinoColors.activeBlue,
                           ),
                           BarChartRodData(
                             fromY: 0,
-                            toY: entry.value[1].toDouble(),
-                            width: 15,
+                            toY: entry.value.checkComplete.toDouble(),
                             borderRadius: BorderRadius.zero,
                             color: CupertinoColors.activeGreen,
                           ),
@@ -132,7 +124,7 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
                             int index = value.toInt();
                             if (index >= 0 && index < buildingSum.keys.length) {
                               String label = buildingSum.keys.elementAt(index);
-                              return Text(label,
+                              return Text(label.substring(5),
                                   style: TextStyle(
                                       color: CupertinoColors.black,
                                       fontSize: 10));

@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import '../../../models/dashboard_model.dart';
 
+
+//総建物数のwidget
 class BuildingCt extends StatelessWidget {
-  const BuildingCt({super.key});
+  final DashboardData data;
+  const BuildingCt({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +25,13 @@ class BuildingCt extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(CupertinoIcons.house_fill, color: CupertinoColors.activeBlue),
+            children: [
+              Icon(CupertinoIcons.house_fill,
+                  color: CupertinoColors.activeBlue),
               SizedBox(width: 6),
               Column(children: [
                 Text(
-                  '123',
+                  data.totalbuilding.toString(),
                   style: TextStyle(
                     color: CupertinoColors.black,
                     fontSize: 20,
@@ -51,8 +56,10 @@ class BuildingCt extends StatelessWidget {
   }
 }
 
+//判定完了済みのwidget
 class EndBuildingCt extends StatelessWidget {
-  const EndBuildingCt({super.key});
+  final DashboardData data;
+  const EndBuildingCt({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +79,13 @@ class EndBuildingCt extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Icon(CupertinoIcons.checkmark_square_fill,
                   color: CupertinoColors.activeGreen),
               SizedBox(width: 6),
               Column(children: [
                 Text(
-                  '123',
+                  data.checkcomplete.toString(),
                   style: TextStyle(
                     color: CupertinoColors.black,
                     fontSize: 20,
@@ -104,8 +111,10 @@ class EndBuildingCt extends StatelessWidget {
   }
 }
 
+//危険建築物のwidget
 class RiskBuildingCt extends StatelessWidget {
-  const RiskBuildingCt({super.key});
+  final DashboardData data;
+  const RiskBuildingCt({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -125,13 +134,13 @@ class RiskBuildingCt extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Icon(CupertinoIcons.exclamationmark_triangle_fill,
                   color: CupertinoColors.systemRed),
               SizedBox(width: 6),
               Column(children: [
                 Text(
-                  '123',
+                  data.dangerbuilding.toString(),
                   style: TextStyle(
                     color: CupertinoColors.black,
                     fontSize: 20,
@@ -156,8 +165,10 @@ class RiskBuildingCt extends StatelessWidget {
   }
 }
 
+//判定待ちのwidget
 class WaitingBuildingCt extends StatelessWidget {
-  const WaitingBuildingCt({super.key});
+  final DashboardData data;
+  const WaitingBuildingCt({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -177,12 +188,13 @@ class WaitingBuildingCt extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(CupertinoIcons.time_solid, color: CupertinoColors.systemYellow),
+            children: [
+              Icon(CupertinoIcons.time_solid,
+                  color: CupertinoColors.systemPurple),
               SizedBox(width: 6),
               Column(children: [
                 Text(
-                  '123',
+                  data.checkwaiting.toString(),
                   style: TextStyle(
                     color: CupertinoColors.black,
                     fontSize: 20,

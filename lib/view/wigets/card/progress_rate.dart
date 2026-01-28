@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import '../../../controllers/percent_controller.dart';
+import '../../../models/percent_model.dart';
+import '../../../models/dashboard_model.dart';
 
+//判定進捗率のwidget
 class ProgressRate extends StatefulWidget {
-  const ProgressRate({super.key});
+  final DashboardData? data;
+  const ProgressRate({super.key, this.data});
 
   @override
   State<ProgressRate> createState() => _ProgressRateState();
@@ -18,7 +21,10 @@ class _ProgressRateState extends State<ProgressRate>
   @override
   void initState() {
     super.initState();
-
+    if (widget.data != null) {
+      allprogress = widget.data!.completionRatioTotal;
+      riskprogress = widget.data!.dangerRatioCompleted;
+    }
     _controller = [
       PercentController(this),
       PercentController(this),
@@ -129,5 +135,36 @@ class _ProgressRateState extends State<ProgressRate>
         ),
       ),
     );
+  }
+}
+
+class PercentController {
+  late AnimationController animationController;
+  late PercentModel model;
+
+  PercentController(TickerProvider vsync) {
+    animationController = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: vsync,
+    );
+
+    final animation = Tween<double>(begin: 0, end: 100).animate(
+      CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+    );
+
+    model = PercentModel(animation);
+  }
+
+  void start({double to = 100}) {
+    animationController.reset();
+    final animation = Tween<double>(begin: 0, end: to).animate(
+      CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+    );
+    model = PercentModel(animation);
+    animationController.forward();
+  }
+
+  void dispose() {
+    animationController.dispose();
   }
 }

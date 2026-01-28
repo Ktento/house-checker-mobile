@@ -1,25 +1,61 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fl_chart/fl_chart.dart';
+import '../../../models/dashboard_model.dart';
 
-class PieChartStatus extends StatefulWidget {
-  const PieChartStatus({super.key});
+//判定状況身長のwidget
+class PieChartStatus extends StatelessWidget {
+  final DashboardData data;
+  const PieChartStatus({super.key, required this.data});
+  double getFontSize(double value) {
+    if (value >= 40) return 12;
+    if (value >= 25) return 10;
+    if (value >= 10) return 8;
+    return 6; // 最小サイズ
+  }
 
-  @override
-  State<PieChartStatus> createState() => _PieChartStatusState();
-}
-
-class _PieChartStatusState extends State<PieChartStatus> {
   @override
   Widget build(BuildContext context) {
     final sections = <PieChartSectionData>[
       PieChartSectionData(
-          value: 40, color: Color.fromARGB(255, 3, 3, 236), title: '40%'),
+        value: data.checksituationRatio.noValue,
+        color: CupertinoColors.systemPurple,
+        title: '${data.checksituationRatio.noValue}%',
+        titleStyle: TextStyle(
+          fontSize: getFontSize(data.checksituationRatio.noValue),
+          fontWeight: FontWeight.bold,
+          color: CupertinoColors.white,
+        ),
+      ),
       PieChartSectionData(
-          value: 25, color: Color.fromARGB(255, 255, 0, 34), title: '25%'),
+        value: data.checksituationRatio.red,
+        color: Color.fromARGB(255, 255, 0, 34),
+        title: '${data.checksituationRatio.red}%',
+        titleStyle: TextStyle(
+          fontSize: getFontSize(data.checksituationRatio.red),
+          fontWeight: FontWeight.bold,
+          color: CupertinoColors.white,
+        ),
+      ),
       PieChartSectionData(
-          value: 20, color: Color.fromARGB(255, 247, 222, 0), title: '20%'),
+        value: data.checksituationRatio.yellow,
+        color: Color.fromARGB(255, 247, 222, 0),
+        title: '${data.checksituationRatio.yellow}%',
+        titleStyle: TextStyle(
+          fontSize: getFontSize(data.checksituationRatio.yellow),
+          fontWeight: FontWeight.bold,
+          color: CupertinoColors.white,
+        ),
+      ),
       PieChartSectionData(
-          value: 15, color: Color.fromARGB(255, 32, 182, 2), title: '15%'),
+        value: data.checksituationRatio.green,
+        color: Color.fromARGB(255, 32, 182, 2),
+        title: '${data.checksituationRatio.green}%',
+        titleStyle: TextStyle(
+          fontSize: getFontSize(data.checksituationRatio.green),
+          fontWeight: FontWeight.bold,
+          color: CupertinoColors.white,
+        ),
+      ),
     ];
     return Container(
       width: 252,
@@ -65,11 +101,11 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   Row(
                     children: [
                       Icon(CupertinoIcons.circle_filled,
-                          color: CupertinoColors.activeBlue, size: 14),
+                          color: CupertinoColors.systemRed, size: 14),
                       Text(
-                        '総建物数',
+                        '危険',
                         style: TextStyle(
-                          color: CupertinoColors.activeBlue,
+                          color: CupertinoColors.systemRed,
                           fontSize: 14,
                         ),
                       ),
@@ -78,9 +114,21 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   SizedBox(height: 3),
                   Row(children: [
                     Icon(CupertinoIcons.circle_filled,
+                        color: CupertinoColors.systemYellow, size: 14),
+                    Text(
+                      '要注意',
+                      style: TextStyle(
+                        color: CupertinoColors.systemYellow,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ]),
+                  SizedBox(height: 3),
+                  Row(children: [
+                    Icon(CupertinoIcons.circle_filled,
                         color: CupertinoColors.activeGreen, size: 14),
                     Text(
-                      '判定完了',
+                      '安全',
                       style: TextStyle(
                         color: CupertinoColors.activeGreen,
                         fontSize: 14,
@@ -90,23 +138,11 @@ class _PieChartStatusState extends State<PieChartStatus> {
                   SizedBox(height: 3),
                   Row(children: [
                     Icon(CupertinoIcons.circle_filled,
-                        color: CupertinoColors.systemRed, size: 14),
-                    Text(
-                      '危険建物',
-                      style: TextStyle(
-                        color: CupertinoColors.systemRed,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ]),
-                  SizedBox(height: 3),
-                  Row(children: [
-                    Icon(CupertinoIcons.circle_filled,
-                        color: CupertinoColors.systemYellow, size: 14),
+                        color: CupertinoColors.systemPurple, size: 14),
                     Text(
                       '判定待ち',
                       style: TextStyle(
-                        color: CupertinoColors.systemYellow,
+                        color: CupertinoColors.systemPurple,
                         fontSize: 14,
                       ),
                     ),

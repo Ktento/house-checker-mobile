@@ -5,12 +5,22 @@ import '../../wigets/card/work_status.dart';
 import '../../wigets/card/judgment_status_pie_chart.dart';
 import '../../wigets/card/days_bargraph.dart';
 import '../../wigets/card/regional_statistics.dart';
+import '../../../view_model/dashboard_view_model.dart';
+import 'package:provider/provider.dart';
+import 'dart:math';
 
-class InvestigatorTotal extends StatelessWidget {
+class InvestigatorTotal extends StatefulWidget {
   const InvestigatorTotal({super.key});
 
   @override
+  State<InvestigatorTotal> createState() => _InvestigatorTotalState();
+}
+
+class _InvestigatorTotalState extends State<InvestigatorTotal> {
+  @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<DashboardViewModel>();
+
     return CupertinoPageScaffold(
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -19,7 +29,7 @@ class InvestigatorTotal extends StatelessWidget {
           // Row全体の幅（BuildingCt4つ＋隙間3つ）
           const totalWidth = (120 * 4) + (12 * 3);
           // 左端の位置を計算
-          final sidePadding = (screenWidth - totalWidth) / 2;
+          final sidePadding = max(0.0, (screenWidth - totalWidth) / 2);
           return SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Column(
@@ -28,16 +38,16 @@ class InvestigatorTotal extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // 中央に配置された4つのカード
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    BuildingCt(),
+                    BuildingCt(data: viewModel.dashboardData!),
                     SizedBox(width: 12),
-                    EndBuildingCt(),
+                    EndBuildingCt(data: viewModel.dashboardData!),
                     SizedBox(width: 12),
-                    RiskBuildingCt(),
+                    RiskBuildingCt(data: viewModel.dashboardData!),
                     SizedBox(width: 12),
-                    WaitingBuildingCt(),
+                    WaitingBuildingCt(data: viewModel.dashboardData!),
                   ],
                 ),
 
@@ -49,11 +59,11 @@ class InvestigatorTotal extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(children: [
-                        ProgressRate(),
+                        ProgressRate(data: viewModel.dashboardData!),
                         const SizedBox(
                           height: 16,
                         ),
-                        PieChartStatus(),
+                        PieChartStatus(data: viewModel.dashboardData!),
                       ]),
                       WorkStatus(),
                     ],
@@ -63,9 +73,9 @@ class InvestigatorTotal extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: sidePadding),
                   child: Column(children: [
-                    DaysBarGraph(),
+                    DaysBarGraph(data: viewModel.dashboardData!),
                     const SizedBox(height: 16),
-                    RegionalStatistics(),
+                    RegionalStatistics(data: viewModel.dashboardData!),
                   ]),
                 )
               ],

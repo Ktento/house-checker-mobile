@@ -1,68 +1,23 @@
 import 'package:flutter/cupertino.dart';
+import '../../../models/dashboard_model.dart';
 
-class RegionalStatistics extends StatefulWidget {
-  const RegionalStatistics({super.key});
+//地域別統計のwidget
+class RegionalStatistics extends StatelessWidget {
+  final DashboardData data;
+  RegionalStatistics({super.key, required this.data});
 
-  @override
-  State<RegionalStatistics> createState() => _RegionalStatisticsState();
-}
-
-class _RegionalStatisticsState extends State<RegionalStatistics> {
-  final region = [
-    {
-      'name': '静岡市',
-      'BuildingCt': 3,
-      'EndBuildingCt': 4,
-      'RiskBuildingCt': 5,
-      'WaitingBuildingCt': 80
-    },
-    {
-      'name': '焼津市',
-      'BuildingCt': 3,
-      'EndBuildingCt': 4,
-      'RiskBuildingCt': 5,
-      'WaitingBuildingCt': 80
-    },
-    {
-      'name': '藤枝市',
-      'BuildingCt': 3,
-      'EndBuildingCt': 4,
-      'RiskBuildingCt': 5,
-      'WaitingBuildingCt': 80
-    },
-    {
-      'name': '島田市',
-      'BuildingCt': 3,
-      'EndBuildingCt': 4,
-      'RiskBuildingCt': 5,
-      'WaitingBuildingCt': 80
-    },
-    {
-      'name': '富士市',
-      'BuildingCt': 3,
-      'EndBuildingCt': 4,
-      'RiskBuildingCt': 5,
-      'WaitingBuildingCt': 80
-    },
-    {
-      'name': '牧之原市',
-      'BuildingCt': 3,
-      'EndBuildingCt': 4,
-      'RiskBuildingCt': 5,
-      'WaitingBuildingCt': 80
-    },
-  ];
   @override
   Widget build(BuildContext context) {
+    final region = data.regionanalysis;
     return Container(
       width: 516,
       height: 200,
       decoration: BoxDecoration(
-        color: CupertinoColors.systemBackground, 
-        borderRadius: BorderRadius.circular(20), 
+        color: CupertinoColors.systemBackground,
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: CupertinoColors.black,
-          width: 1, 
+          width: 1,
         ),
       ),
       child: Padding(
@@ -93,7 +48,9 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                 child: ListView.builder(
                     itemCount: region.length,
                     itemBuilder: (context, index) {
-                      final currentRegion = region[index];
+                      final entry = region.entries.elementAt(index);
+                      final regionName = entry.key;
+                      final currentRegion = entry.value;
                       return Column(
                         children: [
                           Padding(
@@ -102,16 +59,16 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                             child: Row(
                               children: [
                                 Text(
-                                  currentRegion['name'].toString(),
+                                  regionName,
                                   style: const TextStyle(
-                                    color:  CupertinoColors.black,
+                                    color: CupertinoColors.black,
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 const Spacer(),
                                 Text(
-                                  '総建物数: ${currentRegion['BuildingCt']}',
+                                  '総建物数: ${currentRegion.totalbuilding.toString()}',
                                   style: const TextStyle(
                                     color: CupertinoColors.activeBlue,
                                     fontSize: 15,
@@ -120,7 +77,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  '判定完了:${currentRegion['EndBuildingCt'].toString()}',
+                                  '判定完了:${currentRegion.checkcomplete.toString()}',
                                   style: const TextStyle(
                                     color: CupertinoColors.activeGreen,
                                     fontSize: 15,
@@ -129,7 +86,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  '危険:${currentRegion['RiskBuildingCt'].toString()}',
+                                  '危険:${currentRegion.dangerbuilding.toString()}',
                                   style: const TextStyle(
                                     color: CupertinoColors.systemRed,
                                     fontSize: 15,
@@ -138,7 +95,7 @@ class _RegionalStatisticsState extends State<RegionalStatistics> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  '判定待ち:${currentRegion['WaitingBuildingCt'].toString()}',
+                                  '判定待ち:${currentRegion.checkwaiting.toString()}',
                                   style: const TextStyle(
                                     color: CupertinoColors.systemYellow,
                                     fontSize: 15,

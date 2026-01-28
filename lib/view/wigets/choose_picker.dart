@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
+import '../../../../../view/wigets/image_pickere.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CupertinoDropdown extends StatefulWidget {
   final List<String> options;
   final String initialValue;
-  final ValueChanged<String> onChanged; // 選択時のコールバック
+  final ValueChanged<String> onChanged;
+  final bool showImagePicker;
+  final ValueChanged<XFile?>? onImagePicked;
 
   const CupertinoDropdown({
     super.key,
     required this.options,
     required this.initialValue,
     required this.onChanged,
+    this.showImagePicker = false,
+    this.onImagePicked,
   });
 
   @override
@@ -44,7 +50,7 @@ class _CupertinoDropdownState extends State<CupertinoDropdown> {
             },
             child: Text(
               option,
-              style: TextStyle(color: _getColor(option)),
+              style: TextStyle(color: _getColor(option), fontSize: 18),
             ),
           );
         }).toList(),
@@ -59,14 +65,39 @@ class _CupertinoDropdownState extends State<CupertinoDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      color: CupertinoColors.systemGrey5,
-      onPressed: () => _showPicker(context),
-      child: Text(
-        selectedValue,
-        style: TextStyle(
-          color: _getColor(selectedValue),
-        ),
+    return SizedBox(
+      height: 60,
+      child: Row(
+        children: [
+          Expanded(
+            child: CupertinoButton(
+              color: CupertinoColors.systemGrey5,
+              onPressed: () => _showPicker(context),
+              child: Text(
+                selectedValue,
+                style: TextStyle(
+                  color: _getColor(selectedValue),
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          if (widget.showImagePicker)
+            SizedBox(
+              width: 60,
+              height: 60,
+              child: ImagePickerButton(
+                onImagePicked: (picked) {
+                  if (widget.onImagePicked != null) {
+                    widget.onImagePicked!(picked);
+                  }
+                },
+              ),
+            ),
+        ],
       ),
     );
   }

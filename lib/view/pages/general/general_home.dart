@@ -1,46 +1,113 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'general_info.dart';
 import 'general_map.dart';
 import 'general_post.dart';
+import 'general_total.dart';
+import 'package:provider/provider.dart';
+import '../../../view_model/location_view_model.dart';
+import '../../../view_model/map_view_model.dart';
+import '../../../view_model/dashboard_view_model.dart';
+import '../../home.dart';
 
-class General_HomePage extends StatefulWidget {
-  const General_HomePage({super.key});
-
-  @override
-  State<General_HomePage> createState() => _General_HomePageState();
-}
-
-class _General_HomePageState extends State<General_HomePage> {
-  int _selectedIndex = 0; // 選択中のタブのインデックス
-  // タブごとの画面リスト
-  static const List<Widget> _pages = <Widget>[
-    GeneralMap(), // マップ画面
-    GeneralPost(), // 投稿画面
-    GeneralInfo(), // 被害情報画面
-  ];
-  // タブを押したときに呼ばれる関数
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class GeneralHomePage extends StatelessWidget {
+  const GeneralHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('ホーム')),
-      body: _pages[_selectedIndex], // 選択中のタブに応じて画面を切り替える
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LocationViewModel()),
+        ChangeNotifierProvider(create: (_) => MapViewModel()),
+        ChangeNotifierProvider(create: (_) => DashboardViewModel())
+      ],
+      child: tabMenu(),
+    );
+  }
+
+  CupertinoTabScaffold tabMenu() {
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'マップ'),
-          BottomNavigationBarItem(icon: Icon(Icons.upload), label: '投稿'),
-          BottomNavigationBarItem(icon: Icon(Icons.warning), label: '被害情報'),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.map),
+            label: 'マップ',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.pencil),
+            label: '判定作業',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.chart_bar),
+            label: '集計情報',
+          ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
       ),
+      tabBuilder: (BuildContext context, int index) {
+        switch (index) {
+          case 0:
+            return CupertinoPageScaffold(
+              navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
+                middle: Text('マップ'),
+              ),
+              child: SafeArea(child: GeneralMap()),
+            );
+          case 1:
+            return CupertinoPageScaffold(
+              navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
+                middle: Text('判定作業'),
+              ),
+              child: SafeArea(child: GeneralPost()),
+            );
+          case 2:
+            return CupertinoPageScaffold(
+              navigationBar: CupertinoNavigationBar(
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  child: const Text('モード選択にもどる'),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
+                middle: Text('集計情報'),
+              ),
+              child: SafeArea(child: GeneralTotal()),
+            );
+          default:
+            return const SizedBox.shrink();
+        }
+      },
     );
   }
 }
