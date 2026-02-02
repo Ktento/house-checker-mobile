@@ -106,12 +106,17 @@ class _DaysBarGraphState extends State<DaysBarGraph> {
                           reservedSize: 30,
                           interval: 100,
                           getTitlesWidget: (value, meta) {
-                            return Text(
-                              '${value.toInt()}',
-                              style: TextStyle(
-                                color: CupertinoColors.black,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
+                            return SideTitleWidget(
+                              axisSide: meta.axisSide,
+                              space: 4, // 数値とグラフの線の間のスペース
+                              child: Text(
+                                '${value.toInt()}',
+                                style: TextStyle(
+                                  color: CupertinoColors.black,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.right, // テキスト自体の整列
                               ),
                             );
                           },
